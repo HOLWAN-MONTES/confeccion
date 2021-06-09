@@ -1,0 +1,158 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* -----------header--------------- */
+
+header{
+    display: inline-flex;
+}
+/* header logo */
+
+.logosena{
+    width: 10%; 
+    padding:5px;
+}
+
+.logosena2{
+    width: 100%;
+}
+
+.logocostud{
+    width: 10%; 
+    
+}
+
+.logocostud2{
+    width: 100%;
+}
+
+
+.iniciarsesion{
+    padding:20px;
+    color: #238276;
+    background: white;
+    font-size: 15px;
+}
+
+.contenopc{
+    display: block;
+    background: cadetblue;
+    width: 80%;
+    margin-left: 1%;
+  
+}
+
+a{
+    text-decoration: none;
+    text-transform: none;
+}
+
+/* -------------iniciar sesion ----------------*/
+.iniciarsesionI{
+    color: #238276;
+}
+
+.iniciarsesionI:hover{
+   
+    border-bottom: 1px solid green;
+}
+
+/* --------opciones ------ */
+.opciones ul{
+    padding:20px;
+    width: 100%;
+    display: inline-flex;
+}
+.opciones ul li{
+    list-style-type: none;
+    font-size: 20px;
+    text-align: center;
+    padding:10px;
+    width: 25%;
+}
+
+.opciones ul li a{
+    text-align: center;
+    color: black;
+
+    cursor: pointer;
+}
+
+.opciones ul li a:hover{
+    color: white;
+    cursor: pointer;
+}
+
+/* ------------------PAGINAS DE LADO IZQUIERDO------------------------- */
+
+.paginas{
+
+    display: inline-block;
+    
+    position: relative;
+    margin-top: 1%;
+
+}
+
+main{
+    display: flex;
+    /* flex-direction: row; */
+   /*  flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; */
+}
+
+/* imagen central */
+.imagencentral{
+    background-image: url(../images/img1.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 80%;
+    margin: 15px;
+    margin-left: 6%;
+    border-radius: 10px;
+    
+}
+/* letras del relleno o titulo */
+
+.letrasT{
+    margin-top: 3%;
+    background-color: rgba(222, 223, 222, 0.678);
+    text-align: center;
+
+}
+
+
+/*---------------- footer-------------------- */
+.footer{
+    display: inline-flex;
+    width: 100%;
+    background-color: rgb(116, 163, 71); /* #ddd9d6 */
+    position: absolute;
+    bottom: 0;
+    color: white;
+}
+
+
+.imgcostudpie{
+ width: 10%;
+}
+
+.info{
+    width: 80%;
+    margin-top: 0.5%;
+}
+
+.logosenapie{
+    width: 10%;
+}
+
+.contentinfo{
+    
+
+    width: 40%;
+    margin:0 auto;
+}

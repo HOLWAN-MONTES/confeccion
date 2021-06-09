@@ -1,0 +1,246 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+
+}
+
+
+
+/*------- todo el header----- */
+.cabecera{
+    width: 100%;
+    background-color: rgba(235, 225, 225, 0.897);
+    border-bottom: 1px solid black;
+    display: inline-flex;
+    float: right;
+    height: 64px;
+}
+
+
+.superior{
+    width: 20%; 
+}
+
+.tituloMensaje{
+    width: 80%; 
+}
+
+
+/*//////////////-------------- INFORMACION DE LA PERSONA ---------------- */
+
+.cabecera1{
+
+    padding-top: 5px;
+    width: 20%;
+}
+
+
+.info_per{
+    margin: auto;
+    height: 80%;
+    width: 100%;
+    background-color: rgb(24,130,118);
+    display: flex;
+   
+    border-radius: 20px;
+}
+
+.foto{
+    width: 100%;
+    align-content: center;
+
+}
+
+.foto img{
+    width: 100%;
+    height: 35px;
+    margin-left: 15%;
+    margin-top: 6%;
+    border-radius: 50%;
+}
+
+/* esconder el nombre completo */
+.mostrarAl{
+    padding-top: 13px;
+    font-size: 25px;
+    height: 48px;
+    width:100%;
+    padding-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.men{
+    width: 100%;
+    height: auto;
+  word-wrap: break-word;
+
+   
+}
+.men a{
+    font-size: 15px;
+    padding: 3%;
+    color: #000;
+    text-decoration: none;
+}
+.sub_nom{
+    list-style: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.men ul li ul{
+    display: none;
+}
+.men ul li:hover ul{
+    display: flex;
+    flex-direction: column;
+}
+.men ul li ul{
+    width: 12%;
+    list-style: none;
+    background-color:rgb(124, 214, 204);
+    display:none;
+    text-align: center;
+    position:absolute;
+    margin-left: -1%;
+    border-radius: 15px;
+}
+
+.men ul li ul li:hover{
+    background-color: aqua;
+    border-radius: 15px;
+}
+.tetxt{
+    font-size: 15px;
+    padding: 3%;
+    cursor: pointer;
+    color: #000;
+}
+            
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+input[type=number] { -moz-appearance:textfield; }
+
+
+/* ---------------------------listas de lado izquierdo----------------------------------------------- */
+
+
+/* container de la lateral */
+.lateral{
+    background-color:#188276;
+    width: 16%;
+    height: 100vh;
+    /* position: relative; */
+    margin-top: 0;
+}
+
+/* titulo "administrador" */
+.title_int{
+    font-size: 23px;
+    text-decoration: none;
+}
+
+.title_int a{
+    color: white;
+}
+
+a{
+    text-decoration: none;
+}
+
+.superior1{
+    padding-top: 15px;
+    width: 19%;
+    background: rgb(255, 105, 25);
+    height: 63px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.img_lo{
+    
+    width: 100%;
+    max-width: 100%;
+    /* clip-path: inset(0 10% 0 0); */
+}
+
+.menu{
+   /*  border: 1px solid black; */
+}
+
+
+/* logo del sena abajo */
+
+.logo_inst{
+    width: 100%;
+}
+/* -----------------------cajas de los divs de los menus---------- */
+
+.caja1{
+    height: 32.3vh;
+    padding-right: 20px;
+    background-color: #d3caca;
+}
+
+
+.caja2{
+    height: 34.3vh;
+    
+}
+
+/* .caja2 a{
+    font-size: 100%;white-space: initial;
+} */
+
+.caja3{
+    height: 33.4vh;
+
+    background-color: #d3caca;
+    margin-bottom: 0;
+}
+
+
+
+/* quitarle a todas las listas el punto que le sale a la izquierda */
+li{
+    list-style: none;
+}
+
+/* ul y los li de administrar usuarios y otras  */
+
+
+
+.activado ul{
+    display:block ;
+    margin-left: 15%;
+    position: absolute;
+}
+
+
+
+
+.menu2 > li{
+    width: 100%;
+    height: 6.8vh;
+    padding-top: 20px;
+    padding-left: 3px;
+    display: inline-flex;
+    list-style: none;
+    cursor: pointer;
+
+    border-bottom: 1px solid black;
+}
+
+
+.menu2 > li:hover{
+   
+    background: #409b90;
+
+}
