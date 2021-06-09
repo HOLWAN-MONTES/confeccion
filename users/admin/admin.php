@@ -62,16 +62,70 @@ if ($usario == "" || $usario == null) {
  <!-- fomularios -->
     <main class="fomularios">
         <div class="contentCrearUsuario">
-            crear USUARIOS
+        <h1>REGISTRO DE USUARIOS</h1>
+            <div class="contenFprmularioCrearUsu">
+         
+                <form class="form1" action="" method="POST" autocomplete="off"  enctype="multipart/form-data">
+
+                    <!-- caja de documento-nombres-apellidos -->
+                    <div class="primeralinea">
+                        <div><input class="input1" type="number" name="docu" id="docu" placeholder="DOCUMENTO" autocomplete="off" required> <!-- &nbsp;&nbsp;&nbsp; --></div>
+                        <div><input class="input1" type="text" name="nom" id="nom" placeholder="NOMBRES" autocomplete="off" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
+                        <div><input class="input1" type="text" name="apel" id="apel" placeholder="APELLIDOS" autocomplete="off" required style="text-transform:uppercase"> </div>
+                    </div>
+
+
+                    <!-- caja de tipoDeUsuario-tipoDeDocumento-EDAD -->
+                    <div class="segundalinea">
+                        <div>
+                            <select class="input1" name="" id=""  required>
+                                <option >TIPO DE USUARIO</option>
+                                <option value="">aa</option>
+                                <option value="">aa</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select class="input1" name="" id=""  required>
+                                <option>TIPO DE DOCUMENTO</option>
+                                <option value="">aa</option>
+                                <option value="">aa</option>
+                            </select>
+                        </div>
+                        <div><input class="input1" required type="number" name="EDAD" id="" placeholder="EDAD"></div>
+                    </div>
+
+
+                    <!-- caja de password-numerotel-email -->
+                    <div class="terceralinea">
+                        <div> <input class="input1" type="password" name="contra" id="contra" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" required></div>
+                        <div><input class="input1" type="number" name="tele" id="tele" placeholder="TELEFONO"  min="1" max="3999999999" required></div>
+                        <div><input class="input1" type="email" name="cor" id="cor" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required></div>
+                    </div>
+
+
+                    <!-- caja de foto-enviar -->
+                    <div class="cuartalinea">
+                        <div><input class="input1" type="file" required name="imagen"/></div>
+                        <div><input class="input1" type="submit" name="registro" id="reg" value="REGISTRAR"></div>
+                    </div>
+
+                 
+                </form>
+            </div>
         </div>
+
+        <!-- contenido de editar usuario -->
         <div class="contentEditarUsuario">
             editar USUARIOS
         </div>
+        <!-- contenido de eliminar usuario -->
         <div class="contentEliminarUsuario">
             eliminar USUARIOS
         </div>
 
     </main>
+
+
 
 
 <!-- caja delado izquierdo de los menus -->

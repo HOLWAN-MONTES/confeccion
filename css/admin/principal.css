@@ -32,7 +32,7 @@
 .info_per{
     margin: auto;
     height: 80%;
-    width: 70%;
+    width: 250px;
     background-color: rgb(24,130,118);
     display: flex;
     border-radius: 20px;
@@ -44,7 +44,7 @@
 }
 
 .foto img{
-    width: 80%;
+    width: 60px;
     height: 45px;
     margin-left: 4%;
     border-radius: 50%;
@@ -198,7 +198,6 @@ a{
 
 .caja3{
     height: 33.4vh;
-
     background-color: #d3caca;
     margin-bottom: 0;
 }
@@ -237,26 +236,88 @@ li{
     display: inline-flex;
     list-style: none;
     cursor: pointer;
-
     border-bottom: 1px solid black;
 }
 
 .menu2 > li:hover{
-   
     background: #409b90;
-
 }
 
 /* -----------------------------------------------------------------FORMULARIOS-------------------------------- */
-
 .fomularios{
     position: absolute;
     margin-left: 16%;
-    margin-top: 5%;
+    margin-top: 63PX;
     background-color: royalblue;
     width: 83%;
     height: 90vh;
-
 }
+
+/* --------------admin.Usuarios----------- */
+
+/* crear usuario/////////////////////////////////// */
+.contentCrearUsuario{
+    text-align: center;
+    width: 80%;
+    height: auto;
+    border-radius: 10PX;
+    background-color: #23ad9dc5;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+   
+}
+
+.contenFprmularioCrearUsu{
+    border: 1px solid rgba(0, 0, 0, 0.363);
+    background-color: silver;
+    border-radius: 10PX;
+    width: 90%;
+    margin: 0 auto;
+  
+}
+
+
+/*  */
+.primeralinea,.segundalinea,.terceralinea,.cuartalinea{
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    
+    padding: 9px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.primeralinea > div,.segundalinea > div,.terceralinea > div,.cuartalinea > div{
+    
+    margin: 0 auto;
+}
+
+/* inputs */
+.input1{
+    padding: 6px 35px 6px 35px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+/* editar usuario------------------------------------ */
+.contentEditarUsuario{
+    width: 50%;
+    background-color: seagreen;
+    display: none;
+}
+
+/* eliminar usuario------------------------------------ */
+.contentEliminarUsuario{
+    width: 50%;
+    background-color: sienna;
+    display: none;
+}
+
+
+
+
+
 
 
