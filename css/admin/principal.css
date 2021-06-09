@@ -257,6 +257,7 @@ li{
 
 /* crear usuario/////////////////////////////////// */
 .contentCrearUsuario{
+    display: none;
     text-align: center;
     width: 80%;
     height: auto;
@@ -265,7 +266,6 @@ li{
     margin: 0 auto;
     margin-top: 100px;
     padding: 20px;
-   
 }
 
 .contenFprmularioCrearUsu{
@@ -274,22 +274,24 @@ li{
     border-radius: 10PX;
     width: 90%;
     margin: 0 auto;
-  
 }
 
-
-/*  */
+/* secciones */
 .primeralinea,.segundalinea,.terceralinea,.cuartalinea{
     border: 1px solid rgba(0, 0, 0, 0.137);
-    
     padding: 9px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
 }
 
+.cuartalinea{
+    width: 100%;
+    grid-template-columns: 50% 50% ;
+    grid-template-rows: 1fr;
+}
+
 .primeralinea > div,.segundalinea > div,.terceralinea > div,.cuartalinea > div{
-    
     margin: 0 auto;
 }
 
@@ -298,17 +300,95 @@ li{
     padding: 6px 35px 6px 35px;
     text-align: center;
     margin: 0 auto;
+    width: 100%;
+
+}
+
+/* btn de enviar */
+.regis{
+    cursor: pointer;
 }
 
 
-/* editar usuario------------------------------------ */
+/* CREAR TIPO DE USUARIO TIPO DE DOCUMENTO---------------------- */
+
+.agregaradi{
+    color:#ff6819 ;
+    cursor: pointer;
+}
+
+.agregaradi:hover{
+    background-color: #7a8d948f;
+    margin: 0 auto;
+}
+
+/* editar usuario------------------------------------------- */
 .contentEditarUsuario{
-    width: 50%;
-    background-color: seagreen;
     display: none;
+    text-align: center;
+    width: 80%;
+    height: auto;
+    border-radius: 10PX;
+    background-color: #23ad9dc5;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
 }
 
-/* eliminar usuario------------------------------------ */
+
+
+.contenFprmularioEditarUsu{
+    border: 1px solid rgba(0, 0, 0, 0.363);
+    background-color: silver;
+    border-radius: 10PX;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* secciones */
+.primeralinea2,.segundalinea2,.terceralinea2,.cuartalinea2{
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 9px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.cuartalinea2{
+    width: 100%;
+    grid-template-columns: 50% 50% ;
+    grid-template-rows: 1fr;
+}
+
+.primeralinea2 > div,.segundalinea2 > div,.terceralinea2 > div,.cuartalinea2 > div{
+    margin: 0 auto;
+}
+
+/* inputs */
+.input2{
+    padding: 6px 35px 6px 35px;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+
+}
+
+/* btn de actualizar */
+.actualizar{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* eliminar usuario----------------------------------------------------------- */
 .contentEliminarUsuario{
     width: 50%;
     background-color: sienna;
