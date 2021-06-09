@@ -22,6 +22,8 @@ if ($usario == "" || $usario == null) {
 </head>
 
 <body>
+
+<!-- header con las opciones corresponientes -->
     <header>
         <!-- header de la parte superrior  -->
         <div class="cabecera">
@@ -102,7 +104,7 @@ if ($usario == "" || $usario == null) {
 
 
     <main>
-
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     </main>
 
 
