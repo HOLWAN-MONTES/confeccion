@@ -84,10 +84,9 @@ if ($usario == "" || $usario == null) {
                 <!--  INVENTARIOS-->
                 <li class="activado"><a>INVENTARIO <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
-                        <li><a href="#">wenas</a></li>
-                        <li><a href="#">wenas</a></li>
-                        <li><a href="#">wenas</a></li>
-                        <li><a href="#">wenas</a></li>
+                        <li><a>INV DE MAQUINARIA</a></li>
+                        <li><a>INV DE MATERIAL TEXTIL</a></li>
+                        <li><a>INV DE INSUMOS</a></li>
                     </ul>
                 </li>
                 <li><a>REPORTES</a></li>

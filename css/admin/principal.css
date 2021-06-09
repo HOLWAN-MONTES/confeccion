@@ -23,7 +23,7 @@
 }
 
 .tituloMensaje{
-    width: 80%; 
+    width: 70%; 
 }
 
 
@@ -32,7 +32,7 @@
 .cabecera1{
 
     padding-top: 5px;
-    width: 20%;
+    width: 30%;
 }
 
 
@@ -47,16 +47,16 @@
 }
 
 .foto{
-    width: 100%;
+    width: 50%;
     align-content: center;
+
 
 }
 
 .foto img{
-    width: 100%;
-    height: 35px;
-    margin-left: 15%;
-    margin-top: 6%;
+    width: 80%;
+    height: 45px;
+    margin-left: 4%;
     border-radius: 50%;
 }
 
@@ -215,13 +215,33 @@ li{
 
 /* ul y los li de administrar usuarios y otras  */
 
-
-
-.activado ul{
-    display:block ;
-    margin-left: 15%;
+.activado > ul{
+    display:none ;
+    margin-left: 15.8%;
+    margin-top: -4%;
     position: absolute;
+
+
+    
 }
+
+.activado > ul > li{
+    border-bottom: 1px solid red;
+    padding: 10px 20px 10px 20px;
+}
+
+.activado:hover > ul{
+    display:block ;
+    background-color: rgb(124, 214, 204);
+
+    
+}
+
+.activado:hover > ul li{
+    
+    
+}
+
 
 
 
