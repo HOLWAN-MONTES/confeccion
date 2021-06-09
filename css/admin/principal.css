@@ -2,10 +2,7 @@
     margin: 0;
     box-sizing: border-box;
     padding: 0;
-
 }
-
-
 
 /*------- todo el header----- */
 .cabecera{
@@ -17,7 +14,6 @@
     height: 64px;
 }
 
-
 .superior{
     width: 20%; 
 }
@@ -26,31 +22,25 @@
     width: 70%; 
 }
 
-
 /*//////////////-------------- INFORMACION DE LA PERSONA ---------------- */
 
 .cabecera1{
-
     padding-top: 5px;
     width: 30%;
 }
 
-
 .info_per{
     margin: auto;
     height: 80%;
-    width: 100%;
+    width: 70%;
     background-color: rgb(24,130,118);
     display: flex;
-   
     border-radius: 20px;
 }
 
 .foto{
     width: 50%;
     align-content: center;
-
-
 }
 
 .foto img{
@@ -66,7 +56,7 @@
     font-size: 25px;
     height: 48px;
     width:100%;
-    padding-left: 10px;
+    padding-left: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -78,12 +68,14 @@
 
    
 }
+
 .men a{
     font-size: 15px;
     padding: 3%;
     color: #000;
     text-decoration: none;
 }
+
 .sub_nom{
     list-style: none;
     font-size: 25px;
@@ -94,10 +86,12 @@
 .men ul li ul{
     display: none;
 }
+
 .men ul li:hover ul{
     display: flex;
     flex-direction: column;
 }
+
 .men ul li ul{
     width: 12%;
     list-style: none;
@@ -109,8 +103,14 @@
     border-radius: 15px;
 }
 
+/*---------- menu de editar y cerrar sesion------------ */
+.mos_nom{
+    z-index: 4;
+}
+
 .men ul li ul li:hover{
     background-color: aqua;
+    z-index: 2;
     border-radius: 15px;
 }
 .tetxt{
@@ -119,7 +119,10 @@
     cursor: pointer;
     color: #000;
 }
-            
+
+.uno:hover{
+    background-color:rgb(62, 233, 213); ;
+}
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -128,9 +131,7 @@ margin: 0;
 }
 input[type=number] { -moz-appearance:textfield; }
 
-
 /* ---------------------------listas de lado izquierdo----------------------------------------------- */
-
 
 /* container de la lateral */
 .lateral{
@@ -165,7 +166,6 @@ a{
 }
 
 .img_lo{
-    
     width: 100%;
     max-width: 100%;
     /* clip-path: inset(0 10% 0 0); */
@@ -174,7 +174,6 @@ a{
 .menu{
    /*  border: 1px solid black; */
 }
-
 
 /* logo del sena abajo */
 
@@ -189,10 +188,8 @@ a{
     background-color: #d3caca;
 }
 
-
 .caja2{
     height: 34.3vh;
-    
 }
 
 /* .caja2 a{
@@ -206,8 +203,6 @@ a{
     margin-bottom: 0;
 }
 
-
-
 /* quitarle a todas las listas el punto que le sale a la izquierda */
 li{
     list-style: none;
@@ -220,9 +215,6 @@ li{
     margin-left: 15.8%;
     margin-top: -4%;
     position: absolute;
-
-
-    
 }
 
 .activado > ul > li{
@@ -235,18 +227,7 @@ li{
     display:block ;
     border-radius: 20px;
     background-color: rgb(124, 214, 204);
-
-    
 }
-
-.activado:hover > ul li{
-    
-    
-}
-
-
-
-
 
 .menu2 > li{
     width: 100%;
@@ -260,17 +241,22 @@ li{
     border-bottom: 1px solid black;
 }
 
-
 .menu2 > li:hover{
    
     background: #409b90;
 
 }
 
+/* -----------------------------------------------------------------FORMULARIOS-------------------------------- */
 
+.fomularios{
+    position: absolute;
+    margin-left: 16%;
+    margin-top: 5%;
+    background-color: royalblue;
+    width: 83%;
+    height: 90vh;
 
-
-
-
+}
 
 

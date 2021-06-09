@@ -58,6 +58,22 @@ if ($usario == "" || $usario == null) {
 
     </header>
 
+
+ <!-- fomularios -->
+    <main class="fomularios">
+        <div class="contentCrearUsuario">
+            crear USUARIOS
+        </div>
+        <div class="contentEditarUsuario">
+            editar USUARIOS
+        </div>
+        <div class="contentEliminarUsuario">
+            eliminar USUARIOS
+        </div>
+
+    </main>
+
+
 <!-- caja delado izquierdo de los menus -->
     <div class="lateral">
 
@@ -70,28 +86,28 @@ if ($usario == "" || $usario == null) {
                 <!-- ADMINISTRADOR DE USUARIOS -->
                 <li class="activado"><a>ADMIN.USUARIOS <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
-                        <li><a >REGISTRO DE USUARIOS</a></li>
-                        <li><a >EDITAR USUARIOS</a></li>
-                        <li><a >ELIMINAR USUARIOS</a></li>
+                        <li id="registroUsu" class="uno registroUsuarios"><a >REGISTRO DE USUARIOS</a></li>
+                        <li id="editarUsu" class="uno edita"><a >EDITAR USUARIOS</a></li>
+                        <li id="eliminarUsu" class="uno eliminar"><a >ELIMINAR USUARIOS</a></li>
                     </ul>
 
 
                 </li>
                 
                 <!-- INGRESO -->
-                <li><a>INGRESO</a></li>
+                <li id="ingreso"><a>INGRESO</a></li>
 
-                <li><a >DEVOLUCIONES </a></li>
+                <li id="devoluciones"><a >DEVOLUCIONES </a></li>
 
                 <!--  INVENTARIOS-->
                 <li class="activado"><a>INVENTARIO <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
-                        <li><a>INV DE MAQUINARIA</a></li>
-                        <li><a>INV DE MATERIAL TEXTIL</a></li>
-                        <li><a>INV DE INSUMOS</a></li>
+                        <li id="invMaquinaria" class="uno invMaquinaria"><a>INV DE MAQUINARIA</a></li>
+                        <li id="invMaterialText" class="uno invMateralT"><a>INV DE MATERIAL TEXTIL</a></li>
+                        <li id="invInsumo" class="uno invInsumos"><a>INV DE INSUMOS</a></li>
                     </ul>
                 </li>
-                <li><a>REPORTES</a></li>
+                <li id="reportes"><a>REPORTES</a></li>
             </ul>
         </div>
 
@@ -102,12 +118,15 @@ if ($usario == "" || $usario == null) {
     </div>
 
 
+   
 
-    <main>
-    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-    </main>
+    
 
 
+
+
+
+    <script src="../../js/users/admin/main.js"></script>
 </body>
 
 </html>
