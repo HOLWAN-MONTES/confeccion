@@ -1,52 +1,74 @@
-// administrador de usuarios 
-const registroUsu = document.getElementById('registroUsu');
-const editarUsu = document.getElementById('editarUsu');
-const eliminarUsu = document.getElementById('eliminarUsu');
+// administrador de usuarios --------------------------------------
+
+//____btn y contenedor de crear usuario
+const contentCrearUsuario = document.getElementById('contentCrearUsuario');
+const btnregistroUsu = document.getElementById('registroUsu');
+
+//______btn y contenedor de editar usuario
+const contentEditarUsuario = document.getElementById('contentEditarUsuario');
+const btneditarUsu = document.getElementById('editarUsu');
 
 
-//ingreso
-const ingreso = document.getElementById('ingreso');
+//_______btn y contenedor de eliminar usuario
+const contentEliminarUsuario = document.getElementById('contentEliminarUsuario');
+const btneliminarUsu = document.getElementById('eliminarUsu');
 
-//devoluciones
-const devoluciones = document.getElementById('devoluciones');
+
+
+//ingreso--------------------------
+const btningreso = document.getElementById('ingreso');
+
+//devoluciones-----------------
+const btndevoluciones = document.getElementById('devoluciones');
 
 
 //reportes
-const reportes = document.getElementById('reportes');
+const btnreportes = document.getElementById('reportes');
 
 /// inventario 
-const invMaquinaria = document.getElementById('invMaquinaria');
-const invMaterialText = document.getElementById('invMaterialText');
-const invInsumo = document.getElementById('invInsumo');
+const btninvMaquinaria = document.getElementById('invMaquinaria');
+const btninvMaterialText = document.getElementById('invMaterialText');
+const btninvInsumo = document.getElementById('invInsumo');
+
+
 
 
 // --------fromularios de administrador de usuarios 
-registroUsu.addEventListener('click',function(){
-   alert('registrousuairos')
+//___btn registro de usuario
+btnregistroUsu.addEventListener('click',function(){
+    contentCrearUsuario.style.display = "block";
+    contentEditarUsuario.style.display = "none";
+    contentEliminarUsuario.style.display = "none";
 })
 
-editarUsu.addEventListener('click',function(){
-    alert('editar  usuario')
+//_____btn editar usuario
+btneditarUsu.addEventListener('click',function(){
+    contentEditarUsuario.style.display = "block";
+    contentCrearUsuario.style.display = "none";
+    contentEliminarUsuario.style.display = "none";
 })
 
-eliminarUsu.addEventListener('click',function(){
-    alert('eliminar usuario')
+//____btn eliminar usuario
+btneliminarUsu.addEventListener('click',function(){
+    contentEliminarUsuario.style.display = "block";
+    contentCrearUsuario.style.display = "none";
+    contentEditarUsuario.style.display = "none";
 })
 
 
 //ingreso-------------------------------------------------
-ingreso.addEventListener('click',function(){
+btningreso.addEventListener('click',function(){
     alert('ingreso')
 })
 
 //devoluciones------------------------------------------------
-devoluciones.addEventListener('click',function(){
+btndevoluciones.addEventListener('click',function(){
     alert('devoluciones')
 })
 
 
 //reportes-----------------------------------------------------------
-reportes.addEventListener('click',function(){
+btnreportes.addEventListener('click',function(){
     alert('reportes')
 })
 
@@ -54,15 +76,15 @@ reportes.addEventListener('click',function(){
 
 
 //------------------------------ tablas de inventarios ---------
-invMaquinaria.addEventListener('click',function(){
+btninvMaquinaria.addEventListener('click',function(){
     alert('invMaquinaria')
 })
 
-invMaterialText.addEventListener('click',function(){
+btninvMaterialText.addEventListener('click',function(){
     alert('invMaterialTextil')
 })
 
-invInsumo.addEventListener('click',function(){
+btninvInsumo.addEventListener('click',function(){
     alert('invInsumo')
 })
 

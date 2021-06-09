@@ -61,17 +61,18 @@ if ($usario == "" || $usario == null) {
 
  <!-- fomularios -->
     <main class="fomularios">
-        <div class="contentCrearUsuario">
+        <!-- PRIMER FORMULARIO DE USUARIO -->
+        <div class="contentCrearUsuario" id="contentCrearUsuario">
         <h1>REGISTRO DE USUARIOS</h1>
             <div class="contenFprmularioCrearUsu">
-         
+        
                 <form class="form1" action="" method="POST" autocomplete="off"  enctype="multipart/form-data">
 
                     <!-- caja de documento-nombres-apellidos -->
                     <div class="primeralinea">
-                        <div><input class="input1" type="number" name="docu" id="docu" placeholder="DOCUMENTO" autocomplete="off" required> <!-- &nbsp;&nbsp;&nbsp; --></div>
-                        <div><input class="input1" type="text" name="nom" id="nom" placeholder="NOMBRES" autocomplete="off" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
-                        <div><input class="input1" type="text" name="apel" id="apel" placeholder="APELLIDOS" autocomplete="off" required style="text-transform:uppercase"> </div>
+                        <div><input class="input1" type="number" name="docu" id="docu" placeholder="DOCUMENTO" required> <!-- &nbsp;&nbsp;&nbsp; --></div>
+                        <div><input class="input1" type="text" name="nom" id="nom" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
+                        <div><input class="input1" type="text" name="apel" id="apel" placeholder="APELLIDOS" required style="text-transform:uppercase"> </div>
                     </div>
 
 
@@ -83,6 +84,7 @@ if ($usario == "" || $usario == null) {
                                 <option value="">aa</option>
                                 <option value="">aa</option>
                             </select>
+                            <h6 class="agregaradi">CREAR TIPO DE USUARIO</h6>
                         </div>
                         <div>
                             <select class="input1" name="" id=""  required>
@@ -90,6 +92,7 @@ if ($usario == "" || $usario == null) {
                                 <option value="">aa</option>
                                 <option value="">aa</option>
                             </select>
+                            <h6 class="agregaradi">CREAR TIPO DE DOCUMENTO</h6>
                         </div>
                         <div><input class="input1" required type="number" name="EDAD" id="" placeholder="EDAD"></div>
                     </div>
@@ -105,21 +108,67 @@ if ($usario == "" || $usario == null) {
 
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea">
-                        <div><input class="input1" type="file" required name="imagen"/></div>
-                        <div><input class="input1" type="submit" name="registro" id="reg" value="REGISTRAR"></div>
+                        <div><input class="input1 file" type="file" required name="imagen"/></div>
+                        <div><input class="input1 regis" type="submit" name="registro" id="reg" value="REGISTRAR"></div>
                     </div>
 
-                 
+                
                 </form>
             </div>
         </div>
 
-        <!-- contenido de editar usuario -->
-        <div class="contentEditarUsuario">
-            editar USUARIOS
+        <!-- SEGUNDO FORMULARIO ==== contenido de editar usuario -->
+        <div class="contentEditarUsuario" id="contentEditarUsuario">
+            <h1>EDITAR USUARIO</h1>
+            <div class="contenFprmularioEditarUsu" id="contenFprmularioEditarUsu">
+                <form action="" method="POST">
+                <div class="primeralinea2">
+                        <div><input class="input2" type="number" name="docu" id="docu" placeholder="DOCUMENTO" required> <!-- &nbsp;&nbsp;&nbsp; --></div>
+                        <div><input class="input2" type="text" name="nom" id="nom" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
+                        <div><input class="input2" type="text" name="apel" id="apel" placeholder="APELLIDOS" required style="text-transform:uppercase"> </div>
+                    </div>
+
+
+                    <!-- caja de tipoDeUsuario-tipoDeDocumento-EDAD -->
+                    <div class="segundalinea2">
+                        <div>
+                            <select class="input2" name="" id=""  required>
+                                <option >TIPO DE USUARIO</option>
+                                <option value="">aa</option>
+                                <option value="">aa</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select class="input2" name="" id=""  required>
+                                <option>TIPO DE DOCUMENTO</option>
+                                <option value="">aa</option>
+                                <option value="">aa</option>
+                            </select>
+                        </div>
+                        <div><input class="input2" required type="number" name="EDAD" id="" placeholder="EDAD"></div>
+                    </div>
+
+
+                    <!-- caja de password-numerotel-email -->
+                    <div class="terceralinea2">
+                        <div> <input class="input2" type="password" name="contra" id="contra" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" required></div>
+                        <div><input class="input2" type="number" name="tele" id="tele" placeholder="TELEFONO"  min="1" max="3999999999" required></div>
+                        <div><input class="input2" type="email" name="cor" id="cor" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required></div>
+                    </div>
+
+
+                    <!-- caja de foto-enviar -->
+                    <div class="cuartalinea2">
+                        <div><input class="input2" type="file" required name="imagen"/></div>
+                        <div><input class="input2 actualizar" type="submit" name="registro" id="reg" value="ACTUALIZAR"></div>
+                    </div>
+
+
+                </form>
+            </div>
         </div>
         <!-- contenido de eliminar usuario -->
-        <div class="contentEliminarUsuario">
+        <div class="contentEliminarUsuario" id="contentEliminarUsuario">
             eliminar USUARIOS
         </div>
 
