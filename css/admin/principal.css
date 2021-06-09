@@ -158,7 +158,7 @@ a{
 .superior1{
     padding-top: 15px;
     width: 19%;
-    background: rgb(255, 105, 25);
+    background: #188276;
     height: 63px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -226,12 +226,14 @@ li{
 }
 
 .activado > ul > li{
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid rgba(13, 84, 238, 0.322);
     padding: 10px 20px 10px 20px;
+    border-radius: 20px;
 }
 
 .activado:hover > ul{
     display:block ;
+    border-radius: 20px;
     background-color: rgb(124, 214, 204);
 
     
@@ -264,3 +266,11 @@ li{
     background: #409b90;
 
 }
+
+
+
+
+
+
+
+
