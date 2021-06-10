@@ -18,7 +18,7 @@ if ($usario == "" || $usario == null) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/admin/principal.css">
     <script src="https://kit.fontawesome.com/7b875e4198.js" crossorigin="anonymous"></script>
-    <title>ADMINISTRADOR</title>
+    <title>APRENDIZ</title>
 </head>
 
 <body>
@@ -278,12 +278,6 @@ if ($usario == "" || $usario == null) {
                     </form>
                 </div>
         </div>
-
-
-
-
-
-
 
 
 

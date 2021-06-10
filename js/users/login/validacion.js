@@ -23,11 +23,11 @@ crear.addEventListener('click',(a)=>{
         }else if(info == 2){
 
             //direccionamiento para el instructor
-            window.location = "../users/instructor/instructor.html"
+            window.location = "../users/instructor/instructor.php"
         }else if(info == 3){
 
             //direccionamiento para el aprendiz
-            window.location = "../users/aprendiz/aprendiz.html"
+            window.location = "../users/aprendiz/aprendiz.php"
         }else if(info == 4){
             $(mostrarAnuncio).html(
                 '<p id="nada" style="color:red;font-size:20px;text-align: center; background-color:#fffff;">Llene los campos correctamente</p>'

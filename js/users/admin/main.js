@@ -13,14 +13,12 @@ const btneditarUsu = document.getElementById('editarUsu');
 const contentEliminarUsuario = document.getElementById('contentEliminarUsuario');
 const btneliminarUsu = document.getElementById('eliminarUsu');
 
-
-
-//ingreso--------------------------
+//ingreso INSUMOS--------------------------
+const contentIngresoDeInsumos = document.getElementById('contentIngresoDeInsumos');
 const btningreso = document.getElementById('ingreso');
 
 //devoluciones-----------------
 const btndevoluciones = document.getElementById('devoluciones');
-
 
 //reportes
 const btnreportes = document.getElementById('reportes');
@@ -31,14 +29,13 @@ const btninvMaterialText = document.getElementById('invMaterialText');
 const btninvInsumo = document.getElementById('invInsumo');
 
 
-
-
 // --------fromularios de administrador de usuarios 
 //___btn registro de usuario
 btnregistroUsu.addEventListener('click',function(){
     contentCrearUsuario.style.display = "block";
     contentEditarUsuario.style.display = "none";
     contentEliminarUsuario.style.display = "none";
+    contentIngresoDeInsumos.style.display = "none"
 })
 
 //_____btn editar usuario
@@ -46,6 +43,7 @@ btneditarUsu.addEventListener('click',function(){
     contentEditarUsuario.style.display = "block";
     contentCrearUsuario.style.display = "none";
     contentEliminarUsuario.style.display = "none";
+    contentIngresoDeInsumos.style.display = "none"
 })
 
 //____btn eliminar usuario
@@ -53,12 +51,16 @@ btneliminarUsu.addEventListener('click',function(){
     contentEliminarUsuario.style.display = "block";
     contentCrearUsuario.style.display = "none";
     contentEditarUsuario.style.display = "none";
+    contentIngresoDeInsumos.style.display = "none"
 })
 
 
-//ingreso-------------------------------------------------
+//ingreso de insumos-------------------------------------------------
 btningreso.addEventListener('click',function(){
-    alert('ingreso')
+    contentIngresoDeInsumos.style.display = "block"
+    contentEliminarUsuario.style.display = "none";
+    contentCrearUsuario.style.display = "none";
+    contentEditarUsuario.style.display = "none";
 })
 
 //devoluciones------------------------------------------------
