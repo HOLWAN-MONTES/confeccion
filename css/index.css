@@ -130,7 +130,7 @@ main{
 .footer{
     display: inline-flex;
     width: 100%;
-    background-color: rgb(116, 163, 71); /* #ddd9d6 */
+    background-color: #5eb318;
     position: absolute;
     bottom: 0;
     color: white;
@@ -151,7 +151,6 @@ main{
 }
 
 .contentinfo{
-    
 
     width: 40%;
     margin:0 auto;

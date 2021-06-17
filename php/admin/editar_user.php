@@ -48,8 +48,7 @@
                 'status' => http_response_code(200),
                 'statusText' => 'Hizo la consulta bien',
                 'data' => $query
-            ); 
-            
+            );    
         }
         else{
             $res = array(
@@ -61,5 +60,4 @@
         }
         echo json_encode($res);
     }
-
 ?>
