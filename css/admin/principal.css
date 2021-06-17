@@ -359,46 +359,67 @@ li{
 
 
 .containerFormularioUsuario ,.containerFormularioDocumento {
-    border: 1px solid red;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr ;
-    margin-bottom: 20px;
+    border: 1px solid rgba(43, 44, 43, 0.671);
+    background-color: #188276;
+    border-radius: 10px;
+    width: 60%;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 10%;
 }
 
 .containerFormularioDocumento > div,.containerFormularioUsuario > div{
     border: 1px solid rgb(0, 17, 255);
-    width: 50%;
+    border-radius: 10px;
+    width: 70%;
+    height: 180px;
+    background-color: #c0c0c0;
+    margin: 0 auto;
 }
+
+.containerFormularioUsuario  h1 ,.containerFormularioDocumento  h1 {
+    background-color: transparent;
+    border-bottom: 1px dotted rgba(58, 54, 54, 0.712);
+    margin-bottom: 20px;
+}
+
 
 .inptnombre{
-    border: 1px solid red;
-    width: 90%;
+    border: 1px solid black;
+    width: 50%;
+    padding: 5px 30px 5px 30px;
     text-align: center;
     text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
 
-/* CREAR TIPO DE USUARIO */
- .containerCrearUsuario{
+/* CREAR TIPO DE USUARIO *//* CREAR TIPO DE DOCUMENTO */
+ .containerCrearUsuario,.containerCrearTipDocumento{
     background-color: rgba(48, 156, 175, 0.404);
     text-align: center;
 }
+/* cerrar boton los mini formularios de documento usuario */
 
-/* CREAR TIPO DE DOCUMENTO */
 
-.containerCrearTipDocumento{
-    background-color: orange;
-    text-align: center;
+#btn_esconder_containerCrearUsuario,#btn_esconder_containerCrearTipDocumento{
+    cursor: pointer;
+    margin-left: 99%;
+    font-size: 30px;
+    margin-top: -4%;
+    width: 10px;
     
 }
 
+.btn_peque_form{
+    padding: 6px 35px 6px 35px;
+    cursor: pointer;
+}
 
-
-
-
-
-
+#btn_esconder_containerCrearUsuario:hover,#btn_esconder_containerCrearTipDocumento:hover{
+    cursor: pointer;
+   color: red;
+}
 
 
 

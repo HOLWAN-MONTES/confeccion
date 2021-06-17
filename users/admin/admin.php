@@ -414,27 +414,38 @@ if ($usario == "" || $usario == null) {
    <!--------- SUB FORMULARIOS-------------- ---------------------- -->
             <!--crear usuario  -->
         <div class="containerCrearUsuario" id="containerCrearUsuario">
-        <i class="fas fa-times" id="btn_esconder_containerCrearUsuario"></i>
             <div class="containerFormularioUsuario">
                 
-                <h1>CREAR TIPO DE USUARIO</h1>
-                <form   action="#" method="POST">
+                    <i class="fas fa-times" id="btn_esconder_containerCrearUsuario"></i>
+            
+                <div >
                     
-                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
-                    <div><input type="button" value="CREAR"></div>
-                </form>
+                    <h1>CREAR TIPO DE USUARIO</h1>
+                    <form   action="#" method="POST">
+                        
+                        <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                        <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                    </form>
+                </div>
             </div>
+            
         </div>
 
             <!-- crear tipo de documento -->
         <div class="containerCrearTipDocumento" id="containerCrearTipDocumento">
-        <i class="fas fa-times" id="btn_esconder_containerCrearTipDocumento"></i>
             <div class="containerFormularioDocumento">
-                <h1>CREAR TIPO DE DOCUMENTO</h1>
-                <form action="#" method="POST">
-                    <div><input class="inptnombre"  type="text" placeholder="NOMBRE" required ></div>
-                    <div><input type="button" value="CREAR"></div>
-                </form>
+            
+                    <i class="fas fa-times" id="btn_esconder_containerCrearTipDocumento"></i>
+                
+            
+                <div >
+                    <h1>CREAR TIPO DE DOCUMENTO</h1>
+                    <form action="#" method="POST">
+                        <div><input class="inptnombre"  type="text" placeholder="NOMBRE" required ></div>
+                        <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                    </form>
+                </div>
+
             </div>
         </div>
 
