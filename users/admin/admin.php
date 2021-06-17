@@ -62,52 +62,97 @@ if ($usario == "" || $usario == null) {
     <main class="fomularios">
         <!-- PRIMER FORMULARIO DE USUARIO -->
         <div class="contentCrearUsuario" id="contentCrearUsuario">
-        <h1>REGISTRO DE USUARIOS</h1>
+            <h1>REGISTRO DE USUARIOS</h1>
             <div class="contenFprmularioCrearUsu">
         
                 <form class="form1" action="" method="POST" autocomplete="off"  enctype="multipart/form-data">
 
                     <!-- caja de documento-nombres-apellidos -->
                     <div class="primeralinea">
-                        <div><input class="input1" type="number" name="docu" id="docu" placeholder="DOCUMENTO" required> <!-- &nbsp;&nbsp;&nbsp; --></div>
-                        <div><input class="input1" type="text" name="nom" id="nom" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
-                        <div><input class="input1" type="text" name="apel" id="apel" placeholder="APELLIDOS" required style="text-transform:uppercase"> </div>
+                        
+                        <div>
+                            <label for="">NUMERO DE DOCUMENTO</label>    
+                            <input class="input1" type="number" name="docu" id="docu" placeholder="DOCUMENTO" required> <!-- &nbsp;&nbsp;&nbsp; -->
+                        </div>
+                        
+                        <div>
+                            <label for="">NOMBRES</label>    
+                            <input class="input1" type="text" name="nom" id="nom" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                        </div>
+                        
+                        <div>
+                            <label for="">APELLIDOS</label>    
+                            <input class="input1" type="text" name="apel" id="apel" placeholder="APELLIDOS" required style="text-transform:uppercase">
+                        </div>
                     </div>
 
 
                     <!-- caja de tipoDeUsuario-tipoDeDocumento-EDAD -->
                     <div class="segundalinea">
                         <div>
-                            <select class="input1" name="" id=""  required>
+                            <label for="">TIPO DE USUARIO</label>    
+                            <select class="input1" name="tip_us_crea"  required>
                                 <option >TIPO DE USUARIO</option>
-                                <option value="">aa</option>
-                                <option value="">aa</option>
+                                <?php
+                                    $tipo = "SELECT * FROM tipo_usu";
+                                    $inser = mysqli_query($connection,$tipo);
+                                    while($tip = mysqli_fetch_array($inser)){
+                                ?>
+                                <option name="tip_user_crea" value="<?php echo $tip[0]; ?>">
+                                    <?php echo $tip[1]; ?>
+                                </option>
+                                <?php
+                                }
+                                ?>
                             </select>
-                            <h6 class="agregaradi">CREAR TIPO DE USUARIO</h6>
+                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6>
                         </div>
                         <div>
-                            <select class="input1" name="" id=""  required>
-                                <option>TIPO DE DOCUMENTO</option>
-                                <option value="">aa</option>
-                                <option value="">aa</option>
+                            <label for="">TIPO DE DOCUMENTO</label>    
+                            <select class="input1" name="tip_docu" id="" required>
+                                <option >TIPO DE USUARIO</option>
+                                <?php
+                                    $tipo = "SELECT * FROM tipo_docu";
+                                    $inser = mysqli_query($connection,$tipo);
+                                    while($tip = mysqli_fetch_array($inser)){
+                                ?>
+                                <option name="tip_docu" value="<?php echo $tip[0]; ?>">
+                                    <?php echo $tip[1]; ?>
+                                </option>
+                                <?php
+                                }
+                                ?>
                             </select>
-                            <h6 class="agregaradi">CREAR TIPO DE DOCUMENTO</h6>
+                            <h6 class="agregaradi" id="btn_tipo_documento">CREAR TIPO DE DOCUMENTO</h6>
                         </div>
-                        <div><input class="input1" required type="number" name="EDAD" id="" placeholder="EDAD"></div>
+                        <div>
+                            <label for="">EDAD</label>    
+                            <input class="input1" required type="number" name="EDAD" id="" placeholder="EDAD">
+                        </div>
                     </div>
 
 
                     <!-- caja de password-numerotel-email -->
                     <div class="terceralinea">
-                        <div> <input class="input1" type="password" name="contra" id="contra" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" required></div>
-                        <div><input class="input1" type="number" name="tele" id="tele" placeholder="TELEFONO"  min="1" max="3999999999" required></div>
-                        <div><input class="input1" type="email" name="cor" id="cor" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required></div>
+                        <div>
+                        <label for="">CONTRASEÑA</label>    
+                            <input class="input1" type="password" name="contra" id="contra" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" required>
+                        </div>
+                        
+                        <div>
+                            <label for="">TELEFONO</label>    
+                            <input class="input1" type="number" name="tele" id="tele" placeholder="TELEFONO"  min="1" max="3999999999" required>
+                        </div>
+                        <div>
+                            <label for="">CORREO</label>    
+                            <input class="input1" type="email" name="cor" id="cor" placeholder="USER@MISENA.EDU.CO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
+                        </div>
                     </div>
 
 
                     <!-- caja de foto-enviar -->
-                    <div class="cuartalinea">
-                        <div><input class="input1 file" type="file" required name="imagen"/></div>
+                    <div class="cuartalinea cuartalineaEnviar">
+                        <div><input class="input1 file" title="Foto de Usuario" type="file" required name="imagen"/></div>
                         <div><input class="input1 regis" type="submit" name="registro" id="reg" value="REGISTRAR"></div>
                     </div>
 
@@ -116,21 +161,36 @@ if ($usario == "" || $usario == null) {
             </div>
         </div>
 
-        <!-- SEGUNDO FORMULARIO ==== contenido de editar usuario -->
+     
+
+        <!-- ---------------SEGUNDO FORMULARIO ==== contenido de editar usuario---------------------------------------- -->
         <div class="contentEditarUsuario" id="contentEditarUsuario">
             <h1>EDITAR USUARIO</h1>
             <div class="contenFprmularioEditarUsu" id="contenFprmularioEditarUsu">
                 <form class="form-edi" id="form-edi" method="POST">
                     <div class="primeralinea2">
-                        <div><input class="input2" type="number" name="docu" id="docu-edi" placeholder="DOCUMENTO" autocomplete="off" required> <!-- &nbsp;&nbsp;&nbsp; --></div>
-                        <div><input class="input2" type="text" name="nom" id="nom-edi" placeholder="NOMBRES" autocomplete="off" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
-                        <div><input class="input2" type="text" name="apel" id="apel-edi" placeholder="APELLIDOS" autocomplete="off" required style="text-transform:uppercase"> </div>
+
+                        <div>
+                            <label for="">DOCUMENTO</label>    
+                            <input class="input2" type="number" name="docu" id="docu-edi" placeholder="DOCUMENTO" autocomplete="off" required> <!-- &nbsp;&nbsp;&nbsp; -->
+                        </div>
+
+                        <div>
+                            <label for="">NOMBRES</label>    
+                            <input class="input2" type="text" name="nom" id="nom-edi" placeholder="NOMBRES" autocomplete="off" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                        </div>
+                        
+                        <div>
+                            <label for="">APELLIDOS</label>    
+                            <input class="input2" type="text" name="apel" id="apel-edi" placeholder="APELLIDOS" autocomplete="off" required style="text-transform:uppercase">
+                        </div>
                     </div>
 
 
                     <!-- caja de tipoDeUsuario-tipoDeDocumento-EDAD -->
                     <div class="segundalinea2">
                         <div>
+                            <label for="">TIPO DE USUARIO</label>    
                             <select class="input2" name="tip_us" id="tip_usu_edi" required>
                                 <option >TIPO DE USUARIO</option>
                                 <?php
@@ -147,6 +207,7 @@ if ($usario == "" || $usario == null) {
                             </select>
                         </div>
                         <div>
+                            <label for="">TIPO DE DOCUMENTO</label>    
                             <select class="input2" name="tip_doc" id="tip_docu_edi" required>
                                 <option>TIPO DE DOCUMENTO</option>
                                 <?php
@@ -162,22 +223,36 @@ if ($usario == "" || $usario == null) {
                                 ?>
                             </select>
                         </div>
-                        <div><input class="input2" required type="number" name="edad" id="edad-edi" placeholder="EDAD"></div>
+                        <div>
+                            <label for="">EDAD</label>    
+                            <input class="input2" required type="number" name="edad" id="edad-edi" placeholder="EDAD">
+                        </div>
                     </div>
 
 
                     <!-- caja de password-numerotel-email -->
                     <div class="terceralinea2">
-                        <div> <input class="input2" type="password" name="contra" id="contra-edi" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" autocomplete="off" required></div>
-                        <div><input class="input2" type="number" name="tele" id="tele-edi" placeholder="TELEFONO"  min="1" max="3999999999" autocomplete="off" required></div>
-                        <div><input class="input2" type="email" name="cor" id="cor-edi" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" autocomplete="off" required></div>
+                        <div>
+                            <label for="">CONTRASEÑA</label>    
+                            <input class="input2" type="password" name="contra" id="contra-edi" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" autocomplete="off" required>
+                        </div>
+                        
+                        <div>
+                            <label for="">TELEFONO</label>    
+                            <input class="input2" type="number" name="tele" id="tele-edi" placeholder="TELEFONO"  min="1" max="3999999999" autocomplete="off" required>
+                        </div>
+
+                        <div>
+                            <label for="">CORREO</label>    
+                            <input class="input2" type="email" name="cor" id="cor-edi" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" autocomplete="off" required>
+                        </div>
+                        
                         <input type="hidden" name="docume" id="docume-edi">
                     </div>
 
-
                     <!-- caja de foto-enviar -->
-                    <div class="cuartalinea2">
-                        <div><input class="input2" type="file" id="imagen" required name="imagen"/></div>
+                    <div class="cuartalinea2 cuartalinea2Enviar">
+                        <div><input class="input2 file" type="file" id="imagen" required name="imagen"/></div>
                         <div><input class="input2 actualizar" type="submit" name="actualiza" id="reg" value="ACTUALIZAR"></div>
                     </div>
 
@@ -186,21 +261,30 @@ if ($usario == "" || $usario == null) {
             </div>
         </div>
 
-
-        <!--TERECER FORMULARIO ===== contenido de eliminar usuario -->
+        <!-------------------TERECER FORMULARIO ===== contenido de eliminar usuario ----------------------------------->
         <div class="contentEliminarUsuario" id="contentEliminarUsuario">
             <h1>ELIMINAR USUARIO</h1>
             <div class="contenFprmularioEliminarUsu" id="contenFprmularioEliminarUsu">
                 <form action="" class="form-elim" id="form-elim" method="POST">
                     <div class="primeralinea3">
-                        <div><input class="input3" type="number" name="docu-elim" id="docu-elim" placeholder="DOCUMENTO" autocomplete="off" required> <!-- &nbsp;&nbsp;&nbsp; --></div>
-                        <div><input class="input3" type="text" name="nom-elim" id="nom-elim" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
-                        <div><input class="input3" type="text" name="apel-elim" id="apel-elim" placeholder="APELLIDOS" required style="text-transform:uppercase"> </div>
+                        <div>
+                            <label for="">DOCUMENTO</label>
+                            <input class="input3" type="number" name="docu-elim" id="docu-elim" placeholder="DOCUMENTO" autocomplete="off" required> <!-- &nbsp;&nbsp;&nbsp; -->
+                        </div>
+                        <div>
+                            <label for="">NOMBRES</label>
+                            <input class="input3" type="text" name="nom-elim" id="nom-elim" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                        </div>
+                        <div>
+                            <label for="">APELLIDOS</label>
+                            <input class="input3" type="text" name="apel-elim" id="apel-elim" placeholder="APELLIDOS" required style="text-transform:uppercase"> 
+                        </div>
                     </div>
 
                     <!-- caja de tipoDeUsuario-tipoDeDocumento-EDAD -->
                     <div class="segundalinea3">
                         <div>
+                            <label for="">TIPO DE USUARIO</label>
                             <select class="input3" name="tip_us_elim" id="tip_usu_elim" required>
                                 <option >TIPO DE USUARIO</option>
                                 <?php
@@ -217,6 +301,7 @@ if ($usario == "" || $usario == null) {
                             </select>
                         </div>
                         <div>
+                            <label for="">TIPO DE DOCUMENTO</label>  
                             <select class="input3" name="tip_doc_elim" id="tip_docu_elim" required>
                                 <option>TIPO DE DOCUMENTO</option>
                                 <?php
@@ -232,16 +317,25 @@ if ($usario == "" || $usario == null) {
                                 ?>
                             </select>
                         </div>
-                        <div><input class="input3" required type="number" name="edad-elim" id="edad-elim" placeholder="EDAD"></div>
+                        <div>
+                            <label for="">EDAD</label>
+                            <input class="input3" required type="number" name="edad-elim" id="edad-elim" placeholder="EDAD">
+                        </div>
                     </div>
 
 
                     <!-- caja de password-numerotel-email -->
                     <div class="terceralinea3">
                         <!-- <div> <input class="input3" type="password" name="contra" id="contra" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" required></div> -->
-                        <div><input class="input3" type="number" name="tele-elim" id="tele-elim" placeholder="TELEFONO"  min="1" max="3999999999" required></div>
+                        <div>
+                            <label for="">TELEFONO</label>  
+                            <input class="input3" type="number" name="tele-elim" id="tele-elim" placeholder="TELEFONO"  min="1" max="3999999999" required>
+                        </div>
                         <input type="hidden" name="docume-elim" id="docume-elim">
-                        <div><input class="input3" type="email" name="cor-elim" id="cor-elim" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required></div>
+                        <div>
+                            <label for="">CORREO</label>  
+                            <input class="input3" type="email" name="cor-elim" id="cor-elim" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
+                        </div>
                     </div>
 
 
@@ -279,7 +373,7 @@ if ($usario == "" || $usario == null) {
                     </div>
                     <div class="segundalinea4">
                         <div>
-                        <label for="">MATERIAL TEXTIL</label>
+                            <label for="">MATERIAL TEXTIL</label>
                             <select class="input4 label4" name="" id=""  required>
                                 <option>SELECCIONAR</option>
                                 <option value="">aa</option>
@@ -294,7 +388,7 @@ if ($usario == "" || $usario == null) {
                     </div>
                     <div class="terceralinea4">
                         <div>
-                        <label for="">MAQUINARIA</label>
+                            <label for="">MAQUINARIA</label>
                             <select class="input4 label4" name="" id=""  required>
                                 <option>SELECCIONAR</option>
                                 <option value="">aa</option>
@@ -303,35 +397,51 @@ if ($usario == "" || $usario == null) {
                             <h6 class="agregaradi">CREAR MAQUINARIA</h6>
                         </div>
                         <div>
-                        <label for="">CANTIDAD MAQUINARIA</label>
+                            <label for="">CANTIDAD MAQUINARIA</label>
                             <input class="input4" type="text" name="nom" id="nom" placeholder="CANTIDAD" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
                        
                     </div>
 
-
-                    <div class="cuartalinea4 cuartalinea4Enviar">
+                    <div class="cuartalinea4 cuartalinea4Enviar4">
                         <div><input class="input4 registrarInsumo" type="submit" name="registro" id="reg" value="REGISTRAR"></div>
                     </div>
 
                     </form>
                 </div>
         </div>
-
-
-
-
-
-
-
-
-
-
     </main>
 
+   <!--------- SUB FORMULARIOS-------------- ---------------------- -->
+            <!--crear usuario  -->
+        <div class="containerCrearUsuario" id="containerCrearUsuario">
+        <i class="fas fa-times" id="btn_esconder_containerCrearUsuario"></i>
+            <div class="containerFormularioUsuario">
+                
+                <h1>CREAR TIPO DE USUARIO</h1>
+                <form   action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+
+            <!-- crear tipo de documento -->
+        <div class="containerCrearTipDocumento" id="containerCrearTipDocumento">
+        <i class="fas fa-times" id="btn_esconder_containerCrearTipDocumento"></i>
+            <div class="containerFormularioDocumento">
+                <h1>CREAR TIPO DE DOCUMENTO</h1>
+                <form action="#" method="POST">
+                    <div><input class="inptnombre"  type="text" placeholder="NOMBRE" required ></div>
+                    <div><input type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
 
 
 
-<!-- caja delado izquierdo de los menus -->
+
+    <!-- caja delado izquierdo de los menus -->
     <div class="lateral">
 
         <div class="img_logo caja1">
@@ -373,14 +483,6 @@ if ($usario == "" || $usario == null) {
         </div>
 
     </div>
-
-
-   
-
-    
-
-
-
 
 
     <script src="../../js/users/admin/main.js"></script>

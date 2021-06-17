@@ -224,6 +224,7 @@ li{
 
 .activado:hover > ul{
     display:block ;
+    z-index:33;
     border-radius: 20px;
     background-color: rgb(124, 214, 204);
 }
@@ -248,7 +249,6 @@ li{
     position: absolute;
     margin-left: 16%;
     margin-top: 63PX;
-    background-color: royalblue;
     width: 83%;
     height: 90vh;
 }
@@ -272,7 +272,7 @@ li{
     border: 1px solid rgba(0, 0, 0, 0.363);
     background-color: silver;
     border-radius: 10PX;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -283,7 +283,11 @@ li{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
+    gap: 10px;
 }
+
+
+
 
 .cuartalinea{
     width: 100%;
@@ -293,24 +297,40 @@ li{
 
 .primeralinea > div,.segundalinea > div,.terceralinea > div,.cuartalinea > div{
     margin: 0 auto;
+
+    margin-bottom: 5px;
 }
 
 /* inputs */
 .input1{
     padding: 6px 35px 6px 35px;
     text-align: center;
-    margin: 0 auto;
     width: 100%;
 
+}
+
+/* sleccionar foto */
+.file{
+    cursor: pointer;
 }
 
 /* btn de enviar */
 .regis{
     cursor: pointer;
+    width: 50%;
+}
+
+.cuartalineaEnviar{
+    width: 100%;
+}
+
+.cuartalineaEnviar > div{
+    width: 100%;
 }
 
 
-/* CREAR TIPO DE USUARIO TIPO DE DOCUMENTO---------------------- */
+
+/* CREAR TIPO DE USUARIO TIPO DE DOCUMENTO SELECCIONAR CAJITA DEBAJO DEL INPUT---------------------- */
 
 .agregaradi{
     color:#ff6819 ;
@@ -322,7 +342,72 @@ li{
     margin: 0 auto;
 }
 
-/* editar usuario------------------------------------------- */
+/* CAJA DE CREAR TIPO DE USUARIO Y CREAR TIPO DE DOCUMENTO---------------------------------------- */
+
+.containerCrearUsuario,.containerCrearTipDocumento{
+    border: 1px solid red;
+    height: 80vh;
+    
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: none;
+    margin: 0 auto;
+
+ 
+}
+
+
+.containerFormularioUsuario ,.containerFormularioDocumento {
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr ;
+    margin-bottom: 20px;
+}
+
+.containerFormularioDocumento > div,.containerFormularioUsuario > div{
+    border: 1px solid rgb(0, 17, 255);
+    width: 50%;
+}
+
+.inptnombre{
+    border: 1px solid red;
+    width: 90%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+/* CREAR TIPO DE USUARIO */
+ .containerCrearUsuario{
+    background-color: rgba(48, 156, 175, 0.404);
+    text-align: center;
+}
+
+/* CREAR TIPO DE DOCUMENTO */
+
+.containerCrearTipDocumento{
+    background-color: orange;
+    text-align: center;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------EDITAR USUARIO------------------------------------------- */
 .contentEditarUsuario{
     display: none;
     text-align: center;
@@ -341,7 +426,7 @@ li{
     border: 1px solid rgba(0, 0, 0, 0.363);
     background-color: silver;
     border-radius: 10PX;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -352,6 +437,7 @@ li{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
+    gap: 10px;
 }
 
 .cuartalinea2{
@@ -362,6 +448,8 @@ li{
 
 .primeralinea2 > div,.segundalinea2 > div,.terceralinea2 > div,.cuartalinea2 > div{
     margin: 0 auto;
+    
+    margin-bottom: 5px;
 }
 
 /* inputs */
@@ -370,12 +458,23 @@ li{
     text-align: center;
     margin: 0 auto;
     width: 100%;
+}
 
+.cuartalinea2Enviar{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr;
+}
+
+.cuartalinea2Enviar > div{
+   
+    width: 100%;
 }
 
 /* btn de actualizar */
 .actualizar{
     cursor: pointer;
+    width: 50%;
 }
 
 
@@ -414,8 +513,16 @@ li{
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 9px;
     display: grid;
+    gap: 10px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
+}
+
+.terceralinea3{
+   
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
 .cuartalinea3{
@@ -427,6 +534,8 @@ li{
 
 .primeralinea3 > div,.segundalinea3 > div,.terceralinea3 > div,.cuartalinea3 > div{
     margin: 0 auto;
+    margin-bottom: 5px;
+  
 }
 
 /* inputs */
@@ -496,7 +605,7 @@ li{
     width: 100%;
 }
 
-.cuartalinea4Enviar{
+.cuartalinea4Enviar4{
     width: 100%;
 }
 
@@ -506,3 +615,35 @@ li{
     width: 30%;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media only screen and (max-width: 600px) {
+    .primeralinea,.segundalinea,.terceralinea,.cuartalinea{
+        border: 1px solid rgba(0, 0, 0, 0.137);
+        padding: 9px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 10px;
+    }
+}
+ */

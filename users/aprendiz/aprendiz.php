@@ -99,7 +99,6 @@ if ($usario == "" || $usario == null) {
 
 
 
-    <script src="../../js/users/admin/main.js"></script>
 </body>
 
 </html>

@@ -7,6 +7,5 @@
     <title>INSTRUCTOR</title>
 </head>
 <body>
-    Hola instructor
 </body>
 </html>
