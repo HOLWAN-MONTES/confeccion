@@ -411,45 +411,58 @@ if ($usario == "" || $usario == null) {
         </div>
     </main>
 
-   <!--------- SUB FORMULARIOS-------------- ---------------------- -->
+
+   <!--------- SUB FORMULARIOS USUARIO-------------- ---------------------- -->
             <!--crear usuario  -->
-        <div class="containerCrearUsuario" id="containerCrearUsuario">
-            <div class="containerFormularioUsuario">
-                
-                    <i class="fas fa-times" id="btn_esconder_containerCrearUsuario"></i>
+    <div class="containerCrearUsuario" id="containerCrearUsuario">
+        <div class="containerFormularioUsuario">
             
-                <div >
+                <i class="fas fa-times" id="btn_esconder_containerCrearUsuario"></i>
+        
+            <div >
+                
+                <h1>CREAR TIPO DE USUARIO</h1>
+                <form   action="#" method="POST">
                     
-                    <h1>CREAR TIPO DE USUARIO</h1>
-                    <form   action="#" method="POST">
-                        
-                        <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
-                        <div><input class="btn_peque_form" type="button" value="CREAR"></div>
-                    </form>
-                </div>
-            </div>
-            
-        </div>
-
-            <!-- crear tipo de documento -->
-        <div class="containerCrearTipDocumento" id="containerCrearTipDocumento">
-            <div class="containerFormularioDocumento">
-            
-                    <i class="fas fa-times" id="btn_esconder_containerCrearTipDocumento"></i>
-                
-            
-                <div >
-                    <h1>CREAR TIPO DE DOCUMENTO</h1>
-                    <form action="#" method="POST">
-                        <div><input class="inptnombre"  type="text" placeholder="NOMBRE" required ></div>
-                        <div><input class="btn_peque_form" type="button" value="CREAR"></div>
-                    </form>
-                </div>
-
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
             </div>
         </div>
+        
+    </div>
 
+        <!-- crear tipo de documento -->
+    <div class="containerCrearTipDocumento" id="containerCrearTipDocumento">
+        <div class="containerFormularioDocumento">
+        
+                <i class="fas fa-times" id="btn_esconder_containerCrearTipDocumento"></i>
+            
+        
+            <div >
+                <h1>CREAR TIPO DE DOCUMENTO</h1>
+                <form action="#" method="POST">
+                    <div><input class="inptnombre"  type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
 
+        </div>
+    </div>
+    <!----------------- SUB FORMULARIOS CREAR INSUMOS----------------------------------- -->
+    <!-- crear insumo -->
+    <div class="containerCrearInsumo" id="containerCrearInsumo">
+            CONTAINER CREAR INSUMO
+    </div>
+
+    <!-- crear material textil -->
+    <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
+        CONTAINER CREAR MATERIAL TEXTIL
+    </div>
+
+    <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">
+        CONTAINER CREAR MAQUINARIA
+    </div>
 
 
     <!-- caja delado izquierdo de los menus -->
