@@ -636,9 +636,15 @@ li{
     width: 30%;
 }
 
+/* ---------------------------------------------FORMULARIOS INGRESO DE INSUMOS-------------------- */
 
-
-
+.containerCrearInsumo,.containerCrearMaterialTextil,.containerCrearmaquinaria{
+    background-color: #ff6819;
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100vh;
+}
 
 
 
