@@ -92,7 +92,7 @@ if ($usario == "" || $usario == null) {
                         <div>
                             <label for="">TIPO DE USUARIO</label>    
                             <select class="input1" name="tip_us_crea"  required>
-                                <option >TIPO DE USUARIO</option>
+                                <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_usu";
                                     $inser = mysqli_query($connection,$tipo);
@@ -110,7 +110,7 @@ if ($usario == "" || $usario == null) {
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>    
                             <select class="input1" name="tip_docu" id="" required>
-                                <option >TIPO DE USUARIO</option>
+                                <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_docu";
                                     $inser = mysqli_query($connection,$tipo);
@@ -192,7 +192,7 @@ if ($usario == "" || $usario == null) {
                         <div>
                             <label for="">TIPO DE USUARIO</label>    
                             <select class="input2" name="tip_us" id="tip_usu_edi" required>
-                                <option >TIPO DE USUARIO</option>
+                                <option >SELECCIONAR</option>
                                 <?php
                                 $tipo = "SELECT * FROM tipo_usu";
                                 $inser = mysqli_query($connection,$tipo);
@@ -209,7 +209,7 @@ if ($usario == "" || $usario == null) {
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>    
                             <select class="input2" name="tip_doc" id="tip_docu_edi" required>
-                                <option>TIPO DE DOCUMENTO</option>
+                                <option>SELECCIONAR</option>
                                 <?php
                                 $tipo2 = "SELECT * FROM tipo_docu";
                                 $inser2 = mysqli_query($connection,$tipo2);
@@ -286,7 +286,7 @@ if ($usario == "" || $usario == null) {
                         <div>
                             <label for="">TIPO DE USUARIO</label>
                             <select class="input3" name="tip_us_elim" id="tip_usu_elim" required>
-                                <option >TIPO DE USUARIO</option>
+                                <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_usu";
                                     $inser = mysqli_query($connection,$tipo);
@@ -303,7 +303,7 @@ if ($usario == "" || $usario == null) {
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>  
                             <select class="input3" name="tip_doc_elim" id="tip_docu_elim" required>
-                                <option>TIPO DE DOCUMENTO</option>
+                                <option>SELECCIONAR</option>
                                 <?php
                                     $tipo2 = "SELECT * FROM tipo_docu";
                                     $inser2 = mysqli_query($connection,$tipo2);
@@ -412,7 +412,7 @@ if ($usario == "" || $usario == null) {
     </main>
 
 
-   <!--------- SUB FORMULARIOS USUARIO-------------- ---------------------- -->
+   <!----------------------- SUB FORMULARIOS USUARIO-------------- ---------------------- -->
             <!--crear usuario  -->
     <div class="containerCrearUsuario" id="containerCrearUsuario">
         <div class="containerFormularioUsuario">
@@ -449,10 +449,88 @@ if ($usario == "" || $usario == null) {
 
         </div>
     </div>
+
+    <!-- ------------------------------------------------------------------------------------ -->
+
+
     <!----------------- SUB FORMULARIOS CREAR INSUMOS----------------------------------- -->
     <!-- crear insumo -->
     <div class="containerCrearInsumo" id="containerCrearInsumo">
-            CONTAINER CREAR INSUMO
+            <div class="content_general_form">
+                <h1>INGRESO DE INSUMO</h1>
+                    <form  class="content_formulario_crearInsumo" action="" method="POST">
+                        <div class="primeralinea5">
+                            <div>
+                                <label for="">TIPO DE INSUMO</label>    
+                                <select class="input5" name="tip_insumo"  required>
+                                    <option >SELECCIONAR</option>
+                                    <?php
+                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $inser = mysqli_query($connection,$tipo);
+                                        while($tip = mysqli_fetch_array($inser)){
+                                    ?>
+                                    <option value="<?php echo $tip[0]; ?>">
+                                        <?php echo $tip[1]; ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                                <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE INSUMO</h6>
+                            </div>
+                            <div>
+                                <label for="">NOMBRE DEL INSUMO</label>
+                                <input class="input5 NombreInsumo" type="text" placeholder="NOMBRE DEL INSUMO" required>
+                            </div>
+                        </div>
+
+                        <div class="segundalinea5">
+                            <div>
+                                <label for="">MARCA DEL INSUMO</label>    
+                                <select class="input5" name="marca_insumo"  required>
+                                    <option >SELECCIONAR</option>
+                                    <?php
+                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $inser = mysqli_query($connection,$tipo);
+                                        while($tip = mysqli_fetch_array($inser)){
+                                    ?>
+                                    <option value="<?php echo $tip[0]; ?>">
+                                        <?php echo $tip[1]; ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                                <h6 class="agregaradi agregaradi5" id="btn_marca_insumo">CREAR MARCA</h6>
+                            </div>
+                            <div>
+                                <label for="">COLOR DEL INSUMO</label>    
+                                <select class="input5" name="color_insumo"  required>
+                                    <option >SELECCIONAR</option>
+                                    <?php
+                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $inser = mysqli_query($connection,$tipo);
+                                        while($tip = mysqli_fetch_array($inser)){
+                                    ?>
+                                    <option value="<?php echo $tip[0]; ?>">
+                                        <?php echo $tip[1]; ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                                <h6 class="agregaradi agregaradi5" id="btn_crear_color">CREAR COLOR</h6>
+                            </div>
+                        </div>
+
+                        <div class="terceralinea5">
+                                <div>
+                                    <input type="button" value="CONTINUAR">
+                                </div>
+                        </div>
+                       
+                    </form>
+            </div>
     </div>
 
     <!-- crear material textil -->
@@ -463,6 +541,9 @@ if ($usario == "" || $usario == null) {
     <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">
         CONTAINER CREAR MAQUINARIA
     </div>
+
+
+
 
 
     <!-- caja delado izquierdo de los menus -->

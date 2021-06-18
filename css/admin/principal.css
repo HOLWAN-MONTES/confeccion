@@ -639,23 +639,82 @@ li{
 /* ---------------------------------------------FORMULARIOS INGRESO DE INSUMOS-------------------- */
 
 .containerCrearInsumo,.containerCrearMaterialTextil,.containerCrearmaquinaria{
-    background-color: #ff6819;
+    background-color: #50575881;
     position: absolute;
     display: none;
     width: 100%;
     height: 100vh;
+    
 }
 
+.containerCrearInsumo{
+   /*  display: block; */
+}
 
+/* formulario ingreso de insumo */
+.content_general_form{
+    margin-top: 10%;
+    border: 1px solid red;
+    background-color: #188276;
+    margin: 0 auto;
+    width: 60%;
+    
+}
 
+.content_general_form > h1{
+    text-align: center;
+}
 
+.content_formulario_crearInsumo {
+    background-color: #c0c0c0;
+    border: 1px solid rgba(0, 0, 0, 0.555);
+    border-radius: 10px;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: 1fr ;
+    gap: 10px;
+}
 
+.primeralinea5,.segundalinea5,.terceralinea5{
+    border-bottom: 2px solid rgba(49, 51, 51, 0.205);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
+.terceralinea5{
+    border-bottom: 1px solid transparent;
+}
 
+.primeralinea5 > div,.segundalinea5 > div,.terceralinea5 > div{
+    margin-bottom: 10px;
+    text-align: center;
+    display: grid;
+    margin: 10px;
+    grid-template-columns: 1fr ;
+}
 
+/* todos los inputs */
+.input5{
+    text-align: center;
+    text-transform: uppercase;
+    padding:6px 35px 6px 35px;
+    width: 100%;
+    cursor: pointer;
+}
 
+.NombreInsumo{
+    margin-bottom: 15px;
+    cursor: text;
+}
 
-
+/* btn crear tipo de insumo-marca insumo crear color */
+.agregaradi5{
+    width: 100%;
+}
 
 
 
