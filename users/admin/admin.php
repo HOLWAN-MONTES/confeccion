@@ -65,7 +65,7 @@ if ($usario == "" || $usario == null) {
             <h1>REGISTRO DE USUARIOS</h1>
             <div class="contenFprmularioCrearUsu">
         
-                <form class="form1" action="" method="POST" autocomplete="off"  enctype="multipart/form-data">
+                <form class="form1" action="" method="POST" autocomplete="off"  enctype="multipart/form-data" id="crear_usuario">
 
                     <!-- caja de documento-nombres-apellidos -->
                     <div class="primeralinea">
@@ -98,7 +98,7 @@ if ($usario == "" || $usario == null) {
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
-                                <option name="tip_user_crea" value="<?php echo $tip[0]; ?>">
+                                <option value="<?php echo $tip[0]; ?>">
                                     <?php echo $tip[1]; ?>
                                 </option>
                                 <?php
@@ -116,7 +116,7 @@ if ($usario == "" || $usario == null) {
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
-                                <option name="tip_docu" value="<?php echo $tip[0]; ?>">
+                                <option value="<?php echo $tip[0]; ?>">
                                     <?php echo $tip[1]; ?>
                                 </option>
                                 <?php
@@ -152,8 +152,8 @@ if ($usario == "" || $usario == null) {
 
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea cuartalineaEnviar">
-                        <div><input class="input1 file" title="Foto de Usuario" type="file" required name="imagen"/></div>
-                        <div><input class="input1 regis" type="submit" name="registro" id="reg" value="REGISTRAR"></div>
+                        <div><input class="input1 file" title="Foto de Usuario" type="file" required name="imagen" /></div>
+                        <div><input class="input1 regis" type="submit" name="registro" id="reg" value="REGISTRAR" ></div>
                     </div>
 
                 
@@ -499,6 +499,7 @@ if ($usario == "" || $usario == null) {
     <script src="../../js/users/admin/main.js"></script>
     <script src="../../js/users/admin/editar_users.js"></script>
     <script src="../../js/users/admin/eliminar_usu.js"></script>
+    <script src="../../js/users/admin/created_user.js"></script>
 </body>
 
 </html>
