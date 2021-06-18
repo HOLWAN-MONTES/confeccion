@@ -37,7 +37,7 @@ if ($usario == "" || $usario == null) {
             <div class="cabecera1">
                 <div class="info_per">
                     <div class="foto">
-                        <img src="../../imagesUsers/maria.jpeg"><!-- echo $_SESSION['FOTO'];  -->
+                        <img src="../../imagesUsers/<?=$_SESSION['FOTO']?>"><!-- echo $_SESSION['FOTO'];  -->
                     </div>
                     <div class="men">
                         <ul>
