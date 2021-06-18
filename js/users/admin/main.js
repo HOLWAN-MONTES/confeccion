@@ -7,7 +7,7 @@ const btnregistroUsu = document.getElementById('registroUsu');
 /* mini contenedores */
 /* usuario */
 const containerCrearUsuario = document.getElementById('containerCrearUsuario');
-const btn_tipo_usuario = document.getElementById('btn_tipo_usuario');
+//const btn_tipo_usuario = document.getElementById('btn_tipo_usuario');
 const btn_esconder_containerCrearUsuario = document.getElementById('btn_esconder_containerCrearUsuario')
 /* documento */
 const containerCrearTipDocumento = document.getElementById('containerCrearTipDocumento');
@@ -53,15 +53,7 @@ btnregistroUsu.addEventListener('click',function(){
 })
 
 /* crear tipo de usuario */
-btn_tipo_usuario.addEventListener('click',function(){
-    containerCrearUsuario.style.display = "block";
-    containerCrearTipDocumento.style.display = "none"
-})
 
-btn_esconder_containerCrearUsuario.addEventListener('click',function(e){
-    e.preventDefault();
-    containerCrearUsuario.style.display = "none";
-})
 
 
 /* crear tipo de documento */
