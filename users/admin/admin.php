@@ -105,7 +105,7 @@ if ($usario == "" || $usario == null) {
                                 }
                                 ?>
                             </select>
-                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6>
+                           
                         </div>
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>    
@@ -413,23 +413,7 @@ if ($usario == "" || $usario == null) {
 
    <!--------- SUB FORMULARIOS-------------- ---------------------- -->
             <!--crear usuario  -->
-        <div class="containerCrearUsuario" id="containerCrearUsuario">
-            <div class="containerFormularioUsuario">
-                
-                    <i class="fas fa-times" id="btn_esconder_containerCrearUsuario"></i>
-            
-                <div >
-                    
-                    <h1>CREAR TIPO DE USUARIO</h1>
-                    <form   action="#" method="POST">
-                        
-                        <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
-                        <div><input class="btn_peque_form" type="button" value="CREAR"></div>
-                    </form>
-                </div>
-            </div>
-            
-        </div>
+      
 
             <!-- crear tipo de documento -->
         <div class="containerCrearTipDocumento" id="containerCrearTipDocumento">
