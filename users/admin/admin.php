@@ -463,10 +463,16 @@ if ($usario == "" || $usario == null) {
                                     <!-- ACA VAN TODOS LOS LISTADOS DE LO QUE SEA AGREGUE -->
                                     ACA VAN TODOS LOS LISTADOS DE LO QUE SE AGREGUE
                         </div>
-
-                        <div>
-                            <input type="button" value="ENVIAR"> <!-- enviar a la db -->
-                        </div>      
+                        
+                        <div class="btnesEnv_can">
+                            <div>
+                                <input type="button" value="ENVIAR"> <!-- enviar a la db -->
+                            </div>
+                            <div>
+                                <input type="button" value="CANCELAR">
+                            </div> 
+                        </div>
+                      
                 </form>
             </div>
           
