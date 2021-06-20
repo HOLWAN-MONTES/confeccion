@@ -586,14 +586,14 @@ li{
 /* ----------------------------------INGRESO DE MATERIAL TEXTIL-------------------------- */
 
 .contentIngresoDeInsumos{
-    display: none;
+    display: block;
     text-align: center;
     width: 80%;
     height: auto;
     border-radius: 10PX;
     background-color: #23ad9dc5;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 10%;
     padding: 5px;
 }
 
@@ -635,6 +635,15 @@ li{
     border: 1px solid black;
     background-color: #ede4e4;
     padding: 10px;
+}
+
+.btnesEnv_can{
+    display: inline-flex;
+    padding: 10px;
+}
+
+.btnesEnv_can > div{
+    margin: 5px;
 }
 
 /* secciones */
