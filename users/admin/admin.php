@@ -354,61 +354,11 @@ if ($usario == "" || $usario == null) {
         <!-- CUARTO FORMULARIO INGRESO DE INSUMOS -->
         <div class="contentIngresoDeInsumos" id="contentIngresoDeInsumos">
             <h1>REGISTRO DE INGRESO DE INSUMOS</h1>
-                <div class="contentFormularioCrearInsumos">
-                    <form action="" method="POST">
-                    <div class="primeralinea4">
-                        <div>
-                            <label for="">INSUMO</label>
-                            <select class="input4 label4 " name="" id=""  required>
-                                <option>SELECCIONAR </option>
-                                <option value="">aa</option>
-                                <option value="">aa</option>
-                            </select>
-                            <h6 class="agregaradi">CREAR INSUMO</h6>
-                        </div>
-                        <div>
-                        <label for="">CANTIDAD DE INSUMOS</label>    
-                        <input class="input4" type="text" name="nom" id="nom" placeholder="CANTIDAD" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
-                       
-                    </div>
-                    <div class="segundalinea4">
-                        <div>
-                            <label for="">MATERIAL TEXTIL</label>
-                            <select class="input4 label4" name="" id=""  required>
-                                <option>SELECCIONAR</option>
-                                <option value="">aa</option>
-                                <option value="">aa</option>
-                            </select>
-                            <h6 class="agregaradi">CREAR MATERIAL TEXTIL</h6>
-                        </div>
-                        <div>
-                        <label for="">CANTIDAD MATERIAL TEXTIL</label>
-                            <input class="input4" type="text" name="nom" id="nom" placeholder="CANTIDAD" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
-                       
-                    </div>
-                    <div class="terceralinea4">
-                        <div>
-                            <label for="">MAQUINARIA</label>
-                            <select class="input4 label4" name="" id=""  required>
-                                <option>SELECCIONAR</option>
-                                <option value="">aa</option>
-                                <option value="">aa</option>
-                            </select>
-                            <h6 class="agregaradi">CREAR MAQUINARIA</h6>
-                        </div>
-                        <div>
-                            <label for="">CANTIDAD MAQUINARIA</label>
-                            <input class="input4" type="text" name="nom" id="nom" placeholder="CANTIDAD" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
-                       
-                    </div>
-
-                    <div class="cuartalinea4 cuartalinea4Enviar4">
-                        <div><input class="input4 registrarInsumo" type="submit" name="registro" id="reg" value="REGISTRAR"></div>
-                    </div>
-
-                    </form>
-                </div>
+        
+        
         </div>
+
+
     </main>
 
 
@@ -455,8 +405,9 @@ if ($usario == "" || $usario == null) {
 
     <!----------------- SUB FORMULARIOS CREAR INSUMOS----------------------------------- -->
     <!-- crear insumo -->
-    <div class="containerCrearInsumo" id="containerCrearInsumo">
+    <!-- <div class="containerCrearInsumo" id="containerCrearInsumo">
             <div class="content_general_form">
+            <i class="insumo_cerrar fas fa-times"></i>
                 <h1>INGRESO DE INSUMO</h1>
                     <form  class="content_formulario_crearInsumo" action="" method="POST">
                         <div class="primeralinea5">
@@ -531,16 +482,16 @@ if ($usario == "" || $usario == null) {
                        
                     </form>
             </div>
-    </div>
+    </div> -->
 
     <!-- crear material textil -->
-    <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
+  <!--   <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
         CONTAINER CREAR MATERIAL TEXTIL
     </div>
 
     <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">
         CONTAINER CREAR MAQUINARIA
-    </div>
+    </div> -->
 
 
 
@@ -550,7 +501,7 @@ if ($usario == "" || $usario == null) {
     <div class="lateral">
 
         <div class="img_logo caja1">
-            <img class="img_lo" src="../../images/COSTUD.png" alt="">
+            <img class="img_lo" src="../../images/LOGO_EM.png" alt="">
         </div>
 
         <div class="menu caja2">
@@ -567,10 +518,17 @@ if ($usario == "" || $usario == null) {
                 </li>
                 
                 <!-- INGRESO -->
-                <li id="ingreso"><a>INGRESO</a></li>
+                <li id="ingreso" class="activado"><a>INGRESO <i class="icono derecha fas fa-chevron-down"></i></a>
+                    <ul>
+                        <li>a</li>
+                        <li>aa</li>
+                        <li>a</li>
+                    </ul> 
+                </li>
+                    
 
                 <li id="devoluciones"><a >DEVOLUCIONES </a></li>
-
+               
                 <!--  INVENTARIOS-->
                 <li class="activado"><a>INVENTARIO <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
@@ -597,3 +555,86 @@ if ($usario == "" || $usario == null) {
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- basura -->
+<!-- registro de formulario insumos -->
+<!--    <div class="contentFormularioCrearInsumos">
+                
+
+                    <form action="" method="POST">
+                    <div class="primeralinea4">
+                        <div>
+                            <label for="">INSUMO</label>
+                            <select class="input4 label4 " name="" id=""  required>
+                                <option>SELECCIONAR </option>
+                                <option value="">aa</option>
+                                <option value="">aa</option>
+                            </select>
+                            <h6 class="agregaradi">CREAR INSUMO</h6>
+                        </div>
+                        <div>
+                        <label for="">CANTIDAD DE INSUMOS</label>    
+                        <input class="input4" type="text" name="nom" id="nom" placeholder="CANTIDAD" required style="text-transform:uppercase"></div>
+                       
+                    </div>
+                    <div class="segundalinea4">
+                        <div>
+                            <label for="">MATERIAL TEXTIL</label>
+                            <select class="input4 label4" name="" id=""  required>
+                                <option>SELECCIONAR</option>
+                                <option value="">aa</option>
+                                <option value="">aa</option>
+                            </select>
+                            <h6 class="agregaradi">CREAR MATERIAL TEXTIL</h6>
+                        </div>
+                        <div>
+                        <label for="">CANTIDAD MATERIAL TEXTIL</label>
+                            <input class="input4" type="text" name="nom" id="nom" placeholder="CANTIDAD" required style="text-transform:uppercase"></div>
+                       
+                    </div>
+                    <div class="terceralinea4">
+                        <div>
+                            <label for="">MAQUINARIA</label>
+                            <select class="input4 label4" name="" id=""  required>
+                                <option>SELECCIONAR</option>
+                                <option value="">aa</option>
+                                <option value="">aa</option>
+                            </select>
+                            <h6 class="agregaradi">CREAR MAQUINARIA</h6>
+                        </div>
+                        <div>
+                            <label for="">CANTIDAD MAQUINARIA</label>
+                            <input class="input4" type="text" name="nom" id="nom" placeholder="CANTIDAD" required style="text-transform:uppercase"></div>
+                       
+                    </div>
+
+                    <div class="cuartalinea4 cuartalinea4Enviar4">
+                        <div><input class="input4 registrarInsumo" type="submit" name="registro" id="reg" value="REGISTRAR"></div>
+                    </div>
+
+                    </form>
+                </div> -->
+                
