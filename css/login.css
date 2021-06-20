@@ -205,13 +205,15 @@ input[type=number] { -moz-appearance:textfield; }
 /* imagen de logo de costura */
 .iamgenCos{
     width: 100%;
+   
     
 }
 
 .contentLogo{    
+   
     width: 60%;
     margin: 0 auto;    
-    margin-left: 13%;
+    margin-left: 20%;
 }
 
 .dddd{

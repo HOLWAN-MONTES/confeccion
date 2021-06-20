@@ -37,7 +37,7 @@ session_start();
                 <h2>INICIO DE SESION</h2>
                 <div class="dddd">
                     <div class="contentLogo">
-                        <img class="iamgenCos" src="../images/COSTUD.png" alt="">
+                        <img class="iamgenCos" src="../images/LOGO_EM.png" alt="">
                     </div>
                    
                 </div>

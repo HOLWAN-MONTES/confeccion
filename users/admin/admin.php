@@ -105,7 +105,7 @@ if ($usario == "" || $usario == null) {
                                 }
                                 ?>
                             </select>
-                           
+                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6>
                         </div>
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>    
@@ -354,67 +354,148 @@ if ($usario == "" || $usario == null) {
         <!-- CUARTO FORMULARIO INGRESO DE INSUMOS -->
         <div class="contentIngresoDeInsumos" id="contentIngresoDeInsumos">
             <h1>REGISTRO DE INGRESO DE INSUMOS</h1>
-                <div class="contentFormularioCrearInsumos">
-                    <form action="" method="POST">
-                    <div class="primeralinea4">
+            
+            <div class="contengeneralbb">
+                <form id="" action="" method="post">
+                    <div class="primeraSeccionFechas">
+                        
                         <div>
-                            <label for="">INSUMO</label>
-                            <select class="input4 label4 " name="" id=""  required>
-                                <option>SELECCIONAR </option>
-                                <option value="">aa</option>
-                                <option value="">aa</option>
-                            </select>
-                            <h6 class="agregaradi">CREAR INSUMO</h6>
+                            <b>RESPONSABLE = <!-- echo nombre de la persona logueada "admin" --></b>
+                        </div>      
+                        <div>
+                            <b>PROVEEDOR = <!-- nombre de proveedor --></b>
                         </div>
                         <div>
-                        <label for="">CANTIDAD DE INSUMOS</label>    
-                        <input class="input4" type="text" name="nom" id="nom" placeholder="CANTIDAD" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
-                       
-                    </div>
-                    <div class="segundalinea4">
-                        <div>
-                            <label for="">MATERIAL TEXTIL</label>
-                            <select class="input4 label4" name="" id=""  required>
-                                <option>SELECCIONAR</option>
-                                <option value="">aa</option>
-                                <option value="">aa</option>
-                            </select>
-                            <h6 class="agregaradi">CREAR MATERIAL TEXTIL</h6>
+                            <b>FECHA = <!-- fecha actual-today --></b>
                         </div>
                         <div>
-                        <label for="">CANTIDAD MATERIAL TEXTIL</label>
-                            <input class="input4" type="text" name="nom" id="nom" placeholder="CANTIDAD" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
-                       
-                    </div>
-                    <div class="terceralinea4">
-                        <div>
-                            <label for="">MAQUINARIA</label>
-                            <select class="input4 label4" name="" id=""  required>
-                                <option>SELECCIONAR</option>
-                                <option value="">aa</option>
-                                <option value="">aa</option>
-                            </select>
-                            <h6 class="agregaradi">CREAR MAQUINARIA</h6>
+                            <b>HORA = <!-- hora actual- --></b>
                         </div>
-                        <div>
-                            <label for="">CANTIDAD MAQUINARIA</label>
-                            <input class="input4" type="text" name="nom" id="nom" placeholder="CANTIDAD" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; --></div>
-                       
+
                     </div>
 
-                    <div class="cuartalinea4 cuartalinea4Enviar4">
-                        <div><input class="input4 registrarInsumo" type="submit" name="registro" id="reg" value="REGISTRAR"></div>
-                    </div>
+                    <div class="categorias">
 
-                    </form>
-                </div>
+                        <div class="categoriass">
+                            <label for="">CATEGORIA</label>    
+                                <select class="input6" name="categorias" id="tip_docu_edi" required>
+                                    <option>SELECCIONAR</option>
+                                    <?php
+                                    $tipo2 = "SELECT * FROM tipo_material";
+                                    $inser2 = mysqli_query($connection,$tipo2);
+                                    while($tip2 = mysqli_fetch_array($inser2)){
+                                    ?>
+                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
+                                        <?php echo $tip2[1]; ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                        </div>
+                        <div class="NombreCate">
+                            <label for="">NOMBRE</label> 
+                                <select class="input6" name="categorias" id="tip_docu_edi" required>
+                                    <option>SELECCIONAR</option>
+                                    <?php
+                                    $tipo2 = "SELECT * FROM tipo_material";
+                                    $inser2 = mysqli_query($connection,$tipo2);
+                                    while($tip2 = mysqli_fetch_array($inser2)){
+                                    ?>
+                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
+                                        <?php echo $tip2[1]; ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                        </div>
+                        <div class="Marcainsumo">
+                            <label for="">MARCA</label> 
+                                <select class="input6" name="categorias" id="tip_docu_edi" required>
+                                    <option>SELECCIONAR</option>
+                                    <?php
+                                    $tipo2 = "SELECT * FROM tipo_material";
+                                    $inser2 = mysqli_query($connection,$tipo2);
+                                    while($tip2 = mysqli_fetch_array($inser2)){
+                                    ?>
+                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
+                                        <?php echo $tip2[1]; ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+
+                        </div>
+                        <div class="ColorInsumo">
+                            <label for="">COLOR</label> 
+                                <select class="input6" name="categorias" id="tip_docu_edi" required>
+                                    <option>SELECCIONAR</option>
+                                    <?php
+                                    $tipo2 = "SELECT * FROM tipo_material";
+                                    $inser2 = mysqli_query($connection,$tipo2);
+                                    while($tip2 = mysqli_fetch_array($inser2)){
+                                    ?>
+                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
+                                        <?php echo $tip2[1]; ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+
+                        </div>
+
+                        <div class="cantidadSe">
+                            <label for="">CANTIDAD</label>
+                            <input type="number" placeholder="CANTIDAD">
+                        </div>
+
+                        <div class="bnt">
+                            <input type="button" value="AGREGAR"> <!-- agregar a la lista -->
+                        </div>
+
+                       
+                       
+                    </div>
+                        <div class="agregarTodosLosListados">
+                                    <!-- ACA VAN TODOS LOS LISTADOS DE LO QUE SEA AGREGUE -->
+                                    ACA VAN TODOS LOS LISTADOS DE LO QUE SE AGREGUE
+                        </div>
+
+                        <div>
+                            <input type="button" value="ENVIAR"> <!-- enviar a la db -->
+                        </div>      
+                </form>
+            </div>
+          
+        
         </div>
+
+
     </main>
 
 
    <!----------------------- SUB FORMULARIOS USUARIO-------------- ---------------------- -->
             <!--crear usuario  -->
-
+    <div class="containerCrearUsuario" id="containerCrearUsuario">
+        <div class="containerFormularioUsuario">
+            
+                <i class="fas fa-times" id="btn_esconder_containerCrearUsuario"></i>
+        
+            <div >
+                
+                <h1>CREAR TIPO DE USUARIO</h1>
+                <form   action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
 
         <!-- crear tipo de documento -->
     <div class="containerCrearTipDocumento" id="containerCrearTipDocumento">
@@ -439,8 +520,9 @@ if ($usario == "" || $usario == null) {
 
     <!----------------- SUB FORMULARIOS CREAR INSUMOS----------------------------------- -->
     <!-- crear insumo -->
-    <div class="containerCrearInsumo" id="containerCrearInsumo">
+    <!-- <div class="containerCrearInsumo" id="containerCrearInsumo">
             <div class="content_general_form">
+            <i class="insumo_cerrar fas fa-times"></i>
                 <h1>INGRESO DE INSUMO</h1>
                     <form  class="content_formulario_crearInsumo" action="" method="POST">
                         <div class="primeralinea5">
@@ -515,16 +597,16 @@ if ($usario == "" || $usario == null) {
                        
                     </form>
             </div>
-    </div>
+    </div> -->
 
     <!-- crear material textil -->
-    <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
+  <!--   <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
         CONTAINER CREAR MATERIAL TEXTIL
     </div>
 
     <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">
         CONTAINER CREAR MAQUINARIA
-    </div>
+    </div> -->
 
 
 
@@ -534,7 +616,7 @@ if ($usario == "" || $usario == null) {
     <div class="lateral">
 
         <div class="img_logo caja1">
-            <img class="img_lo" src="../../images/COSTUD.png" alt="">
+            <img class="img_lo" src="../../images/LOGO_EM.png" alt="">
         </div>
 
         <div class="menu caja2">
@@ -551,10 +633,11 @@ if ($usario == "" || $usario == null) {
                 </li>
                 
                 <!-- INGRESO -->
-                <li id="ingreso"><a>INGRESO</a></li>
+                <li id="ingreso" class="activado"><a>INGRESO </a></li>
+                    
 
                 <li id="devoluciones"><a >DEVOLUCIONES </a></li>
-
+               
                 <!--  INVENTARIOS-->
                 <li class="activado"><a>INVENTARIO <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
