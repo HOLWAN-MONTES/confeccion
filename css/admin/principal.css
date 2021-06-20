@@ -593,8 +593,8 @@ li{
     border-radius: 10PX;
     background-color: #23ad9dc5;
     margin: 0 auto;
-    margin-top: 100px;
-    padding: 20px;
+    margin-top: 10px;
+    padding: 5px;
 }
 
 .contentFormularioCrearInsumos{
@@ -605,8 +605,40 @@ li{
     margin: 0 auto;
 }
 
+
+.contengeneralbb{
+    margin-top: 10px;
+    border: 1px solid red;
+}
+
+.primeraSeccionFechas{
+    border: 1px solid rgb(0, 255, 0);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+
+}
+
+.categorias{
+    margin-bottom: 3%;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr;
+    gap: 10px;
+}
+
+
+/* LADO DE LOS LISTADOS */
+.agregarTodosLosListados{
+    border: 1px solid black;
+    background-color: #ede4e4;
+    padding: 10px;
+}
+
 /* secciones */
-.primeralinea4,.segundalinea4,.terceralinea4,.cuartalinea4{
+/* .primeralinea4,.segundalinea4,.terceralinea4,.cuartalinea4{
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 9px;
     display: grid;
@@ -624,10 +656,10 @@ li{
 .primeralinea4 > div,.segundalinea4 > div,.terceralinea4 > div,.cuartalinea4 > div{
     margin: 0 auto;
     width: 90%;
-}
+} */
 
 /* inputs */
-.input4{
+/* .input4{
     padding: 6px 35px 6px 35px;
     text-align: center;
     margin: 0 auto;
@@ -636,35 +668,33 @@ li{
 
 .cuartalinea4Enviar4{
     width: 100%;
-}
+} */
 
 /* btn de registrar insumo */
-.registrarInsumo{
+/* .registrarInsumo{
     cursor: pointer;
     width: 30%;
-}
+} */
 
 /* ---------------------------------------------FORMULARIOS INGRESO DE INSUMOS-------------------- */
 
 .containerCrearInsumo,.containerCrearMaterialTextil,.containerCrearmaquinaria{
-    background-color: #5057583f;
+    background-color: #468f993f;
     position: absolute;
-   /*  display: none; */
+    display: none;
     width: 100%;
     height: 100vh;
     
 }
 
 .containerCrearInsumo{
-    display: block;
+    display: NONE;
 }
 
 /* formulario ingreso de insumo */
 .insumo_cerrar{
     font-size: 30px;
     cursor: pointer;
-
-    
 }
 
 .insumo_cerrar:hover{
@@ -686,7 +716,7 @@ li{
 }
 
 .content_formulario_crearInsumo {
-    background-color: #c0c0c0;
+    background-color: #c0c0c015;
     border: 1px solid rgba(0, 0, 0, 0.555);
     border-radius: 10px;
     width: 90%;
