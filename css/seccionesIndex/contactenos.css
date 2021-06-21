@@ -131,7 +131,7 @@ main{
     display: inline-flex;
     width: 100%;
     background-color: #5eb318;
-    position: absolute;
+   
     bottom: 0;
     color: white;
 }

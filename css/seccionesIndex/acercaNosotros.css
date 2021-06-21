@@ -99,31 +99,80 @@ a{
 
 main{
     display: flex;
-    /* flex-direction: row; */
-   /*  flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; */
+  
 }
 
-/* imagen central */
-.imagencentral{
-    background-image: url(../images/img1.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
+/* contenedor */
+.contenedor{
+
+    border: 1px solid red;
     width: 80%;
     margin: 15px;
     margin-left: 6%;
     border-radius: 10px;
     
 }
-/* letras del relleno o titulo */
 
-.letrasT{
-    margin-top: 3%;
-    background-color: rgba(222, 223, 222, 0.678);
+/* CONTENEDOR GENERAL CON LOS PROGRAMADORES */
+.titulogen{
+    border: 1px solid red;
     text-align: center;
+    font-size: 35px;
+}
+
+
+/* IMAGENDE NUESTRA HISTORIA */
+/* content */
+.imgnuestra{
+    padding: 10px;
+}
+
+
+.contentNuestaHistoria{
+    border: 1px solid orange;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+
+
+
+.mincontentNuestra{
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* tituloNuestraHistoria */
+.tituloNuestraHistoria{
+    border: 1px solid blue;
+    text-align: center;
+    color: #ff6712;
+    font-size: 20px;
+}
+
+
+/* seccion donde van las fotos */
+.linea1{
+    border: 11px solid red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.imagenProgramador{
+    width: 100px;
 
 }
+
+
+
+
+
+
+
+
+
+
 
 
 /*---------------- footer-------------------- */
@@ -131,7 +180,7 @@ main{
     display: inline-flex;
     width: 100%;
     background-color: #5eb318;
-    position: absolute;
+
     bottom: 0;
     color: white;
 }
