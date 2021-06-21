@@ -19,7 +19,10 @@ enviar.addEventListener("click", (e) => {
         if (info == 1) {
             alert("Usuario creado existosamente")
             formulario.reset()
-        } else {
+        }else if(info == 2){
+            alert("EL usuario ya existe,verifica tu documento")
+            formulario.reset()
+        }else {
             alert(info)
         }
     })
