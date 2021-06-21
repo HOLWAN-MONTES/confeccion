@@ -147,6 +147,85 @@
     margin-top: -100vh;
     position: absolute;
 }
+.primeraSeccionFechas{
+    border: 1px solid rgb(0, 255, 0);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.contentIngresoDeInsumos{
+    display: block;
+    text-align: center;
+    width: 90%;
+    height: auto;
+    border-radius: 10PX;
+    background-color: white;
+    margin: 5% 5%;
+    margin-top: 100px;
+    padding: 4%;
+}
+.formu_presta{
+    margin-top: 1%;
+    background-color: #23ad9dc5;
+    padding: 5%;
+}
+.cerrar1 a i{
+    font-size: 40px;
+    color: red;
+    float: right;
+    margin-top: -4%;
+    margin-left: 100px;
+    margin-right: 10px;
+}
+.pet_pres{
+    margin-top: -3%;
+    font-size: 25px;
+}
+.nome{
+    margin: auto;
+}
+.btn_agre{
+    margin-top: 29%;
+    margin-left: 55%;
+}
+.input_nam{
+    width: 160%;
+    margin: auto;
+}
+.canti{
+    margin-left: 22%;
+}
+.categorias{
+    margin-bottom: 3%;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    margin: 3% 20%;
+}
+.agregarTodosLosListados{
+    border: 1px solid black;
+    background-color: #ede4e4;
+    padding: 10px;
+}
+/*Estilos para la tabla de prestamos agregados*/
+.tabla_info{
+    margin-left: 23%;
+    width: 50%;
+    font-weight: bold;
+}
+.tab_ml, .agregado{
+    border: 1px solid #23ad9dc5;
+}
+
 /*------------------ ventana devoluciones----------------------------- */
 .ventana_two{
     width: 100%;
@@ -156,6 +235,85 @@
     position: absolute;
     display: none;
 }
+.primeraSeccionFechasDev{
+    border: 1px solid rgb(0, 255, 0);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.contentIngresoDeDevoluciones{
+    display: block;
+    text-align: center;
+    width: 90%;
+    height: auto;
+    border-radius: 10PX;
+    background-color: white;
+    margin: 5% 5%;
+    margin-top: 100px;
+    padding: 4%;
+}
+.formu_dev{
+    margin-top: 1%;
+    background-color: #23ad9dc5;
+    padding: 5%;
+}
+.cerrar2 a i{
+    font-size: 40px;
+    color: red;
+    float: right;
+    margin-top: -4%;
+    margin-left: 100px;
+    margin-right: 10px;
+}
+.pet_dev{
+    margin-top: -3%;
+    font-size: 25px;
+}
+.nome_dev{
+    margin: auto;
+}
+.btn_dev{
+    margin-top: 29%;
+    margin-left: 55%;
+}
+.input_dev{
+    width: 160%;
+    margin: auto;
+}
+.canti_dev{
+    margin-left: 22%;
+}
+.categorias_dev{
+    margin-bottom: 3%;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    margin: 3% 20%;
+}
+.agregarTodosLosListadosDev{
+    border: 1px solid black;
+    background-color: #ede4e4;
+    padding: 10px;
+}
+/*Estilos para la tabla de prestamos agregados*/
+.tabla_dev{
+    margin-left: 23%;
+    width: 50%;
+    font-weight: bold;
+}
+.tab_ml, .agregado{
+    border: 1px solid #23ad9dc5;
+}
+
 /*------------------ ventana prestamos pendientes----------------------------- */
 .ventana_tres{
     width: 100%;
