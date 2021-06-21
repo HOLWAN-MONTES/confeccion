@@ -486,7 +486,7 @@ if ($usario == "" || $usario == null) {
                 </div>
         <div class="contentFormularioUsers">
             <table border="1" style="border-collapse: collapse;border:1px solid red;width:1300px;">
-                <caption class="TituloUsers">TABLA DE REGISTRO DE LOS USUARIOS</caption>
+                <caption class="TituloUsers">TABLA DE USUARIOS REGISTRADOS</caption>
                 <thead>
                     <tr>
                         <th class="tit">DOCUMENTO</th>
