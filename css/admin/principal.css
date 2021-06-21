@@ -586,7 +586,7 @@ li{
 /* ----------------------------------INGRESO DE MATERIAL TEXTIL-------------------------- */
 
 .contentIngresoDeInsumos{
-    display: block;
+    display: none;
     text-align: center;
     width: 80%;
     height: auto;
@@ -646,44 +646,32 @@ li{
     margin: 5px;
 }
 
-/* secciones */
-/* .primeralinea4,.segundalinea4,.terceralinea4,.cuartalinea4{
-    border: 1px solid rgba(0, 0, 0, 0.137);
-    padding: 9px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+
+
+/*-------------------TABLA DE  TODOS LOS USUARIOS------------------------------------ */
+.todosLosusuarios{
+    background-color: rgba(0, 0, 0, 0.123);
+    height: 100vh;
+    position: absolute;
+    display: none;
+ 
 }
 
-.cuartalinea4{
-    width: 100%;
-    margin: 0 auto;
-    grid-template-columns: 100%;
-    grid-template-rows: 1fr;
-}
-
-.primeralinea4 > div,.segundalinea4 > div,.terceralinea4 > div,.cuartalinea4 > div{
-    margin: 0 auto;
-    width: 90%;
-} */
-
-/* inputs */
-/* .input4{
-    padding: 6px 35px 6px 35px;
-    text-align: center;
-    margin: 0 auto;
+.contentFormularioUsers{
+    background-color: #e0e0e0;
+    height: 100vh;
     width: 100%;
 }
 
-.cuartalinea4Enviar4{
-    width: 100%;
-} */
+.tit{
+    border: 1px solid red;
+    width: 20%;
+    background-color: #188276;
+}
 
-/* btn de registrar insumo */
-/* .registrarInsumo{
-    cursor: pointer;
-    width: 30%;
-} */
+.filas{
+    background-color: #e0e0e0;
+}
 
 /* ---------------------------------------------FORMULARIOS INGRESO DE INSUMOS-------------------- */
 

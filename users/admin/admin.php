@@ -58,6 +58,7 @@ if ($usario == "" || $usario == null) {
 
     </header>
 
+    
  <!-- fomularios -->
     <main class="fomularios">
         <!-- PRIMER FORMULARIO DE USUARIO -->
@@ -363,7 +364,9 @@ if ($usario == "" || $usario == null) {
                             <b>RESPONSABLE = <!-- echo nombre de la persona logueada "admin" --></b>
                         </div>      
                         <div>
-                            <b>PROVEEDOR = <!-- nombre de proveedor --></b>
+                            <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id="">
+                            <option>Seleccione el proveedor</option>
+                            </select>
                         </div>
                         <div>
                             <b>FECHA = <!-- fecha actual-today --></b>
@@ -378,74 +381,21 @@ if ($usario == "" || $usario == null) {
 
                         <div class="categoriass">
                             <label for="">CATEGORIA</label>    
-                                <select class="input6" name="categorias" id="tip_docu_edi" required>
+                                <select class="input6" name="categorias" id="categoria" required>
                                     <option>SELECCIONAR</option>
-                                    <?php
-                                    $tipo2 = "SELECT * FROM tipo_material";
-                                    $inser2 = mysqli_query($connection,$tipo2);
-                                    while($tip2 = mysqli_fetch_array($inser2)){
-                                    ?>
-                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
-                                        <?php echo $tip2[1]; ?>
-                                    </option>
-                                    <?php
-                                    }
-                                    ?>
+                                    <option value="material_textil">material textil</option>
+                                    <option value="insumos">insumos</option>
+                                    <option value="maquinaria">maquinaria</option>
                                 </select>
                         </div>
                         <div class="NombreCate">
                             <label for="">NOMBRE</label> 
                                 <select class="input6" name="categorias" id="tip_docu_edi" required>
                                     <option>SELECCIONAR</option>
-                                    <?php
-                                    $tipo2 = "SELECT * FROM tipo_material";
-                                    $inser2 = mysqli_query($connection,$tipo2);
-                                    while($tip2 = mysqli_fetch_array($inser2)){
-                                    ?>
-                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
-                                        <?php echo $tip2[1]; ?>
-                                    </option>
-                                    <?php
-                                    }
-                                    ?>
+                                    
                                 </select>
                         </div>
-                        <div class="Marcainsumo">
-                            <label for="">MARCA</label> 
-                                <select class="input6" name="categorias" id="tip_docu_edi" required>
-                                    <option>SELECCIONAR</option>
-                                    <?php
-                                    $tipo2 = "SELECT * FROM tipo_material";
-                                    $inser2 = mysqli_query($connection,$tipo2);
-                                    while($tip2 = mysqli_fetch_array($inser2)){
-                                    ?>
-                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
-                                        <?php echo $tip2[1]; ?>
-                                    </option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-
-                        </div>
-                        <div class="ColorInsumo">
-                            <label for="">COLOR</label> 
-                                <select class="input6" name="categorias" id="tip_docu_edi" required>
-                                    <option>SELECCIONAR</option>
-                                    <?php
-                                    $tipo2 = "SELECT * FROM tipo_material";
-                                    $inser2 = mysqli_query($connection,$tipo2);
-                                    while($tip2 = mysqli_fetch_array($inser2)){
-                                    ?>
-                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
-                                        <?php echo $tip2[1]; ?>
-                                    </option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-
-                        </div>
+                       
 
                         <div class="cantidadSe">
                             <label for="">CANTIDAD</label>
@@ -481,6 +431,8 @@ if ($usario == "" || $usario == null) {
 
 
     </main>
+
+
 
 
    <!----------------------- SUB FORMULARIOS USUARIO-------------- ---------------------- -->
@@ -520,13 +472,68 @@ if ($usario == "" || $usario == null) {
 
         </div>
     </div>
+ 
+
+
+
+
+
+    <!----------------------------------------- MOSTRAR TODOS LOS USUARIOS REGISTRADOS------------------------- -->
+    <div class="todosLosusuarios" id="todosLosusuarios">
+
+        <div class="contentFormularioUsers">
+            <table border="1" style="border-collapse: collapse;border:1px solid red;width:1300px;">
+                <caption class="TituloUsers">TABLA DE REGISTRO DE LOS USUARIOS</caption>
+                <thead>
+                    <tr>
+                        <th class="tit">DOCUMENTO</th>
+                        <th class="tit">TIPO DOCUMENTO</th>
+                        <th class="tit">TIPO USUARIO</th>
+                        <th class="tit">NOMBRE</th>
+                        <th class="tit">APELLIDO</th>
+                        <th class="tit">EDAD</th>
+                        <th class="tit">TELEFONO</th>
+                        <th class="tit">CORREO</th>
+                        <th class="tit">FOTO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        $sql= "SELECT  DOCUMENTO,NOM_TIPO_DOCU,NOM_TIPO_USU,NOMBRE,APELLIDO,EDAD,TELEFONO,CORREO,FOTO from tipo_usu,tipo_docu,usuario where usuario.ID_TIPO_DOCU=tipo_docu.ID_TIPO_DOCU and usuario.ID_TIPO_USU = tipo_usu.ID_TIPO_USU";
+                        $result=mysqli_query($connection,$sql);
+
+                        while($mostrar=mysqli_fetch_array($result)){
+                        
+                            ?>
+                            <tr>
+                                <td class="filas"><?php echo $mostrar[0] ?></td>
+                                <td class="filas"><?php echo $mostrar[1] ?></td>
+                                <td class="filas"><?php echo $mostrar[2] ?></td>
+                                <td class="filas"><?php echo $mostrar[3] ?></td>
+                                <td class="filas"><?php echo $mostrar[4] ?></td>
+                                <td class="filas"><?php echo $mostrar[5] ?></td>
+                                <td class="filas"><?php echo $mostrar[6] ?></td>
+                                <td class="filas"><?php echo $mostrar[7] ?></td>
+                                <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td>
+                            
+
+                            </tr>	  
+                        <?php
+                        }   
+                    ?>
+                
+                </tbody>
+            </table>
+        </div>
+            
+    </div>
 
     <!-- ------------------------------------------------------------------------------------ -->
 
 
     <!----------------- SUB FORMULARIOS CREAR INSUMOS----------------------------------- -->
     <!-- crear insumo -->
-    <!-- <div class="containerCrearInsumo" id="containerCrearInsumo">
+    <div class="containerCrearInsumo" id="containerCrearInsumo">
             <div class="content_general_form">
             <i class="insumo_cerrar fas fa-times"></i>
                 <h1>INGRESO DE INSUMO</h1>
@@ -603,7 +610,7 @@ if ($usario == "" || $usario == null) {
                        
                     </form>
             </div>
-    </div> -->
+    </div>
 
     <!-- crear material textil -->
   <!--   <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
@@ -614,11 +621,11 @@ if ($usario == "" || $usario == null) {
         CONTAINER CREAR MAQUINARIA
     </div> -->
 
+    
 
 
 
-
-    <!-- caja delado izquierdo de los menus -->
+    <!-- caja delado izquierdo de los menus --------------------------->
     <div class="lateral">
 
         <div class="img_logo caja1">
@@ -633,6 +640,7 @@ if ($usario == "" || $usario == null) {
                         <li id="registroUsu" class="uno registroUsuarios"><a >REGISTRO DE USUARIOS</a></li>
                         <li id="editarUsu" class="uno edita"><a >EDITAR USUARIOS</a></li>
                         <li id="eliminarUsu" class="uno eliminar"><a >ELIMINAR USUARIOS</a></li>
+                        <li id="UsuariosRegistrados" class="uno usersRegis"><a >USUARIOS REGISTRADOS</a></li>
                     </ul>
 
 
@@ -667,6 +675,7 @@ if ($usario == "" || $usario == null) {
     <script src="../../js/users/admin/editar_users.js"></script>
     <script src="../../js/users/admin/eliminar_usu.js"></script>
     <script src="../../js/users/admin/created_user.js"></script>
+    <script src="../../js/users/admin/ingreso_insumo.js"></script>
 </body>
 
 </html>
