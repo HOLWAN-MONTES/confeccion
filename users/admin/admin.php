@@ -480,7 +480,10 @@ if ($usario == "" || $usario == null) {
 
     <!----------------------------------------- MOSTRAR TODOS LOS USUARIOS REGISTRADOS------------------------- -->
     <div class="todosLosusuarios" id="todosLosusuarios">
-
+            <!-- boton de cerrar los usuarios -->
+                <div>
+                <i id="desaparecerTodosUsers" class="cerrarTodosUsers fas fa-times-circle"></i>
+                </div>
         <div class="contentFormularioUsers">
             <table border="1" style="border-collapse: collapse;border:1px solid red;width:1300px;">
                 <caption class="TituloUsers">TABLA DE REGISTRO DE LOS USUARIOS</caption>

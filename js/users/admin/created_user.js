@@ -23,7 +23,7 @@ enviar.addEventListener("click", (e) => {
             alert("EL usuario ya existe,verifica tu documento")
             formulario.reset()
         }else {
-            alert(info)
+            alert('Llene los campos correctamente ');
         }
     })
 })
