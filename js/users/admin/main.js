@@ -17,13 +17,18 @@ const btn_esconder_containerCrearTipDocumento = document.getElementById('btn_esc
 //btn-mostrar todos los usuarios que estan registrados
 const btnUsuariosRegistrados = document.getElementById('UsuariosRegistrados');
 const todosLosusuarios = document.getElementById('todosLosusuarios');
-
+/*BTN cerrar tabla */
+const desaparecerTodosUsers = document.getElementById('desaparecerTodosUsers');
 
 /* MOSTRAR TODOS LOS USUARIOS */
 btnUsuariosRegistrados.addEventListener('click',function(){
     todosLosusuarios.style.display = "block";
 })
 
+/* cerrar todos los usuarios */
+desaparecerTodosUsers.addEventListener('click',function(){
+    todosLosusuarios.style.display = "none";
+})
 
 
 //______btn y contenedor de editar usuario

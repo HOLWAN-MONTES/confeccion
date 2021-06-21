@@ -105,7 +105,7 @@ main{
 /* contenedor */
 .contenedor{
 
-    border: 1px solid red;
+    border: 1px solid rgba(77, 60, 60, 0.425);
     width: 80%;
     margin: 15px;
     margin-left: 6%;
@@ -115,9 +115,10 @@ main{
 
 /* CONTENEDOR GENERAL CON LOS PROGRAMADORES */
 .titulogen{
-    border: 1px solid red;
+  
     text-align: center;
     font-size: 35px;
+    margin-bottom: 10px;
 }
 
 
@@ -129,7 +130,7 @@ main{
 
 
 .contentNuestaHistoria{
-    border: 1px solid orange;
+    border: 1px solid rgba(82, 80, 80, 0.315);
     display: grid;
     grid-template-columns: 20% 80%;
 }
@@ -138,40 +139,127 @@ main{
 
 
 .mincontentNuestra{
-    border: 1px solid red;
+   
     display: grid;
     grid-template-columns: 1fr;
 }
 
 /* tituloNuestraHistoria */
 .tituloNuestraHistoria{
-    border: 1px solid blue;
+    
     text-align: center;
     color: #ff6712;
     font-size: 20px;
 }
 
+/* titlulo programadores */
+.titulosprogramadores{
+   
+    text-align: center;
+    font-size: 30px;
+}
+
+.sapoteti{
+    width: 55%;
+    margin: 0 auto;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.sapoteti b{
+    color: #ff6712;
+}
+
+
+/* contenedor de las fotos */
+.fotosProgramadores{
+    
+    width: 90%;
+    margin: 0 auto;
+  
+}
 
 /* seccion donde van las fotos */
+
+
 .linea1{
-    border: 11px solid red;
+    
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
 .imagenProgramador{
-    width: 100px;
+    width: 160px;
+    border-radius: 10px;
+}
 
+.user1,.user2,.user3,.user4,.user5{
+    
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+  
+    text-align: center;
+}
+
+.user2{
+    margin-top: 20px;
+}
+
+.user3{
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.user5{
+    margin-top: 5px;
+}
+
+.linea2{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+/* nombres y cargos */
+
+.nombreP{
+  
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 10px;
+   
+}
+
+.nombreP:hover{
+    color: #ff6712;
+}
+
+.nombreCar{
+    font-size: 15px;
 }
 
 
+.linea3{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
 
 
+/* seccion de fotos */
+.cajapri{
+   
+}
 
-
-
-
-
+.cajasecun{
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
 
 
 
@@ -188,6 +276,7 @@ main{
 
 .imgcostudpie{
  width: 10%;
+ height: auto;
 }
 
 .info{
