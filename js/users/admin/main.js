@@ -14,6 +14,17 @@ const containerCrearTipDocumento = document.getElementById('containerCrearTipDoc
 const btn_tipo_documento = document.getElementById('btn_tipo_documento')
 const btn_esconder_containerCrearTipDocumento = document.getElementById('btn_esconder_containerCrearTipDocumento');
 
+//btn-mostrar todos los usuarios que estan registrados
+const btnUsuariosRegistrados = document.getElementById('UsuariosRegistrados');
+const todosLosusuarios = document.getElementById('todosLosusuarios');
+
+
+/* MOSTRAR TODOS LOS USUARIOS */
+btnUsuariosRegistrados.addEventListener('click',function(){
+    todosLosusuarios.style.display = "block";
+})
+
+
 
 //______btn y contenedor de editar usuario
 const contentEditarUsuario = document.getElementById('contentEditarUsuario');
@@ -40,6 +51,7 @@ const btninvMaterialText = document.getElementById('invMaterialText');
 const btninvInsumo = document.getElementById('invInsumo');
 
 
+
 // --------fromularios de administrador de usuarios ------------------------------------------------
 //___btn registro de usuario
 btnregistroUsu.addEventListener('click',function(){
@@ -52,10 +64,9 @@ btnregistroUsu.addEventListener('click',function(){
     containerCrearTipDocumento.style.display = "none"
 })
 
+
+
 /* crear tipo de usuario */
-
-
-
 /* crear tipo de documento */
 btn_tipo_documento.addEventListener('click',function(){
     containerCrearTipDocumento.style.display = "block"
