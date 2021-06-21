@@ -2,254 +2,175 @@
     margin: 0;
     box-sizing: border-box;
     padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-/*------- todo el header----- */
-.cabecera{
-    width: 100%;
-    background-color: rgba(235, 225, 225, 0.897);
-    border-bottom: 1px solid black;
-    display: inline-flex;
-    float: right;
-    height: 64px;
-}
-
-.superior{
-    width: 20%; 
-}
-
-.tituloMensaje{
-    width: 70%; 
-}
-
-/*//////////////-------------- INFORMACION DE LA PERSONA ---------------- */
-
-.cabecera1{
-    padding-top: 5px;
-    width: 30%;
-}
-
-.info_per{
-    margin: auto;
-    height: 80%;
-    width: 250px;
-    background-color: rgb(24,130,118);
+/*----------------- div general---------------------- */
+.general{
     display: flex;
-    border-radius: 20px;
-}
-
-.foto{
-    width: 50%;
-    align-content: center;
-}
-
-.foto img{
-    width: 60px;
-    height: 45px;
-    margin-left: 4%;
-    border-radius: 50%;
-}
-
-/* esconder el nombre completo */
-.mostrarAl{
-    padding-top: 13px;
-    font-size: 25px;
-    height: 48px;
-    width:100%;
-    padding-left: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.men{
     width: 100%;
-    height: auto;
-  word-wrap: break-word;
-
-   
+    height: 100vh;
 }
-
-.men a{
-    font-size: 15px;
+/*----------------- div de informacion del instructor----------- */
+.informacion{
+    width: 50%;
+    background-color:#c0c0c0;
+}
+.logos{
+    width: 50%;
+    display: flex;
+    padding: 5%;
+    margin-left: 25%;
+    height: 20%;
+}
+.logo_em{
+    width: 50%;
+    height: 100%;
+}
+.logo_se{
+    width: 50%;
+    height: 100%;
+}
+/* -----------------informacion del instructor---------------- */
+.instru{
+    width: 90%;
+    margin-left: 5%;
+    padding: 2%;
+    display: flex;
+    height: 30%;
+}
+.foto{
+    width: 40%;
+    height: 100%;
+}
+.foto img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+.inf{
     padding: 3%;
-    color: #000;
+    width: 70%;
+    height: 30%;
+}
+.inf h1{
+    text-align: center;
+}
+.inf h4{
+    margin-left: 10%;
+    padding: 2%;
+}
+/* ---------------botones de editar y cerrar ---------------*/
+.acciones{
+    width: 90%;
+    margin-left: 5%;
+    min-height: 30vh;
+    padding: 4%;
+}
+.editar{
+    width: 90%;
+    height: 10vh;
+    margin-left: 5%;
+    background-color: rgb(24, 130, 118);
+    border: none;
+}
+.acciones a{
     text-decoration: none;
+    color: black;
+    font-size: 3vh;
+}
+.acciones a:hover{
+    color: blanchedalmond;
+}
+.Cerrar{
+    margin-top: 5%;
+    width: 90%;
+    height: 10vh;
+    margin-left: 5%;
+    background-color: rgb(24, 130, 118);
+    border: none;
+    font-size: 3vh;
 }
 
-.sub_nom{
-    list-style: none;
-    font-size: 25px;
+/*-------------------- parte derecha--------------------- */
+.opciones{
+    width: 50%;
+    background-color: rgb(124, 214, 204);
+    height: 100vh;
+}
+/*-------------- prestamos--------------- */
+.uno{
+    background-color: black;
+    width: 100%;
+    height: 33vh;
+}
+.logo_pre{
+    width: 90%;
+    height: 100%;
     cursor: pointer;
-    color: #fff;
 }
-
-.men ul li ul{
+/*-------------- devoluciones--------------- */
+.dos{
+    background-color: rgb(78, 78, 78);
+    width: 100%;
+    height: 33vh;
+}
+.logo_de{
+    width: 90%;
+    height: 100%;
+    cursor: pointer;
+}
+/*-------------- pendientes--------------- */
+.tres{
+    background-color: rgb(199, 198, 198);
+    width: 100%;
+    height: 34vh;
+    display: flex;
+}
+/*-------------- prestamos pendientes--------------- */
+.cuatro{
+    width: 45%;
+    height: 100%;
+    cursor: pointer;
+}
+/*-------------- devoluciones pendientes--------------- */
+.cinco{
+    width: 45%;
+    height: 100%;
+    cursor: pointer;
+}
+/*------------------ ventana prestamos----------------------------- */
+.ventana_one{
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,255,0,0.6);
+    margin-top: -100vh;
+    position: absolute;
+}
+/*------------------ ventana devoluciones----------------------------- */
+.ventana_two{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,255,0.2);
+    margin-top: -100vh;
+    position: absolute;
     display: none;
 }
-
-.men ul li:hover ul{
-    display: flex;
-    flex-direction: column;
-}
-
-.men ul li ul{
-    width: 12%;
-    list-style: none;
-    background-color:rgb(124, 214, 204);
-    display:none;
-    text-align: center;
-    position:absolute;
-    margin-left: -1%;
-    border-radius: 15px;
-}
-
-/*---------- menu de editar y cerrar sesion------------ */
-.mos_nom{
-    z-index: 4;
-}
-
-.men ul li ul li:hover{
-    background-color: aqua;
-    z-index: 2;
-    border-radius: 15px;
-}
-.tetxt{
-    font-size: 15px;
-    padding: 3%;
-    cursor: pointer;
-    color: #000;
-}
-
-.uno:hover{
-    background-color:rgb(62, 233, 213); ;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
--webkit-appearance: none;
-margin: 0;
-}
-input[type=number] { -moz-appearance:textfield; }
-
-/* ---------------------------listas de lado izquierdo----------------------------------------------- */
-
-/* container de la lateral */
-.lateral{
-    background-color:#188276;
-    width: 16%;
+/*------------------ ventana prestamos pendientes----------------------------- */
+.ventana_tres{
+    width: 100%;
     height: 100vh;
-    /* position: relative; */
-    margin-top: 0;
-}
-
-/* titulo "administrador" */
-.title_int{
-    font-size: 23px;
-    text-decoration: none;
-}
-
-.title_int a{
-    color: white;
-}
-
-a{
-    text-decoration: none;
-}
-
-.superior1{
-    padding-top: 15px;
-    width: 19%;
-    background: #188276;
-    height: 63px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.img_lo{
-    width: 100%;
-    max-width: 100%;
-    /* clip-path: inset(0 10% 0 0); */
-}
-
-.menu{
-   /*  border: 1px solid black; */
-}
-
-/* logo del sena abajo */
-
-.logo_inst{
-    width: 100%;
-}
-/* -----------------------cajas de los divs de los menus---------- */
-
-.caja1{
-    height: 32.3vh;
-    padding-right: 20px;
-    background-color: #d3caca;
-}
-
-.caja2{
-    height: 34.3vh;
-}
-
-/* .caja2 a{
-    font-size: 100%;white-space: initial;
-} */
-
-.caja3{
-    height: 33.4vh;
-    background-color: #d3caca;
-    margin-bottom: 0;
-}
-
-/* quitarle a todas las listas el punto que le sale a la izquierda */
-li{
-    list-style: none;
-}
-
-/* ul y los li de administrar usuarios y otras  */
-
-.activado > ul{
-    display:none ;
-    margin-left: 15.8%;
-    margin-top: -4%;
+    background-color: rgba(255,0,0,0.2);
+    margin-top: -100vh;
     position: absolute;
+    display: none;
 }
-
-.activado > ul > li{
-    border-bottom: 1px solid rgba(13, 84, 238, 0.322);
-    padding: 10px 20px 10px 20px;
-    border-radius: 20px;
-}
-
-.activado:hover > ul{
-    display:block ;
-    border-radius: 20px;
-    background-color: rgb(124, 214, 204);
-}
-
-.menu2 > li{
+/*------------------ ventana devoluciones pendientes----------------------------- */
+.ventana_cuatro{
     width: 100%;
-    height: 6.8vh;
-    padding-top: 20px;
-    padding-left: 3px;
-    display: inline-flex;
-    list-style: none;
-    cursor: pointer;
-    border-bottom: 1px solid black;
-}
-
-.menu2 > li:hover{
-    background: #409b90;
-}
-
-/* -----------------------------------------------------------------CONTENIDO DE APARECER LAS VAINAS-------------------------------- */
-.contenidogeneral{
+    height: 100vh;
+    background-color: rgba(0,255,0,0.2);
+    margin-top: -100vh;
     position: absolute;
-    margin-left: 16%;
-    margin-top: 63PX;
-    background-color: rgb(230, 184, 36);
-    width: 83%;
-    height: 90vh;
+    display: none;
 }
-

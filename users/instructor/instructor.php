@@ -6,6 +6,7 @@ $usario = $_SESSION["DOCUMENTO"];
 if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -21,81 +22,69 @@ if ($usario == "" || $usario == null) {
 </head>
 
 <body>
-
-<!-- header con las opciones corresponientes -->
-    <header>
-        <!-- header de la parte superrior  -->
-        <div class="cabecera">
-            <div class="superior1">
-                <h5 class="title_int"><a class="menuaaa" href="instructor.php">&nbsp;&nbsp;&nbsp;INSTRUCTOR</a> </h5>
+    <!------------------- div general---------------------- -->
+<div class="general">
+    <div class="informacion">
+         <!------------------- logos---------------------- -->
+        <div class="logos">
+            <img class="logo_em" src="../../images/LOGO_EM.png" alt="">
+            <img class="logo_se" src="../../images/logo_sena.png" alt="">
+        </div>
+         <!------------------- informaciono del instructor---------------------- -->
+        <div class="instru">
+            <div class="foto">
+                <img src="../../imagesUsers/<?=$_SESSION['FOTO']?>"><!-- echo $_SESSION['FOTO'];  -->
             </div>
-
-            <div class="tituloMensaje">
-
-            </div>
-            <div class="cabecera1">
-                <div class="info_per">
-                    <div class="foto">
-                        <img src="../../imagesUsers/maria.jpeg"><!-- echo $_SESSION['FOTO'];  -->
-                    </div>
-                    <div class="men">
-                        <ul>
-                            <li class="sub_nom">
-                                <div class="mostrarAl">
-                                    <?php echo $_SESSION['NOMBRE']; ?>
-                                </div>
-                                <ul class="mos_nom">
-                                    <li class="tetxt"><a href="#"> EDITAR PERFIL</a></li>
-                                    <li class="tetxt"><a href="../../php/exit/salir.php"> CERRAR SESION</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="inf">
+                <H1>INSTRUCTOR@</H1>
+                <h4>NOMBRE : <?php echo $_SESSION['NOMBRE'] ;?> <?php echo $_SESSION['APELLIDO']; ?></H3>
+                <h4> TELEFONO :<?php echo $_SESSION['TELEFONO'] ; ?></h4>
+                <h4> CORREO :<?php echo $_SESSION['CORREO'] ; ?></h4>
+                <h4> EDAD :<?php echo $_SESSION['EDAD'] ; ?></h4>                  
             </div>
         </div>
-
-    </header>
-
- <!-- fomularios -->
-    <main class="contenidogeneral">
-  
-    </main>
-
-
-<!-- caja delado izquierdo de los menus -->
-    <div class="lateral">
-
-        <div class="img_logo caja1">
-            <img class="img_lo" src="../../images/COSTUD.png" alt="">
+         <!-------------------opciones del instructor---------------------- -->
+        <div class="acciones">
+            <button class="editar"><a href="">EDITAR PERFIL</a></button>
+            <button class="Cerrar"><a href="../../php/exit/salir.php">CERRAR SESIÓN</a></button>
         </div>
-
-        <div class="menu caja2">
-            <ul class="menu2">
-                <!-- ADMINISTRADOR DE USUARIOS -->
-                <li class="activado"><a>PRESTAMOS </a></li>
-                                <!-- INGRESO -->
-                <li id="ingreso"><a>PRESTAMOS TEXTIL</a></li>
-
-                <li id="reportes"><a>REPORTES</a></li>
-            </ul>
-        </div>
-
-        <div class="logo_institu caja3">
-            <img class="logo_inst" src="../../images/logo_sena.png" alt="">
-        </div>
-
     </div>
-
-
-   
-
-    
-
-
-
+     <!------------------- acciones que puede hacer le instructor ---------------------- -->
+    <div class="opciones">
+         <!------------------- prestamos---------------------- -->
+        <div class="uno">
+            <img id="one" class="logo_pre" src="../../images/Prestamo.jpg" alt="">
+        </div>
+         <!------------------- devoluciones---------------------- -->
+        <div class="dos">
+            <img id="two" class="logo_de" src="../../images/devolucion.jpeg" alt="">
+        </div>
+         <!------------------- devoluciones y prestamos pendientes---------------------- -->
+        <div class="tres">
+            <img id="tres" class="cuatro" src="../../images/devolucion_pe.PNG" alt="">
+            <img id="cuatro" class="cinco" src="../../images/prestamo_pe.PNG" alt="">
+        </div>
+    </div>
+</div>
+<!------------- ventana de prestamo de material------------------ -->
+<div class="ventana_one" id="ventana_one">
+      
+</div>
+<!------------- ventana de devolucion de material------------------ -->
+<div class="ventana_two" id="ventana_two">
+      
+</div>
+<!------------- ventana de prestamo pendiente de material------------------ -->
+<div class="ventana_tres" id="ventana_tres">
+      
+</div>
+<!------------- ventana de devolucion pendiente  de material------------------ -->
+<div class="ventana_cuatro" id="ventana_cuatro">
+      
+</div>
 
 
 </body>
+<script src="../../js/users/instru/instru.js"></script>
 
 </html>
