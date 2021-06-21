@@ -364,7 +364,9 @@ if ($usario == "" || $usario == null) {
                             <b>RESPONSABLE = <!-- echo nombre de la persona logueada "admin" --></b>
                         </div>      
                         <div>
-                            <b>PROVEEDOR = <!-- nombre de proveedor --></b>
+                            <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id="">
+                            <option>Seleccione el proveedor</option>
+                            </select>
                         </div>
                         <div>
                             <b>FECHA = <!-- fecha actual-today --></b>
@@ -379,74 +381,21 @@ if ($usario == "" || $usario == null) {
 
                         <div class="categoriass">
                             <label for="">CATEGORIA</label>    
-                                <select class="input6" name="categorias" id="tip_docu_edi" required>
+                                <select class="input6" name="categorias" id="categoria" required>
                                     <option>SELECCIONAR</option>
-                                    <?php
-                                    $tipo2 = "SELECT * FROM tipo_material";
-                                    $inser2 = mysqli_query($connection,$tipo2);
-                                    while($tip2 = mysqli_fetch_array($inser2)){
-                                    ?>
-                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
-                                        <?php echo $tip2[1]; ?>
-                                    </option>
-                                    <?php
-                                    }
-                                    ?>
+                                    <option value="material_textil">material textil</option>
+                                    <option value="insumos">insumos</option>
+                                    <option value="maquinaria">maquinaria</option>
                                 </select>
                         </div>
                         <div class="NombreCate">
                             <label for="">NOMBRE</label> 
                                 <select class="input6" name="categorias" id="tip_docu_edi" required>
                                     <option>SELECCIONAR</option>
-                                    <?php
-                                    $tipo2 = "SELECT * FROM tipo_material";
-                                    $inser2 = mysqli_query($connection,$tipo2);
-                                    while($tip2 = mysqli_fetch_array($inser2)){
-                                    ?>
-                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
-                                        <?php echo $tip2[1]; ?>
-                                    </option>
-                                    <?php
-                                    }
-                                    ?>
+                                    
                                 </select>
                         </div>
-                        <div class="Marcainsumo">
-                            <label for="">MARCA</label> 
-                                <select class="input6" name="categorias" id="tip_docu_edi" required>
-                                    <option>SELECCIONAR</option>
-                                    <?php
-                                    $tipo2 = "SELECT * FROM tipo_material";
-                                    $inser2 = mysqli_query($connection,$tipo2);
-                                    while($tip2 = mysqli_fetch_array($inser2)){
-                                    ?>
-                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
-                                        <?php echo $tip2[1]; ?>
-                                    </option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-
-                        </div>
-                        <div class="ColorInsumo">
-                            <label for="">COLOR</label> 
-                                <select class="input6" name="categorias" id="tip_docu_edi" required>
-                                    <option>SELECCIONAR</option>
-                                    <?php
-                                    $tipo2 = "SELECT * FROM tipo_material";
-                                    $inser2 = mysqli_query($connection,$tipo2);
-                                    while($tip2 = mysqli_fetch_array($inser2)){
-                                    ?>
-                                    <option name="tip_material" value="<?php echo $tip2[0]; ?>">
-                                        <?php echo $tip2[1]; ?>
-                                    </option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-
-                        </div>
+                       
 
                         <div class="cantidadSe">
                             <label for="">CANTIDAD</label>
@@ -726,6 +675,7 @@ if ($usario == "" || $usario == null) {
     <script src="../../js/users/admin/editar_users.js"></script>
     <script src="../../js/users/admin/eliminar_usu.js"></script>
     <script src="../../js/users/admin/created_user.js"></script>
+    <script src="../../js/users/admin/ingreso_insumo.js"></script>
 </body>
 
 </html>
