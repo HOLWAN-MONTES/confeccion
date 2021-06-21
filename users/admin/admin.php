@@ -58,6 +58,7 @@ if ($usario == "" || $usario == null) {
 
     </header>
 
+    
  <!-- fomularios -->
     <main class="fomularios">
         <!-- PRIMER FORMULARIO DE USUARIO -->
@@ -483,6 +484,8 @@ if ($usario == "" || $usario == null) {
     </main>
 
 
+
+
    <!----------------------- SUB FORMULARIOS USUARIO-------------- ---------------------- -->
             <!--crear usuario  -->
     <div class="containerCrearUsuario" id="containerCrearUsuario">
@@ -520,13 +523,68 @@ if ($usario == "" || $usario == null) {
 
         </div>
     </div>
+ 
+
+
+
+
+
+    <!----------------------------------------- MOSTRAR TODOS LOS USUARIOS REGISTRADOS------------------------- -->
+    <div class="todosLosusuarios" id="todosLosusuarios">
+
+        <div class="contentFormularioUsers">
+            <table border="1" style="border-collapse: collapse;border:1px solid red;width:1300px;">
+                <caption class="TituloUsers">TABLA DE REGISTRO DE LOS USUARIOS</caption>
+                <thead>
+                    <tr>
+                        <th class="tit">DOCUMENTO</th>
+                        <th class="tit">TIPO DOCUMENTO</th>
+                        <th class="tit">TIPO USUARIO</th>
+                        <th class="tit">NOMBRE</th>
+                        <th class="tit">APELLIDO</th>
+                        <th class="tit">EDAD</th>
+                        <th class="tit">TELEFONO</th>
+                        <th class="tit">CORREO</th>
+                        <th class="tit">FOTO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        $sql= "SELECT  DOCUMENTO,NOM_TIPO_DOCU,NOM_TIPO_USU,NOMBRE,APELLIDO,EDAD,TELEFONO,CORREO,FOTO from tipo_usu,tipo_docu,usuario where usuario.ID_TIPO_DOCU=tipo_docu.ID_TIPO_DOCU and usuario.ID_TIPO_USU = tipo_usu.ID_TIPO_USU";
+                        $result=mysqli_query($connection,$sql);
+
+                        while($mostrar=mysqli_fetch_array($result)){
+                        
+                            ?>
+                            <tr>
+                                <td class="filas"><?php echo $mostrar[0] ?></td>
+                                <td class="filas"><?php echo $mostrar[1] ?></td>
+                                <td class="filas"><?php echo $mostrar[2] ?></td>
+                                <td class="filas"><?php echo $mostrar[3] ?></td>
+                                <td class="filas"><?php echo $mostrar[4] ?></td>
+                                <td class="filas"><?php echo $mostrar[5] ?></td>
+                                <td class="filas"><?php echo $mostrar[6] ?></td>
+                                <td class="filas"><?php echo $mostrar[7] ?></td>
+                                <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td>
+                            
+
+                            </tr>	  
+                        <?php
+                        }   
+                    ?>
+                
+                </tbody>
+            </table>
+        </div>
+            
+    </div>
 
     <!-- ------------------------------------------------------------------------------------ -->
 
 
     <!----------------- SUB FORMULARIOS CREAR INSUMOS----------------------------------- -->
     <!-- crear insumo -->
-    <!-- <div class="containerCrearInsumo" id="containerCrearInsumo">
+    <div class="containerCrearInsumo" id="containerCrearInsumo">
             <div class="content_general_form">
             <i class="insumo_cerrar fas fa-times"></i>
                 <h1>INGRESO DE INSUMO</h1>
@@ -603,7 +661,7 @@ if ($usario == "" || $usario == null) {
                        
                     </form>
             </div>
-    </div> -->
+    </div>
 
     <!-- crear material textil -->
   <!--   <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
@@ -614,11 +672,11 @@ if ($usario == "" || $usario == null) {
         CONTAINER CREAR MAQUINARIA
     </div> -->
 
+    
 
 
 
-
-    <!-- caja delado izquierdo de los menus -->
+    <!-- caja delado izquierdo de los menus --------------------------->
     <div class="lateral">
 
         <div class="img_logo caja1">
@@ -633,6 +691,7 @@ if ($usario == "" || $usario == null) {
                         <li id="registroUsu" class="uno registroUsuarios"><a >REGISTRO DE USUARIOS</a></li>
                         <li id="editarUsu" class="uno edita"><a >EDITAR USUARIOS</a></li>
                         <li id="eliminarUsu" class="uno eliminar"><a >ELIMINAR USUARIOS</a></li>
+                        <li id="UsuariosRegistrados" class="uno usersRegis"><a >USUARIOS REGISTRADOS</a></li>
                     </ul>
 
 
