@@ -632,7 +632,7 @@ if ($usario == "" || $usario == null) {
     <!-- crear material textil -->
     <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
         <div class="contentFormMaterialG">
-        <i id="" class=" fas fa-times-circle"></i>
+            <i id="cerrarmaterialTex" class="cerrarmaterialTex fas fa-times"></i>
             <div class="tituloMaterialTextil">
                 <b>CREAR MATERIAL TEXTIL</b>
             </div>
@@ -640,7 +640,7 @@ if ($usario == "" || $usario == null) {
                 <form action="" method="post" class="rojo">
                     <div class="primerafilaMaterialtext">
                         <div class="filasinter">
-                            <label for="">MATERIAL TEXTIL</label>
+                            <label for="">NOMBRE MATERIAL TEXTIL</label>
                             <input class="input7" type="text">
                         </div>
                         <div class="filasinter">
@@ -722,8 +722,90 @@ if ($usario == "" || $usario == null) {
         </div>   
     </div>
 
+    <!-- crear maquinaria -->
     <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">
-        CONTAINER CREAR MAQUINARIA
+        
+        <div class="contetFoMaquinaria">
+            <div class="tituloMaqui">
+                <b>INGRSO DE MAQUINARIA</b>
+            </div>
+            <div>
+               
+                <form action="" class="formularioCrearMaqui">
+                    <div class="primeraLineaMa">
+                        <div>
+                            <label for="">SERIAL</label>
+                            <input type="text" name="" id="">
+                        </div>
+
+                        
+                        <div>
+                            <label for="">TIPO DE INSUMO</label>    
+                            <select class="input5" name="tip_insumo"  required>
+                                <option >SELECCIONAR</option>
+                                <?php
+                                    $tipo = "SELECT * FROM tipo_usu";
+                                    $inser = mysqli_query($connection,$tipo);
+                                    while($tip = mysqli_fetch_array($inser)){
+                                ?>
+                                <option value="<?php echo $tip[0]; ?>">
+                                    <?php echo $tip[1]; ?>
+                                </option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE INSUMO</h6>
+                        </div>
+                    
+                    </div>
+                    <div class="segundaLineaMa">
+                        <div>
+                            <label for="">TIPO DE INSUMO</label>    
+                            <select class="input5" name="tip_insumo"  required>
+                                <option >SELECCIONAR</option>
+                                <?php
+                                    $tipo = "SELECT * FROM tipo_usu";
+                                    $inser = mysqli_query($connection,$tipo);
+                                    while($tip = mysqli_fetch_array($inser)){
+                                ?>
+                                <option value="<?php echo $tip[0]; ?>">
+                                    <?php echo $tip[1]; ?>
+                                </option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE INSUMO</h6>
+                        </div>
+                        <div>
+                            <label for="">TIPO DE INSUMO</label>    
+                            <select class="input5" name="tip_insumo"  required>
+                                <option >SELECCIONAR</option>
+                                <?php
+                                    $tipo = "SELECT * FROM tipo_usu";
+                                    $inser = mysqli_query($connection,$tipo);
+                                    while($tip = mysqli_fetch_array($inser)){
+                                ?>
+                                <option value="<?php echo $tip[0]; ?>">
+                                    <?php echo $tip[1]; ?>
+                                </option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE INSUMO</h6>
+                        </div>
+                    </div>
+                    <div class="terceraLineaMa">
+                        <input type="button" value="ENVIAR">
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+      
     </div>
 
     

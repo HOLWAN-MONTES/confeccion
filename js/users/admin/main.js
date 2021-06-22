@@ -44,7 +44,7 @@ const containerCrearMaterialTextil = document.getElementById('containerCrearMate
 const containerCrearmaquinaria = document.getElementById('containerCrearmaquinaria');
 /* cerrarinsumos-maquinaria-materiaTextil */
 const insumo_cerrar = document.getElementById('insumo_cerrar');
-
+const cerrarmaterialTex = document.getElementById('cerrarmaterialTex');
 
 //devoluciones-----------------
 const btndevoluciones = document.getElementById('devoluciones');
@@ -141,19 +141,25 @@ btningreso.addEventListener('click',function(){
     
 })
 
+/* ------------------------------------------------------------- */
 btncrearInsumoa.addEventListener('click',function(){
     containerCrearInsumo.style.display = "block";
 })
 
 insumo_cerrar.addEventListener('click',function(){
-    containerCrearInsumo.style.display = "none"
+    containerCrearInsumo.style.display = "none";
+})
+
+cerrarmaterialTex.addEventListener('click',function(){
+    containerCrearMaterialTextil.style.display = 'none';
 })
 
 
+/* ------------------------------------------------------------- */
 btncrearmaterialtext.addEventListener('click',function(){
     containerCrearMaterialTextil.style.display = "block";
 })
-
+/* ------------------------------------------------------------- */
 btncrearMaquinaria.addEventListener('click',function(){
     containerCrearmaquinaria.style.display = "block";
 })
