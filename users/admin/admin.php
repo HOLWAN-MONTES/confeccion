@@ -7,6 +7,15 @@ if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
 }
 
+$sql_tela = "SELECT * from tipo_tela";
+$consulta_tela = mysqli_query($connection,$sql_tela);
+
+$sql_marca= "SELECT * from marca";
+$consulta_marca = mysqli_query($connection,$sql_marca);
+
+$sql_color = "SELECT * from color";
+$consulta_color = mysqli_query($connection,$sql_color);
+
 ?>
 
 <!DOCTYPE html>
@@ -637,71 +646,65 @@ if ($usario == "" || $usario == null) {
                 <b>CREAR MATERIAL TEXTIL</b>
             </div>
             <div >
-                <form action="" method="post" class="rojo">
+                <form action="" method="post" class="rojo" id="crear_tela">
                     <div class="primerafilaMaterialtext">
                         <div class="filasinter">
                             <label for="">NOMBRE MATERIAL TEXTIL</label>
-                            <input class="input7" type="text">
+                            <input class="input7" type="text" name="nombre_tela">
                         </div>
                         <div class="filasinter">
                             <label for="">TIPO DE TELA</label>
-                            <select class="input7" name="tip_us_elim" id="tip_usu_elim" required>
+                            <select class="input7" name="tipo_tela" id="tip_usu_elim" required>
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        $tipo = "SELECT * FROM tipo_usu";
-                                        $inser = mysqli_query($connection,$tipo);
-                                        while($tip = mysqli_fetch_array($inser)){
+                                        foreach ($consulta_tela as $tipo_tela){
                                     ?>
-                                    <option name="tip_user_elim" value="<?php echo $tip[0]; ?>">
-                                        <?php echo $tip[1]; ?>
+                                    <option  value="<?=$tipo_tela['ID_TIPO_TELA']?>">
+                                    <?=$tipo_tela['NOM_TIPO_TELA']?>
                                     </option>
                                     <?php
                                     }
                                     ?>
                                     
                             </select>
-                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6>
+                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE TELA</h6>
                         </div>
                         <div class="filasinter">
                             <label for="">MARCA</label>
-                            <select class="input7" name="tip_us_elim" id="tip_usu_elim" required>
+                            <select class="input7" name="marca" id="tip_usu_elim" required>
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        $tipo = "SELECT * FROM tipo_usu";
-                                        $inser = mysqli_query($connection,$tipo);
-                                        while($tip = mysqli_fetch_array($inser)){
+                                        foreach ( $consulta_marca as $marca){
                                     ?>
-                                    <option name="tip_user_elim" value="<?php echo $tip[0]; ?>">
-                                        <?php echo $tip[1]; ?>
+                                    <option value="<?=$marca['ID_MARCA']?>">
+                                        <?=$marca['NOM_MARCA']?>
                                     </option>
                                     <?php
                                     }
                                     ?>
                                    
                             </select>
-                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6>
+                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR MARCA</h6>
                         </div>                
 
                     </div>
                     <div class="segundafilaMaterialtext">
                         <div class="filasinter">
                             <label for="">COLOR</label>
-                                <select class="input7" name="" id="" required>
+                                <select class="input7" name="color" id="" required>
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        $tipo = "SELECT * FROM tipo_usu";
-                                        $inser = mysqli_query($connection,$tipo);
-                                        while($tip = mysqli_fetch_array($inser)){
+                                        foreach($consulta_color as $color){
                                     ?>
-                                    <option name="" value="<?php echo $tip[0]; ?>">
-                                        <?php echo $tip[1]; ?>
+                                    <option name="" value="<?=$color['ID_COLOR']?>">
+                                        <?=$color['NOM_COLOR']?> 
                                     </option>
                                     <?php
                                     }
                                     ?>
                                     
                             </select>
-                            <h6 class="agregaradi" id="">CREAR TIPO DE USUARIO</h6>
+                            <h6 class="agregaradi" id="">CREAR COLOR</h6>
                         </div>   
                         <div class="filasinter">
                             <label for="">METRAJE</label>
@@ -714,7 +717,7 @@ if ($usario == "" || $usario == null) {
 
                     </div>
                     <div class="tercerafilaMaterialtext">
-                        <input class="input7"  type="button" value="CREAR">
+                        <input class="input7"  type="button" value="CREAR" id="btn_crear_tela">
                     </div>
                 </form>
 
