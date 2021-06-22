@@ -351,6 +351,18 @@ if ($usario == "" || $usario == null) {
         </div>
 
 
+        <!-- MENU DE DE MAS FORMULARIOS CREARINSUMO-CREAR_MATERIAL_TEXTIL-CREAR_MAQUINARIA -->
+        <div class="menusañedidos" id="menusañedidos">
+            <div class="crearInsumoa" id="crearInsumoa">
+                CREAR INSUMO
+            </div>
+            <div class="crearmaterialtext" id="crearmaterialtext">
+                CREAR MATERIAL TEXTIL
+            </div>
+            <div class="crearMaquinaria" id="crearMaquinaria">
+                CREAR MAQUINARIA
+            </div>
+        </div>
 
         <!-- CUARTO FORMULARIO INGRESO DE INSUMOS -->
         <div class="contentIngresoDeInsumos" id="contentIngresoDeInsumos">
@@ -429,17 +441,7 @@ if ($usario == "" || $usario == null) {
         
         </div>
 
-        <div class="menusañedidos" id="menusañedidos">
-            <div>
-                CREAR INSUMO
-            </div>
-            <div>
-                CREAR MATERIAL TEXTIL
-            </div>
-            <div>
-                CREAR MAQUINARIA
-            </div>
-        </div>
+      
      
 
     </main>
@@ -550,7 +552,7 @@ if ($usario == "" || $usario == null) {
     <!-- crear insumo -->
     <div class="containerCrearInsumo" id="containerCrearInsumo">
             <div class="content_general_form">
-            <i class="insumo_cerrar fas fa-times"></i>
+            <i id="insumo_cerrar" class="insumo_cerrar fas fa-times"></i>
                 <h1>INGRESO DE INSUMO</h1>
                     <form  class="content_formulario_crearInsumo" action="" method="POST">
                         <div class="primeralinea5">
@@ -629,7 +631,95 @@ if ($usario == "" || $usario == null) {
 
     <!-- crear material textil -->
     <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
-        CONTAINER CREAR MATERIAL TEXTIL
+        <div class="contentFormMaterialG">
+        <i id="" class=" fas fa-times-circle"></i>
+            <div class="tituloMaterialTextil">
+                <b>CREAR MATERIAL TEXTIL</b>
+            </div>
+            <div >
+                <form action="" method="post" class="rojo">
+                    <div class="primerafilaMaterialtext">
+                        <div class="filasinter">
+                            <label for="">MATERIAL TEXTIL</label>
+                            <input class="input7" type="text">
+                        </div>
+                        <div class="filasinter">
+                            <label for="">TIPO DE TELA</label>
+                            <select class="input7" name="tip_us_elim" id="tip_usu_elim" required>
+                                    <option >SELECCIONAR</option>
+                                    <?php
+                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $inser = mysqli_query($connection,$tipo);
+                                        while($tip = mysqli_fetch_array($inser)){
+                                    ?>
+                                    <option name="tip_user_elim" value="<?php echo $tip[0]; ?>">
+                                        <?php echo $tip[1]; ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                    
+                            </select>
+                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6>
+                        </div>
+                        <div class="filasinter">
+                            <label for="">MARCA</label>
+                            <select class="input7" name="tip_us_elim" id="tip_usu_elim" required>
+                                    <option >SELECCIONAR</option>
+                                    <?php
+                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $inser = mysqli_query($connection,$tipo);
+                                        while($tip = mysqli_fetch_array($inser)){
+                                    ?>
+                                    <option name="tip_user_elim" value="<?php echo $tip[0]; ?>">
+                                        <?php echo $tip[1]; ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                   
+                            </select>
+                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6>
+                        </div>                
+
+                    </div>
+                    <div class="segundafilaMaterialtext">
+                        <div class="filasinter">
+                            <label for="">COLOR</label>
+                                <select class="input7" name="" id="" required>
+                                    <option >SELECCIONAR</option>
+                                    <?php
+                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $inser = mysqli_query($connection,$tipo);
+                                        while($tip = mysqli_fetch_array($inser)){
+                                    ?>
+                                    <option name="" value="<?php echo $tip[0]; ?>">
+                                        <?php echo $tip[1]; ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                    
+                            </select>
+                            <h6 class="agregaradi" id="">CREAR TIPO DE USUARIO</h6>
+                        </div>   
+                        <div class="filasinter">
+                            <label for="">METRAJE</label>
+                            <input class="input7" placeholder="" type="text" required>
+                        </div>
+                        <div class="filasinter">
+                            <label for="">CANTIDAD ROLLOS</label>
+                            <input class="input7" placeholder="" type="number" required>
+                        </div>  
+
+                    </div>
+                    <div class="tercerafilaMaterialtext">
+                        <input class="input7"  type="button" value="CREAR">
+                    </div>
+                </form>
+
+            </div>
+        </div>   
     </div>
 
     <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">

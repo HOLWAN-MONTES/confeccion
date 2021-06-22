@@ -32,8 +32,19 @@ const btneliminarUsu = document.getElementById('eliminarUsu');
 //ingreso INSUMOS--------------------------
 const contentIngresoDeInsumos = document.getElementById('contentIngresoDeInsumos');
 const btningreso = document.getElementById('ingreso');
-/* otras opciones de ingreso */
+
+/* otras opciones de ingreso -crear insumo-crear maquinaria- crear material textil*/
 const menusañedidos = document.getElementById('menusañedidos');
+const btncrearInsumoa = document.getElementById('crearInsumoa');
+const btncrearmaterialtext = document.getElementById('crearmaterialtext');
+const btncrearMaquinaria = document.getElementById('crearMaquinaria');
+/* content */
+const containerCrearInsumo = document.getElementById('containerCrearInsumo');
+const containerCrearMaterialTextil = document.getElementById('containerCrearMaterialTextil');
+const containerCrearmaquinaria = document.getElementById('containerCrearmaquinaria');
+/* cerrarinsumos-maquinaria-materiaTextil */
+const insumo_cerrar = document.getElementById('insumo_cerrar');
+
 
 //devoluciones-----------------
 const btndevoluciones = document.getElementById('devoluciones');
@@ -120,13 +131,47 @@ btneliminarUsu.addEventListener('click',function(){
 //ingreso de insumos----------------------------------------------------------------------------
 btningreso.addEventListener('click',function(){
     contentIngresoDeInsumos.style.display = "block"
+    menusañedidos.style.display = "grid";
     contentEliminarUsuario.style.display = "none";
     contentCrearUsuario.style.display = "none";
     contentEditarUsuario.style.display = "none";
     
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";
+    
 })
+
+btncrearInsumoa.addEventListener('click',function(){
+    containerCrearInsumo.style.display = "block";
+})
+
+insumo_cerrar.addEventListener('click',function(){
+    containerCrearInsumo.style.display = "none"
+})
+
+
+btncrearmaterialtext.addEventListener('click',function(){
+    containerCrearMaterialTextil.style.display = "block";
+})
+
+btncrearMaquinaria.addEventListener('click',function(){
+    containerCrearmaquinaria.style.display = "block";
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //devoluciones-------------------------------------------------------------------------------
 btndevoluciones.addEventListener('click',function(){
