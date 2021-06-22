@@ -885,7 +885,7 @@ li{
 
 /* --------------FORMULARIO REGISTRO DE MAQUINARIA------------------------ */
 .containerCrearmaquinaria{
-    display: block;
+    display: none;
 }
 
 .contetFoMaquinaria{
@@ -906,7 +906,7 @@ li{
 .formularioCrearMaqui{
     border: 1px solid red ;
     display: grid;
-    
+
    
 }
 
