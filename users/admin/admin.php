@@ -66,7 +66,7 @@ if ($usario == "" || $usario == null) {
             <h1>REGISTRO DE USUARIOS</h1>
             <div class="contenFprmularioCrearUsu">
         
-                <form class="form1" action="" method="POST" autocomplete="off"  enctype="multipart/form-data" id="crear_usuario">
+            <form class="form1" action="" method="POST" autocomplete="off"  enctype="multipart/form-data" id="crear_usuario">
 
                     <!-- caja de documento-nombres-apellidos -->
                     <div class="primeralinea">
@@ -554,14 +554,14 @@ if ($usario == "" || $usario == null) {
             <div class="content_general_form">
             <i id="insumo_cerrar" class="insumo_cerrar fas fa-times"></i>
                 <h1>INGRESO DE INSUMO</h1>
-                    <form  class="content_formulario_crearInsumo" action="" method="POST">
+                    <form  class="content_formulario_crearInsumo" action="" method="POST" id="CrearInsumoForm">
                         <div class="primeralinea5">
                             <div>
                                 <label for="">TIPO DE INSUMO</label>    
                                 <select class="input5" name="tip_insumo"  required>
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $tipo = "SELECT * FROM tipo_insumo";
                                         $inser = mysqli_query($connection,$tipo);
                                         while($tip = mysqli_fetch_array($inser)){
                                     ?>
@@ -576,7 +576,7 @@ if ($usario == "" || $usario == null) {
                             </div>
                             <div>
                                 <label for="">NOMBRE DEL INSUMO</label>
-                                <input class="input5 NombreInsumo" type="text" placeholder="NOMBRE DEL INSUMO" required>
+                                <input class="input5 NombreInsumo" type="text" name="NombreInsumo" id="NombreInsumo" placeholder="NOMBRE DEL INSUMO" required>
                             </div>
                         </div>
 
@@ -586,7 +586,7 @@ if ($usario == "" || $usario == null) {
                                 <select class="input5" name="marca_insumo"  required>
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $tipo = "SELECT * FROM marca";
                                         $inser = mysqli_query($connection,$tipo);
                                         while($tip = mysqli_fetch_array($inser)){
                                     ?>
@@ -604,7 +604,7 @@ if ($usario == "" || $usario == null) {
                                 <select class="input5" name="color_insumo"  required>
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $tipo = "SELECT * FROM color";
                                         $inser = mysqli_query($connection,$tipo);
                                         while($tip = mysqli_fetch_array($inser)){
                                     ?>
@@ -621,7 +621,7 @@ if ($usario == "" || $usario == null) {
 
                         <div class="terceralinea5">
                                 <div>
-                                    <input type="button" value="CONTINUAR">
+                                <input  type="submit" name="BtnCrearInsumo" id="BtnCrearInsumo" value="CREAR" >
                                 </div>
                         </div>
                        
@@ -781,6 +781,7 @@ if ($usario == "" || $usario == null) {
     <script src="../../js/users/admin/eliminar_usu.js"></script>
     <script src="../../js/users/admin/created_user.js"></script>
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
+    <script src="../../js/users/admin/created_insu.js"></script>
 </body>
 
 </html>
