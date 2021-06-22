@@ -506,16 +506,6 @@ li{
     width: 50%;
 }
 
-
-
-
-
-
-
-
-
-
-
 /* eliminar usuario----------------------------------------------------------- */
 .contentEliminarUsuario{
     display: none;
@@ -646,6 +636,29 @@ li{
     margin: 5px;
 }
 
+/* tres opciones para ingresar material textil-crear insumo-crear maquinaria------------- */
+
+.menusañedidos{
+    border: 1px solid red;
+    cursor: pointer;
+    width: 100%;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr  ;
+    position: absolute;
+    display: none;
+   
+}
+
+.menusañedidos div{
+    padding: 20px;
+}
+
+.menusañedidos div:hover{
+    background-color: #188276;
+    
+}
 
 
 /*-------------------TABLA DE  TODOS LOS USUARIOS------------------------------------ */
@@ -655,6 +668,7 @@ li{
     width: 100%;
     position: absolute;
     display: none;
+    
  
 }
 .cerrarTodosUsers{
@@ -687,7 +701,7 @@ li{
 /* ---------------------------------------------FORMULARIOS INGRESO DE INSUMOS-------------------- */
 
 .containerCrearInsumo,.containerCrearMaterialTextil,.containerCrearmaquinaria{
-    background-color: #468f993f;
+    background-color: #707c7e80;
     position: absolute;
     display: none;
     width: 100%;
@@ -696,13 +710,15 @@ li{
 }
 
 .containerCrearInsumo{
-    display: NONE;
+    display: none;
 }
 
 /* formulario ingreso de insumo */
 .insumo_cerrar{
     font-size: 30px;
     cursor: pointer;
+    float: right;
+    margin: 10px;
 }
 
 .insumo_cerrar:hover{
@@ -711,8 +727,9 @@ li{
 
 .content_general_form{
     
-    border: 1px solid red;
-    background-color: #18827636;
+    border: 1px solid rgba(66, 63, 63, 0.315);
+    border-radius: 10px;
+    background-color: #188276;
     margin: 0 auto;
     width: 60%;
     margin-top: 15%;
@@ -721,6 +738,7 @@ li{
 
 .content_general_form > h1{
     text-align: center;
+    margin-top: 15px;
 }
 
 .content_formulario_crearInsumo {
@@ -774,11 +792,59 @@ li{
     width: 100%;
 }
 
+/*----------------------------------- FORMULARIO INGRESO MATERIAL TEXTIL ---------------*/
+
+.containerCrearMaterialTextil{
+    display: none;
+
+}
 
 
+/* contenido del formulario */
+.contentFormMaterialG{
+    border: 1px solid red;
+    width: 70%;
+    margin: 0 auto;margin-top: 13%;
+    padding: 10px;
+}
+
+/* titulo */
+.tituloMaterialTextil{
+    border: 1px solid red;
+    text-align:center;
+    font-size: 30px;
+    color: black;
+}
 
 
+/* formulario */
+.rojo{
+    
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr ;
+}
 
+/* filas de los inputs */
+.primerafilaMaterialtext,.segundafilaMaterialtext,.tercerafilaMaterialtext{
+    border: 1px solid black;
+}
+
+.primerafilaMaterialtext,.segundafilaMaterialtext{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: 1fr ;
+}
+
+
+.filasinter {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    text-align: center;
+    border: 1px solid red;
+  
+}
 
 /* @media only screen and (max-width: 600px) {
     .primeralinea,.segundalinea,.terceralinea,.cuartalinea{
