@@ -889,14 +889,30 @@ li{
 }
 
 .contetFoMaquinaria{
-    border: 1px solid red;
+    
     width: 70%;
     margin: 0 auto;
+    margin-top: 10%;
+    background-color: #188276;
+    padding: 20px;
+}
+
+.cerrarMaqui{
+    border: 1px solid rgba(255, 0, 0, 0.39);
+    width: 5%;
+    float: right;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px 0 10px 0;
+    cursor: pointer;
+}
+
+.cerrarMaqui:hover{
+    background-color: rgb(223, 25, 25);
 }
 
 .tituloMaqui{
     margin-bottom: 20px;
-   
     text-align:center;
     font-size: 30px;
     color: black;   
@@ -904,46 +920,51 @@ li{
 
 
 .formularioCrearMaqui{
-    border: 1px solid red ;
+    border: 1px solid rgba(54, 54, 54, 0.301) ;
+    background-color: #c0c0c0;
+    padding: 10px;
+    border-radius: 10px;
     display: grid;
-
-   
+    text-align: center;
 }
 
+.primeraLineaMa{
 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin-bottom: 20px;
+}
 
+.segundaLineaMa{
+   
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
 
+    
+}
 
+.terceraLineaMa input{
+    margin-top: 10px;
+    padding: 6px 35px 6px 35px;
+    text-align: center;
+    width: 20%;
+}
 
+.asd{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.asd input{
+    margin-top: -10px;
+    padding: 6px 35px 6px 35px;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+}
 
 
 

@@ -441,9 +441,6 @@ if ($usario == "" || $usario == null) {
         
         </div>
 
-      
-     
-
     </main>
 
 
@@ -726,42 +723,33 @@ if ($usario == "" || $usario == null) {
     <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">
         
         <div class="contetFoMaquinaria">
+            <div class="cerrarMaqui" id="cerrarMaquinaria">X</div>
             <div class="tituloMaqui">
                 <b>INGRSO DE MAQUINARIA</b>
             </div>
             <div>
                
-                <form action="" class="formularioCrearMaqui">
-                    <div class="primeraLineaMa">
-                        <div>
-                            <label for="">SERIAL</label>
-                            <input type="text" name="" id="">
-                        </div>
-
-                        
-                        <div>
-                            <label for="">TIPO DE INSUMO</label>    
-                            <select class="input5" name="tip_insumo"  required>
-                                <option >SELECCIONAR</option>
-                                <?php
-                                    $tipo = "SELECT * FROM tipo_usu";
-                                    $inser = mysqli_query($connection,$tipo);
-                                    while($tip = mysqli_fetch_array($inser)){
-                                ?>
-                                <option value="<?php echo $tip[0]; ?>">
-                                    <?php echo $tip[1]; ?>
-                                </option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE INSUMO</h6>
-                        </div>
+                <form  action="" class="formularioCrearMaqui">
                     
+                    <div class="primeraLineaMa">
+                        <div class="asd">
+                            <label for="">SERIAL</label>
+                            <div>
+                            <input type="text" name="" id="">
+                            </div>
+                            
+                        </div>
+                        <div class="asd">
+                            <label for="">PLACA SENA</label>
+                            <input type="text" >
+                        </div>
+                        
+                        
                     </div>
+                    
                     <div class="segundaLineaMa">
                         <div>
-                            <label for="">TIPO DE INSUMO</label>    
+                            <label for="">MARCA DE MAQUINARIA </label>    
                             <select class="input5" name="tip_insumo"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
@@ -776,11 +764,29 @@ if ($usario == "" || $usario == null) {
                                 }
                                 ?>
                             </select>
-                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE INSUMO</h6>
+                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR MARCA</h6>
                         </div>
                         <div>
-                            <label for="">TIPO DE INSUMO</label>    
+                            <label for="">COLOR DE MAQUINARIA</label>    
                             <select class="input5" name="tip_insumo"  required>
+                                <option >SELECCIONAR</option>
+                                <?php
+                                    $tipo = "SELECT * FROM color";
+                                    $inser = mysqli_query($connection,$tipo);
+                                    while($tip = mysqli_fetch_array($inser)){
+                                ?>
+                                <option value="<?php echo $tip[0]; ?>">
+                                    <?php echo $tip[1]; ?>
+                                </option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR COLOR </h6>
+                        </div>
+                        <div>
+                            <label for="">TIPO DE MAQUINARIA</label>    
+                            <select class="input5 labeltipma" name="tip_insumo"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_usu";
@@ -794,9 +800,10 @@ if ($usario == "" || $usario == null) {
                                 }
                                 ?>
                             </select>
-                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE INSUMO</h6>
+                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE MAQUINARIA</h6>
                         </div>
                     </div>
+
                     <div class="terceraLineaMa">
                         <input type="button" value="ENVIAR">
                     </div>
