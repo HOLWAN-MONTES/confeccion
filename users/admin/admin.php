@@ -79,7 +79,7 @@ $hora = date("H:i:s");
             <h1>REGISTRO DE USUARIOS</h1>
             <div class="contenFprmularioCrearUsu">
         
-                <form class="form1" action="" method="POST" autocomplete="off"  enctype="multipart/form-data" id="crear_usuario">
+            <form class="form1" action="" method="POST" autocomplete="off"  enctype="multipart/form-data" id="crear_usuario">
 
                     <!-- caja de documento-nombres-apellidos -->
                     <div class="primeralinea">
@@ -514,7 +514,7 @@ $hora = date("H:i:s");
                 <i id="desaparecerTodosUsers" class="cerrarTodosUsers fas fa-times-circle"></i>
                 </div>
         <div class="contentFormularioUsers">
-            <table border="1" style="border-collapse: collapse;border:1px solid red;width:1300px;">
+            <table border="1" style="border-collapse: collapse;border:1px solid #ff6212;width: 1250px;">
                 <caption class="TituloUsers">TABLA DE USUARIOS REGISTRADOS</caption>
                 <thead>
                     <tr>
@@ -523,7 +523,7 @@ $hora = date("H:i:s");
                         <th class="tit">TIPO USUARIO</th>
                         <th class="tit">NOMBRE</th>
                         <th class="tit">APELLIDO</th>
-                        <th class="tit">EDAD</th>
+                        <th class="titEdad">EDAD</th>
                         <th class="tit">TELEFONO</th>
                         <th class="tit">CORREO</th>
                         <th class="tit">FOTO</th>
@@ -543,7 +543,7 @@ $hora = date("H:i:s");
                                 <td class="filas"><?php echo $mostrar[2] ?></td>
                                 <td class="filas"><?php echo $mostrar[3] ?></td>
                                 <td class="filas"><?php echo $mostrar[4] ?></td>
-                                <td class="filas"><?php echo $mostrar[5] ?></td>
+                                <td class="filasEdad"><?php echo $mostrar[5] ?></td>
                                 <td class="filas"><?php echo $mostrar[6] ?></td>
                                 <td class="filas"><?php echo $mostrar[7] ?></td>
                                 <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td>
@@ -569,14 +569,14 @@ $hora = date("H:i:s");
             <div class="content_general_form">
             <i id="insumo_cerrar" class="insumo_cerrar fas fa-times"></i>
                 <h1>INGRESO DE INSUMO</h1>
-                    <form  class="content_formulario_crearInsumo" action="" method="POST">
+                    <form  class="content_formulario_crearInsumo" action="" method="POST" id="CrearInsumoForm">
                         <div class="primeralinea5">
                             <div>
                                 <label for="">TIPO DE INSUMO</label>    
                                 <select class="input5" name="tip_insumo"  required>
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $tipo = "SELECT * FROM tipo_insumo";
                                         $inser = mysqli_query($connection,$tipo);
                                         while($tip = mysqli_fetch_array($inser)){
                                     ?>
@@ -591,7 +591,7 @@ $hora = date("H:i:s");
                             </div>
                             <div>
                                 <label for="">NOMBRE DEL INSUMO</label>
-                                <input class="input5 NombreInsumo" type="text" placeholder="NOMBRE DEL INSUMO" required>
+                                <input class="input5 NombreInsumo" type="text" name="NombreInsumo" id="NombreInsumo" placeholder="NOMBRE DEL INSUMO" required>
                             </div>
                         </div>
 
@@ -601,7 +601,7 @@ $hora = date("H:i:s");
                                 <select class="input5" name="marca_insumo"  required>
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $tipo = "SELECT * FROM marca";
                                         $inser = mysqli_query($connection,$tipo);
                                         while($tip = mysqli_fetch_array($inser)){
                                     ?>
@@ -619,7 +619,7 @@ $hora = date("H:i:s");
                                 <select class="input5" name="color_insumo"  required>
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        $tipo = "SELECT * FROM tipo_usu";
+                                        $tipo = "SELECT * FROM color";
                                         $inser = mysqli_query($connection,$tipo);
                                         while($tip = mysqli_fetch_array($inser)){
                                     ?>
@@ -636,7 +636,7 @@ $hora = date("H:i:s");
 
                         <div class="terceralinea5">
                                 <div>
-                                    <input type="button" value="CONTINUAR">
+                                <input  type="submit" name="BtnCrearInsumo" id="BtnCrearInsumo" value="CREAR" >
                                 </div>
                         </div>
                        
@@ -872,6 +872,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/eliminar_usu.js"></script>
     <script src="../../js/users/admin/created_user.js"></script>
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
+    <script src="../../js/users/admin/created_insu.js"></script>
 </body>
 
 </html>
