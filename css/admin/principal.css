@@ -674,14 +674,14 @@ li{
 .cerrarTodosUsers{
     font-size: 40px;
     margin-top: 9px;
-    margin-left: 5px;
+    margin-left: 96.8%;
 }
 .contentFormularioUsers{
     background-color: #e0e0e0;
     height: 100vh;
     width: 100%;
     margin-top: 16px;
-    padding: 20px;
+    padding: 47px;
 }
 .TituloUsers{
     font-size: 40px;
@@ -689,13 +689,24 @@ li{
     padding-bottom: 30px;
 }
 .tit{
-    border: 1px solid red;
-    width: 20%;
-    background-color: #188276;
+    border: 1px solid #ff6212;
+    width: 15%;
+    background-color: #23ad9dc5;
 }
-
+.titEdad{
+    border: 1px solid #ff6212;
+    background-color: #23ad9dc5;
+    width: 8%;
+}
+.filasEdad{
+    background-color: #e0e0e0;
+    width: 8%;
+    text-align: center;
+}
 .filas{
     background-color: #e0e0e0;
+    width: 15%;
+    text-align: center;
 }
 
 /* ---------------------------------------------FORMULARIOS INGRESO DE INSUMOS-------------------- */
