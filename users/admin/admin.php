@@ -485,7 +485,7 @@ if ($usario == "" || $usario == null) {
                 <i id="desaparecerTodosUsers" class="cerrarTodosUsers fas fa-times-circle"></i>
                 </div>
         <div class="contentFormularioUsers">
-            <table border="1" style="border-collapse: collapse;border:1px solid red;width:1300px;">
+            <table border="1" style="border-collapse: collapse;border:1px solid #ff6212;width: 1250px;">
                 <caption class="TituloUsers">TABLA DE USUARIOS REGISTRADOS</caption>
                 <thead>
                     <tr>
@@ -494,7 +494,7 @@ if ($usario == "" || $usario == null) {
                         <th class="tit">TIPO USUARIO</th>
                         <th class="tit">NOMBRE</th>
                         <th class="tit">APELLIDO</th>
-                        <th class="tit">EDAD</th>
+                        <th class="titEdad">EDAD</th>
                         <th class="tit">TELEFONO</th>
                         <th class="tit">CORREO</th>
                         <th class="tit">FOTO</th>
@@ -514,7 +514,7 @@ if ($usario == "" || $usario == null) {
                                 <td class="filas"><?php echo $mostrar[2] ?></td>
                                 <td class="filas"><?php echo $mostrar[3] ?></td>
                                 <td class="filas"><?php echo $mostrar[4] ?></td>
-                                <td class="filas"><?php echo $mostrar[5] ?></td>
+                                <td class="filasEdad"><?php echo $mostrar[5] ?></td>
                                 <td class="filas"><?php echo $mostrar[6] ?></td>
                                 <td class="filas"><?php echo $mostrar[7] ?></td>
                                 <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td>
