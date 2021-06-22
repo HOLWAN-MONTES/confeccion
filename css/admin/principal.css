@@ -506,16 +506,6 @@ li{
     width: 50%;
 }
 
-
-
-
-
-
-
-
-
-
-
 /* eliminar usuario----------------------------------------------------------- */
 .contentEliminarUsuario{
     display: none;
@@ -646,6 +636,28 @@ li{
     margin: 5px;
 }
 
+/* tres opciones para ingresar material textil-crear insumo-crear maquinaria------------- */
+
+.menusañedidos{
+    border: 1px solid red;
+    cursor: pointer;
+    width: 100%;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr  ;
+    position: absolute;
+   
+}
+
+.menusañedidos div{
+    padding: 20px;
+}
+
+.menusañedidos div:hover{
+    background-color: #188276;
+    
+}
 
 
 /*-------------------TABLA DE  TODOS LOS USUARIOS------------------------------------ */
@@ -654,6 +666,7 @@ li{
     height: 100vh;
     position: absolute;
     display: none;
+    
  
 }
 

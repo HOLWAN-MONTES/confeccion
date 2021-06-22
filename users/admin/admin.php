@@ -429,6 +429,18 @@ if ($usario == "" || $usario == null) {
         
         </div>
 
+        <div class="menusañedidos" id="menusañedidos">
+            <div>
+                CREAR INSUMO
+            </div>
+            <div>
+                CREAR MATERIAL TEXTIL
+            </div>
+            <div>
+                CREAR MAQUINARIA
+            </div>
+        </div>
+     
 
     </main>
 
@@ -616,13 +628,13 @@ if ($usario == "" || $usario == null) {
     </div>
 
     <!-- crear material textil -->
-  <!--   <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
+    <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
         CONTAINER CREAR MATERIAL TEXTIL
     </div>
 
     <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">
         CONTAINER CREAR MAQUINARIA
-    </div> -->
+    </div>
 
     
 
