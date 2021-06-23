@@ -8,6 +8,9 @@ const edad_eli = document.getElementById('edad-elim');
 const celu_eli = document.getElementById('tele-elim');
 const correo_eli = document.getElementById('cor-elim');
 const docmen_eli = document.getElementById('docume-elim');
+//boton de cancelar
+const btn_cancelar = document.getElementById('cancelar');
+
 document.addEventListener('keypress', (e)=>{
     if(e.keyCode === 13){
         if(e.target === docu_elim){
@@ -49,8 +52,8 @@ document.addEventListener('keypress', (e)=>{
                 else{
                     alert('No se encontro usuario');
                 }
-                })
-                .catch(error => console.error(error));
+            })
+            .catch(error => console.error(error));
         }
     }
     
@@ -73,11 +76,11 @@ document.addEventListener('submit', (e)=>{
             const {err, status, statusText} = datos;
             if(status >= 200 && status < 300){
                 alert("Se ha eliminado correctamente");
-                window.location.href="../../users/admin/admin.php";
+                formul.reset()
             }
             else{
                 alert("No se ha eliminado correctamente");
-                window.location.href="../../users/admin/admin.php";
+                formul.reset()
             }
             console.log(datos);
             })
@@ -85,3 +88,11 @@ document.addEventListener('submit', (e)=>{
             
     }
 })
+
+btn_cancelar.addEventListener("click", (e) => {
+    e.preventDefault();
+    formul.reset();
+    docu_elim.style.border = "1px solid black";
+    docu_elim.focus();
+});
+
