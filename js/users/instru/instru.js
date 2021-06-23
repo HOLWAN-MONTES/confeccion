@@ -147,7 +147,7 @@ btn_agregar.addEventListener('click', function(e){
     }
     
     
-})
+});
 //Boton para agregar el listado de devoluaciones
 const btn_devolucion = document.getElementById('agregar_dev');
 btn_devolucion.addEventListener('click', function(e){
@@ -181,17 +181,18 @@ btn_devolucion.addEventListener('click', function(e){
             e.preventDefault();
             cant_dev++;
             celda2.textContent = cant_dev;
-            celda2.appendChild(suma);
-            celda2.appendChild(espacio);
-            celda2.appendChild(resta);
+            if(cant >= 1){ //Si la cantidad es mayo a 2 el boton resta se vuelva habilitar
+                resta.disabled = false;
+            }
         })
         resta.addEventListener('click', function(e){//Hacemos que reste de 1 en 1 y aumenta la cantidad
             e.preventDefault();
             cant_dev--;
             celda2.textContent = cant_dev;
-            celda2.appendChild(suma);
-            celda2.appendChild(espacio);
-            celda2.appendChild(resta);
+            if(cant == num || cant == 0){//Valida para que no muestre valores negativos
+                alert("No Puede Restar Mas"); 
+                resta.disabled = true; //Desabilita el boton
+            }
         })  
         const celda3 = agre_dev.insertCell(3);
         const borrarButton = document.createElement("button");
@@ -210,13 +211,13 @@ btn_devolucion.addEventListener('click', function(e){
         celda2.style.border="1px solid #23ad9dc5";
         celda3.style.border="1px solid #23ad9dc5";
 
-        $(document).submit('#envia_dev', function(e){
-            e.preventDefault();
+        $(document).submit('#envia_dev', function(event){
+            event.preventDefault();
             var nom_dev = nomb_dev;
                 can_dev = cant_dev;
                 cate_dev = sel_cat;
-                var fec_dev =  $("#fecha").text();
-                var hor_dev =  $("#hora").text();
+                fec_dev =  $("#fecha_dev").text();
+                var hor_dev =  $("#hora_dev").text();
         
             $.ajax({
                 url: '../../php/instructor/registro_dev.php',
@@ -224,13 +225,12 @@ btn_devolucion.addEventListener('click', function(e){
                 data: { categoria_dev:cate_dev, nombre_dev: nom_dev, canti_dev: can_dev, fecha_dev: fec_dev, hora_dev: hor_dev },
                 success: function(g){
                     const dev = JSON.parse(g);
-                    console.log(dev);
+                    console.log(dev.status);
                     if(dev.status === 200){
                         alert("Se Registro Tu Devolucion Con Exito");
-                        document.getElementById('agregado').innerHTML = '';
+                        document.getElementById('agregado_dev').innerHTML = '';
                     }
                     else {
-                        // $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
                         alert("No Se Registro Tu Devolucion Con Exito");
                     }
                 }

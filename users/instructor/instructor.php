@@ -168,13 +168,13 @@ $hora = date("H:i:s");
         <form action="" method="post" class="formu_dev">
             <div class="primeraSeccionFechasDev">
                 <div>
-                    <b>RESPONSABLE = <?php echo $nom; ?></b>
+                    <p>RESPONSABLE</p><p id="reponsable_dev"><?php echo $nom; ?></p>
                 </div>      
                 <div>
-                    <b>FECHA = <?php echo $fecha; ?></b>
+                    <p>FECHA</p><p id="fecha_dev"><?php echo $fecha; ?></p>
                 </div>
                 <div>
-                    <b>HORA = <?php echo $hora; ?></b>
+                    <p>HORA</p><p id="hora_dev"><?php echo $hora; ?></p>
                 </div>
 
             </div>
@@ -238,14 +238,17 @@ $hora = date("H:i:s");
                                 <td class="tab_ml">ACCION</td>
                             </tr>
                         </thead>
-                        <tbody class="agregado" id="agregado">
+                        <tbody class="agregado" id="agregado_dev">
+                            <tr>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                     <!-- CA VAN TODOS LOS LISTADOS DE LO QUE SE AGREGUE -->
                 </div>
 
                 <div>
-                    <input type="submit" id="envia_dev" value="ENVIAR"> <!-- enviar a la db -->
+                    <input type="submit" id="envia_dev" value="ENVIAR DEVOLUCION"> <!-- enviar a la db -->
                 </div>      
         </form>
     </div>
