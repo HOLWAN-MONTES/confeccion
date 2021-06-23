@@ -287,11 +287,11 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">NOMBRES</label>
-                            <input class="input3" type="text" name="nom-elim" id="nom-elim" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                            <input class="input3" type="text" name="nom-elim" id="nom-elim" placeholder="NOMBRES" required style="text-transform:uppercase" readonly><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
                         </div>
                         <div>
                             <label for="">APELLIDOS</label>
-                            <input class="input3" type="text" name="apel-elim" id="apel-elim" placeholder="APELLIDOS" required style="text-transform:uppercase"> 
+                            <input class="input3" type="text" name="apel-elim" id="apel-elim" placeholder="APELLIDOS" required style="text-transform:uppercase" readonly> 
                         </div>
                     </div>
 
@@ -299,7 +299,7 @@ $hora = date("H:i:s");
                     <div class="segundalinea3">
                         <div>
                             <label for="">TIPO DE USUARIO</label>
-                            <select class="input3" name="tip_us_elim" id="tip_usu_elim" required>
+                            <select class="input3" name="tip_us_elim" id="tip_usu_elim" required disabled>
                                 <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_usu";
@@ -316,7 +316,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>  
-                            <select class="input3" name="tip_doc_elim" id="tip_docu_elim" required>
+                            <select class="input3" name="tip_doc_elim" id="tip_docu_elim" required disabled>
                                 <option>SELECCIONAR</option>
                                 <?php
                                     $tipo2 = "SELECT * FROM tipo_docu";
@@ -333,7 +333,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">EDAD</label>
-                            <input class="input3" required type="number" name="edad-elim" id="edad-elim" placeholder="EDAD">
+                            <input class="input3" required type="number" name="edad-elim" id="edad-elim" placeholder="EDAD" readonly>
                         </div>
                     </div>
 
@@ -343,12 +343,12 @@ $hora = date("H:i:s");
                         <!-- <div> <input class="input3" type="password" name="contra" id="contra" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" required></div> -->
                         <div>
                             <label for="">TELEFONO</label>  
-                            <input class="input3" type="number" name="tele-elim" id="tele-elim" placeholder="TELEFONO"  min="1" max="3999999999" required>
+                            <input class="input3" type="number" name="tele-elim" id="tele-elim" placeholder="TELEFONO"  min="1" max="3999999999" required readonly>
                         </div>
                         <input type="hidden" name="docume-elim" id="docume-elim">
                         <div>
                             <label for="">CORREO</label>  
-                            <input class="input3" type="email" name="cor-elim" id="cor-elim" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
+                            <input class="input3" type="email" name="cor-elim" id="cor-elim" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required readonly>
                         </div>
                     </div>
 
@@ -356,6 +356,7 @@ $hora = date("H:i:s");
                     <!-- caja de ENVIAR -->
                     <div class="cuartalinea3">
                         <div><input class="input3 eliminar" type="submit" name="eliminar-elim" id="elimi" value="ELIMINAR"></div>
+                        <input class="input3 cancelar" type="submit" onclick="resetearFormulario()" id="cancelar" value="CANCELAR">
                     </div>
 
 
