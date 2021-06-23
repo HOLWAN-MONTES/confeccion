@@ -16,6 +16,9 @@ $consulta_marca = mysqli_query($connection,$sql_marca);
 $sql_color = "SELECT * from color";
 $consulta_color = mysqli_query($connection,$sql_color);
 
+$sql_porveedor = "SELECT * from proveedor";
+$consulta_proveedor = mysqli_query($connection,$sql_porveedor);
+
 date_default_timezone_set("America/Bogota");
 $fecha = date("o-m-d");
 $hora = date("H:i:s");
@@ -382,7 +385,7 @@ $hora = date("H:i:s");
             <h1>REGISTRO DE INGRESO DE INSUMOS</h1>
             
             <div class="contengeneralbb">
-                <form id="" action="" method="post" id="proveedor">
+                <form  action="" method="post" id="form_proveedor">
                     <div class="primeraSeccionFechas">
                         
                         <div>
@@ -390,8 +393,14 @@ $hora = date("H:i:s");
                             <input type="hidden" name="responsable" id="" value="<?=$_SESSION['DOCUMENTO']?>">
                         </div>      
                         <div>
-                            <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id=""> 
+                            <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id="proveedor"> 
                             <option>Seleccione el proveedor</option>
+                            <?php
+                            foreach($consulta_proveedor as $proveedor) {
+                                ?> <option value="<?=$proveedor['DOCUMENTO_PROVE']?>"><?=$proveedor['NOMBRE_PRO']?> <?=$proveedor['APELLIDO_PRO']?></option>
+                            <?php
+                            }
+                            ?>
                             </select>
                         </div>
                         <div>
@@ -403,36 +412,39 @@ $hora = date("H:i:s");
 
                     </div>
                 </form>
-                <form method="POST" autocomplete="off" id="productos">
+                
                     <div class="categorias">
+                        <form method="POST" id="form_camilo">
+                            <div class="categoriass">
+                                <label for="">CATEGORIA</label>    
+                                    <select class="input6" name="categorias" id="materialbdcamilo" required>
+                                        <option>SELECCIONAR</option>
+                                        <option value="material_textil">material textil</option>
+                                        <option value="insumos">insumos</option>
+                                        <option value="maquinaria">maquinaria</option>
+                                    </select>
+                            </div>
+                        </form>
+                        <form method="POST" autocomplete="off" id="productos" class="camilo">
+                            <div id="factura"></div>    
+                            <div class="NombreCate">
+                                <label for="">NOMBRE</label> 
+                                    <select class="input6" name="categorias" id="tip_docu_edi" required>
+                                        <option>SELECCIONAR</option>
+                                        <div id="elementos"></div>
+                                    </select>
+                            </div>
+                        
 
-                        <div class="categoriass">
-                            <label for="">CATEGORIA</label>    
-                                <select class="input6" name="categorias" id="categoria" required>
-                                    <option>SELECCIONAR</option>
-                                    <option value="material_textil">material textil</option>
-                                    <option value="insumos">insumos</option>
-                                    <option value="maquinaria">maquinaria</option>
-                                </select>
-                        </div>
-                        <div class="NombreCate">
-                            <label for="">NOMBRE</label> 
-                                <select class="input6" name="categorias" id="tip_docu_edi" required>
-                                    <option>SELECCIONAR</option>
-                                    
-                                </select>
-                        </div>
-                       
+                            <div class="cantidadSe">
+                                <label for="">CANTIDAD</label>
+                                <input type="number" placeholder="CANTIDAD">
+                            </div>
 
-                        <div class="cantidadSe">
-                            <label for="">CANTIDAD</label>
-                            <input type="number" placeholder="CANTIDAD">
-                        </div>
-
-                        <div class="bnt">
-                            <input type="button" value="AGREGAR"> <!-- agregar a la lista -->
-                        </div>
-
+                            <div class="bnt">
+                                <input type="button" value="AGREGAR" id="btn_productos"> <!-- agregar a la lista -->
+                            </div>
+                        </form>    
                        
                        
                     </div>

@@ -4,6 +4,20 @@ const categoria = document.getElementById("categoria")
 const crear_tela = document.getElementById("crear_tela")
 const btn_crear_tela = document.getElementById("btn_crear_tela")
 
+// PREOVVERDOR
+const proveedor = document.getElementById("proveedor")
+const form_proveedor = document.getElementById("form_proveedor")
+const factura = document.getElementById("factura")
+
+// PRODUCTO 
+
+const form_producto = document.getElementById("productos")
+const btn_producto = document.getElementById("btn_productos")
+
+// CATEGORIA
+
+const categoria = document.getElementById("categoria")
+const form_categoria = document.getElementById("form_categoria")
 
 categoria.addEventListener("blur", () => {
     
@@ -14,6 +28,7 @@ categoria.addEventListener("blur", () => {
         body:dato
     }).then(res => res.text()).then(info => {
         alert(info)
+        proveedor.disabled = true
     })
 })
 
@@ -37,3 +52,38 @@ btn_crear_tela.addEventListener("click", (e) => {
         }
     })
 })
+
+
+// proveedor
+
+proveedor.addEventListener("blur", () => {
+
+    const dato = new FormData(form_proveedor)
+
+    fetch("../../php/admin/proveedor.php", {
+        method:"POST",
+        body:dato
+    }).then(res => res.text()).then(info => {
+        factura.innerHTML = info
+    })
+})
+
+
+// PRODUCTO 
+
+btn_producto.addEventListener("click", (e) => {
+     
+    e.preventDefault()
+
+    const dato = new FormData(form_producto)
+
+    fetch("../../php/admin/producto.php",{
+        method:"POST",
+        body:dato
+    }).then(res => res.text()).then(info => {
+        alert("alerta")
+    })
+
+
+})
+
