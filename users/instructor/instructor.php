@@ -80,7 +80,7 @@ $hora = date("H:i:s");
         <div class="cerrar1" id="cerrar1">
             <a href=""><i class="fas fa-times-circle"></i></a>
         </div>
-        <form action="" method="post" class="formu_presta">
+        <form action="" id="formul_prest" method="post" class="formu_presta">
             <div class="primeraSeccionFechas">
                 <div>
                     <p>RESPONSABLE</p><p id="reponsable"><?php echo $nom; ?></p>
@@ -152,7 +152,7 @@ $hora = date("H:i:s");
                 </div>
 
                 <div>
-                    <input type="button" id="envia_prest" value="ENVIAR"> <!-- enviar a la db -->
+                    <input type="submit" id="envia_prest" value="ENVIAR"> <!-- enviar a la db -->
                 </div> 
                 <div id="estado" style="display:none;"></div>     
         </form>
@@ -245,7 +245,7 @@ $hora = date("H:i:s");
                 </div>
 
                 <div>
-                    <input type="button" id="envia_dev" value="ENVIAR"> <!-- enviar a la db -->
+                    <input type="submit" id="envia_dev" value="ENVIAR"> <!-- enviar a la db -->
                 </div>      
         </form>
     </div>
