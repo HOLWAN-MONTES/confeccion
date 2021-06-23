@@ -83,13 +83,13 @@ $hora = date("H:i:s");
         <form action="" method="post" class="formu_presta">
             <div class="primeraSeccionFechas">
                 <div>
-                    <b>RESPONSABLE = <?php echo $nom; ?></b>
+                    <p>RESPONSABLE</p><p id="reponsable"><?php echo $nom; ?></p>
                 </div>      
                 <div>
-                    <b>FECHA = <?php echo $fecha; ?></b>
+                    <p>FECHA</p><p id="fecha"><?php echo $fecha; ?></p>
                 </div>
                 <div>
-                    <b>HORA = <?php echo $hora; ?></b>
+                    <p>HORA</p><p id="hora"><?php echo $hora; ?></p>
                 </div>
 
             </div>
@@ -143,14 +143,18 @@ $hora = date("H:i:s");
                             </tr>
                         </thead>
                         <tbody class="agregado" id="agregado">
+                            <tr>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                     <!-- CA VAN TODOS LOS LISTADOS DE LO QUE SE AGREGUE -->
                 </div>
 
                 <div>
-                    <input type="button" value="ENVIAR"> <!-- enviar a la db -->
-                </div>      
+                    <input type="button" id="envia_prest" value="ENVIAR"> <!-- enviar a la db -->
+                </div> 
+                <div id="estado" style="display:none;"></div>     
         </form>
     </div>
 </div>
@@ -241,7 +245,7 @@ $hora = date("H:i:s");
                 </div>
 
                 <div>
-                    <input type="button" value="ENVIAR"> <!-- enviar a la db -->
+                    <input type="button" id="envia_dev" value="ENVIAR"> <!-- enviar a la db -->
                 </div>      
         </form>
     </div>
