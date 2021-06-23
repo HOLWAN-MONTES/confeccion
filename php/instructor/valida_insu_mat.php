@@ -21,12 +21,3 @@ elseif($presta == 2){
     }
     echo $cadena."</select>";
 }
-elseif($presta == 3){
-    $sql = "SELECT * FROM maquinaria WHERE ID_TIP_MATE = $presta";
-    $query = mysqli_query($connection, $sql);
-    $cadena="<select id='lista2' name='lista2'>";
-    while($row=mysqli_fetch_array($query)){
-        $cadena=$cadena.'<option value='. $row[0] .'>'.utf8_encode($row[0]).'</option>';
-    }
-    echo $cadena."</select>";
-}    
