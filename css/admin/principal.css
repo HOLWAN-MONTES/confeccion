@@ -926,6 +926,10 @@ li{
    
 }
 
+.camilo{
+    display: flex;
+    justify-content: space-evenly;
+}
 
 
 
