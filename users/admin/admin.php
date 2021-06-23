@@ -16,6 +16,10 @@ $consulta_marca = mysqli_query($connection,$sql_marca);
 $sql_color = "SELECT * from color";
 $consulta_color = mysqli_query($connection,$sql_color);
 
+date_default_timezone_set("America/Bogota");
+$fecha = date("o-m-d");
+$hora = date("H:i:s");
+
 ?>
 
 <!DOCTYPE html>
@@ -378,26 +382,28 @@ $consulta_color = mysqli_query($connection,$sql_color);
             <h1>REGISTRO DE INGRESO DE INSUMOS</h1>
             
             <div class="contengeneralbb">
-                <form id="" action="" method="post">
+                <form id="" action="" method="post" id="proveedor">
                     <div class="primeraSeccionFechas">
                         
                         <div>
-                            <b>RESPONSABLE = <!-- echo nombre de la persona logueada "admin" --></b>
+                            <b>RESPONSABLE = <!-- echo nombre de la persona logueada "admin" --></b> <p><?=$_SESSION['NOMBRE']?></p>
+                            <input type="hidden" name="responsable" id="" value="<?=$_SESSION['DOCUMENTO']?>">
                         </div>      
                         <div>
-                            <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id="">
+                            <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id=""> 
                             <option>Seleccione el proveedor</option>
                             </select>
                         </div>
                         <div>
-                            <b>FECHA = <!-- fecha actual-today --></b>
+                            <b>FECHA = <!-- fecha actual-today --></b><p><?=$fecha?></p>
                         </div>
                         <div>
-                            <b>HORA = <!-- hora actual- --></b>
+                            <b>HORA = <!-- hora actual- --></b><p><?=$hora?></p>
                         </div>
 
                     </div>
-
+                </form>
+                <form method="POST" autocomplete="off" id="productos">
                     <div class="categorias">
 
                         <div class="categoriass">
