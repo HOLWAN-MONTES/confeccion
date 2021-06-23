@@ -94,5 +94,6 @@ btn_cancelar.addEventListener("click", (e) => {
     formul.reset();
     docu_elim.style.border = "1px solid black";
     docu_elim.focus();
+    docu_elim.disabled = false;
 });
 

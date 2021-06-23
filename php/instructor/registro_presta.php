@@ -34,7 +34,7 @@ if($query_pres){
     $res = array(
         "error"=> false,
         "status"=> http_response_code(200),
-        "statusText"=>"Todo lo hago rico",
+        "statusText"=>"Todo esta bien",
         
     );
     echo json_encode($res);
