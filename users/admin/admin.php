@@ -819,9 +819,35 @@ $consulta_color = mysqli_query($connection,$sql_color);
     </div>
 
     
+    <!--FORMULARIOS PEQUEÑOS PARA CREAR TIPOS 'COLOR-MARCA-ETC...'  -->
+    
+   
 
+    <div class="crearTipoDeInsumo">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="cerrarMaquinaria">X</div>
+            <div class="contentform">
+                
+                <h1>CREAR TIPO DE USUARIO</h1>
+                <form   action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-
+ <!--    <div class="CrearMarca"></div>
+    
+    <div class="CrearColor"></div>
+    
+    <div class="crearTipoDeTele"></div>
+    
+    <div class="crearMarcaMaterialTextil"></div>
+    
+    <div class="crearTipoDeMaquinaria"></div> -->
     <!-- caja delado izquierdo de los menus --------------------------->
     <div class="lateral">
 
