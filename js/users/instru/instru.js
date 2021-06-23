@@ -115,7 +115,7 @@ btn_agregar.addEventListener('click', function(e){
         celd2.style.border="1px solid #23ad9dc5";
         celd3.style.border="1px solid #23ad9dc5";
         
-        $(document).on('click', '#envia_prest', function(e){
+        $(document).submit('#envia_prest', function(e){
             e.preventDefault();
             var nome = nomb;
                 can = cant;
@@ -127,17 +127,20 @@ btn_agregar.addEventListener('click', function(e){
                 url: '../../php/instructor/registro_presta.php',
                 method: "POST",
                 data: { categoria:cate, nombre: nome, canti: can, fecha: fec, hora: hor },
-                succes: function(r){
-                    if(r === '200'){
+                success: function(r){
+                    const alde = JSON.parse(r);
+                    console.log(alde.status);
+                    if(alde.status === 200){
                         alert("Se Registro Tu Prestamo Con Exito");
+                        document.getElementById('agregado').innerHTML = '';
                     }
-                    else {
-                        $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
+                    else {  
+                        // $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
+                        alert("No Se Registro Tu Prestamo Con Exito");
                     }
                 }
             });
         });
-        
     }
     else{
         alert("Datos Vacios, Por Favor Selecciona Una Opción");
@@ -156,7 +159,7 @@ btn_devolucion.addEventListener('click', function(e){
     const valu_dev = nomb_dev.options[nomb_dev.selectedIndex].text;//Selecciona el indice el cual escogamos y mostrara el texto
     var cant_dev = document.getElementById('cant_dev').value;
     //Valida que los campos sean diferentes a vacios
-    if(selec_cat != 0 && selec_cat != '' && nomb != 0 && nomb != '' && cant != 0 && cant != ''){
+    if(sel_cat != 0 && sel_cat != '' && nomb_dev != 0 && nomb_dev != '' && cant_dev != 0 && cant_dev != ''){
         const tab_dev = document.getElementById('tab_dev');
         const agre_dev = tab_dev.insertRow(-1);//Inserta una fila automaticamente cada vez que agreguemos algo
         const celda = agre_dev.insertCell(0);//Inserta una celda automaticamente cada vez que agreguemos algo
@@ -207,7 +210,7 @@ btn_devolucion.addEventListener('click', function(e){
         celda2.style.border="1px solid #23ad9dc5";
         celda3.style.border="1px solid #23ad9dc5";
 
-        $(document).on('click', '#envia_dev', function(e){
+        $(document).submit('#envia_dev', function(e){
             e.preventDefault();
             var nom_dev = nomb_dev;
                 can_dev = cant_dev;
@@ -216,15 +219,19 @@ btn_devolucion.addEventListener('click', function(e){
                 var hor_dev =  $("#hora").text();
         
             $.ajax({
-                url: '../../php/instructor/registro_presta.php',
+                url: '../../php/instructor/registro_dev.php',
                 method: "POST",
-                data: { categoria:cate_dev, nombre: nom_dev, canti: can_dev, fecha: fec_dev, hora: hor_dev },
-                succes: function(r){
-                    if(r === '200'){
-                        alert("Se Registro Tu Prestamo Con Exito");
+                data: { categoria_dev:cate_dev, nombre_dev: nom_dev, canti_dev: can_dev, fecha_dev: fec_dev, hora_dev: hor_dev },
+                success: function(g){
+                    const dev = JSON.parse(g);
+                    console.log(dev);
+                    if(dev.status === 200){
+                        alert("Se Registro Tu Devolucion Con Exito");
+                        document.getElementById('agregado').innerHTML = '';
                     }
                     else {
-                        $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
+                        // $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
+                        alert("No Se Registro Tu Devolucion Con Exito");
                     }
                 }
             });

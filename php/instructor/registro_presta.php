@@ -31,6 +31,13 @@ if($query_pres){
         $sql = "INSERT INTO detalle_prestamo(ID_PRES_MATE, ID_INSUMOS, CANTIDAD_INSU) VALUES ('$tipp', '$nombr', '$cantidad')";
         $query = mysqli_query($connection, $sql);
     }
+    $res = array(
+        "error"=> false,
+        "status"=> http_response_code(200),
+        "statusText"=>"Todo lo hago rico",
+        
+    );
+    echo json_encode($res);
 }
 
 
