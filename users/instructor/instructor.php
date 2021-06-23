@@ -245,7 +245,7 @@ $hora = date("H:i:s");
                 </div>
 
                 <div>
-                    <input type="button" value="ENVIAR"> <!-- enviar a la db -->
+                    <input type="button" id="envia_dev" value="ENVIAR"> <!-- enviar a la db -->
                 </div>      
         </form>
     </div>

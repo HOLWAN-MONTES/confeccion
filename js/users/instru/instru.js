@@ -155,53 +155,79 @@ btn_devolucion.addEventListener('click', function(e){
     const nomb_dev = document.getElementById('dev_insu');
     const valu_dev = nomb_dev.options[nomb_dev.selectedIndex].text;//Selecciona el indice el cual escogamos y mostrara el texto
     var cant_dev = document.getElementById('cant_dev').value;
-    const tab_dev = document.getElementById('tab_dev');
-    const agre_dev = tab_dev.insertRow(-1);//Inserta una fila automaticamente cada vez que agreguemos algo
-    const celda = agre_dev.insertCell(0);//Inserta una celda automaticamente cada vez que agreguemos algo
-    celda.textContent = val_dev;
-    const celda1 = agre_dev.insertCell(1);
-    celda1.textContent = valu_dev;
-    const celda2 = agre_dev.insertCell(2);
-    celda2.textContent = cant_dev;
-    const espacio = document.createTextNode('        ');//Espacio para botones
-    const suma = document.createElement("button");//Creamos un boton
-    suma.textContent = "+"; //Le asignamos lo que queremos que se vea, el +
-    const resta = document.createElement("button");//Creamos un boton
-    resta.textContent = "-";//Le asignamos lo que queremos que se vea, el -
-    celda2.appendChild(suma); //Lo agregamos a la tabla, indicandole en que celda
-    celda2.appendChild(espacio);//Lo agregamos a la tabla, indicandole en que celda
-    celda2.appendChild(resta);//Lo agregamos a la tabla, indicandole en que celda
+    //Valida que los campos sean diferentes a vacios
+    if(selec_cat != 0 && selec_cat != '' && nomb != 0 && nomb != '' && cant != 0 && cant != ''){
+        const tab_dev = document.getElementById('tab_dev');
+        const agre_dev = tab_dev.insertRow(-1);//Inserta una fila automaticamente cada vez que agreguemos algo
+        const celda = agre_dev.insertCell(0);//Inserta una celda automaticamente cada vez que agreguemos algo
+        celda.textContent = val_dev;
+        const celda1 = agre_dev.insertCell(1);
+        celda1.textContent = valu_dev;
+        const celda2 = agre_dev.insertCell(2);
+        celda2.textContent = cant_dev;
+        const espacio = document.createTextNode('        ');//Espacio para botones
+        const suma = document.createElement("button");//Creamos un boton
+        suma.textContent = "+"; //Le asignamos lo que queremos que se vea, el +
+        const resta = document.createElement("button");//Creamos un boton
+        resta.textContent = "-";//Le asignamos lo que queremos que se vea, el -
+        celda2.appendChild(suma); //Lo agregamos a la tabla, indicandole en que celda
+        celda2.appendChild(espacio);//Lo agregamos a la tabla, indicandole en que celda
+        celda2.appendChild(resta);//Lo agregamos a la tabla, indicandole en que celda
 
-    suma.addEventListener('click', function(e){//Hacemos que sume de 1 en 1 y aumenta la cantidad
-        e.preventDefault();
-        cant_dev++;
-        celda2.textContent = cant_dev;
-        celda2.appendChild(suma);
-        celda2.appendChild(espacio);
-        celda2.appendChild(resta);
-    })
-    resta.addEventListener('click', function(e){//Hacemos que reste de 1 en 1 y aumenta la cantidad
-        e.preventDefault();
-        cant_dev--;
-        celda2.textContent = cant_dev;
-        celda2.appendChild(suma);
-        celda2.appendChild(espacio);
-        celda2.appendChild(resta);
-    })  
-    const celda3 = agre_dev.insertCell(3);
-    const borrarButton = document.createElement("button");
-    borrarButton.textContent = "Eliminar";
-    celda3.appendChild(borrarButton);
-    borrarButton.addEventListener('click', (e)=>{//Funcion para eliminar las filas agregadas
-        e.preventDefault();
-        e.target.parentNode.parentNode.remove();//Elimina las filas que han sido agregadas
-        alert("Devolucion Eliminado");//Envia alerta
-    });
-    $('option:selected').removeAttr("selected"); //Vacia los campos de los selects cuando agrega
-    $('input[type="number"]').val(''); //Vacia el campo del input 
-    //Estilos de la tabla
-    celda.style.border="1px solid #23ad9dc5";
-    celda1.style.border="1px solid #23ad9dc5";
-    celda2.style.border="1px solid #23ad9dc5";
-    celda3.style.border="1px solid #23ad9dc5";
+        suma.addEventListener('click', function(e){//Hacemos que sume de 1 en 1 y aumenta la cantidad
+            e.preventDefault();
+            cant_dev++;
+            celda2.textContent = cant_dev;
+            celda2.appendChild(suma);
+            celda2.appendChild(espacio);
+            celda2.appendChild(resta);
+        })
+        resta.addEventListener('click', function(e){//Hacemos que reste de 1 en 1 y aumenta la cantidad
+            e.preventDefault();
+            cant_dev--;
+            celda2.textContent = cant_dev;
+            celda2.appendChild(suma);
+            celda2.appendChild(espacio);
+            celda2.appendChild(resta);
+        })  
+        const celda3 = agre_dev.insertCell(3);
+        const borrarButton = document.createElement("button");
+        borrarButton.textContent = "Eliminar";
+        celda3.appendChild(borrarButton);
+        borrarButton.addEventListener('click', (e)=>{//Funcion para eliminar las filas agregadas
+            e.preventDefault();
+            e.target.parentNode.parentNode.remove();//Elimina las filas que han sido agregadas
+            alert("Devolucion Eliminado");//Envia alerta
+        });
+        $('option:selected').removeAttr("selected"); //Vacia los campos de los selects cuando agrega
+        $('input[type="number"]').val(''); //Vacia el campo del input 
+        //Estilos de la tabla
+        celda.style.border="1px solid #23ad9dc5";
+        celda1.style.border="1px solid #23ad9dc5";
+        celda2.style.border="1px solid #23ad9dc5";
+        celda3.style.border="1px solid #23ad9dc5";
+
+        $(document).on('click', '#envia_dev', function(e){
+            e.preventDefault();
+            var nom_dev = nomb_dev;
+                can_dev = cant_dev;
+                cate_dev = sel_cat;
+                var fec_dev =  $("#fecha").text();
+                var hor_dev =  $("#hora").text();
+        
+            $.ajax({
+                url: '../../php/instructor/registro_presta.php',
+                method: "POST",
+                data: { categoria:cate_dev, nombre: nom_dev, canti: can_dev, fecha: fec_dev, hora: hor_dev },
+                succes: function(r){
+                    if(r === '200'){
+                        alert("Se Registro Tu Prestamo Con Exito");
+                    }
+                    else {
+                        $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
+                    }
+                }
+            });
+        });
+    }
 })

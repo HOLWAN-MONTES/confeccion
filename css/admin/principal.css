@@ -569,10 +569,15 @@ li{
 .eliminar{
     cursor: pointer;
 }
-
-
-
-
+.cancelar{
+    padding: 6px 30px 6px 30px;
+    text-align: center;
+    margin: 0 auto;
+    width: 18.3%;
+}
+/* .cancelar:focus{
+    color: #000;
+} */
 /* ----------------------------------INGRESO DE MATERIAL TEXTIL-------------------------- */
 
 .contentIngresoDeInsumos{
@@ -993,12 +998,22 @@ li{
 }
 
 .primeraLineaMa{
-
     display: grid;
+    margin-bottom: 10px;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    margin-bottom: 20px;
 }
+
+
+.fff{
+   
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 30px;
+
+}
+
+  
 
 .segundaLineaMa{
    

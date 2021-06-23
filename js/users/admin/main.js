@@ -33,11 +33,21 @@ const btneliminarUsu = document.getElementById('eliminarUsu');
 const contentIngresoDeInsumos = document.getElementById('contentIngresoDeInsumos');
 const btningreso = document.getElementById('ingreso');
 
+/* sub-crear */
+const content_general_form = document.getElementById('content_general_form');
+
+
+
 /* otras opciones de ingreso -crear insumo-crear maquinaria- crear material textil*/
 const menusañedidos = document.getElementById('menusañedidos');
 const btncrearInsumoa = document.getElementById('crearInsumoa');
 const btncrearmaterialtext = document.getElementById('crearmaterialtext');
 const btncrearMaquinaria = document.getElementById('crearMaquinaria');
+
+
+
+
+
 /* content */
 const containerCrearInsumo = document.getElementById('containerCrearInsumo');
 const containerCrearMaterialTextil = document.getElementById('containerCrearMaterialTextil');
@@ -52,30 +62,45 @@ const cerrarmaterialTex = document.getElementById('cerrarmaterialTex');
 const cerrarMaquinaria = document.getElementById('cerrarMaquinaria');
 
 /* crear tipo de insumo */
-const cerrartipoinsumo =document.getElementById('cerrartipoinsumo')
-const crearTipoDeInsumo = document.getElementById('crearTipoDeInsumo')
+const btn_tipo_insumo = document.getElementById('btn_tipo_insumo');
+const cerrartipoinsumo =document.getElementById('cerrartipoinsumo');
+const crearTipoDeInsumo = document.getElementById('crearTipoDeInsumo');
 
 /* marca */
+const btn_marca_insumo = document.getElementById('btn_marca_insumo')
 const cerrarmarcac = document.getElementById('cerrarmarcac');
 const CrearMarca = document.getElementById('CrearMarca');
+const btncrearmarcatela = document.getElementById('btncrearmarcatela')
+const bntcrearmarcamaqui = document.getElementById('bntcrearmarcamaqui')
 
 /* color */
+const btn_crear_color = document.getElementById('btn_crear_color');
 const CrearColor = document.getElementById('CrearColor');
-const crearcolorb = document.getElementById('crearcolorb')
+const crearcolorb = document.getElementById('crearcolorb');
+const crearcolormaqui = document.getElementById('crearcolormaqui');
+
+const crearcolormaterial = document.getElementById('crearcolormaterial')
 
 /* crearTipoDeTele */
-const btncreartipodetela = document.getElementById('btncreartipodetela');
+const btncerrartipodetela = document.getElementById('btncerrartipodetela');
 const crearTipoDeTele = document.getElementById('crearTipoDeTele');
 
 /* material textil */
 const btncrearmaterialtextf = document.getElementById('btncrearmaterialtextf');
 const crearMarcaMaterialTextil = document.getElementById('crearMarcaMaterialTextil')
 
+
 /* tipo de maquinaria */
 const crearTipoDeMaquinaria = document.getElementById('crearTipoDeMaquinaria');
-const btncreartipodemaqui = document.getElementById('btncreartipodemaqui')
+const btncerrartipodemaqui = document.getElementById('btncerrartipodemaqui')
+const creartipodemaquinarr = document.getElementById('creartipodemaquinarr')
+btncerrartipodemaqui.addEventListener('click',function(){
+    crearTipoDeMaquinaria.style.display = "none"
+})
 
-
+creartipodemaquinarr.addEventListener('click',function(){
+    crearTipoDeMaquinaria.style.display = "block"
+})
 
 
 
@@ -177,10 +202,14 @@ btningreso.addEventListener('click',function(){
     
 })
 
+
+
 /* ------------------------------------------------------------- */
 btncrearInsumoa.addEventListener('click',function(){
     containerCrearInsumo.style.display = "block";
 })
+
+
 
 insumo_cerrar.addEventListener('click',function(){
     containerCrearInsumo.style.display = "none";
@@ -216,21 +245,50 @@ cerrartipoinsumo.addEventListener('click',function(){
     crearTipoDeInsumo.style.display = 'none'
 })
 
+btn_tipo_insumo.addEventListener('click',function(){
+    crearTipoDeInsumo.style.display = 'block'
+})
 
+
+/* crearmarca */
 cerrarmarcac.addEventListener('click',function(){
     CrearMarca.style.display = "none"
 })
-
-
-
-crearcolorb.addEventListener('click',function(){
-    CrearColor.style.display = "none"
+btn_marca_insumo.addEventListener('click',function(){
+    CrearMarca.style.display = "block"
+})
+btncrearmarcatela.addEventListener('click',function(){
+    CrearMarca.style.display = "block"
+})
+bntcrearmarcamaqui.addEventListener('click',function(){
+    CrearMarca.style.display = "block"
 })
 
 
+/* color */
+crearcolorb.addEventListener('click',function(){
+    CrearColor.style.display = "none"
+})
+btn_crear_color.addEventListener('click',function(){
+    CrearColor.style.display = "block"
+})
+crearcolormaterial.addEventListener('click',function(){
+    CrearColor.style.display = "block"
+})
+crearcolormaqui.addEventListener('click',function(){
+    CrearColor.style.display = "block"
+})
 
+const crartipodetela = document.getElementById('crartipodetela')
 
+/* tipotela */
+btncerrartipodetela.addEventListener('click',function(){
+    crearTipoDeTele.style.display = "none"
+})
 
+crartipodetela.addEventListener('click',function(){
+    crearTipoDeTele.style.display = "block"
+})
 
 //devoluciones-------------------------------------------------------------------------------
 btndevoluciones.addEventListener('click',function(){

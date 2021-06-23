@@ -16,6 +16,9 @@ $consulta_marca = mysqli_query($connection,$sql_marca);
 $sql_color = "SELECT * from color";
 $consulta_color = mysqli_query($connection,$sql_color);
 
+$sql_porveedor = "SELECT * from proveedor";
+$consulta_proveedor = mysqli_query($connection,$sql_porveedor);
+
 date_default_timezone_set("America/Bogota");
 $fecha = date("o-m-d");
 $hora = date("H:i:s");
@@ -79,7 +82,7 @@ $hora = date("H:i:s");
             <h1>REGISTRO DE USUARIOS</h1>
             <div class="contenFprmularioCrearUsu">
         
-            <form class="form1" action="" method="POST" autocomplete="off"  enctype="multipart/form-data" id="crear_usuario">
+            <form class="form1" method="POST" autocomplete="off"  enctype="multipart/form-data" id="crear_usuario">
 
                     <!-- caja de documento-nombres-apellidos -->
                     <div class="primeralinea">
@@ -105,21 +108,21 @@ $hora = date("H:i:s");
                     <div class="segundalinea">
                         <div>
                             <label for="">TIPO DE USUARIO</label>    
-                            <select class="input1" name="tip_us_crea"  required>
+                            <select class="input1" name="tip_us_crea"  required style="text-transform:uppercase">
                                 <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_usu";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
-                                <option value="<?php echo $tip[0]; ?>">
+                                <option value="<?php echo $tip[0]; ?>" style="text-transform:uppercase">
                                     <?php echo $tip[1]; ?>
                                 </option>
                                 <?php
                                 }
                                 ?>
                             </select>
-                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6>
+                           <!--  <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6> -->
                         </div>
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>    
@@ -181,7 +184,7 @@ $hora = date("H:i:s");
         <div class="contentEditarUsuario" id="contentEditarUsuario">
             <h1>EDITAR USUARIO</h1>
             <div class="contenFprmularioEditarUsu" id="contenFprmularioEditarUsu">
-                <form class="form-edi" id="form-edi" method="POST">
+                <form class="form-edi" id="form-edi" method="POST" autocomplete="off">
                     <div class="primeralinea2">
 
                         <div>
@@ -191,12 +194,12 @@ $hora = date("H:i:s");
 
                         <div>
                             <label for="">NOMBRES</label>    
-                            <input class="input2" type="text" name="nom" id="nom-edi" placeholder="NOMBRES" autocomplete="off" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                            <input class="input2" type="text" name="nom" id="nom-edi" placeholder="NOMBRES" autocomplete="off" required style="text-transform:uppercase" readonly><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
                         </div>
                         
                         <div>
                             <label for="">APELLIDOS</label>    
-                            <input class="input2" type="text" name="apel" id="apel-edi" placeholder="APELLIDOS" autocomplete="off" required style="text-transform:uppercase">
+                            <input class="input2" type="text" name="apel" id="apel-edi" placeholder="APELLIDOS" autocomplete="off" required style="text-transform:uppercase" readonly>
                         </div>
                     </div>
 
@@ -205,7 +208,7 @@ $hora = date("H:i:s");
                     <div class="segundalinea2">
                         <div>
                             <label for="">TIPO DE USUARIO</label>    
-                            <select class="input2" name="tip_us" id="tip_usu_edi" required>
+                            <select class="input2" name="tip_us" id="tip_usu_edi" required disabled>
                                 <option >SELECCIONAR</option>
                                 <?php
                                 $tipo = "SELECT * FROM tipo_usu";
@@ -222,7 +225,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>    
-                            <select class="input2" name="tip_doc" id="tip_docu_edi" required>
+                            <select class="input2" name="tip_doc" id="tip_docu_edi" required disabled>
                                 <option>SELECCIONAR</option>
                                 <?php
                                 $tipo2 = "SELECT * FROM tipo_docu";
@@ -258,7 +261,7 @@ $hora = date("H:i:s");
 
                         <div>
                             <label for="">CORREO</label>    
-                            <input class="input2" type="email" name="cor" id="cor-edi" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" autocomplete="off" required>
+                            <input class="input2" type="email" name="cor" id="cor-edi" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" autocomplete="off" required readonly>
                         </div>
                         
                         <input type="hidden" name="docume" id="docume-edi">
@@ -287,11 +290,11 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">NOMBRES</label>
-                            <input class="input3" type="text" name="nom-elim" id="nom-elim" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                            <input class="input3" type="text" name="nom-elim" id="nom-elim" placeholder="NOMBRES" required style="text-transform:uppercase" readonly><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
                         </div>
                         <div>
                             <label for="">APELLIDOS</label>
-                            <input class="input3" type="text" name="apel-elim" id="apel-elim" placeholder="APELLIDOS" required style="text-transform:uppercase"> 
+                            <input class="input3" type="text" name="apel-elim" id="apel-elim" placeholder="APELLIDOS" required style="text-transform:uppercase" readonly> 
                         </div>
                     </div>
 
@@ -299,7 +302,7 @@ $hora = date("H:i:s");
                     <div class="segundalinea3">
                         <div>
                             <label for="">TIPO DE USUARIO</label>
-                            <select class="input3" name="tip_us_elim" id="tip_usu_elim" required>
+                            <select class="input3" name="tip_us_elim" id="tip_usu_elim" required disabled>
                                 <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_usu";
@@ -316,7 +319,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>  
-                            <select class="input3" name="tip_doc_elim" id="tip_docu_elim" required>
+                            <select class="input3" name="tip_doc_elim" id="tip_docu_elim" required disabled>
                                 <option>SELECCIONAR</option>
                                 <?php
                                     $tipo2 = "SELECT * FROM tipo_docu";
@@ -333,7 +336,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">EDAD</label>
-                            <input class="input3" required type="number" name="edad-elim" id="edad-elim" placeholder="EDAD">
+                            <input class="input3" required type="number" name="edad-elim" id="edad-elim" placeholder="EDAD" readonly>
                         </div>
                     </div>
 
@@ -343,12 +346,12 @@ $hora = date("H:i:s");
                         <!-- <div> <input class="input3" type="password" name="contra" id="contra" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" required></div> -->
                         <div>
                             <label for="">TELEFONO</label>  
-                            <input class="input3" type="number" name="tele-elim" id="tele-elim" placeholder="TELEFONO"  min="1" max="3999999999" required>
+                            <input class="input3" type="number" name="tele-elim" id="tele-elim" placeholder="TELEFONO"  min="1" max="3999999999" required readonly>
                         </div>
                         <input type="hidden" name="docume-elim" id="docume-elim">
                         <div>
                             <label for="">CORREO</label>  
-                            <input class="input3" type="email" name="cor-elim" id="cor-elim" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
+                            <input class="input3" type="email" name="cor-elim" id="cor-elim" placeholder="CORREO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required readonly>
                         </div>
                     </div>
 
@@ -356,6 +359,7 @@ $hora = date("H:i:s");
                     <!-- caja de ENVIAR -->
                     <div class="cuartalinea3">
                         <div><input class="input3 eliminar" type="submit" name="eliminar-elim" id="elimi" value="ELIMINAR"></div>
+                        <input class="input3 cancelar" type="submit" onclick="resetearFormulario()" id="cancelar" value="CANCELAR">
                     </div>
 
 
@@ -382,7 +386,7 @@ $hora = date("H:i:s");
             <h1>REGISTRO DE INGRESO DE INSUMOS</h1>
             
             <div class="contengeneralbb">
-                <form id="" action="" method="post" id="proveedor">
+                <form  action="" method="post" id="form_proveedor">
                     <div class="primeraSeccionFechas">
                         
                         <div>
@@ -390,8 +394,14 @@ $hora = date("H:i:s");
                             <input type="hidden" name="responsable" id="" value="<?=$_SESSION['DOCUMENTO']?>">
                         </div>      
                         <div>
-                            <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id=""> 
+                            <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id="proveedor"> 
                             <option>Seleccione el proveedor</option>
+                            <?php
+                            foreach($consulta_proveedor as $proveedor) {
+                                ?> <option value="<?=$proveedor['DOCUMENTO_PROVE']?>"><?=$proveedor['NOMBRE_PRO']?> <?=$proveedor['APELLIDO_PRO']?></option>
+                            <?php
+                            }
+                            ?>
                             </select>
                         </div>
                         <div>
@@ -403,36 +413,42 @@ $hora = date("H:i:s");
 
                     </div>
                 </form>
-                <form method="POST" autocomplete="off" id="productos">
+                
                     <div class="categorias">
+                        <form method="POST" id="form_camilo">
+                            <div class="categoriass">
+                                <label for="">CATEGORIA</label>    
+                                    <select class="input6" name="categorias" id="materialbdcamilo" required>
+                                        <option>SELECCIONAR</option>
+                                        <option value="material_textil">material textil</option>
+                                        <option value="insumos">insumos</option>
+                                        <option value="maquinaria">maquinaria</option>
+                                    </select>
+                            </div>
+                        </form>
+                        <form method="POST" autocomplete="off" id="productos">
+                            <div class="fff">
+                                <div id="factura"></div>    
+                                <div class="NombreCate">
+                                        <label for="">NOMBRE</label> 
+                                        <select class="input6" name="categorias" id="tip_docu_edi" required>
+                                            <option>SELECCIONAR</option>
+                                            <div id="elementos"></div>
+                                        </select>
+                                </div>
 
-                        <div class="categoriass">
-                            <label for="">CATEGORIA</label>    
-                                <select class="input6" name="categorias" id="categoria" required>
-                                    <option>SELECCIONAR</option>
-                                    <option value="material_textil">material textil</option>
-                                    <option value="insumos">insumos</option>
-                                    <option value="maquinaria">maquinaria</option>
-                                </select>
-                        </div>
-                        <div class="NombreCate">
-                            <label for="">NOMBRE</label> 
-                                <select class="input6" name="categorias" id="tip_docu_edi" required>
-                                    <option>SELECCIONAR</option>
-                                    
-                                </select>
-                        </div>
-                       
+                                <div class="cantidadSe">
+                                    <label for="">CANTIDAD</label>
+                                    <input type="number" placeholder="CANTIDAD">
+                                </div>
+                            
+                           
 
-                        <div class="cantidadSe">
-                            <label for="">CANTIDAD</label>
-                            <input type="number" placeholder="CANTIDAD">
-                        </div>
-
-                        <div class="bnt">
-                            <input type="button" value="AGREGAR"> <!-- agregar a la lista -->
-                        </div>
-
+                                <div class="bnt">
+                                    <input type="button" value="AGREGAR" id="btn_productos"> <!-- agregar a la lista -->
+                                </div>
+                            </div>
+                        </form>    
                        
                        
                     </div>
@@ -501,9 +517,6 @@ $hora = date("H:i:s");
  
 
 
-
-
-
     <!----------------------------------------- MOSTRAR TODOS LOS USUARIOS REGISTRADOS------------------------- -->
     <div class="todosLosusuarios" id="todosLosusuarios">
             <!-- boton de cerrar los usuarios -->
@@ -560,7 +573,7 @@ $hora = date("H:i:s");
     <!-- ------------------------------------------------------------------------------------ -->
 
 
-    <!----------------- SUB FORMULARIOS CREAR INSUMOS----------------------------------- -->
+    <!----------------- SUB FORMULARIOS CREAR INSUMOS ----------------------------------- -->
     <!-- crear insumo -->
     <div class="containerCrearInsumo" id="containerCrearInsumo">
             <div class="content_general_form">
@@ -570,14 +583,14 @@ $hora = date("H:i:s");
                         <div class="primeralinea5">
                             <div>
                                 <label for="">TIPO DE INSUMO</label>    
-                                <select class="input5" name="tip_insumo"  required>
+                                <select class="input5" name="tip_insumo" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
                                         $tipo = "SELECT * FROM tipo_insumo";
                                         $inser = mysqli_query($connection,$tipo);
                                         while($tip = mysqli_fetch_array($inser)){
                                     ?>
-                                    <option value="<?php echo $tip[0]; ?>">
+                                    <option value="<?php echo $tip[0]; ?>" style="text-transform:uppercase">
                                         <?php echo $tip[1]; ?>
                                     </option>
                                     <?php
@@ -588,14 +601,14 @@ $hora = date("H:i:s");
                             </div>
                             <div>
                                 <label for="">NOMBRE DEL INSUMO</label>
-                                <input class="input5 NombreInsumo" type="text" name="NombreInsumo" id="NombreInsumo" placeholder="NOMBRE DEL INSUMO" required>
+                                <input class="input5 NombreInsumo" type="text" name="NombreInsumo" id="NombreInsumo" placeholder="NOMBRE DEL INSUMO" required style="text-transform:uppercase">
                             </div>
                         </div>
 
                         <div class="segundalinea5">
                             <div>
                                 <label for="">MARCA DEL INSUMO</label>    
-                                <select class="input5" name="marca_insumo"  required>
+                                <select class="input5" name="marca_insumo"  required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
                                         $tipo = "SELECT * FROM marca";
@@ -613,7 +626,7 @@ $hora = date("H:i:s");
                             </div>
                             <div>
                                 <label for="">COLOR DEL INSUMO</label>    
-                                <select class="input5" name="color_insumo"  required>
+                                <select class="input5" name="color_insumo"  required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
                                         $tipo = "SELECT * FROM color";
@@ -653,11 +666,11 @@ $hora = date("H:i:s");
                     <div class="primerafilaMaterialtext">
                         <div class="filasinter">
                             <label for="">NOMBRE MATERIAL TEXTIL</label>
-                            <input class="input7" type="text" name="nombre_tela">
+                            <input class="input7" type="text" name="nombre_tela" style="text-transform:uppercase">
                         </div>
                         <div class="filasinter">
                             <label for="">TIPO DE TELA</label>
-                            <select class="input7" name="tipo_tela" id="tip_usu_elim" required>
+                            <select class="input7" name="tipo_tela" id="tip_usu_elim" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
                                         foreach ($consulta_tela as $tipo_tela){
@@ -670,11 +683,11 @@ $hora = date("H:i:s");
                                     ?>
                                     
                             </select>
-                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE TELA</h6>
+                            <h6 class="agregaradi" id="crartipodetela">CREAR TIPO DE TELA</h6>
                         </div>
                         <div class="filasinter">
                             <label for="">MARCA</label>
-                            <select class="input7" name="marca" id="tip_usu_elim" required>
+                            <select class="input7" name="marca" id="tip_usu_elim" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
                                         foreach ( $consulta_marca as $marca){
@@ -687,14 +700,14 @@ $hora = date("H:i:s");
                                     ?>
                                    
                             </select>
-                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR MARCA</h6>
+                            <h6 class="agregaradi" id="btncrearmarcatela">CREAR MARCA</h6>
                         </div>                
 
                     </div>
                     <div class="segundafilaMaterialtext">
                         <div class="filasinter">
                             <label for="">COLOR</label>
-                                <select class="input7" name="color" id="" required>
+                                <select class="input7" name="color" id="" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
                                         foreach($consulta_color as $color){
@@ -707,11 +720,11 @@ $hora = date("H:i:s");
                                     ?>
                                     
                             </select>
-                            <h6 class="agregaradi" id="">CREAR COLOR</h6>
+                            <h6 class="agregaradi" id="crearcolormaterial">CREAR COLOR</h6>
                         </div>   
                         <div class="filasinter">
                             <label for="">METRAJE</label>
-                            <input class="input7" placeholder="" type="text" required>
+                            <input class="input7" placeholder="" type="number" required>
                         </div>
                         <div class="filasinter">
                             <label for="">CANTIDAD ROLLOS</label>
@@ -734,7 +747,7 @@ $hora = date("H:i:s");
         <div class="contetFoMaquinaria">
             <div class="cerrarMaqui" id="cerrarMaquinaria">X</div>
             <div class="tituloMaqui">
-                <b>INGRSO DE MAQUINARIA</b>
+                <b>INGRESO DE MAQUINARIA</b>
             </div>
             <div>
                
@@ -752,8 +765,6 @@ $hora = date("H:i:s");
                             <label for="">PLACA SENA</label>
                             <input type="text" >
                         </div>
-                        
-                        
                     </div>
                     
                     <div class="segundaLineaMa">
@@ -773,7 +784,7 @@ $hora = date("H:i:s");
                                 }
                                 ?>
                             </select>
-                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR MARCA</h6>
+                            <h6 class="agregaradi agregaradi5" id="bntcrearmarcamaqui">CREAR MARCA</h6>
                         </div>
                         <div>
                             <label for="">COLOR DE MAQUINARIA</label>    
@@ -791,7 +802,7 @@ $hora = date("H:i:s");
                                 }
                                 ?>
                             </select>
-                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR COLOR </h6>
+                            <h6 class="agregaradi agregaradi5" id="crearcolormaqui">CREAR COLOR </h6>
                         </div>
                         <div>
                             <label for="">TIPO DE MAQUINARIA</label>    
@@ -809,7 +820,7 @@ $hora = date("H:i:s");
                                 }
                                 ?>
                             </select>
-                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE MAQUINARIA</h6>
+                            <h6 class="agregaradi agregaradi5" id="creartipodemaquinarr">CREAR TIPO DE MAQUINARIA</h6>
                         </div>
                     </div>
 
@@ -880,7 +891,7 @@ $hora = date("H:i:s");
     <div class="crearTipoDeTele" id="crearTipoDeTele">
         <div class="containerTip">
                 
-                <div class="btncrrarALl" id="btncreartipodetela">X</div>
+                <div class="btncrrarALl" id="btncerrartipodetela">X</div>
             <div>
                 
                 <h1>CREAR TIPO DE TELA</h1>
@@ -896,7 +907,7 @@ $hora = date("H:i:s");
     <div class="crearMarcaMaterialTextil" id="crearMarcaMaterialTextilf">
         <div class="containerTip">
                 
-                <div class="btncrrarALl" id="btncrearmaterialtext">X</div>
+                <div class="btncrrarALl" id="btncerrarmaterialtext">X</div>
             <div>
                 
                 <h1>CREAR MARCA</h1>
@@ -912,7 +923,7 @@ $hora = date("H:i:s");
     <div class="crearTipoDeMaquinaria" id="crearTipoDeMaquinaria">
         <div class="containerTip">
                 
-                <div class="btncrrarALl" id="btncreartipodemaqui">X</div>
+                <div class="btncrrarALl" id="btncerrartipodemaqui">X</div>
             <div>
                 
                 <h1>CREAR TIPO DE MAQUINARIA</h1>
@@ -924,6 +935,33 @@ $hora = date("H:i:s");
             </div>
         </div>
     </div>
+
+    <!-- -----------------------------------------INVENTARIOS---------------- -->
+    <!-- inventario de maquinaria -->
+    <div class="contenedorinventariomaquinariageneral">
+            
+    </div>
+
+    <!-- inventario de material textil -->
+    <div class="contenedorinventariomaterialtextgeneral">
+
+    </div>
+
+    <!-- inventario de insumos -->
+    <div class="contenedorinventarioinsumos">
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
     <!-- caja delado izquierdo de los menus --------------------------->
     <div class="lateral">
 
