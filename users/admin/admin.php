@@ -62,7 +62,7 @@ $hora = date("H:i:s");
                                     <?php echo $_SESSION['NOMBRE']; ?>
                                 </div>
                                 <ul class="mos_nom">
-                                    <li class="tetxt"><a href="#"> EDITAR PERFIL</a></li>
+                                   
                                     <li class="tetxt"><a href="../../php/exit/salir.php"> CERRAR SESION</a></li>
                                 </ul>
                             </li>
@@ -122,7 +122,7 @@ $hora = date("H:i:s");
                                 }
                                 ?>
                             </select>
-                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6>
+                           <!--  <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6> -->
                         </div>
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>    
@@ -426,24 +426,27 @@ $hora = date("H:i:s");
                                     </select>
                             </div>
                         </form>
-                        <form method="POST" autocomplete="off" id="productos" class="camilo">
-                            <div id="factura"></div>    
-                            <div class="NombreCate">
-                                <label for="">NOMBRE</label> 
-                                    <select class="input6" name="categorias" id="tip_docu_edi" required>
-                                        <option>SELECCIONAR</option>
-                                        <div id="elementos"></div>
-                                    </select>
-                            </div>
-                        
+                        <form method="POST" autocomplete="off" id="productos">
+                            <div class="fff">
+                                <div id="factura"></div>    
+                                <div class="NombreCate">
+                                        <label for="">NOMBRE</label> 
+                                        <select class="input6" name="categorias" id="tip_docu_edi" required>
+                                            <option>SELECCIONAR</option>
+                                            <div id="elementos"></div>
+                                        </select>
+                                </div>
 
-                            <div class="cantidadSe">
-                                <label for="">CANTIDAD</label>
-                                <input type="number" placeholder="CANTIDAD">
-                            </div>
+                                <div class="cantidadSe">
+                                    <label for="">CANTIDAD</label>
+                                    <input type="number" placeholder="CANTIDAD">
+                                </div>
+                            
+                           
 
-                            <div class="bnt">
-                                <input type="button" value="AGREGAR" id="btn_productos"> <!-- agregar a la lista -->
+                                <div class="bnt">
+                                    <input type="button" value="AGREGAR" id="btn_productos"> <!-- agregar a la lista -->
+                                </div>
                             </div>
                         </form>    
                        
@@ -468,9 +471,6 @@ $hora = date("H:i:s");
           
         
         </div>
-
-      
-     
 
     </main>
 
@@ -515,9 +515,6 @@ $hora = date("H:i:s");
         </div>
     </div>
  
-
-
-
 
 
     <!----------------------------------------- MOSTRAR TODOS LOS USUARIOS REGISTRADOS------------------------- -->
@@ -576,7 +573,7 @@ $hora = date("H:i:s");
     <!-- ------------------------------------------------------------------------------------ -->
 
 
-    <!----------------- SUB FORMULARIOS CREAR INSUMOS----------------------------------- -->
+    <!----------------- SUB FORMULARIOS CREAR INSUMOS ----------------------------------- -->
     <!-- crear insumo -->
     <div class="containerCrearInsumo" id="containerCrearInsumo">
             <div class="content_general_form">
@@ -686,7 +683,7 @@ $hora = date("H:i:s");
                                     ?>
                                     
                             </select>
-                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE TELA</h6>
+                            <h6 class="agregaradi" id="crartipodetela">CREAR TIPO DE TELA</h6>
                         </div>
                         <div class="filasinter">
                             <label for="">MARCA</label>
@@ -703,7 +700,7 @@ $hora = date("H:i:s");
                                     ?>
                                    
                             </select>
-                            <h6 class="agregaradi" id="btn_tipo_usuario">CREAR MARCA</h6>
+                            <h6 class="agregaradi" id="btncrearmarcatela">CREAR MARCA</h6>
                         </div>                
 
                     </div>
@@ -723,7 +720,7 @@ $hora = date("H:i:s");
                                     ?>
                                     
                             </select>
-                            <h6 class="agregaradi" id="">CREAR COLOR</h6>
+                            <h6 class="agregaradi" id="crearcolormaterial">CREAR COLOR</h6>
                         </div>   
                         <div class="filasinter">
                             <label for="">METRAJE</label>
@@ -748,42 +745,31 @@ $hora = date("H:i:s");
     <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">
         
         <div class="contetFoMaquinaria">
+            <div class="cerrarMaqui" id="cerrarMaquinaria">X</div>
             <div class="tituloMaqui">
-                <b>INGRSO DE MAQUINARIA</b>
+                <b>INGRESO DE MAQUINARIA</b>
             </div>
             <div>
                
-                <form action="" class="formularioCrearMaqui">
-                    <div class="primeraLineaMa">
-                        <div>
-                            <label for="">SERIAL</label>
-                            <input type="text" name="" id="">
-                        </div>
-
-                        
-                        <div>
-                            <label for="">TIPO DE INSUMO</label>    
-                            <select class="input5" name="tip_insumo"  required>
-                                <option >SELECCIONAR</option>
-                                <?php
-                                    $tipo = "SELECT * FROM tipo_usu";
-                                    $inser = mysqli_query($connection,$tipo);
-                                    while($tip = mysqli_fetch_array($inser)){
-                                ?>
-                                <option value="<?php echo $tip[0]; ?>">
-                                    <?php echo $tip[1]; ?>
-                                </option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE INSUMO</h6>
-                        </div>
+                <form  action="" class="formularioCrearMaqui">
                     
+                    <div class="primeraLineaMa">
+                        <div class="asd">
+                            <label for="">SERIAL</label>
+                            <div>
+                            <input type="text" name="" id="">
+                            </div>
+                            
+                        </div>
+                        <div class="asd">
+                            <label for="">PLACA SENA</label>
+                            <input type="text" >
+                        </div>
                     </div>
+                    
                     <div class="segundaLineaMa">
                         <div>
-                            <label for="">TIPO DE INSUMO</label>    
+                            <label for="">MARCA DE MAQUINARIA </label>    
                             <select class="input5" name="tip_insumo"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
@@ -798,11 +784,29 @@ $hora = date("H:i:s");
                                 }
                                 ?>
                             </select>
-                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE INSUMO</h6>
+                            <h6 class="agregaradi agregaradi5" id="bntcrearmarcamaqui">CREAR MARCA</h6>
                         </div>
                         <div>
-                            <label for="">TIPO DE INSUMO</label>    
+                            <label for="">COLOR DE MAQUINARIA</label>    
                             <select class="input5" name="tip_insumo"  required>
+                                <option >SELECCIONAR</option>
+                                <?php
+                                    $tipo = "SELECT * FROM color";
+                                    $inser = mysqli_query($connection,$tipo);
+                                    while($tip = mysqli_fetch_array($inser)){
+                                ?>
+                                <option value="<?php echo $tip[0]; ?>">
+                                    <?php echo $tip[1]; ?>
+                                </option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                            <h6 class="agregaradi agregaradi5" id="crearcolormaqui">CREAR COLOR </h6>
+                        </div>
+                        <div>
+                            <label for="">TIPO DE MAQUINARIA</label>    
+                            <select class="input5 labeltipma" name="tip_insumo"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_usu";
@@ -816,9 +820,10 @@ $hora = date("H:i:s");
                                 }
                                 ?>
                             </select>
-                            <h6 class="agregaradi agregaradi5" id="btn_tipo_insumo">CREAR TIPO DE INSUMO</h6>
+                            <h6 class="agregaradi agregaradi5" id="creartipodemaquinarr">CREAR TIPO DE MAQUINARIA</h6>
                         </div>
                     </div>
+
                     <div class="terceraLineaMa">
                         <input type="button" value="ENVIAR">
                     </div>
@@ -831,6 +836,129 @@ $hora = date("H:i:s");
     </div>
 
     
+    <!--FORMULARIOS PEQUEÑOS PARA CREAR TIPOS 'COLOR-MARCA-ETC...'  -->
+    
+   
+
+    <div class="crearTipoDeInsumo" id="crearTipoDeInsumo">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="cerrartipoinsumo">X</div>
+            <div>
+                
+                <h1>CREAR TIPO DE INSUMO</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="CrearMarca" id="CrearMarca">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="cerrarmarcac">X</div>
+            <div>
+                
+                <h1>CREAR MARCA</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="CrearColor" id="CrearColor">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="crearcolorb">X</div>
+            <div>
+                
+                <h1>CREAR COLOR</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="crearTipoDeTele" id="crearTipoDeTele">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="btncerrartipodetela">X</div>
+            <div>
+                
+                <h1>CREAR TIPO DE TELA</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="crearMarcaMaterialTextil" id="crearMarcaMaterialTextilf">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="btncerrarmaterialtext">X</div>
+            <div>
+                
+                <h1>CREAR MARCA</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="crearTipoDeMaquinaria" id="crearTipoDeMaquinaria">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="btncerrartipodemaqui">X</div>
+            <div>
+                
+                <h1>CREAR TIPO DE MAQUINARIA</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- -----------------------------------------INVENTARIOS---------------- -->
+    <!-- inventario de maquinaria -->
+    <div class="contenedorinventariomaquinariageneral">
+            
+    </div>
+
+    <!-- inventario de material textil -->
+    <div class="contenedorinventariomaterialtextgeneral">
+
+    </div>
+
+    <!-- inventario de insumos -->
+    <div class="contenedorinventarioinsumos">
+
+    </div>
+
+
+
+
+
+
+
+
 
 
 
