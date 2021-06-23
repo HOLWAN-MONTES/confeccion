@@ -59,7 +59,7 @@ $hora = date("H:i:s");
                                     <?php echo $_SESSION['NOMBRE']; ?>
                                 </div>
                                 <ul class="mos_nom">
-                                    <li class="tetxt"><a href="#"> EDITAR PERFIL</a></li>
+                                   
                                     <li class="tetxt"><a href="../../php/exit/salir.php"> CERRAR SESION</a></li>
                                 </ul>
                             </li>
@@ -829,14 +829,14 @@ $hora = date("H:i:s");
     
    
 
-    <div class="crearTipoDeInsumo">
+    <div class="crearTipoDeInsumo" id="crearTipoDeInsumo">
         <div class="containerTip">
                 
-                <div class="btncrrarALl" id="cerrarMaquinaria">X</div>
-            <div class="contentform">
+                <div class="btncrrarALl" id="cerrartipoinsumo">X</div>
+            <div>
                 
-                <h1>CREAR TIPO DE USUARIO</h1>
-                <form   action="#" method="POST">
+                <h1>CREAR TIPO DE INSUMO</h1>
+                <form class="contentform"  action="#" method="POST">
                     
                     <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
                     <div><input class="btn_peque_form" type="button" value="CREAR"></div>
@@ -845,15 +845,85 @@ $hora = date("H:i:s");
         </div>
     </div>
 
- <!--    <div class="CrearMarca"></div>
+    <div class="CrearMarca" id="CrearMarca">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="cerrarmarcac">X</div>
+            <div>
+                
+                <h1>CREAR MARCA</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
     
-    <div class="CrearColor"></div>
+    <div class="CrearColor" id="CrearColor">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="crearcolorb">X</div>
+            <div>
+                
+                <h1>CREAR COLOR</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
     
-    <div class="crearTipoDeTele"></div>
+    <div class="crearTipoDeTele" id="crearTipoDeTele">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="btncreartipodetela">X</div>
+            <div>
+                
+                <h1>CREAR TIPO DE TELA</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
     
-    <div class="crearMarcaMaterialTextil"></div>
+    <div class="crearMarcaMaterialTextil" id="crearMarcaMaterialTextilf">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="btncrearmaterialtext">X</div>
+            <div>
+                
+                <h1>CREAR MARCA</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
     
-    <div class="crearTipoDeMaquinaria"></div> -->
+    <div class="crearTipoDeMaquinaria" id="crearTipoDeMaquinaria">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="btncreartipodemaqui">X</div>
+            <div>
+                
+                <h1>CREAR TIPO DE MAQUINARIA</h1>
+                <form class="contentform"  action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- caja delado izquierdo de los menus --------------------------->
     <div class="lateral">
 

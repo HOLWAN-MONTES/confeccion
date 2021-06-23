@@ -51,6 +51,36 @@ const cerrarmaterialTex = document.getElementById('cerrarmaterialTex');
 /* MAQUINARIA */
 const cerrarMaquinaria = document.getElementById('cerrarMaquinaria');
 
+/* crear tipo de insumo */
+const cerrartipoinsumo =document.getElementById('cerrartipoinsumo')
+const crearTipoDeInsumo = document.getElementById('crearTipoDeInsumo')
+
+/* marca */
+const cerrarmarcac = document.getElementById('cerrarmarcac');
+const CrearMarca = document.getElementById('CrearMarca');
+
+/* color */
+const CrearColor = document.getElementById('CrearColor');
+const crearcolorb = document.getElementById('crearcolorb')
+
+/* crearTipoDeTele */
+const btncreartipodetela = document.getElementById('btncreartipodetela');
+const crearTipoDeTele = document.getElementById('crearTipoDeTele');
+
+/* material textil */
+const btncrearmaterialtextf = document.getElementById('btncrearmaterialtextf');
+const crearMarcaMaterialTextil = document.getElementById('crearMarcaMaterialTextil')
+
+/* tipo de maquinaria */
+const crearTipoDeMaquinaria = document.getElementById('crearTipoDeMaquinaria');
+const btncreartipodemaqui = document.getElementById('btncreartipodemaqui')
+
+
+
+
+
+
+
 
 //devoluciones-----------------
 const btndevoluciones = document.getElementById('devoluciones');
@@ -163,6 +193,7 @@ cerrarmaterialTex.addEventListener('click',function(){
 
 })
 
+
 /* formulario maquinaria */
 cerrarMaquinaria.addEventListener('click',function(){
     containerCrearmaquinaria.style.display = "none"
@@ -180,13 +211,21 @@ btncrearMaquinaria.addEventListener('click',function(){
 
 
 
+/* -FORMULARIOS PEQUEÑOS PARA CREAR TIPOS 'COLOR-MARCA-ETC...'  */ 
+cerrartipoinsumo.addEventListener('click',function(){
+    crearTipoDeInsumo.style.display = 'none'
+})
+
+
+cerrarmarcac.addEventListener('click',function(){
+    CrearMarca.style.display = "none"
+})
 
 
 
-
-
-
-
+crearcolorb.addEventListener('click',function(){
+    CrearColor.style.display = "none"
+})
 
 
 
