@@ -472,6 +472,22 @@ $hora = date("H:i:s");
         
         </div>
 
+        <!-- -----------------------------------------INVENTARIOS---------------- -->
+    <!-- inventario de maquinaria -->
+    <div class="contenedorinventariomaquinariageneral">
+            
+            </div>
+        
+            <!-- inventario de material textil -->
+            <div class="contenedorinventariomaterialtextgeneral">
+        
+            </div>
+        
+            <!-- inventario de insumos -->
+            <div class="contenedorinventarioinsumos">
+        
+            </div>
+
     </main>
 
 
@@ -936,31 +952,7 @@ $hora = date("H:i:s");
         </div>
     </div>
 
-    <!-- -----------------------------------------INVENTARIOS---------------- -->
-    <!-- inventario de maquinaria -->
-    <div class="contenedorinventariomaquinariageneral">
-            
-    </div>
-
-    <!-- inventario de material textil -->
-    <div class="contenedorinventariomaterialtextgeneral">
-
-    </div>
-
-    <!-- inventario de insumos -->
-    <div class="contenedorinventarioinsumos">
-
-    </div>
-
-
-
-
-
-
-
-
-
-
+    
 
     <!-- caja delado izquierdo de los menus --------------------------->
     <div class="lateral">
