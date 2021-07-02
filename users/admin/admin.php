@@ -6,9 +6,8 @@ $usario = $_SESSION["DOCUMENTO"];
 if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
 }
+/* 
 
-$sql_tela = "SELECT * from tipo_tela";
-$consulta_tela = mysqli_query($connection,$sql_tela);
 
 $sql_marca= "SELECT * from marca";
 $consulta_marca = mysqli_query($connection,$sql_marca);
@@ -16,12 +15,11 @@ $consulta_marca = mysqli_query($connection,$sql_marca);
 $sql_color = "SELECT * from color";
 $consulta_color = mysqli_query($connection,$sql_color);
 
-$sql_porveedor = "SELECT * from proveedor";
-$consulta_proveedor = mysqli_query($connection,$sql_porveedor);
+*/
 
 date_default_timezone_set("America/Bogota");
 $fecha = date("o-m-d");
-$hora = date("H:i:s");
+$hora = date("H:i:s"); 
 
 ?>
 
@@ -111,7 +109,7 @@ $hora = date("H:i:s");
                             <select class="input1" name="tip_us_crea"  required style="text-transform:uppercase">
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM tipo_usu";
+                                    $tipo = "SELECT * FROM tipo_usuario";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
@@ -129,7 +127,7 @@ $hora = date("H:i:s");
                             <select class="input1" name="tip_docu" id="" required>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM tipo_docu";
+                                    $tipo = "SELECT * FROM tipo_documento";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
@@ -211,7 +209,7 @@ $hora = date("H:i:s");
                             <select class="input2" name="tip_us" id="tip_usu_edi" required disabled>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                $tipo = "SELECT * FROM tipo_usu";
+                                $tipo = "SELECT * FROM tipo_usuario";
                                 $inser = mysqli_query($connection,$tipo);
                                 while($tip = mysqli_fetch_array($inser)){
                                 ?>
@@ -228,7 +226,7 @@ $hora = date("H:i:s");
                             <select class="input2" name="tip_doc" id="tip_docu_edi" required disabled>
                                 <option>SELECCIONAR</option>
                                 <?php
-                                $tipo2 = "SELECT * FROM tipo_docu";
+                                $tipo2 = "SELECT * FROM tipo_documento";
                                 $inser2 = mysqli_query($connection,$tipo2);
                                 while($tip2 = mysqli_fetch_array($inser2)){
                                 ?>
@@ -305,7 +303,7 @@ $hora = date("H:i:s");
                             <select class="input3" name="tip_us_elim" id="tip_usu_elim" required disabled>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM tipo_usu";
+                                    $tipo = "SELECT * FROM tipo_usuario";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
@@ -322,7 +320,7 @@ $hora = date("H:i:s");
                             <select class="input3" name="tip_doc_elim" id="tip_docu_elim" required disabled>
                                 <option>SELECCIONAR</option>
                                 <?php
-                                    $tipo2 = "SELECT * FROM tipo_docu";
+                                    $tipo2 = "SELECT * FROM tipo_documento";
                                     $inser2 = mysqli_query($connection,$tipo2);
                                     while($tip2 = mysqli_fetch_array($inser2)){
                                 ?>
@@ -367,7 +365,6 @@ $hora = date("H:i:s");
             </div>
         </div>
 
-
         <!-- MENU DE DE MAS FORMULARIOS CREARINSUMO-CREAR_MATERIAL_TEXTIL-CREAR_MAQUINARIA -->
         <div class="menusañedidos" id="menusañedidos">
             <div class="crearInsumoa" id="crearInsumoa">
@@ -396,9 +393,11 @@ $hora = date("H:i:s");
                         <div>
                             <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id="proveedor"> 
                             <option>Seleccione el proveedor</option>
-                            <?php
+                <!-- GUYS -->                 <?php
+                            $sql_porveedor = "SELECT * from usuario";
+                            $consulta_proveedor = mysqli_query($connection,$sql_porveedor);
                             foreach($consulta_proveedor as $proveedor) {
-                                ?> <option value="<?=$proveedor['DOCUMENTO_PROVE']?>"><?=$proveedor['NOMBRE_PRO']?> <?=$proveedor['APELLIDO_PRO']?></option>
+                                ?> <option value="<?=$proveedor['NIT']?>"><?=$proveedor['NOMBRE']?> </option>
                             <?php
                             }
                             ?>
@@ -557,7 +556,7 @@ $hora = date("H:i:s");
                 </thead>
                 <tbody>
                     <?php 
-                        $sql= "SELECT  DOCUMENTO,NOM_TIPO_DOCU,NOM_TIPO_USU,NOMBRE,APELLIDO,EDAD,TELEFONO,CORREO,FOTO from tipo_usu,tipo_docu,usuario where usuario.ID_TIPO_DOCU=tipo_docu.ID_TIPO_DOCU and usuario.ID_TIPO_USU = tipo_usu.ID_TIPO_USU";
+                        $sql= "SELECT  DOCUMENTO,NOM_TIP_DOCU,NOM_TIP_USU,NOMBRE,APELLIDO,FECHA_NACIMIENTO,CELULAR,CORREO,FOTO from tipo_usuario,tipo_documento,usuario where usuario.ID_TIP_DOCU=tipo_documento.ID_TIP_DOCU and usuario.ID_TIP_USU = tipo_usuario.ID_TIP_USU";
                         $result=mysqli_query($connection,$sql);
 
                         while($mostrar=mysqli_fetch_array($result)){
@@ -572,7 +571,8 @@ $hora = date("H:i:s");
                                 <td class="filasEdad"><?php echo $mostrar[5] ?></td>
                                 <td class="filas"><?php echo $mostrar[6] ?></td>
                                 <td class="filas"><?php echo $mostrar[7] ?></td>
-                                <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td>
+                                <td class="filas"><?php echo $mostrar[8] ?></td>
+                                <!-- <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td> -->
                             
 
                             </tr>	  
@@ -689,10 +689,12 @@ $hora = date("H:i:s");
                             <select class="input7" name="tipo_tela" id="tip_usu_elim" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
+                                    $sql_tela = "SELECT * from tipo_material_textil";
+                                    $consulta_tela = mysqli_query($connection,$sql_tela);
                                         foreach ($consulta_tela as $tipo_tela){
                                     ?>
-                                    <option  value="<?=$tipo_tela['ID_TIPO_TELA']?>">
-                                    <?=$tipo_tela['NOM_TIPO_TELA']?>
+                                    <option  value="<?=$tipo_tela['ID_TIP_MATE_TEXTIL']?>">
+                                    <?=$tipo_tela['NOM_TIP_MATE_TEXTIL']?>
                                     </option>
                                     <?php
                                     }
@@ -742,10 +744,10 @@ $hora = date("H:i:s");
                             <label for="">METRAJE</label>
                             <input class="input7" placeholder="" type="number" required>
                         </div>
-                        <div class="filasinter">
+                     <!--    <div class="filasinter">
                             <label for="">CANTIDAD ROLLOS</label>
                             <input class="input7" placeholder="" type="number" required>
-                        </div>  
+                        </div>   -->
 
                     </div>
                     <div class="tercerafilaMaterialtext">
@@ -789,7 +791,7 @@ $hora = date("H:i:s");
                             <select class="input5" name="tip_insumo"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM tipo_usu";
+                                    $tipo = "SELECT * FROM tipo_usuario";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
@@ -825,7 +827,7 @@ $hora = date("H:i:s");
                             <select class="input5 labeltipma" name="tip_insumo"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM tipo_usu";
+                                    $tipo = "SELECT * FROM tipo_usuario";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>

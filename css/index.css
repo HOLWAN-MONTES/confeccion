@@ -89,20 +89,13 @@ a{
 /* ------------------PAGINAS DE LADO IZQUIERDO------------------------- */
 
 .paginas{
-
     display: inline-block;
-    
     position: relative;
     margin-top: 1%;
-
 }
 
 main{
     display: flex;
-    /* flex-direction: row; */
-   /*  flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; */
 }
 
 /* imagen central */
@@ -114,7 +107,6 @@ main{
     margin: 15px;
     margin-left: 6%;
     border-radius: 10px;
-    
 }
 /* letras del relleno o titulo */
 
@@ -122,7 +114,6 @@ main{
     margin-top: 3%;
     background-color: rgba(222, 223, 222, 0.678);
     text-align: center;
-
 }
 
 
@@ -138,7 +129,7 @@ main{
 
 
 .imgcostudpie{
- width: 10%;
+    width: 10%;
 }
 
 .info{
@@ -151,7 +142,25 @@ main{
 }
 
 .contentinfo{
-
     width: 40%;
     margin:0 auto;
 }
+
+
+@media only screen and (max-width: 600px) {
+    header{
+        background-color: blue;
+    }
+
+    .logosena{
+        width: 100px; 
+        padding:5px;
+    }
+}
+
+
+@media only screen and (max-width: 300px) {
+
+}
+
+
