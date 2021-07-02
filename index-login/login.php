@@ -4,7 +4,7 @@ session_start();
 
 ?>
 <?php
-    $sql_re = "SELECT * FROM tipo_usu";
+    $sql_re = "SELECT * FROM tipo_usuario";
     $query_re = mysqli_query($connection, $sql_re);
     $fila_re = mysqli_fetch_assoc($query_re);
 ?>
@@ -53,9 +53,9 @@ session_start();
                             <?php
                             foreach ($query_re as $tipo) : ?>
         
-                            <option value="<?php echo $tipo['ID_TIPO_USU'] ?>">
+                            <option value="<?php echo $tipo['ID_TIP_USU'] ?>">
                                 
-                                <?php echo $tipo['NOM_TIPO_USU'] ?></option>
+                                <?php echo $tipo['NOM_TIP_USU'] ?></option>
                             <?php
                             endforeach;
                             ?>
