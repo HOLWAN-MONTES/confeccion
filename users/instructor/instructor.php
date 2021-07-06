@@ -44,7 +44,7 @@ $hora = date("H:i:s");
             </div>
             <div class="inf">
                 <H1>INSTRUCTOR@</H1>
-                <h4>NOMBRE : <?php echo $_SESSION['NOMBRE'] ;?> <?php echo $_SESSION['APELLIDO']; ?></H3>
+                <h4>NOMBRE : <?php echo $_SESSION['NOMBRE'] ;?> <?php echo $_SESSION['APELLIDO']; ?></h4>
                 <h4> TELEFONO :<?php echo $_SESSION['TELEFONO'] ; ?></h4>
                 <h4> CORREO :<?php echo $_SESSION['CORREO'] ; ?></h4>
                 <h4> EDAD :<?php echo $_SESSION['EDAD'] ; ?></h4>                  

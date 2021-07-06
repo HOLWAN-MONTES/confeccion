@@ -240,7 +240,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">EDAD</label>    
-                            <input class="input2" required type="number" name="edad" id="edad-edi" placeholder="EDAD">
+                            <input class="input2" required type="date" name="edad" id="edad-edi" placeholder="EDAD">
                         </div>
                     </div>
 
@@ -1008,6 +1008,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/created_user.js"></script>
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
+    <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 
 </html>

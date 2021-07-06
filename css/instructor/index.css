@@ -13,14 +13,14 @@
 /*----------------- div de informacion del instructor----------- */
 .informacion{
     width: 50%;
-    background-color:#c0c0c0;
+    background-color:#e7dbcb;
 }
 .logos{
     width: 50%;
     display: flex;
     padding: 5%;
     margin-left: 25%;
-    height: 20%;
+    height: 30%;
 }
 .logo_em{
     width: 50%;
@@ -45,7 +45,7 @@
 .foto img{
     width: 100%;
     height: 100%;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 .inf{
     padding: 3%;
@@ -58,6 +58,7 @@
 .inf h4{
     margin-left: 10%;
     padding: 2%;
+    text-transform: uppercase;
 }
 /* ---------------botones de editar y cerrar ---------------*/
 .acciones{
@@ -70,12 +71,12 @@
     width: 90%;
     height: 10vh;
     margin-left: 5%;
-    background-color: rgb(24, 130, 118);
+    background-color: #ff8000;
     border: none;
 }
 .acciones a{
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 3vh;
 }
 .acciones a:hover{
@@ -86,7 +87,7 @@
     width: 90%;
     height: 10vh;
     margin-left: 5%;
-    background-color: rgb(24, 130, 118);
+    background-color: #ff8000;
     border: none;
     font-size: 3vh;
 }
@@ -331,4 +332,307 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: -100vh;
     position: absolute;
     display: none;
+}
+/*Responsive Para Blackberry PlayBook*/
+@media only screen and (min-width: 600px) {
+    .general{
+        margin-top: -11%;
+        width: 70%;
+        height: 80vh;
+        display: block;
+    }
+    .informacion{
+        width: 75%;
+        background-color:#e7dbcb;
+    }
+    .logos{
+        margin-top: 20%;
+        width: 90%;
+        margin-left: 8%;
+        height: 73%;
+        display: block;
+    }
+    .logo_em{
+        width: 50%;
+        height: 100%;
+    }
+    .logo_se{
+        margin-top: -48%;
+        margin-left: 52%;
+        width: 50%;
+        height: 100%;
+        display: flex;
+    }
+    .instru{
+        margin-top: 13%;
+        width: 75%;
+        margin-left: 1%;
+        padding: 1%;    
+        height: 30%;
+    }
+    .foto{
+        margin-top: 50px;
+        width: 70%;
+        height: 90%;
+    }
+    .foto img{
+        width: 110%;
+        height: 60%;
+        border-radius: 50%;
+    }
+    .inf{
+        padding: 3%;
+        width: 70%;
+        height: 30%;
+    }
+    .inf h1{
+        text-align: center;
+        font-size: larger;
+        margin-left: 8%;
+    }
+    .inf h4{
+        margin-left: 8%;
+        padding: 2%;
+        text-transform: uppercase;
+        font-size: 15px;
+    }
+    .acciones{
+        width: 90%;
+        margin-left: 5%;
+        min-height: 30vh;
+        padding: 4%;
+    }
+    .editar{
+        margin-top: 10%;
+        width: 50%;
+        height: 5vh;
+        margin-left: 25%;
+        background-color: #ff8000;
+        border: none;
+    }
+    .acciones a{
+        text-decoration: none;
+        color: white;
+        font-size: 2vh;
+    }
+    .Cerrar{
+        margin-top: 10%;
+        width: 50%;
+        height: 5vh;
+        margin-left: 25%;
+        background-color: #ff8000;
+        border: none;
+        font-size: 2vh;
+    }
+    .opciones{
+        width: 67%;
+        background-color: rgb(124, 214, 204);
+        height: 85%;
+        margin-left: 75%;
+        margin-top: -180%;
+        display: block;
+    }
+    .uno{
+        background-color: black;
+        width: 100%;
+        height: 27vh;
+    }
+    .logo_pre{
+        width: 90%;
+        height: 100%;
+        cursor: pointer;
+    }
+    .dos{
+        background-color: rgb(78, 78, 78);
+        width: 100%;
+        height: 26vh;
+    }
+    .logo_de{
+        width: 90%;
+        height: 100%;
+        cursor: pointer;
+    }
+    .tres{
+        background-color: rgb(199, 198, 198);
+        width: 100%;
+        height: 21vh;
+    }
+    .cuatro{
+        width: 50%;
+        height: 100%;
+        cursor: pointer;
+    }
+    .cinco{
+        width: 50%;
+        height: 21vh;
+        cursor: pointer;
+    }
+}
+/*Responsive Para Blackberry Z30, Galaxy Note3, Galaxy Note2, Galaxy S3, Microsoft Lumia 950, Moto G4, NEXUS 5, Galaxy S5*/
+@media only screen and (max-width: 360px) {
+    .general{
+        border: 1px solid black;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    /* .informacion{
+        width: 30%;
+        background-color:#e7dbcb;
+    }
+    .logos{
+        margin-top: -10%;
+        width: 10%;
+        margin-left: 8%;
+        height: 1%;
+    }
+    .instru{
+        width: 95%;
+        height: 30%;
+    }
+    .foto{
+        margin-top: 13%;
+        width: 40%;
+        height: 120%;
+    }
+    .foto img{
+        width: 90%;
+        height: 50%;
+        border-radius: 50%;
+    }
+    .inf{
+        padding: 1%;
+        width: 20%;
+        height: 30%;
+    }
+    .inf h1{
+        text-align: center;
+        font-size: larger;
+    }
+    .inf h4{
+        margin-left: 0%;
+        padding: 1%;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+    .acciones{
+        margin-top: 5%;
+        width: 90%;
+        margin-left: 5%;
+        min-height: 10vh;
+        padding: 6%;
+        color: white;
+    } */
+    /* .opciones{
+        width: 1%;
+        background-color: rgb(124, 214, 204);
+        height: 100vh;
+        
+    } */
+    /* .uno{
+        background-color: black;
+        width: 1%;
+        height: 33vh;
+        
+    } */
+    /* .logo_pre{
+        width: 9%;
+        height: 100%;
+        cursor: pointer;
+        display: block;
+    } */
+    /*-------------- devoluciones--------------- */
+    /* .dos{
+        background-color: rgb(78, 78, 78);
+        width: 1%;
+        height: 33vh;
+        display: block;
+    } */
+    /* .logo_de{
+        width: 9%;
+        height: 100%;
+        cursor: pointer;
+        display: block;
+    } */
+    /*-------------- pendientes--------------- */
+    /* .tres{
+        background-color: rgb(199, 198, 198);
+        width: 1%;
+        height: 34vh;
+    } */
+    /*-------------- prestamos pendientes--------------- */
+    /* .cuatro{
+        width: 45%;
+        height: 100%;
+        cursor: pointer;
+        display: block;
+    } */
+    /*-------------- devoluciones pendientes--------------- */
+    .cinco{
+        width: 45%;
+        height: 100%;
+        cursor: pointer;
+        display: block;
+    }
+}
+/*Responsive Para Nokia Lumia 520, IPhone 4, IPhone 5/SE*/
+@media only screen and (max-width: 320px) {
+    .general{
+        width: 100%;
+        height: 70vh;
+    }
+    .informacion{
+        width: 100%;
+        background-color:#e7dbcb;
+    }
+    .logos{
+        width: 55%;
+        padding: 1%;
+        margin-left: 25%;
+        height: 20%;
+    }
+    .instru{
+        width: 95%;
+        height: 30%;
+    }
+    .foto{
+        margin-top: 13%;
+        width: 40%;
+        height: 120%;
+    }
+    .foto img{
+        width: 90%;
+        height: 50%;
+        border-radius: 50%;
+    }
+    .inf{
+        padding: 1%;
+        width: 20%;
+        height: 30%;
+    }
+    .inf h1{
+        text-align: center;
+        font-size: larger;
+    }
+    .inf h4{
+        margin-left: 0%;
+        padding: 1%;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+    .acciones{
+        margin-top: 4%;
+        width: 90%;
+        margin-left: 5%;
+        min-height: 10vh;
+        padding: 6%;
+        color: white;
+    }
+    .opciones{
+        width: 100%;
+        background-color: rgb(124, 214, 204);
+        height: 100vh;
+        margin-top: 146%;
+        margin-left: -80%;
+    }
 }
