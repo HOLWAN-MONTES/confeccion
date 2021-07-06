@@ -1,5 +1,3 @@
-const categoria = document.getElementById("categoria")
-
 // FORMULARIOS DE CREAR MATERIAL TEXTIL
 const crear_tela = document.getElementById("crear_tela")
 const btn_crear_tela = document.getElementById("btn_crear_tela")
