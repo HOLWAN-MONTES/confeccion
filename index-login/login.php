@@ -62,7 +62,7 @@ session_start();
                         </select><br> 
                     
                         <button class="btnEnviar" id="crear">INGRESAR</button>
-                    
+                    <div>
                 </form>
             
         </div>

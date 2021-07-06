@@ -32,6 +32,8 @@ $hora = date("H:i:s");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/admin/principal.css">
     <script src="https://kit.fontawesome.com/7b875e4198.js" crossorigin="anonymous"></script>
+    <!-- api de Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>ADMINISTRADOR</title>
 </head>
 
@@ -78,26 +80,32 @@ $hora = date("H:i:s");
         <!-- PRIMER FORMULARIO DE USUARIO -->
         <div class="contentCrearUsuario" id="contentCrearUsuario">
             <h1>REGISTRO DE USUARIOS</h1>
-            <div class="contenFprmularioCrearUsu">
+            <div class="contenFprmularioCrearUsu" id="contenFprmularioCrearUsu">
         
-            <form class="form1" method="POST" autocomplete="off"  enctype="multipart/form-data" id="crear_usuario">
+                <form class="form1" method="POST" autocomplete="off"  enctype="multipart/form-data" id="crear_usuario">
 
                     <!-- caja de documento-nombres-apellidos -->
                     <div class="primeralinea">
                         
-                        <div>
-                            <label for="">NUMERO DE DOCUMENTO</label>    
-                            <input class="input1" type="number" name="docu" id="docu" placeholder="DOCUMENTO" required> <!-- &nbsp;&nbsp;&nbsp; -->
+                        <div class="formulario__grupo" id="grupo__documento">
+                            <label for="">DOCUMENTO</label>    
+                            <input class="input1" type="number" name="docu" id="docu" placeholder="DOCUMENTO" maxlength="11" required > <!-- &nbsp;&nbsp;&nbsp; -->
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            <p class="formulario__input-error">El documento solo puede contener numeros y el maximo son 10 dígitos.</p>
                         </div>
                         
-                        <div>
+                        <div id="grupo__nombres">
                             <label for="">NOMBRES</label>    
                             <input class="input1" type="text" name="nom" id="nom" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            <p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
                         </div>
                         
-                        <div>
+                        <div id="grupo__apellidos">
                             <label for="">APELLIDOS</label>    
                             <input class="input1" type="text" name="apel" id="apel" placeholder="APELLIDOS" required style="text-transform:uppercase">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            <p class="formulario__input-error">El apellido tiene que ser de 4 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
                         </div>
                     </div>
 
@@ -106,7 +114,7 @@ $hora = date("H:i:s");
                     <div class="segundalinea">
                         <div>
                             <label for="">TIPO DE USUARIO</label>    
-                            <select class="input1" name="tip_us_crea"  required style="text-transform:uppercase">
+                            <select class="input1" name="tip_us_crea" id="tip_us_crea"  required style="text-transform:uppercase">
                                 <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_usuario";
@@ -124,7 +132,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>    
-                            <select class="input1" name="tip_docu" id="" required>
+                            <select class="input1" name="tip_docu" id="tip_docu" required>
                                 <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_documento";
@@ -140,38 +148,44 @@ $hora = date("H:i:s");
                             </select>
                             <h6 class="agregaradi" id="btn_tipo_documento">CREAR TIPO DE DOCUMENTO</h6>
                         </div>
-                        <div>
-                            <label for="">EDAD</label>    
-                            <input class="input1" required type="number" name="EDAD" id="" placeholder="EDAD">
+                        <div  id="grupo__nacimiento">
+                            <label for="">FECHA NACIMIENTO</label>    
+                            <input class="input1" type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="EDAD"  required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
                     </div>
 
 
                     <!-- caja de password-numerotel-email -->
                     <div class="terceralinea">
-                        <div>
-                        <label for="">CONTRASEÑA</label>    
+                        <div id="grupo__contra">
+                            <label for="">CONTRASEÑA</label>    
                             <input class="input1" type="password" name="contra" id="contra" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            <p class="formulario__input-error">La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.</p>
                         </div>
                         
-                        <div>
+                        <div id="grupo__telefono">
                             <label for="">TELEFONO</label>    
                             <input class="input1" type="number" name="tele" id="tele" placeholder="TELEFONO"  min="1" max="3999999999" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 10 dígitos.</p>
                         </div>
-                        <div>
+                        <div id="grupo__correo">
                             <label for="">CORREO</label>    
                             <input class="input1" type="email" name="cor" id="cor" placeholder="USER@MISENA.EDU.CO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
                         </div>
                     </div>
-
-
+                        
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea cuartalineaEnviar">
-                        <div><input class="input1 file" title="Foto de Usuario" type="file" required name="imagen" /></div>
+                        <div><input class="input1 file" title="Foto de Usuario" type="file" id="imagen" name="imagen" acept="image/" required></div>
+
                         <div><input class="input1 regis" type="submit" name="registro" id="reg" value="REGISTRAR" ></div>
                     </div>
-
-                
+                    
                 </form>
             </div>
         </div>
@@ -521,9 +535,9 @@ $hora = date("H:i:s");
         
             <div >
                 <h1>CREAR TIPO DE DOCUMENTO</h1>
-                <form action="#" method="POST">
-                    <div><input class="inptnombre"  type="text" placeholder="NOMBRE" required ></div>
-                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                <form method="POST" id="crear_tipo_documento">
+                    <div><input class="inptnombre"  type="text" name="nom_tipo_docu" id="nom_tipo_docu" placeholder="NOMBRE" required style="text-transform:uppercase"></div>
+                    <div><input class="btn_peque_form" id="reg_docu" type="submit" value="CREAR"></div>
                 </form>
             </div>
 
