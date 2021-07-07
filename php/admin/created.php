@@ -14,22 +14,6 @@ $correo = $_POST['cor'];
 
 
 # RECIBIR FORMATO DE LA FOTO Y GUARDDARLO EN LA CARPETA SELECCIONADA
-// if($_FILES['imagen']["error"]>0){
-//     echo "error al cargar";
-// }
-// else{
-//     $permitidos = array("image/png", "image/jpg", "image/jpeg")
-//     $limite_kb = 200;
-//     if(in_array($_FILES["imagen"]["type"], $permitidos) && $_FILES["imagen"]["size"]<= $limite_kb * 1024){
-//         $foto = $_FILES['imagen'] ['name'];
-//         $ruta = $_FILES['imagen'] ['tmp_name'];
-//         $destino = "../../imagesUsers/".$foto;
-//         copy($ruta,$destino);
-//     }
-//     else{
-//         echo "archivo no permitido";
-//     }
-// }
 
 $foto = $_FILES['imagen'] ['name'];
 $ruta = $_FILES['imagen'] ['tmp_name'];

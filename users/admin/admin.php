@@ -91,21 +91,21 @@ $hora = date("H:i:s");
                             <label for="">DOCUMENTO</label>    
                             <input class="input1" type="number" name="docu" id="docu" placeholder="DOCUMENTO" maxlength="11" required > <!-- &nbsp;&nbsp;&nbsp; -->
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            <p class="formulario__input-error">El documento solo puede contener numeros y el maximo son 10 dígitos.</p>
+                            <p class="formulario__input-error">El documento solo puede contener numeros, entre 8 a 10 dígitos.</p>
                         </div>
                         
                         <div id="grupo__nombres">
                             <label for="">NOMBRES</label>    
                             <input class="input1" type="text" name="nom" id="nom" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            <p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
+                            <p class="formulario__input-error">El nombre tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
                         </div>
                         
                         <div id="grupo__apellidos">
                             <label for="">APELLIDOS</label>    
                             <input class="input1" type="text" name="apel" id="apel" placeholder="APELLIDOS" required style="text-transform:uppercase">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            <p class="formulario__input-error">El apellido tiene que ser de 4 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
+                            <p class="formulario__input-error">El apellido tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
                         </div>
                     </div>
 
@@ -114,7 +114,7 @@ $hora = date("H:i:s");
                     <div class="segundalinea">
                         <div>
                             <label for="">TIPO DE USUARIO</label>    
-                            <select class="input1" name="tip_us_crea" id="tip_us_crea"  required style="text-transform:uppercase">
+                            <select class="input1" name="tip_us_crea" id="tip_us_crea" required style="text-transform:uppercase">
                                 <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_usuario";
@@ -162,7 +162,7 @@ $hora = date("H:i:s");
                             <label for="">CONTRASEÑA</label>    
                             <input class="input1" type="password" name="contra" id="contra" placeholder="CONTRASEÑA"  pattern="[A-Za-z0-9!?-]{2,12}" required>
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            <p class="formulario__input-error">La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.</p>
+                            <p class="formulario__input-error">La contraseña debe tener entre 8 a 16 caracteres, al menos un numero, una minúscula, una mayúscula y un caracter no alfanumérico.</p>
                         </div>
                         
                         <div id="grupo__telefono">
@@ -181,7 +181,7 @@ $hora = date("H:i:s");
                         
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea cuartalineaEnviar">
-                        <div><input class="input1 file" title="Foto de Usuario" type="file" id="imagen" name="imagen" acept="image/" required></div>
+                        <div><input class="input1 file" title="Foto de Usuario" type="file" id="imagen" name="imagen" accept="image/png,image/jpeg,image/jpg" required></div>
 
                         <div><input class="input1 regis" type="submit" name="registro" id="reg" value="REGISTRAR" ></div>
                     </div>
@@ -539,9 +539,9 @@ $hora = date("H:i:s");
         
             <div >
                 <h1>CREAR TIPO DE DOCUMENTO</h1>
-                <form method="POST" id="crear_tipo_documento">
-                    <div><input class="inptnombre"  type="text" name="nom_tipo_docu" id="nom_tipo_docu" placeholder="NOMBRE" required style="text-transform:uppercase"></div>
-                    <div><input class="btn_peque_form" id="reg_docu" type="submit" value="CREAR"></div>
+                <form method="POST" id="usuario_docu" autocomplete="off">
+                    <div><input class="inptnombre"  type="text" name="tip_docum" id="tip_docum" placeholder="NOMBRE" required style="text-transform:uppercase"></div>
+                    <div><input class="btn_peque_form" id="insertar" type="submit" value="CREAR"></div>
                 </form>
             </div>
 
@@ -589,8 +589,8 @@ $hora = date("H:i:s");
                                 <td class="filasEdad"><?php echo $mostrar[5] ?></td>
                                 <td class="filas"><?php echo $mostrar[6] ?></td>
                                 <td class="filas"><?php echo $mostrar[7] ?></td>
-                                <td class="filas"><?php echo $mostrar[8] ?></td>
-                                <!-- <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td> -->
+                                <!-- <td class="filas"><?php echo $mostrar[8] ?></td> -->
+                                <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td>
                             
 
                             </tr>	  
