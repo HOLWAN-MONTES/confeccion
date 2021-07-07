@@ -36,7 +36,7 @@ document.addEventListener('keypress', (e)=>{
                 fetch('../../php/admin/editar_user.php', option)
                  .then(res => res.ok ? res.json() : Promise.reject(res))
                  .then(datos => {
-                    console.log(datos);
+                    // console.log(datos);
                     const {err, status, statusText, data} = datos;
                     if(data.lenght !== 0 && err != true){
                         const {DOCUMENTO, ID_TIP_DOCU, ID_TIP_USU, NOMBRE, APELLIDO, PASSWORD, FECHA_NACIMIENTO, CELULAR, CORREO, FOTO} = data;
@@ -89,33 +89,35 @@ document.addEventListener('submit', (e)=>{
                 foto: foto.value,
             })
         }
-        fetch('../../php/admin/editar_user.php', option)
-         .then(res => res.ok ? res.json() : Promise.reject(res))
-         .then(datos => {
-            const {err, status, statusText} = datos;
-            if(status >= 200 && status < 300){
-                Swal.fire({
-                    title: 'Actualizado!',
-                    text: 'Se actualizo el usuario',
-                    icon: 'success',
-                    confirmButtonText: 'Continuar'
+        Swal.fire({
+            title: 'Esta seguro de actualizar?',
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonText: `Actualizar`,
+            denyButtonText: `No actualizar`,
+        }).then(result => {
+            if (result.isConfirmed) {
+                fetch('../../php/admin/editar_user.php', option)
+                .then(res => res.ok ? res.json() : Promise.reject(res))
+                .then(datos => {
+                    const {err, status, statusText} = datos;
+                    if(status >= 200 && status < 300){
+                        Swal.fire('Actualizado!', 'Se actualizo con exito', 'success')
+                        formu.reset()
+                        documento.disabled = false
+                    }
+                    else{
+                        Swal.fire('No actualizado', 'No se actualizo el usuario', 'info')
+                        documento.disabled = false 
+                    }
+                    console.log(datos);
                 })
-                formu.reset()
-                documento.disabled = false
-            }
+                .catch(error => console.error(error));
+            } 
             else{
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'No se pudo actualizar el usuario',
-                    icon: 'error',
-                    confirmButtonText: 'Continuar'  
-                })
-                formu.reset()
+                Swal.fire('Error', 'No se actualizo con exito', 'error')
                 documento.disabled = false
             }
-            console.log(datos);
-         })
-         .catch(error => console.error(error));
-         
+        })   
     }
 })
