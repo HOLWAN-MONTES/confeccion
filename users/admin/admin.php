@@ -585,8 +585,8 @@ $hora = date("H:i:s");
                                 <td class="filasEdad"><?php echo $mostrar[5] ?></td>
                                 <td class="filas"><?php echo $mostrar[6] ?></td>
                                 <td class="filas"><?php echo $mostrar[7] ?></td>
-                                <td class="filas"><?php echo $mostrar[8] ?></td>
-                                <!-- <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td> -->
+                                <!-- <td class="filas"><?php echo $mostrar[8] ?></td> -->
+                                <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td>
                             
 
                             </tr>	  

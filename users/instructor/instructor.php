@@ -6,7 +6,7 @@ $usario = $_SESSION["DOCUMENTO"];
 if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
 }
-$consu = "SELECT * FROM usuario WHERE DOCUMENTO = '$usario' AND ID_TIPO_USU = 2";
+$consu = "SELECT * FROM usuario WHERE DOCUMENTO = '$usario' AND ID_TIP_USU = 2";
 $query = mysqli_query($connection , $consu);
 $file = mysqli_fetch_assoc($query);
 $nom = $file['NOMBRE'];
