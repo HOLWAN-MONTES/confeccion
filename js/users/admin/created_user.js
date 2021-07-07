@@ -245,7 +245,7 @@ valida_edi.addEventListener("submit", (e) =>{
     if(campos_edi.clave_edi && campos_edi.telefono_edi){
         editar_usuario.reset();
 
-        document.querySelectorAll('.formulario_grupo_correcto_editarr').forEach((icono_edi) => {
+        document.querySelectorAll('.formulario_grupo_correcto_editar').forEach((icono_edi) => {
             icono_edi.classList.remove('formulario_grupo_correcto_editar');
         });
 

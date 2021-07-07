@@ -105,6 +105,9 @@ document.addEventListener('submit', (e)=>{
                         Swal.fire('Actualizado!', 'Se actualizo con exito', 'success')
                         formu.reset()
                         documento.disabled = false
+                        document.querySelectorAll('.formulario_grupo_correcto_editar').forEach((icono_edi) => {
+                            icono_edi.classList.remove('formulario_grupo_correcto_editar');
+                        });
                     }
                     else{
                         Swal.fire('No actualizado', 'No se actualizo el usuario', 'info')
