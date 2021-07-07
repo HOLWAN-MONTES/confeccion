@@ -1,18 +1,9 @@
-// VARIABLES PARA EL PRIMER FORMULARIO
+// VARIABLES PARA EL FORMULARIO DE REGISTRO DE USUARIO
 const formulario = document.getElementById("crear_usuario")
 const documento_user = document.getElementById("docu")
-const valida = document.getElementById("reg")
-
-const alerta = document.getElementById("alerta")
-const existe = document.getElementById("mensaje_existe")
-const excelente = document.getElementById("alerta_correcto")
 
 const enviar = document.getElementById("reg")
 
-
-// VARIABLES PARA EL FORMULARIO DE CREAR TIPO DE DOCUMENTO 
-const from_tip = document.getElementById("tipo_usuario")
-const btn_crear = document.getElementById("crear_btn")
 
 //  CONEXION AL ARCHIVO PHP PARA EL FORMULARIO CREAR USUARIO
 enviar.addEventListener("click", (e) => {
@@ -53,54 +44,63 @@ enviar.addEventListener("click", (e) => {
         }
     })   
 })
+
+
 //  CONEXION AL ARCHIVO PHP PARA EL FORMULARIO CREAR DOCUMENTO
-const form_doc = document.getElementById("crear_tipo_documento")
-const regis_doc = document.getElementById("reg_docu")
-const nom_doc = document.getElementById("nom_tipo_docu")
+const registrando = document.getElementById("usuario_docu")
+const insertar = document.getElementById("insertar")
+const docum = document.getElementById("tip_docum")
 
-
-
-//CONEXION AL ARCHIVO PHP PARA EL FORMULARIO CREAR TIPO USUARIO
-
-regis_doc.addEventListener("click", (e) => {
+insertar.addEventListener("click", (e) => {
     e.preventDefault()
 
-    const formul_tipo = new FormData(form_doc)
+    const dato = new FormData(registrando)
 
     fetch("../../php/admin/tipo_documento.php", {
         method:"POST",
-        body:formul_tipo
+        body:dato
     })
     .then(res => res.text()).then(info => {
         if (info == 1) {
-            alert("correcto")
-
+            Swal.fire({
+                title: 'Registrado!',
+                text: 'Se registro el tipo de documeto',
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+            })
+            registrando.reset()
+            docum.disabled = false
         }else if(info == 2){
-            alert("te falto")
-            
-        }else{
-            // Swal.fire({
-            //     title: 'Advertencia!',
-            //     text: 'Por favor rellena el formulario correctamente.',
-            //     icon: 'warning',
-            //     confirmButtonText: 'Continuar'
-            // })
-            alert("incorrecto")
-            
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'Por favor rellena el formulario.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            })
+
+        }
+        else if(info == 3){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'Por favor rellena el formulario correctamente.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            })
+
         }
     })   
 })
 
 
-//VALIDACION DEL FORMULARIO       /////////////////////////////////// 
+//   VALIDACION DEL FORMULARIO
 
 const crear_usuario = document.getElementById('crear_usuario');
 const inputs = document.querySelectorAll('#crear_usuario input');
 
 const expresiones = {
     documento: /^\d{8,10}$/, // 7 a 14 numeros.
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-    apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	nombre: /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios, pueden llevar acentos.
+    apellido: /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios, pueden llevar acentos.
 	clave: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/, //Letras minusculas, mayusculas, numeros y caracter alfanumerico
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	telefono: /^\d{9,10}$/ // 7 a 14 numeros.
@@ -162,22 +162,22 @@ inputs.forEach((input) => {
     input.addEventListener('blur', validarFormulario);
 });
 
-valida.addEventListener("submit", (e) =>{
+crear_usuario.addEventListener("submit", (e) =>{
     e.preventDefault();
 
     const tipo_usu = document.getElementById("tip_us_crea");
     const tipo_doc = document.getElementById("tip_docu");
-    const nacimineto = document.getElementById("fecha_nacimiento");
-    const foto = document.getElementById("imagen");
 
     if(campos.documento && campos.nombre && campos.apellido && campos.clave && campos.telefono && campos.correo && tipo_usu.selected && tipo_doc.selected){
         crear_usuario.reset();
+        console.log("exito");
 
         document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
             icono.classList.remove('formulario__grupo-correcto');
         });
 
     }else {
+        console.log("error");
         return false;
        
     }
