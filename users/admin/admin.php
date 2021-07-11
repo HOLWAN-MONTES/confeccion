@@ -552,51 +552,44 @@ $hora = date("H:i:s");
                 <div>
                 <i id="desaparecerTodosUsers" class="cerrarTodosUsers fas fa-times-circle"></i>
                 </div>
-        <div class="contentFormularioUsers">
-            <table border="1" style="border-collapse: collapse;border:1px solid #ff6212;width: 1250px;">
-                <caption class="TituloUsers">TABLA DE USUARIOS REGISTRADOS</caption>
-                <thead>
-                    <tr>
-                        <th class="tit">DOCUMENTO</th>
-                        <th class="tit">TIPO DOCUMENTO</th>
-                        <th class="tit">TIPO USUARIO</th>
-                        <th class="tit">NOMBRE</th>
-                        <th class="tit">APELLIDO</th>
-                        <th class="titEdad">EDAD</th>
-                        <th class="tit">TELEFONO</th>
-                        <th class="tit">CORREO</th>
-                        <th class="tit">FOTO</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
+                
+
+        <div class="containergeneralff">
+
+       <?php 
                         $sql= "SELECT  DOCUMENTO,NOM_TIP_DOCU,NOM_TIP_USU,NOMBRE,APELLIDO,FECHA_NACIMIENTO,CELULAR,CORREO,FOTO from tipo_usuario,tipo_documento,usuario where usuario.ID_TIP_DOCU=tipo_documento.ID_TIP_DOCU and usuario.ID_TIP_USU = tipo_usuario.ID_TIP_USU";
                         $result=mysqli_query($connection,$sql);
 
                         while($mostrar=mysqli_fetch_array($result)){
                         
                             ?>
-                            <tr>
-                                <td class="filas"><?php echo $mostrar[0] ?></td>
-                                <td class="filas"><?php echo $mostrar[1] ?></td>
-                                <td class="filas"><?php echo $mostrar[2] ?></td>
-                                <td class="filas"><?php echo $mostrar[3] ?></td>
-                                <td class="filas"><?php echo $mostrar[4] ?></td>
-                                <td class="filasEdad"><?php echo $mostrar[5] ?></td>
-                                <td class="filas"><?php echo $mostrar[6] ?></td>
-                                <td class="filas"><?php echo $mostrar[7] ?></td>
-                                <!-- <td class="filas"><?php echo $mostrar[8] ?></td> -->
-                                <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td>
-                            
-
-                            </tr>	  
+                             <div class="contenedorFicha">
+                                <div class="contentImageT">
+                                <img class="imagenuserT" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>">
+                                </div>
+                                <div class="documentosotras">
+                                    <div>DOCUMENTO :<p><?php echo $mostrar[0] ?></p></div>
+                        
+                                    <div>NOMBRE :<p><?php echo $mostrar[1] ?></p></div>
+                                    
+                                    <div>APELLIDO :<p> <?php echo $mostrar[2] ?></p></div>
+                                    
+                                    <div>CARGO :<p> <?php echo $mostrar[3] ?></p></div>
+                                    
+                                    <div>EDAD :<p>  <?php echo $mostrar[4] ?></p></div>
+                                    
+                                    <div>CORREO :<p><?php echo $mostrar[5] ?></p></div>
+                                    
+                                    <div>TIPO DOCUMENTO :<p><?php echo $mostrar[6] ?></p></div>
+                                    
+                                    <div>TIPO USUARIO :<p><?php echo $mostrar[7] ?></p></div>
+                                </div>
+                        </div>
                         <?php
                         }   
                     ?>
-                
-                </tbody>
-            </table>
-        </div>
+       
+       </div>
             
     </div>
 
