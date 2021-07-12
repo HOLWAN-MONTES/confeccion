@@ -808,9 +808,10 @@ li{
 .todosLosusuarios{
     width: 100%;
     position: absolute;
-    display: none;
+    display: flex;/* ---- */
     background-color: #000;
-    height: 100vh;
+    
+    font-size: 1.8vw;
 }
 
 .cerrarTodosUsers{
