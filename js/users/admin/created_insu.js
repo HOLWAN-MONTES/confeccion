@@ -2,6 +2,11 @@
 const formInsu = document.getElementById("CrearInsumoForm")
 const enviarInsu = document.getElementById("BtnCrearInsumo")
 
+//^ variables para el buscador
+const datoBuscador = document.getElementById("buscador-user")
+const formBuscador = document.getElementById("form-buscador-user")
+const conte_user = document.getElementById("conte-user")
+
 //  CONEXION AL ARCHIVO PHP PARA EL FORmInsu DE CREAR INSUMOS 
 enviarInsu.addEventListener("click", (e) => {
     e.preventDefault()
@@ -21,5 +26,20 @@ enviarInsu.addEventListener("click", (e) => {
         else if (info == 3){
             alert('El insumo ya ha sido creado')
         } 
+    })
+})
+
+//^ buscador 
+
+datoBuscador.addEventListener("keyup", (e) => {
+
+    const dato = new FormData(formBuscador)
+
+    fetch("../../php/admin/buscador.php", {
+        method:"POST",
+        body:dato
+    }).then(res => res.text()).then(info => {
+        console.log(info)
+        conte_user.innerHTML=`${info}`
     })
 })
