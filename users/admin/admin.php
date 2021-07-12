@@ -555,6 +555,20 @@ $hora = date("H:i:s");
                     <form action="" method="POST" id="form-buscador-user">
                         <input type="number" name="docu" id="buscador-user">
                     </form>
+                    <form action="" method="post" id="for_Usuario" >
+                        <input type="hidden" name="usuario" value="1">
+                        <button id="btn_Admin" >Administrador</button>
+                       
+                    </form>
+                    <form action="" method="post" id="form_instructor">
+                        <input type="hidden" name="usuario" value="2">
+                        <button id="bt_instru" >Instructor</button>
+                    </form>
+                    <form action="" method="post">
+                        <button id="todo">Todo los usuarios</button>
+                    </form>
+                    
+                    
                 </div>
                 <div>
                 <i id="desaparecerTodosUsers" class="cerrarTodosUsers fas fa-times-circle"></i>
