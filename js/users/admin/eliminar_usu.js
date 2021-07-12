@@ -8,6 +8,24 @@ const edad_eli = document.getElementById('edad-elim');
 const celu_eli = document.getElementById('tele-elim');
 const correo_eli = document.getElementById('cor-elim');
 const docmen_eli = document.getElementById('docume-elim');
+
+
+// FUNCION DE ACTUALIZAR 
+
+
+
+const conteAct = document.getElementById("conte-user")
+
+function actualizar(params) {
+
+    fetch("../../php/admin/actualizar.php", {
+        method:"POST"
+    }).then(res => res.text()).then(info => {
+        conteAct.innerHTML = `${info}`
+    })
+
+}
+
 //boton de cancelar
 const btn_cancelar = document.getElementById('cancelar');
 
@@ -48,6 +66,7 @@ document.addEventListener('keypress', (e)=>{
                     celu_eli.disabled = true;
                     correo_eli.value = CORREO;
                     correo_eli.disabled = true;
+                    
                 }
                 else{
                     alert('No se encontro usuario');
@@ -77,6 +96,7 @@ document.addEventListener('submit', (e)=>{
             if(status >= 200 && status < 300){
                 alert("Se ha eliminado correctamente");
                 formul.reset()
+                actualizar()
             }
             else{
                 alert("No se ha eliminado correctamente");

@@ -73,6 +73,7 @@ document.addEventListener('keypress', (e)=>{
                         correo.value = CORREO;
                         correo.disabled = true;
                         // foto.value = FOTO;
+                        actualizar()
                     }
                     else{
                         Swal.fire({
