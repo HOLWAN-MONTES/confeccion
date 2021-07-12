@@ -87,21 +87,21 @@ $hora = date("H:i:s");
                         
                         <div class="formulario__grupo" id="grupo__documento">
                             <label for="">DOCUMENTO</label>    
-                            <input class="input1" type="number" name="docu" id="docu" placeholder="DOCUMENTO" maxlength="11" required > <!-- &nbsp;&nbsp;&nbsp; -->
+                            <input class="input1" type="number" name="documento" id="documento" placeholder="DOCUMENTO" maxlength="11" required > <!-- &nbsp;&nbsp;&nbsp; -->
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             <p class="formulario__input-error">El documento solo puede contener numeros, entre 8 a 10 dígitos.</p>
                         </div>
                         
                         <div id="grupo__nombres">
                             <label for="">NOMBRES</label>    
-                            <input class="input1" type="text" name="nom" id="nom" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                            <input class="input1" type="text" name="nombres" id="nombres" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             <p class="formulario__input-error">El nombre tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
                         </div>
                         
                         <div id="grupo__apellidos">
                             <label for="">APELLIDOS</label>    
-                            <input class="input1" type="text" name="apel" id="apel" placeholder="APELLIDOS" required style="text-transform:uppercase">
+                            <input class="input1" type="text" name="apellidos" id="apellidos" placeholder="APELLIDOS" required style="text-transform:uppercase">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             <p class="formulario__input-error">El apellido tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
                         </div>
@@ -165,13 +165,13 @@ $hora = date("H:i:s");
                         
                         <div id="grupo__telefono">
                             <label for="">TELEFONO</label>    
-                            <input class="input1" type="number" name="tele" id="tele" placeholder="TELEFONO"  min="1" max="3999999999" required>
+                            <input class="input1" type="number" name="telefono" id="telefono" placeholder="TELEFONO"  min="1" max="3999999999" required>
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 10 dígitos.</p>
                         </div>
                         <div id="grupo__correo">
                             <label for="">CORREO</label>    
-                            <input class="input1" type="email" name="cor" id="cor" placeholder="USER@MISENA.EDU.CO"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
+                            <input class="input1" type="email" name="correo" id="correo" placeholder="USER@MISENA.EDU.CO" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
                         </div>
@@ -702,7 +702,7 @@ $hora = date("H:i:s");
 
                         <div class="terceralinea5">
                                 <div>
-                                <input  type="submit" name="BtnCrearInsumo" id="BtnCrearInsumo" value="CREAR" >
+                                <input type="submit" name="BtnCrearInsumo" id="BtnCrearInsumo" value="CREAR" >
                                 </div>
                         </div>
                        
@@ -710,7 +710,7 @@ $hora = date("H:i:s");
             </div>
     </div>
 
-    <!-- crear material textil -->
+    <!-- SUB FORMULARIO CREAR MATERIAL TEXTIL -->
     <div class="containerCrearMaterialTextil" id="containerCrearMaterialTextil">
         <div class="contentFormMaterialG">
             <i id="cerrarmaterialTex" class="cerrarmaterialTex fas fa-times"></i>
@@ -718,15 +718,17 @@ $hora = date("H:i:s");
                 <b>CREAR MATERIAL TEXTIL</b>
             </div>
             <div >
-                <form action="" method="post" class="rojo" id="crear_tela">
+                <form method="POST" class="rojo" id="crear_material" autocomplete="off">
                     <div class="primerafilaMaterialtext">
-                        <div class="filasinter">
+                        <div class="filasinter" id="grupo__nombre_mate">
                             <label for="">NOMBRE MATERIAL TEXTIL</label>
-                            <input class="input7" type="text" name="nombre_tela" style="text-transform:uppercase">
+                            <input class="input7" type="text" placeholder="NOMBRE" name="nombre_tela" id="nombre_tela" style="text-transform:uppercase" required>
+                            <i class="formulario__validacion-estado_mate fas fa-times-circle"></i>
+                            <p class="formulario__input-error_mate">El nombre tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
                         </div>
                         <div class="filasinter">
                             <label for="">TIPO DE TELA</label>
-                            <select class="input7" name="tipo_tela" id="tip_usu_elim" required style="text-transform:uppercase">
+                            <select class="input7" name="tipo_tela" id="tipo_tela" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
                                     $sql_tela = "SELECT * from tipo_material_textil";
@@ -745,44 +747,50 @@ $hora = date("H:i:s");
                         </div>
                         <div class="filasinter">
                             <label for="">MARCA</label>
-                            <select class="input7" name="marca" id="tip_usu_elim" required style="text-transform:uppercase">
+                            <select class="input7" name="tipo_marca" id="tipo_marca" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        foreach ( $consulta_marca as $marca){
+                                    $sql_marca_tex = "SELECT * FROM marca";
+                                    $consulta_marca_tex = mysqli_query($connection,$sql_marca_tex);
+                                        foreach ( $consulta_marca_tex as $marca_ma){
                                     ?>
-                                    <option value="<?=$marca['ID_MARCA']?>">
-                                        <?=$marca['NOM_MARCA']?>
+                                    <option value="<?=$marca_ma['ID_MARCA']?>">
+                                        <?=$marca_ma['NOM_MARCA']?>
                                     </option>
                                     <?php
                                     }
                                     ?>
                                    
                             </select>
-                            <h6 class="agregaradi" id="btncrearmarcatela">CREAR MARCA</h6>
+                            <h6 class="agregaradi" id="btnmarcaTex">CREAR MARCA</h6>
                         </div>                
 
                     </div>
                     <div class="segundafilaMaterialtext">
                         <div class="filasinter">
                             <label for="">COLOR</label>
-                                <select class="input7" name="color" id="" required style="text-transform:uppercase">
+                                <select class="input7" name="tipo_color" id="tipo_color" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        foreach($consulta_color as $color){
+                                    $sql_color_tex = "SELECT * FROM color";
+                                    $consulta_color_tex = mysqli_query($connection,$sql_color_tex);
+                                        foreach($consulta_color_tex as $color_ma){
                                     ?>
-                                    <option name="" value="<?=$color['ID_COLOR']?>">
-                                        <?=$color['NOM_COLOR']?> 
+                                    <option name="" value="<?=$color_ma['ID_COLOR']?>">
+                                        <?=$color_ma['NOM_COLOR']?> 
                                     </option>
                                     <?php
                                     }
                                     ?>
                                     
                             </select>
-                            <h6 class="agregaradi" id="crearcolormaterial">CREAR COLOR</h6>
+                            <h6 class="agregaradi" id="crearcolorMate">CREAR COLOR</h6>
                         </div>   
-                        <div class="filasinter">
+                        <div class="filasinter" id="grupo__metraje_mate">
                             <label for="">METRAJE</label>
-                            <input class="input7" placeholder="" type="number" required>
+                            <input class="input7" placeholder="METRAJE" name="metraje" id="metraje" type="number" required>
+                            <i class="formulario__validacion-estado_mate fas fa-times-circle"></i>
+                            <p class="formulario__input-error_mate">El telefono solo puede contener numeros y el maximo son 10 dígitos.</p>
                         </div>
                      <!--    <div class="filasinter">
                             <label for="">CANTIDAD ROLLOS</label>
@@ -791,7 +799,7 @@ $hora = date("H:i:s");
 
                     </div>
                     <div class="tercerafilaMaterialtext">
-                        <input class="input7"  type="button" value="CREAR" id="btn_crear_tela">
+                        <input class="input7" type="submit" value="CREAR" name="material_tex" id="material_tex">
                     </div>
                 </form>
 
@@ -937,14 +945,15 @@ $hora = date("H:i:s");
             <div>
                 
                 <h1>CREAR COLOR</h1>
-                <form class="contentform"  action="#" method="POST">
+                <form class="contentform" id="registrarColor" method="POST" autocomplete="off">
                     
-                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
-                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" name="reg_color" id="reg_color" required ></div>
+                    <div><input class="btn_peque_form" type="submit" id="ingresar_color" value="CREAR"></div>
                 </form>
             </div>
         </div>
     </div>
+
     
     <div class="crearTipoDeTele" id="crearTipoDeTele">
         <div class="containerTip">
@@ -953,10 +962,10 @@ $hora = date("H:i:s");
             <div>
                 
                 <h1>CREAR TIPO DE TELA</h1>
-                <form class="contentform"  action="#" method="POST">
+                <form class="contentform" id="crear_tela_textil" method="POST" autocomplete="off">
                     
-                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
-                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" id="tela_textil" name="tela_textil" required ></div>
+                    <div><input class="btn_peque_form" type="submit" id="reg_telas" value="CREAR"></div>
                 </form>
             </div>
         </div>
@@ -985,10 +994,10 @@ $hora = date("H:i:s");
             <div>
                 
                 <h1>CREAR TIPO DE MAQUINARIA</h1>
-                <form class="contentform"  action="#" method="POST">
+                <form class="contentform" id="crearTipo_maquinaria" method="POST" autocomplete="off">
                     
-                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
-                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required id="maquina" name="maquina"></div>
+                    <div><input class="btn_peque_form" type="submit" id="reg_maquina" value="CREAR"></div>
                 </form>
             </div>
         </div>
@@ -1046,6 +1055,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/editar_users.js"></script>
     <script src="../../js/users/admin/eliminar_usu.js"></script>
     <script src="../../js/users/admin/created_user.js"></script>
+    <script src="../../js/users/admin/created_material.js"></script>
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
     <script src="./../../tablas_dinamicas/jquery.dynamicTable-1.0.0.js"></script>

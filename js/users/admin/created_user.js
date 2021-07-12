@@ -5,10 +5,6 @@ const documento_user = document.getElementById("docu")
 const valida = document.getElementById("reg")
 const valida_edi = document.getElementById("reg_edi") 
 
-const alerta = document.getElementById("alerta")
-const existe = document.getElementById("mensaje_existe")
-const excelente = document.getElementById("alerta_correcto")
-
 const enviar = document.getElementById("reg")
 
 // FUNCION DE ACTUALIZAR 
@@ -47,6 +43,9 @@ enviar.addEventListener("click", (e) => {
                 confirmButtonText: 'Continuar'
                 
             })
+            document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
+                icono.classList.remove('formulario__grupo-correcto');
+            });
             formulario.reset()
             documento_user.disabled = false
             actualizar()
@@ -57,6 +56,9 @@ enviar.addEventListener("click", (e) => {
                 icon: 'error',
                 confirmButtonText: 'Continuar'
             })
+            document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
+                icono.classList.remove('formulario__grupo-correcto');
+            });
             formulario.reset()
         }else{
             Swal.fire({
@@ -89,7 +91,7 @@ insertar.addEventListener("click", (e) => {
         if (info == 1) {
             Swal.fire({
                 title: 'Registrado!',
-                text: 'Se registro el tipo de documeto',
+                text: 'Se registro el tipo de documento',
                 icon: 'success',
                 confirmButtonText: 'Continuar'
             })
@@ -98,8 +100,8 @@ insertar.addEventListener("click", (e) => {
         }else if(info == 2){
             Swal.fire({
                 title: 'Advertencia!',
-                text: 'Por favor rellena el formulario.',
-                icon: 'warning',
+                text: 'El tipo de documento ya existe',
+                icon: 'error',
                 confirmButtonText: 'Continuar'
             })
 
@@ -123,12 +125,12 @@ const crear_usuario = document.getElementById('crear_usuario');
 const inputs = document.querySelectorAll('#crear_usuario input');
 
 const expresiones = {
-    documento: /^\d{8,10}$/, // 7 a 14 numeros.
+    documento: /^\d{8,10}$/, // 8 a 10 numeros.
 	nombre: /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios, pueden llevar acentos.
     apellido: /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios, pueden llevar acentos.
 	clave: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/, //Letras minusculas, mayusculas, numeros y caracter alfanumerico
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	telefono: /^\d{9,10}$/ // 7 a 14 numeros.
+	telefono: /^\d{9,10}$/ // 9 a 10 numeros.
 }
 
 const campos = {
@@ -142,23 +144,23 @@ const campos = {
 
 const validarFormulario = (e) =>{
     switch (e.target.name){
-        case "docu":
+        case "documento":
             validarCampo(expresiones.documento, e.target, 'documento');
         break;
-        case "nom":
+        case "nombres":
             validarCampo(expresiones.nombre, e.target, 'nombres');
             
         break;
-        case "apel":
+        case "apellidos":
             validarCampo(expresiones.apellido, e.target, 'apellidos');
         break;
         case "contra":
             validarCampo(expresiones.clave, e.target, 'contra');
         break;
-        case "tele":
+        case "telefono":
             validarCampo(expresiones.telefono, e.target, 'telefono');
         break;
-        case "cor":
+        case "correo":
             validarCampo(expresiones.correo, e.target, 'correo'); 
         break;
     }
@@ -187,27 +189,6 @@ inputs.forEach((input) => {
     input.addEventListener('blur', validarFormulario);
 });
 
-crear_usuario.addEventListener("submit", (e) =>{
-    e.preventDefault();
-
-    const tipo_usu = document.getElementById("tip_us_crea");
-    const tipo_doc = document.getElementById("tip_docu");
-
-    if(campos.documento && campos.nombre && campos.apellido && campos.clave && campos.telefono && campos.correo && tipo_usu.selected && tipo_doc.selected){
-        crear_usuario.reset();
-        console.log("exito");
-
-        document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
-            icono.classList.remove('formulario__grupo-correcto');
-        });
-
-    }else {
-        console.log("error");
-        return false;
-       
-    }
-
-});
 //Validacion Del Form De Editar 
 
 const editar_usuario = document.getElementById('form-edi');

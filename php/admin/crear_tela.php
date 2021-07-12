@@ -1,32 +1,27 @@
 <?php
 require_once("../conections/conexion.php");
 
-$nombre_tela = $_POST['nombre_tela'];
+$nombres_tela = $_POST['nombre_tela'];
 $tipo_tela = $_POST['tipo_tela'];
-$marca = $_POST['marca'];
-$colr = $_POST['color'];
-
-$validacion = "SELECT * from material_textil where NOM_M_TEXTIL = '$nombre_tela' and ID_COLOR = $colr";
-$consul_vali = mysqli_query($connection,$validacion);
-$dato_vali = mysqli_fetch_assoc($consul_vali);
+$marca = $_POST['tipo_marca'];
+$colr = $_POST['tipo_color'];
+$metraje = $_POST['metraje'];
 
 
-
-if ($dato_vali['NOM_M_TEXTIL'] == $nombre_tela) {
-    echo "existe";
+if($nombres_tela === "" || $tipo_tela === "" || $marca === "" || $colr === "" || $metraje === ""){
+    echo 3;
+   
 }else{
-    
-    $sql = "INSERT INTO material_textil (NOM_M_TEXTIL,ID_TIP_MATE,ID_TIPO_TELA,ID_MARCA,ID_COLOR) values ('$nombre_tela',1,'$tipo_tela','$marca','$colr')";
+    $sql = "INSERT INTO material_textil (NOM_MATERIAL_TEXTIL, ID_TIP_MATE_TEXTIL, ID_MARCA, ID_COLOR, METRAJE) 
+    VALUES ('$nombres_tela','$tipo_tela','$marca','$colr','$metraje')";
     $consulta = mysqli_query($connection,$sql);
 
-    if ($consulta) {
+    if ($consulta){
         echo 1;
-    } else {
+    }else{
         echo 2;
     }
-};
-
-
-
+   
+}
 
 ?>
