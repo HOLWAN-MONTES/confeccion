@@ -857,6 +857,7 @@ li{
     width: 15%;
     text-align: center;
 }
+
 /* --------------------- */
 .containergeneralff{
     position: absolute;
@@ -868,7 +869,6 @@ li{
     background-size: 150px;
     background-repeat: round;
     background-color: rgb(255, 255, 255);
-
 }
 
 /* ----------------------- */
@@ -892,21 +892,10 @@ li{
     width: 100%;
 }
 
-
-
 .documentosotras{
     position: absolute;  
     text-align: center;
     background-color: aliceblue;
-  
-
-}
-
-.imagenuserT{
-    width:100%; 
-    height: 300px;
-    border-radius: 10px;
-    object-fit: cover;
 }
 
 .contentImageT{
