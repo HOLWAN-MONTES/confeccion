@@ -856,31 +856,7 @@ li{
     width: 15%;
     text-align: center;
 }
-
-/* ----------------------- */
-.contenedorFicha{
-    width: 20%;
-    padding: 20px;
-    border-radius: 20px;
-    height: 70vh;
-    border: 1px solid red;
-    background-color: rgb(199, 203, 204);
-    display: grid;
-    margin: 0 10px 10px  10px;
-
-
-    
-}
-
-.documentosotras p{
-    color: #ff6819;
-}
-
-.documentosotras div{
-    border: 1px solid red;
-    width: 100%;
-}
-
+/* --------------------- */
 .containergeneralff{
     position: absolute;
     width: 100%;
@@ -893,6 +869,29 @@ li{
     background-color: rgb(255, 255, 255);
 
 }
+
+/* ----------------------- */
+.contenedorFicha{
+    width: 20%;
+    padding: 20px;
+    border-radius: 20px;
+    height: 70vh;
+    border: 1px solid red;
+    background-color: rgb(199, 203, 204);
+    display: grid;
+    margin: 0 10px 10px  10px;
+}
+
+.documentosotras p{
+    color: #ff6819;
+}
+
+.documentosotras div{
+    border: 1px solid red;
+    width: 100%;
+}
+
+
 
 .documentosotras{
     position: absolute;  
