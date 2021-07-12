@@ -1,20 +1,18 @@
 <?php
 session_start();
-include('../../php/conections/conexion.php');
+require_once('../../php/conections/conexion.php');
 
 $usario = $_SESSION["DOCUMENTO"];
+
 if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
+
 }
 /* 
-
-
 $sql_marca= "SELECT * from marca";
 $consulta_marca = mysqli_query($connection,$sql_marca);
-
 $sql_color = "SELECT * from color";
 $consulta_color = mysqli_query($connection,$sql_color);
-
 */
 
 date_default_timezone_set("America/Bogota");
@@ -554,46 +552,50 @@ $hora = date("H:i:s");
     <div class="todosLosusuarios" id="todosLosusuarios">
             <!-- boton de cerrar los usuarios -->
                 <div>
+                    <form action="" method="POST" id="form-buscador-user">
+                        <input type="number" name="docu" id="buscador-user">
+                    </form>
+                </div>
+                <div>
                 <i id="desaparecerTodosUsers" class="cerrarTodosUsers fas fa-times-circle"></i>
                 </div>
                 
 
-        <div class="containergeneralff">
+        <div class="containergeneralff" id="conte-user">
+            <?php
+                $sql_user = "SELECT DOCUMENTO,NOMBRE,APELLIDO,tipo_usuario.NOM_TIP_USU as cargo, FECHA_NACIMIENTO,CORREO,tipo_documento.NOM_TIP_DOCU as tipo_docu,FOTO from usuario, tipo_usuario,tipo_documento where usuario.ID_TIP_USU=tipo_usuario.ID_TIP_USU and usuario.ID_TIP_DOCU=tipo_documento.ID_TIP_DOCU ";
 
-       <?php 
-                        $sql= "SELECT  DOCUMENTO,NOM_TIP_DOCU,NOM_TIP_USU,NOMBRE,APELLIDO,FECHA_NACIMIENTO,CELULAR,CORREO,FOTO from tipo_usuario,tipo_documento,usuario where usuario.ID_TIP_DOCU=tipo_documento.ID_TIP_DOCU and usuario.ID_TIP_USU = tipo_usuario.ID_TIP_USU";
-                        $result=mysqli_query($connection,$sql);
+                $consulta_user = mysqli_query($connection,$sql_user);
 
-                        while($mostrar=mysqli_fetch_array($result)){
+                foreach ($consulta_user as $usuario){
+            ?>
+                <div class="contenedorFicha">
+                    <div class="contentImageT">
+                        <img class="imagenuserT" alt="Sin foto" src="../../imagesUsers/<?=$usuario['FOTO']?>">
+                    </div>
+                    <div class="documentosotras" >
+                        <div>DOCUMENTO :<p> <?=$usuario["DOCUMENTO"]?> </p></div>
+                                        
+                        <div>NOMBRE :<p> <?$usuario["NOMBRE"]?></p></div>
                         
-                            ?>
-                             <div class="contenedorFicha">
-                                <div class="contentImageT">
-                                <img class="imagenuserT" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>">
-                                </div>
-                                <div class="documentosotras">
-                                    <div>DOCUMENTO :<p><?php echo $mostrar[0] ?></p></div>
+                        <div>APELLIDO :<p> <?=$usuario["APELLIDO"]?> </p></div>
                         
-                                    <div>NOMBRE :<p><?php echo $mostrar[1] ?></p></div>
-                                    
-                                    <div>APELLIDO :<p> <?php echo $mostrar[2] ?></p></div>
-                                    
-                                    <div>CARGO :<p> <?php echo $mostrar[3] ?></p></div>
-                                    
-                                    <div>EDAD :<p>  <?php echo $mostrar[4] ?></p></div>
-                                    
-                                    <div>CORREO :<p><?php echo $mostrar[5] ?></p></div>
-                                    
-                                    <div>TIPO DOCUMENTO :<p><?php echo $mostrar[6] ?></p></div>
-                                    
-                                    <div>TIPO USUARIO :<p><?php echo $mostrar[7] ?></p></div>
-                                </div>
-                        </div>
-                        <?php
-                        }   
-                    ?>
-       
-       </div>
+                        <div>CARGO :<p> <?=$usuario["carfo"]?> </p></div>
+                        
+                        <div>FECHA DE NACIMIENTO :<p> <?=$usuario["FECHA_NACIMIENTO"]?></p></div>
+                        
+                        <div>CORREO :<p> <?=$usuario["CORREO"]?></p></div>
+                        
+                        <div>TIPO DOCUMENTO :<p> <?=$usuario["tipo_docu"]?></p></div>
+                    </div>  
+                </div>
+
+    
+               
+            <?php
+            }
+            ?> 
+        </div>
             
     </div>
 
