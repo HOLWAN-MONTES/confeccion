@@ -10,6 +10,23 @@ const celu = document.getElementById('tele-edi');
 const correo = document.getElementById('cor-edi');
 const docmen = document.getElementById('docume-edi');
 const foto = document.getElementById('imagen');
+
+// FUNCION DE ACTUALIZAR 
+
+
+
+const conteAct = document.getElementById("conte-user")
+
+function actualizar(params) {
+
+    fetch("../../php/admin/actualizar.php", {
+        method:"POST"
+    }).then(res => res.text()).then(info => {
+        conteAct.innerHTML = `${info}`
+    })
+
+}
+
 document.addEventListener('keypress', (e)=>{
     if(e.keyCode === 13){
         if(e.target === documento){
@@ -73,6 +90,7 @@ document.addEventListener('keypress', (e)=>{
     }
     
 })
+
 document.addEventListener('submit', (e)=>{
     if(e.target === formu){
         e.preventDefault();
