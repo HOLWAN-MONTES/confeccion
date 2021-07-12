@@ -787,17 +787,18 @@ li{
 
 /*-------------------TABLA DE  TODOS LOS USUARIOS------------------------------------ */
 .todosLosusuarios{
-    background-color: rgba(0, 0, 0, 0.123);
-    height: 100vh;
     width: 100%;
     position: absolute;
-    display: none;
+    display: none;/* ---- */
+    background-color: #000;
+    
+    font-size: 1vw;
 }
 
 .cerrarTodosUsers{
     font-size: 40px;
     margin-top: 9px;
-    margin-left: 96.8%;
+ 
 }
 
 .contentFormularioUsers{
@@ -809,7 +810,7 @@ li{
 }
 
 .TituloUsers{
-    font-size: 40px;
+   
     color: #ff6212;
     padding-bottom: 30px;
 }
@@ -836,6 +837,62 @@ li{
     background-color: #e0e0e0;
     width: 15%;
     text-align: center;
+}
+/* --------------------- */
+.containergeneralff{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-image: url(../../images/logo_sena.png);
+    background-size: 150px;
+    background-repeat: round;
+    background-color: rgb(255, 255, 255);
+
+}
+
+/* ----------------------- */
+.contenedorFicha{
+    width: 20%;
+    padding: 20px;
+    border-radius: 20px;
+    height: 70vh;
+    border: 1px solid red;
+    background-color: rgb(199, 203, 204);
+    display: grid;
+    margin: 0 10px 10px  10px;
+}
+
+.documentosotras p{
+    color: #ff6819;
+}
+
+.documentosotras div{
+    border: 1px solid red;
+    width: 100%;
+}
+
+
+
+.documentosotras{
+    position: absolute;  
+    text-align: center;
+    background-color: aliceblue;
+  
+
+}
+
+.imagenuserT{
+    width:100%; 
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.contentImageT{
+    width: 100%;
+    height: 410px;
 }
 
 /* ---------------------------------------------FORMULARIOS INGRESO DE INSUMOS-------------------- */
@@ -1155,7 +1212,7 @@ li{
 .contenedorinventariomaquinariageneral{
     border: 1px solid red;
     background-color: #188276;
-    
+    display: none;
     width: 100%;
     height: 90vh;
 }

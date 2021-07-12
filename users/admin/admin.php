@@ -1,20 +1,18 @@
 <?php
 session_start();
-include('../../php/conections/conexion.php');
+require_once('../../php/conections/conexion.php');
 
 $usario = $_SESSION["DOCUMENTO"];
+
 if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
+
 }
 /* 
-
-
 $sql_marca= "SELECT * from marca";
 $consulta_marca = mysqli_query($connection,$sql_marca);
-
 $sql_color = "SELECT * from color";
 $consulta_color = mysqli_query($connection,$sql_color);
-
 */
 
 date_default_timezone_set("America/Bogota");
@@ -412,7 +410,7 @@ $hora = date("H:i:s");
                             <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id="proveedor"> 
                             <option>Seleccione el proveedor</option>
                 <!-- GUYS -->                 <?php
-                            $sql_porveedor = "SELECT * from usuario";
+                            $sql_porveedor = "SELECT * from usuario WHERE ID_TIP_USU = 3";
                             $consulta_proveedor = mysqli_query($connection,$sql_porveedor);
                             foreach($consulta_proveedor as $proveedor) {
                                 ?> <option value="<?=$proveedor['NIT']?>"><?=$proveedor['NOMBRE']?> </option>
@@ -432,31 +430,35 @@ $hora = date("H:i:s");
                 </form>
                 
                     <div class="categorias">
-                        <form method="POST" id="form_camilo">
                             <div class="categoriass">
                                 <label for="">CATEGORIA</label>    
-                                    <select class="input6" name="categorias" id="materialbdcamilo" required>
+                                    <select class="input6" name="categorias" id="categoria" required>
                                         <option>SELECCIONAR</option>
-                                        <option value="material_textil">material textil</option>
-                                        <option value="insumos">insumos</option>
-                                        <option value="maquinaria">maquinaria</option>
+                                        <?php
+                                        $tipo2 = "SELECT * FROM tipo_ingreso";
+                                        $inser2 = mysqli_query($connection ,$tipo2);
+                                        while($tip2 = mysqli_fetch_array($inser2)){
+                                        ?>
+                                        <option name="tip_material" id="op_mat" value="<?php echo $tip2[0]; ?>">
+                                            <?php echo $tip2[1]; ?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
                                     </select>
                             </div>
-                        </form>
-                        <form method="POST" autocomplete="off" id="productos">
                             <div class="fff">
                                 <div id="factura"></div>    
                                 <div class="NombreCate">
                                         <label for="">NOMBRE</label> 
-                                        <select class="input6" name="categorias" id="tip_docu_edi" required>
+                                        <select class="input6" name="categorias" id="nom_catego" required>
                                             <option>SELECCIONAR</option>
-                                            <div id="elementos"></div>
                                         </select>
                                 </div>
 
                                 <div class="cantidadSe">
                                     <label for="">CANTIDAD</label>
-                                    <input type="number" placeholder="CANTIDAD">
+                                    <input type="number" id="cantidad" placeholder="CANTIDAD">
                                 </div>
                             
                            
@@ -464,14 +466,23 @@ $hora = date("H:i:s");
                                 <div class="bnt">
                                     <input type="button" value="AGREGAR" id="btn_productos"> <!-- agregar a la lista -->
                                 </div>
-                            </div>
-                        </form>    
+                            </div>    
                        
                        
                     </div>
                         <div class="agregarTodosLosListados">
-                                    <!-- ACA VAN TODOS LOS LISTADOS DE LO QUE SEA AGREGUE -->
-                                    ACA VAN TODOS LOS LISTADOS DE LO QUE SE AGREGUE
+                            <!-- ACA VAN TODOS LOS LISTADOS DE LO QUE SEA AGREGUE -->
+                            <table id="tabla_ing_insu">
+                                <thead>
+                                <tr class="tab-ml">
+                                    <td class="tab_ml">CATEGORIA</td>
+                                    <td class="tab_ml">NOMBRE</td>
+                                    <td class="tab_ml">CANTIDAD</td>
+                                    <td class="tab_ml">ACCION</td>
+                                </tr>
+                                </thead>
+                                <tbody> </tbody>
+                            </table>
                         </div>
                         
                         <div class="btnesEnv_can">
@@ -554,52 +565,63 @@ $hora = date("H:i:s");
     <div class="todosLosusuarios" id="todosLosusuarios">
             <!-- boton de cerrar los usuarios -->
                 <div>
+                    <form action="" method="POST" id="form-buscador-user">
+                        <input type="number" name="docu" id="buscador-user">
+                    </form>
+                    <form action="" method="post" id="for_Usuario" >
+                        <input type="hidden" name="usuario" value="1">
+                        <button id="btn_Admin" >Administrador</button>
+                       
+                    </form>
+                    <form action="" method="post" id="form_instructor">
+                        <input type="hidden" name="usuario" value="2">
+                        <button id="bt_instru" >Instructor</button>
+                    </form>
+                    <form action="" method="post">
+                        <button id="todo">Todo los usuarios</button>
+                    </form>
+                    
+                    
+                </div>
+                <div>
                 <i id="desaparecerTodosUsers" class="cerrarTodosUsers fas fa-times-circle"></i>
                 </div>
-        <div class="contentFormularioUsers">
-            <table border="1" style="border-collapse: collapse;border:1px solid #ff6212;width: 1250px;">
-                <caption class="TituloUsers">TABLA DE USUARIOS REGISTRADOS</caption>
-                <thead>
-                    <tr>
-                        <th class="tit">DOCUMENTO</th>
-                        <th class="tit">TIPO DOCUMENTO</th>
-                        <th class="tit">TIPO USUARIO</th>
-                        <th class="tit">NOMBRE</th>
-                        <th class="tit">APELLIDO</th>
-                        <th class="titEdad">EDAD</th>
-                        <th class="tit">TELEFONO</th>
-                        <th class="tit">CORREO</th>
-                        <th class="tit">FOTO</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                        $sql= "SELECT  DOCUMENTO,NOM_TIP_DOCU,NOM_TIP_USU,NOMBRE,APELLIDO,FECHA_NACIMIENTO,CELULAR,CORREO,FOTO from tipo_usuario,tipo_documento,usuario where usuario.ID_TIP_DOCU=tipo_documento.ID_TIP_DOCU and usuario.ID_TIP_USU = tipo_usuario.ID_TIP_USU";
-                        $result=mysqli_query($connection,$sql);
-
-                        while($mostrar=mysqli_fetch_array($result)){
-                        
-                            ?>
-                            <tr>
-                                <td class="filas"><?php echo $mostrar[0] ?></td>
-                                <td class="filas"><?php echo $mostrar[1] ?></td>
-                                <td class="filas"><?php echo $mostrar[2] ?></td>
-                                <td class="filas"><?php echo $mostrar[3] ?></td>
-                                <td class="filas"><?php echo $mostrar[4] ?></td>
-                                <td class="filasEdad"><?php echo $mostrar[5] ?></td>
-                                <td class="filas"><?php echo $mostrar[6] ?></td>
-                                <td class="filas"><?php echo $mostrar[7] ?></td>
-                                <!-- <td class="filas"><?php echo $mostrar[8] ?></td> -->
-                                <td class="filas"><img style="width:50px;" alt="Sin foto" src="../../imagesUsers/<?= $mostrar[8]?>"></td>
-                            
-
-                            </tr>	  
-                        <?php
-                        }   
-                    ?>
                 
-                </tbody>
-            </table>
+
+        <div class="containergeneralff" id="conte-user">
+            <?php
+                $sql_user = "SELECT DOCUMENTO,NOMBRE,APELLIDO,tipo_usuario.NOM_TIP_USU as cargo, FECHA_NACIMIENTO,CORREO,tipo_documento.NOM_TIP_DOCU as tipo_docu,FOTO from usuario, tipo_usuario,tipo_documento where usuario.ID_TIP_USU=tipo_usuario.ID_TIP_USU and usuario.ID_TIP_DOCU=tipo_documento.ID_TIP_DOCU ";
+
+                $consulta_user = mysqli_query($connection,$sql_user);
+
+                foreach ($consulta_user as $usuario){
+            ?>
+                <div class="contenedorFicha">
+                    <div class="contentImageT">
+                        <img class="imagenuserT" alt="Sin foto" src="../../imagesUsers/<?=$usuario['FOTO']?>">
+                    </div>
+                    <div class="documentosotras" >
+                        <div>DOCUMENTO :<p> <?=$usuario["DOCUMENTO"]?> </p></div>
+                                        
+                        <div>NOMBRE :<p> <?$usuario["NOMBRE"]?></p></div>
+                        
+                        <div>APELLIDO :<p> <?=$usuario["APELLIDO"]?> </p></div>
+                        
+                        <div>CARGO :<p> <?=$usuario["carfo"]?> </p></div>
+                        
+                        <div>FECHA DE NACIMIENTO :<p> <?=$usuario["FECHA_NACIMIENTO"]?></p></div>
+                        
+                        <div>CORREO :<p> <?=$usuario["CORREO"]?></p></div>
+                        
+                        <div>TIPO DOCUMENTO :<p> <?=$usuario["tipo_docu"]?></p></div>
+                    </div>  
+                </div>
+
+    
+               
+            <?php
+            }
+            ?> 
         </div>
             
     </div>
@@ -1036,6 +1058,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/created_material.js"></script>
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
+    <script src="./../../tablas_dinamicas/jquery.dynamicTable-1.0.0.js"></script>
     <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 
