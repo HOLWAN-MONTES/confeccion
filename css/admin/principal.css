@@ -808,16 +808,16 @@ li{
 .todosLosusuarios{
     width: 100%;
     position: absolute;
-    display: flex;/* ---- */
+    display: block;/* ---- */
     background-color: #000;
     
-    font-size: 1.8vw;
+    font-size: 1vw;
 }
 
 .cerrarTodosUsers{
     font-size: 40px;
     margin-top: 9px;
-    margin-left: 96.8%;
+ 
 }
 
 .contentFormularioUsers{
@@ -829,7 +829,7 @@ li{
 }
 
 .TituloUsers{
-    font-size: 40px;
+   
     color: #ff6212;
     padding-bottom: 30px;
 }
