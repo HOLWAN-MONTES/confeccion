@@ -826,24 +826,26 @@ li{
 
 /* ----------------------- */
 .contenedorFicha{
-    width: 30%;
+    width: 20%;
     padding: 20px;
     border-radius: 20px;
-    margin: 30px;
+    height: 70vh;
     border: 1px solid red;
     background-color: rgb(199, 203, 204);
-    
+    display: grid;
+    margin: 0 10px 10px  10px;
 
 
     
 }
 
 .documentosotras p{
-    color: red;
+    color: #ff6819;
+}
+
+.documentosotras div{
+    border: 1px solid red;
     width: 100%;
-    display: flex;
-    font-size: 1em;
-    flex-wrap: wrap;
 }
 
 .containergeneralff{
@@ -860,14 +862,16 @@ li{
 }
 
 .documentosotras{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    position: absolute;  
+    text-align: center;
+    background-color: aliceblue;
+  
 
 }
 
 .imagenuserT{
     width:100%; 
-    height: 400px;
+    height: 300px;
     border-radius: 10px;
     object-fit: cover;
 }
