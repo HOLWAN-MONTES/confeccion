@@ -391,8 +391,41 @@ li{
 .formulario__grupo-incorrecto .formulario__input {
 	border: 3px solid #bb2929;
 }
+/*Validacion Campos De Editar Usuario*/
+.formulario_validacion_estado_editar {
+	position: relative;
+	right: -45%;
+	bottom: 25px;
+	z-index: 100;
+	font-size: 16px;
+	opacity: 0;
+}
+.formulario_input_error_editar {
+	font-size: 12px;
+	margin-bottom: 0;
+	display: none;
+}
+.formulario_input-error_activo_editar {
+	display: block;
+}
 
+.formulario_grupo_correcto_editar .formulario_validacion_estado_editar  {
+	color: #1ed12d;
+	opacity: 1;
+}
 
+.formulario_grupo_incorrecto_editar .formulario_label_editar {
+	color: #bb2929;
+}
+
+.formulario_grupo_incorrecto_editar .formulario_validacion_estado_editar  {
+	color: #bb2929;
+	opacity: 1;
+}
+
+.formulario_grupo_incorrecto_editar .formulario_input_editar {
+	border: 3px solid #bb2929;
+}
 
 /* CREAR TIPO DE USUARIO TIPO DE DOCUMENTO SELECCIONAR CAJITA DEBAJO DEL INPUT---------------------- */
 
