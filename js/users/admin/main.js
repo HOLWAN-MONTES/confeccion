@@ -70,16 +70,16 @@ const crearTipoDeInsumo = document.getElementById('crearTipoDeInsumo');
 const btn_marca_insumo = document.getElementById('btn_marca_insumo')
 const cerrarmarcac = document.getElementById('cerrarmarcac');
 const CrearMarca = document.getElementById('CrearMarca');
-const btncrearmarcatela = document.getElementById('btncrearmarcatela')
 const bntcrearmarcamaqui = document.getElementById('bntcrearmarcamaqui')
+const btnmarcaTextil = document.getElementById('btnmarcaTex')
 
 /* color */
 const btn_crear_color = document.getElementById('btn_crear_color');
 const CrearColor = document.getElementById('CrearColor');
 const crearcolorb = document.getElementById('crearcolorb');
 const crearcolormaqui = document.getElementById('crearcolormaqui');
+const registrarcolorTex = document.getElementById('crearcolorMate')
 
-const crearcolormaterial = document.getElementById('crearcolormaterial')
 
 /* crearTipoDeTele */
 const btncerrartipodetela = document.getElementById('btncerrartipodetela');
@@ -257,12 +257,14 @@ cerrarmarcac.addEventListener('click',function(){
 btn_marca_insumo.addEventListener('click',function(){
     CrearMarca.style.display = "block"
 })
-btncrearmarcatela.addEventListener('click',function(){
-    CrearMarca.style.display = "block"
-})
 bntcrearmarcamaqui.addEventListener('click',function(){
     CrearMarca.style.display = "block"
 })
+
+btnmarcaTextil.addEventListener('click',function(){
+    CrearMarca.style.display = "block"
+})
+
 
 
 /* color */
@@ -272,12 +274,15 @@ crearcolorb.addEventListener('click',function(){
 btn_crear_color.addEventListener('click',function(){
     CrearColor.style.display = "block"
 })
-crearcolormaterial.addEventListener('click',function(){
-    CrearColor.style.display = "block"
-})
 crearcolormaqui.addEventListener('click',function(){
     CrearColor.style.display = "block"
 })
+
+registrarcolorTex.addEventListener('click', function(){
+    CrearColor.style.display = "block"
+})
+
+
 
 const crartipodetela = document.getElementById('crartipodetela')
 
