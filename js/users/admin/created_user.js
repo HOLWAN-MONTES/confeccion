@@ -32,6 +32,7 @@ enviar.addEventListener("click", (e) => {
             })
             formulario.reset()
             documento_user.disabled = false
+
         }else if(info == 2){
             Swal.fire({
                 title: 'Error!',
