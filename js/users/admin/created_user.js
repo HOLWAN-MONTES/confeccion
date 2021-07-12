@@ -11,6 +11,22 @@ const excelente = document.getElementById("alerta_correcto")
 
 const enviar = document.getElementById("reg")
 
+// FUNCION DE ACTUALIZAR 
+
+
+
+const conteAct = document.getElementById("conte-user")
+
+function actualizar(params) {
+
+    fetch("../../php/admin/actualizar.php", {
+        method:"POST"
+    }).then(res => res.text()).then(info => {
+        conteAct.innerHTML = `${info}`
+    })
+
+}
+
 
 //  CONEXION AL ARCHIVO PHP PARA EL FORMULARIO CREAR USUARIO
 enviar.addEventListener("click", (e) => {
@@ -29,10 +45,11 @@ enviar.addEventListener("click", (e) => {
                 text: 'Se registro el usuario',
                 icon: 'success',
                 confirmButtonText: 'Continuar'
+                
             })
             formulario.reset()
             documento_user.disabled = false
-
+            actualizar()
         }else if(info == 2){
             Swal.fire({
                 title: 'Error!',
