@@ -21,7 +21,7 @@ if ($consulta){
                 
                 <div>APELLIDO :<p>'.$usuario["APELLIDO"].'</p></div>
                 
-                <div>CARGO :<p>'.$usuario["carfo"].'</p></div>
+                <div>CARGO :<p>'.$usuario["cargo"].'</p></div>
                 
                 <div>FECHA DE NACIMIENTO :<p> '.$usuario["FECHA_NACIMIENTO"].'</p></div>
                 
