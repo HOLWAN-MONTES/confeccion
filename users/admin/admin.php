@@ -610,7 +610,7 @@ $hora = date("H:i:s");
                     <div class="documentosotras" >
                         <div>DOCUMENTO :<p> <?=$usuario["DOCUMENTO"]?> </p></div>
                                         
-                        <div>NOMBRE :<p> <?$usuario["NOMBRE"]?></p></div>
+                        <div>NOMBRE :<p> <?=$usuario["NOMBRE"]?></p></div>
                         
                         <div>APELLIDO :<p> <?=$usuario["APELLIDO"]?> </p></div>
                         
