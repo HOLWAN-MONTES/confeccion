@@ -21,7 +21,7 @@ $destino = "../../imagesUsers/".$foto;
 copy($ruta,$destino);
 
 if($documento !== "" && $nombre !== "" && $apellido !== "" && $tipo_usuario !== "" && $tipo_documento !== ""
-|| $edad !== "" && $contra !== "" && $telefono !== "" && $correo !== "" && $foto !== ""){
+&& $edad !== "" && $contra !== "" && $telefono !== "" && $correo !== "" && $foto !== ""){
 
     $sql = "INSERT INTO usuario (DOCUMENTO, ID_TIP_DOCU, ID_TIP_USU, NOMBRE, APELLIDO, CLAVE, FECHA_NACIMIENTO, CELULAR, CORREO, FOTO) values ('$documento','$tipo_documento','$tipo_usuario','$nombre','$apellido','$contra','$edad','$telefono','$correo','$foto')";
     $insertar = mysqli_query($connection,$sql);
