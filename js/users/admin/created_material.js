@@ -22,7 +22,6 @@ enviarMate.addEventListener('click', (e)=>{
             document.querySelectorAll('.formulario__grupo-correcto_mate').forEach((icono_mate) => {
                 icono_mate.classList.remove('formulario__grupo-correcto_mate');
             });
-            console.log("hellooooo")
             formMaterial.reset()
         }else if(info == 2){
             Swal.fire({
@@ -31,9 +30,9 @@ enviarMate.addEventListener('click', (e)=>{
                 icon: 'error',
                 confirmButtonText: 'Continuar'
             })
-            console.log("casi ")
+           
         }else if(info == 3){
-            console.log("llene formulario")
+            
             Swal.fire({
                 title: 'Advertencia!',
                 text: 'Por favor rellena el formulario correctamente.',
@@ -178,6 +177,50 @@ btnMaquinaria.addEventListener('click', (e) => {
     })
 })
 
+//CONEXION AL ARCHIVO PHP CON EL FORMLARIO DE MARCA DEL MATERIAL TEXTIL
+const crearMarca_textil = document.getElementById('regMarcaMate')
+const regisMarca_tex = document.getElementById('enviar_marcaMater')
+
+regisMarca_tex.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    const formMarcaM = new FormData(crearMarca_textil)
+
+    fetch("../../php/admin/marca_textil.php", {
+        method:"POST",
+        body:formMarcaM
+    })
+    .then(res => res.text()).then(info => {
+        if(info == 1){
+            Swal.fire({
+                title: 'Error!',
+                text: 'La marca del material textil ya existe.',
+                icon: 'error',
+                confirmButtonText: 'Continuar'
+            })
+            crearMarca_textil.reset()
+        }else if(info == 2){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'Por favor rellena el formulario correctamente.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            })
+            
+        }else{
+            Swal.fire({
+                title: 'Registrado!',
+                text: 'Se registro la marca del material textil.',
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+                
+            })
+            crearMarca_textil.reset()
+        }
+    })
+
+})
+
 
 //VALIDACION DEL FORMULARIO DE MATERIAL TEXTIL
 
@@ -185,13 +228,8 @@ const ingre_material = document.getElementById("crear_material")
 const inputs_mate = document.querySelectorAll("#crear_material input")
 
 const expresiones_mate = {
-    nombre_mate: /^[a-zA-ZÀ-ÿ\s]{2,30}$/, // Letras y espacios, pueden llevar acentos.
+    nombre_mate: /^[a-zA-Z0-9\s]{4,16}$/, // Letras y espacios, pueden llevar acentos.
     metraje: /^\d{2,5}$/ // 2 a 5 numeros.  
-}
-
-const campos_mate = {
-    nombre_mate: false,
-    metraje: false,
 }
 
 const formularioTela = (e) =>{
@@ -203,14 +241,14 @@ const formularioTela = (e) =>{
                 document.querySelector('#grupo__nombre_mate i').classList.add('fa-check-circle');
                 document.querySelector('#grupo__nombre_mate i').classList.remove('fa-times-circle');
                 document.querySelector('#grupo__nombre_mate .formulario__input-error_mate').classList.remove('formulario__input-error-activo_mate');
-                campos_mate[nombre_mate] = true;
+               
             }else{
                 document.getElementById('grupo__nombre_mate').classList.add('formulario__grupo-incorrecto_mate');
                 document.getElementById('grupo__nombre_mate').classList.remove('formulario__grupo-correcto_mate');
                 document.querySelector('#grupo__nombre_mate i').classList.add('fa-times-circle');
                 document.querySelector('#grupo__nombre_mate i').classList.remove('fa-check-circle');
                 document.querySelector('#grupo__nombre_mate .formulario__input-error_mate').classList.add('formulario__input-error-activo_mate');
-                campos_mate[nombre_mate] = false;
+               
             }
         break;
         case "metraje":
@@ -220,14 +258,14 @@ const formularioTela = (e) =>{
                 document.querySelector('#grupo__metraje_mate i').classList.add('fa-check-circle');
                 document.querySelector('#grupo__metraje_mate i').classList.remove('fa-times-circle');
                 document.querySelector('#grupo__metraje_mate .formulario__input-error_mate').classList.remove('formulario__input-error-activo_mate');
-                campos_mate[metraje] = true;
+               
             }else{
                 document.getElementById('grupo__metraje_mate').classList.add('formulario__grupo-incorrecto_mate');
                 document.getElementById('grupo__metraje_mate').classList.remove('formulario__grupo-correcto_mate');
                 document.querySelector('#grupo__metraje_mate i').classList.add('fa-times-circle');
                 document.querySelector('#grupo__metraje_mate i').classList.remove('fa-check-circle');
                 document.querySelector('#grupo__metraje_mate .formulario__input-error_mate').classList.add('formulario__input-error-activo_mate');
-                campos_mate[metraje] = false;
+               
             }
         break;
     }
