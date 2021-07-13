@@ -14,7 +14,7 @@ const enviar = document.getElementById("reg")
 
 const conteActa = document.getElementById("conte-user")
 
-function actualizar(params) {
+function actualizar() {
 
     fetch("../../php/admin/actualizar.php", {
         method:"POST"
@@ -23,6 +23,9 @@ function actualizar(params) {
     })
 
 }
+
+
+
 
 //  CONEXION AL ARCHIVO PHP PARA EL FORMULARIO CREAR USUARIO
 enviar.addEventListener("click", (e) => {
@@ -191,5 +194,4 @@ inputs.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
     input.addEventListener('blur', validarFormulario);
 });
-
 
