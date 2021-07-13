@@ -113,7 +113,7 @@ $hora = date("H:i:s");
                         <div>
                             <label for="">TIPO DE USUARIO</label>    
                             <select class="input1" name="tip_us_crea" id="tip_us_crea" required style="text-transform:uppercase">
-                                <option >SELECCIONAR</option>
+                                <option value="">SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_usuario";
                                     $inser = mysqli_query($connection,$tipo);
@@ -131,7 +131,7 @@ $hora = date("H:i:s");
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>    
                             <select class="input1" name="tip_docu" id="tip_docu" required>
-                                <option >SELECCIONAR</option>
+                                <option value="">SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM tipo_documento";
                                     $inser = mysqli_query($connection,$tipo);
@@ -733,7 +733,7 @@ $hora = date("H:i:s");
                         <div class="filasinter">
                             <label for="">TIPO DE TELA</label>
                             <select class="input7" name="tipo_tela" id="tipo_tela" required style="text-transform:uppercase" >
-                                    <option >SELECCIONAR</option>
+                                    <option value="">SELECCIONAR</option>
                                     <?php
                                     $sql_tela = "SELECT * from tipo_material_textil";
                                     $consulta_tela = mysqli_query($connection,$sql_tela);
@@ -752,7 +752,7 @@ $hora = date("H:i:s");
                         <div class="filasinter">
                             <label for="">MARCA</label>
                             <select class="input7" name="tipo_marca" id="tipo_marca" required style="text-transform:uppercase">
-                                    <option >SELECCIONAR</option>
+                                    <option value="">SELECCIONAR</option>
                                     <?php
                                     $sql_marca_tex = "SELECT * FROM marca";
                                     $consulta_marca_tex = mysqli_query($connection,$sql_marca_tex);
@@ -773,8 +773,8 @@ $hora = date("H:i:s");
                     <div class="segundafilaMaterialtext">
                         <div class="filasinter">
                             <label for="">COLOR</label>
-                                <select class="input7" name="tipo_color" id="tipo_color" required style="text-transform:uppercase">
-                                    <option >SELECCIONAR</option>
+                                <select class="input7" name="tipo_color" id="tipo_color" required style="text-transform:uppercase" selected>
+                                    <option value="">SELECCIONAR</option>
                                     <?php
                                     $sql_color_tex = "SELECT * FROM color";
                                     $consulta_color_tex = mysqli_query($connection,$sql_color_tex);

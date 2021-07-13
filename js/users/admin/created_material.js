@@ -5,25 +5,6 @@ const enviarMate = document.getElementById("material_tex")
 //CONEXION AL ARCHIVO PHP PARA EL FORMULARIO DE MATERIAL TEXTIL
 enviarMate.addEventListener('click', (e)=>{
     e.preventDefault()
-
-    const t_tela = document.getElementById('tipo_tela')
-    const marcaTextil = document.getElementById('tipo_marca')
-    const colorTextil = document.getElementById('tipo_color')
-
-    
-    if(t_tela.value == 0 && t_tela.value == ""){
-        console.log("porfa funcione")
-        Swal.fire({
-            title: 'Advertencia!',
-            text: 'Por seleccione correctamente.',
-            icon: 'warning',
-            confirmButtonText: 'Continuar'
-        })
-
-    }else{
-        console.log("no se pudo")
-    }
-    
     
     const formular = new FormData(formMaterial)
     fetch("../../php/admin/crear_tela.php", {
@@ -43,7 +24,6 @@ enviarMate.addEventListener('click', (e)=>{
             });
             console.log("hellooooo")
             formMaterial.reset()
-            
         }else if(info == 2){
             Swal.fire({
                 title: 'Error!',
@@ -60,15 +40,10 @@ enviarMate.addEventListener('click', (e)=>{
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
             })
-
           
         }
     })
 })
-
-//validar los select 
-
-
 
 //VARIABLES PARA EL FORMULARIO DE TIPO DE TELA
 const formTipo_tela = document.getElementById("crear_tela_textil")
