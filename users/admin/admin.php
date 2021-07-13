@@ -728,7 +728,7 @@ $hora = date("H:i:s");
                         </div>
                         <div class="filasinter">
                             <label for="">TIPO DE TELA</label>
-                            <select class="input7" name="tipo_tela" id="tipo_tela" required style="text-transform:uppercase">
+                            <select class="input7" name="tipo_tela" id="tipo_tela" required style="text-transform:uppercase" >
                                     <option >SELECCIONAR</option>
                                     <?php
                                     $sql_tela = "SELECT * from tipo_material_textil";
@@ -1055,6 +1055,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/editar_users.js"></script>
     <script src="../../js/users/admin/eliminar_usu.js"></script>
     <script src="../../js/users/admin/created_user.js"></script>
+    <script src="../../js/users/admin/create.js"></script>
     <script src="../../js/users/admin/created_material.js"></script>
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
