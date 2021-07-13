@@ -350,7 +350,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">EDAD</label>
-                            <input class="input3" required type="number" name="edad-elim" id="edad-elim" placeholder="EDAD" readonly>
+                            <input class="input3" required type="date" name="edad-elim" id="edad-elim" placeholder="EDAD" readonly>
                         </div>
                     </div>
 
@@ -373,7 +373,6 @@ $hora = date("H:i:s");
                     <!-- caja de ENVIAR -->
                     <div class="cuartalinea3">
                         <div><input class="input3 eliminar" type="submit" name="eliminar-elim" id="elimi" value="ELIMINAR"></div>
-                        <input class="input3 cancelar" type="submit" onclick="resetearFormulario()" id="cancelar" value="CANCELAR">
                     </div>
 
 
@@ -610,7 +609,7 @@ $hora = date("H:i:s");
                     <div class="documentosotras" >
                         <div>DOCUMENTO :<p> <?=$usuario["DOCUMENTO"]?> </p></div>
                                         
-                        <div>NOMBRE :<p> <?$usuario["NOMBRE"]?></p></div>
+                        <div>NOMBRE :<p> <?=$usuario["NOMBRE"]?></p></div>
                         
                         <div>APELLIDO :<p> <?=$usuario["APELLIDO"]?> </p></div>
                         

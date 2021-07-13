@@ -9,11 +9,7 @@ const celu_eli = document.getElementById('tele-elim');
 const correo_eli = document.getElementById('cor-elim');
 const docmen_eli = document.getElementById('docume-elim');
 
-
 // FUNCION DE ACTUALIZAR 
-
-
-
 const conteActi = document.getElementById("conte-user")
 
 function actualizar(params) {
@@ -26,55 +22,67 @@ function actualizar(params) {
 
 }
 
-//boton de cancelar
-const btn_cancelar = document.getElementById('cancelar');
-
 document.addEventListener('keypress', (e)=>{
     if(e.keyCode === 13){
         if(e.target === docu_elim){
             e.preventDefault();
             console.log("hola no refresque");
-            const option = {
-                method: "POST",
-                headers: {
-                    'Content-type': 'application/json',
-                },
-                body: JSON.stringify({
-                    docum: docu_elim.value,
+            if(docu_elim.value === ""){
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Digite el documento de un usuario existente por favor',
+                    icon: 'error',
+                    confirmButtonText: 'Continuar'
+                });
+            }  
+            else{
+                const option = {
+                    method: "POST",
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        docum: docu_elim.value,
+                    })
+                }
+                fetch('../../php/admin/eliminar_users.php', option)
+                    .then(res => res.ok ? res.json() : Promise.reject(res))
+                    .then(datos => {
+                    console.log(datos);
+                    const {err, status, statusText, data} = datos;
+                    if(data.lenght !== 0 && err != true){
+                        const {DOCUMENTO, ID_TIP_DOCU, ID_TIP_USU, NOMBRE, APELLIDO, PASSWORD, FECHA_NACIMIENTO, CELULAR, CORREO} = data;
+                        docmen_eli.value = DOCUMENTO;
+                        docu_elim.disabled = true;
+                        nom_eli.value = NOMBRE;
+                        nom_eli.disabled = true;
+                        apel_eli.value = APELLIDO;
+                        apel_eli.disabled = true;
+                        sel_use_eli.value = ID_TIP_USU;
+                        sel_use_eli.disabled = true;
+                        sel_docu_eli.value = ID_TIP_DOCU;
+                        sel_docu_eli.disabled = true;
+                        edad_eli.value = FECHA_NACIMIENTO;
+                        edad_eli.disabled = true;
+                        celu_eli.value = CELULAR;
+                        celu_eli.disabled = true;
+                        correo_eli.value = CORREO;
+                        correo_eli.disabled = true;
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'No se encontro el usuario',
+                            icon: 'error',
+                            confirmButtonText: 'Continuar'
+                        });
+                    }
                 })
+                .catch(error => console.error(error));
             }
-            fetch('../../php/admin/eliminar_users.php', option)
-                .then(res => res.ok ? res.json() : Promise.reject(res))
-                .then(datos => {
-                console.log(datos);
-                const {err, status, statusText, data} = datos;
-                if(data.lenght !== 0){
-                    const {DOCUMENTO, ID_TIPO_DOCU, ID_TIPO_USU, NOMBRE, APELLIDO, PASSWORD, EDAD, TELEFONO, CORREO} = data;
-                    docmen_eli.value = DOCUMENTO;
-                    docu_elim.disabled = true;
-                    nom_eli.value = NOMBRE;
-                    nom_eli.disabled = true;
-                    apel_eli.value = APELLIDO;
-                    apel_eli.disabled = true;
-                    sel_use_eli.value = ID_TIPO_USU;
-                    sel_use_eli.disabled = true;
-                    sel_docu_eli.value = ID_TIPO_DOCU;
-                    sel_docu_eli.disabled = true;
-                    edad_eli.value = EDAD;
-                    edad_eli.disabled = true;
-                    celu_eli.value = TELEFONO;
-                    celu_eli.disabled = true;
-                    correo_eli.value = CORREO;
-                    correo_eli.disabled = true;
-                    
-                }
-                else{
-                    alert('No se encontro usuario');
-                }
-            })
-            .catch(error => console.error(error));
         }
-    }
+    } 
+            
     
 })
 document.addEventListener('submit', (e)=>{
@@ -89,31 +97,43 @@ document.addEventListener('submit', (e)=>{
                 docum: docmen_eli.value,
             })
         }
-        fetch('../../php/admin/eliminar_users.php', option)
-            .then(res => res.ok ? res.json() : Promise.reject(res))
-            .then(datos => {
-            const {err, status, statusText} = datos;
-            if(status >= 200 && status < 300){
-                alert("Se ha eliminado correctamente");
-                formul.reset()
-                actualizar()
+        Swal.fire({
+            title: 'Esta seguro de eliminarlo?',
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonText: `Eliminar`,
+            denyButtonText: `No eliminar`,
+        }).then(result => {
+            if (result.isConfirmed) {
+            fetch('../../php/admin/eliminar_users.php', option)
+                .then(res => res.ok ? res.json() : Promise.reject(res))
+                .then(datos => {
+                const {err, status, statusText} = datos;
+                if(status >= 200 && status < 300){
+                    Swal.fire('Eliminado!', 'Se ha eliminado con exito', 'success');
+                    formul.reset();
+                    docu_elim.disabled = false;
+                    actualizar();
+                }
+                else{
+                    Swal.fire('No eliminado', 'No se elimino el usuario', 'info');
+                    formul.reset();
+                }
+                console.log(datos);
+                })
+                .catch(error => console.error(error));
             }
             else{
-                alert("No se ha eliminado correctamente");
-                formul.reset()
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Se cancelo la eliminacion',
+                    icon: 'error',
+                    confirmButtonText: 'Continuar'
+                });
+                docu_elim.disabled = false;
+                formul.reset();
             }
-            console.log(datos);
-            })
-            .catch(error => console.error(error));
             
+        });
     }
 })
-
-btn_cancelar.addEventListener("click", (e) => {
-    e.preventDefault();
-    formul.reset();
-    docu_elim.style.border = "1px solid black";
-    docu_elim.focus();
-    docu_elim.disabled = false;
-});
-
