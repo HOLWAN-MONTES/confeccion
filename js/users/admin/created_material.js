@@ -5,6 +5,25 @@ const enviarMate = document.getElementById("material_tex")
 //CONEXION AL ARCHIVO PHP PARA EL FORMULARIO DE MATERIAL TEXTIL
 enviarMate.addEventListener('click', (e)=>{
     e.preventDefault()
+
+    const t_tela = document.getElementById('tipo_tela')
+    const marcaTextil = document.getElementById('tipo_marca')
+    const colorTextil = document.getElementById('tipo_color')
+
+    
+    if(t_tela.value == 0 && t_tela.value == ""){
+        console.log("porfa funcione")
+        Swal.fire({
+            title: 'Advertencia!',
+            text: 'Por seleccione correctamente.',
+            icon: 'warning',
+            confirmButtonText: 'Continuar'
+        })
+
+    }else{
+        console.log("no se pudo")
+    }
+    
     
     const formular = new FormData(formMaterial)
     fetch("../../php/admin/crear_tela.php", {
@@ -24,6 +43,7 @@ enviarMate.addEventListener('click', (e)=>{
             });
             console.log("hellooooo")
             formMaterial.reset()
+            
         }else if(info == 2){
             Swal.fire({
                 title: 'Error!',
@@ -40,10 +60,14 @@ enviarMate.addEventListener('click', (e)=>{
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
             })
+
           
         }
     })
 })
+
+//validar los select 
+
 
 
 //VARIABLES PARA EL FORMULARIO DE TIPO DE TELA
@@ -62,29 +86,30 @@ enviarTipo.addEventListener("click", (e) => {
     .then(res => res.text()).then(info => {
         if(info == 1){
             Swal.fire({
-                title: 'Registrado!',
-                text: 'llene los campos ',
-                icon: 'success',
+                title: 'Error!',
+                text: 'El tipo de tela ya existe.',
+                icon: 'error',
                 confirmButtonText: 'Continuar'
             })
             formTipo_tela.reset()
-            alert('hola registro')
         }else if(info == 2){
             Swal.fire({
                 title: 'Advertencia!',
-                text: 'Por favor rellena el formulario',
+                text: 'Por favor rellena el formulario correctamente.',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
             })
-            alert('hola registro')
-        }else if(info == 3){
+
+        }
+        else{
             Swal.fire({
-                title: 'Advertencia!',
-                text: 'YA EXISTE',
-                icon: 'warning',
+                title: 'Registrado!',
+                text: 'Se registro el tipo de tela.',
+                icon: 'success',
                 confirmButtonText: 'Continuar'
+                
             })
-            alert('hola registro')
+            formTipo_tela.reset()
         }
     })
 })
@@ -105,29 +130,29 @@ btnColor.addEventListener('click', (e) => {
     .then(res => res.text()).then(info => {
         if(info == 1){
             Swal.fire({
-                title: 'Registrado!',
-                text: 'Se registro el color',
-                icon: 'success',
+                title: 'Error!',
+                text: 'El color ya existe.',
+                icon: 'error',
                 confirmButtonText: 'Continuar'
             })
             registrarColor.reset()
-            console.log("siii se hizo")
         }else if(info == 2){
-            Swal.fire({
-                title: 'Advertencia!',
-                text: 'Por favor rellena el formulario',
-                icon: 'warning',
-                confirmButtonText: 'Continuar'
-            })
-            console.log("ya casii")
-        }else if(info == 3){
             Swal.fire({
                 title: 'Advertencia!',
                 text: 'Por favor rellena el formulario correctamente.',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
             })
-            console.log("llene el campo")
+        }
+        else{
+            Swal.fire({
+                title: 'Registrado!',
+                text: 'Se registro el color.',
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+                
+            })
+            registrarColor.reset()
         }
     })
 
@@ -149,27 +174,31 @@ btnMaquinaria.addEventListener('click', (e) => {
     .then(res => res.text()).then(info => {
         if(info == 1){
             Swal.fire({
-                title: 'Registrado!',
-                text: 'Se registro el tipo de maquinaria',
-                icon: 'success',
+                title: 'Error!',
+                text: 'El tipo de maquinaria ya existe.',
+                icon: 'error',
                 confirmButtonText: 'Continuar'
             })
             registrarMaquina.reset()
+
         }else if(info == 2){
-            Swal.fire({
-                title: 'Advertencia!',
-                text: 'Por favor rellena el formulario',
-                icon: 'warning',
-                confirmButtonText: 'Continuar'
-            })
-            console.log("ya casii")
-        }else if(info == 3){
             Swal.fire({
                 title: 'Advertencia!',
                 text: 'Por favor rellena el formulario correctamente.',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
             })
+
+        }
+        else{
+            Swal.fire({
+                title: 'Registrado!',
+                text: 'Se registro el tipo de maquinaria.',
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+                
+            })
+            registrarMaquina.reset()
         }
     })
 })
@@ -234,18 +263,7 @@ inputs_mate.forEach((input) => {
     input.addEventListener('blur', formularioTela);
 });
 
-ingre_material.addEventListener("submit", (e) =>{
-    console.log("ooookkkkkk");
 
-    if(campos_mate.nombre_mate && campos_mate.metraje){
-        e.preventDefault();
-
-        
-
-    }else{
-        return false;
-    }
-})
 
 
 
