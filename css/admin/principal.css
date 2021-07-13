@@ -733,7 +733,57 @@ li{
     background-color: #188276;
     
 }
-
+/*Tabla De ingreso de insumos*/
+.inp_cate{
+    border-radius: 12px;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+}
+.inp_nom{
+    border-radius: 12px;
+    outline: none;
+    padding: 5px;
+    width: 50%;
+}
+.cant_ing_ins{
+    border-radius: 10px;
+    outline: none;
+    padding: 3px;
+    width: 70%;
+}
+.categoriass{
+    margin-left: 12%;
+    position: absolute;
+}
+.nom_cant_ins{
+    width: 400%;
+}
+.NombreCate{
+    margin-left: 50%;
+}
+.cantidadSe{
+    position: absolute;
+    margin-top: -4.5%;
+    margin-left: 45%;
+}
+.agre_insu{
+    border-radius: 12px;
+    outline: none;
+    padding: 3px;
+    position: absolute;
+    margin-left: 36%;
+    margin-top: -2.5%;
+}
+.tab_ing_adm{
+    margin-left: 23%;
+    width: 50%;
+    font-weight: bold;
+}
+.tab_ml, .mostrar_insu{
+    border: 1px solid #23ad9dc5;
+    padding: 1%;
+}
 /* -FORMULARIOS PEQUEÑOS PARA CREAR TIPOS 'COLOR-MARCA-ETC...'  */
 
 .crearTipoDeInsumo,.CrearMarca, .CrearColor, .crearTipoDeTele,
