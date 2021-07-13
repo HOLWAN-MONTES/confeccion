@@ -194,11 +194,11 @@ $hora = date("H:i:s");
         <div class="contentEditarUsuario" id="contentEditarUsuario">
             <h1>EDITAR USUARIO</h1>
             <div class="contenFprmularioEditarUsu" id="contenFprmularioEditarUsu">
-                <form class="form-edi" id="form-edi" method="POST" autocomplete="off">
+                <form class="form-edi" id="form-edi" method="POST" autocomplete="off" enctype="multipart/form-data">
                     <div class="primeralinea2">
 
                         <div>
-                            <label for="">DOCUMENTO</label>    
+                            <label for="">DOCUMENTO</label>
                             <input class="input2" type="number" name="docu" id="docu-edi" placeholder="DOCUMENTO" autocomplete="off" required> <!-- &nbsp;&nbsp;&nbsp; -->
                         </div>
 
@@ -283,7 +283,7 @@ $hora = date("H:i:s");
 
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea2 cuartalinea2Enviar">
-                        <div><input class="input2 file" accept="image/png,image/jpeg,image/jpg" type="file" id="imagen" required name="imagen"/></div>
+                        <div><input class="input2 file" accept="image/png,image/jpeg,image/jpg" type="file" id="imagen_edi" required name="imagen"/></div>
                         <div><input class="input2 actualizar" type="submit" name="actualiza" id="reg_edi" value="ACTUALIZAR"></div>
                     </div>
 
@@ -350,7 +350,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">EDAD</label>
-                            <input class="input3" required type="number" name="edad-elim" id="edad-elim" placeholder="EDAD" readonly>
+                            <input class="input3" required type="date" name="edad-elim" id="edad-elim" placeholder="EDAD" readonly>
                         </div>
                     </div>
 
@@ -373,7 +373,6 @@ $hora = date("H:i:s");
                     <!-- caja de ENVIAR -->
                     <div class="cuartalinea3">
                         <div><input class="input3 eliminar" type="submit" name="eliminar-elim" id="elimi" value="ELIMINAR"></div>
-                        <input class="input3 cancelar" type="submit" onclick="resetearFormulario()" id="cancelar" value="CANCELAR">
                     </div>
 
 
@@ -610,7 +609,7 @@ $hora = date("H:i:s");
                     <div class="documentosotras" >
                         <div>DOCUMENTO :<p> <?=$usuario["DOCUMENTO"]?> </p></div>
                                         
-                        <div>NOMBRE :<p> <?$usuario["NOMBRE"]?></p></div>
+                        <div>NOMBRE :<p> <?=$usuario["NOMBRE"]?></p></div>
                         
                         <div>APELLIDO :<p> <?=$usuario["APELLIDO"]?> </p></div>
                         

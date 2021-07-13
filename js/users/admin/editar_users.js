@@ -9,7 +9,7 @@ const contra = document.getElementById('contra-edi');
 const celu = document.getElementById('tele-edi');
 const correo = document.getElementById('cor-edi');
 const docmen = document.getElementById('docume-edi');
-const foto = document.getElementById('imagen');
+var foto = document.getElementById('imagen_edi');
 
 // FUNCION DE ACTUALIZAR 
 
@@ -72,8 +72,9 @@ document.addEventListener('keypress', (e)=>{
                         celu.value = CELULAR;
                         correo.value = CORREO;
                         correo.disabled = true;
-                        // foto.value = FOTO;
+                        foto.value = FOTO;
                         actualizar()
+                        // console.log(foto.value);
                     }
                     else{
                         Swal.fire({
@@ -137,7 +138,12 @@ document.addEventListener('submit', (e)=>{
                 .catch(error => console.error(error));
             } 
             else{
-                Swal.fire('Error', 'No se actualizo con exito', 'error')
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'El usuario no existe',
+                    icon: 'error',
+                    confirmButtonText: 'Continuar'
+                });
                 documento.disabled = false
             }
         })   
