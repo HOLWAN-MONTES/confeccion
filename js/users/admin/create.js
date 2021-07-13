@@ -1,3 +1,4 @@
+
 //VARIABLES PARA EL FORMULARIO DE REGISTRO DE USUARIO
 const formulario = document.getElementById("crear_usuario")
 const documento_user = document.getElementById("docu")
