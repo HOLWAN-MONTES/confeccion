@@ -14,14 +14,14 @@ const docmen_eli = document.getElementById('docume-elim');
 
 
 
-const conteAct = document.getElementById("conte-user")
+const conteActi = document.getElementById("conte-user")
 
 function actualizar(params) {
 
     fetch("../../php/admin/actualizar.php", {
         method:"POST"
     }).then(res => res.text()).then(info => {
-        conteAct.innerHTML = `${info}`
+        conteActi.innerHTML = `${info}`
     })
 
 }

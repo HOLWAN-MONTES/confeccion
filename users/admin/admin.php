@@ -194,11 +194,11 @@ $hora = date("H:i:s");
         <div class="contentEditarUsuario" id="contentEditarUsuario">
             <h1>EDITAR USUARIO</h1>
             <div class="contenFprmularioEditarUsu" id="contenFprmularioEditarUsu">
-                <form class="form-edi" id="form-edi" method="POST" autocomplete="off">
+                <form class="form-edi" id="form-edi" method="POST" autocomplete="off" enctype="multipart/form-data">
                     <div class="primeralinea2">
 
                         <div>
-                            <label for="">DOCUMENTO</label>    
+                            <label for="">DOCUMENTO</label>
                             <input class="input2" type="number" name="docu" id="docu-edi" placeholder="DOCUMENTO" autocomplete="off" required> <!-- &nbsp;&nbsp;&nbsp; -->
                         </div>
 
@@ -283,7 +283,7 @@ $hora = date("H:i:s");
 
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea2 cuartalinea2Enviar">
-                        <div><input class="input2 file" accept="image/png,image/jpeg,image/jpg" type="file" id="imagen" required name="imagen"/></div>
+                        <div><input class="input2 file" accept="image/png,image/jpeg,image/jpg" type="file" id="imagen_edi" required name="imagen"/></div>
                         <div><input class="input2 actualizar" type="submit" name="actualiza" id="reg_edi" value="ACTUALIZAR"></div>
                     </div>
 

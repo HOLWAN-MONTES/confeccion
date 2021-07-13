@@ -4,14 +4,14 @@
 
 
 
-const conteAct = document.getElementById("conte-user")
+const conteActa = document.getElementById("conte-user")
 
 function actualizar(params) {
 
     fetch("../../php/admin/actualizar.php", {
         method:"POST"
     }).then(res => res.text()).then(info => {
-        conteAct.innerHTML = `${info}`
+        conteActa.innerHTML = `${info}`
     })
 
 }
@@ -65,19 +65,19 @@ inputs_edi.forEach((input) => {
     input.addEventListener('blur', FormularioEditar);
 });
 
-valida_edi.addEventListener("submit", (e) =>{
-    e.preventDefault();
+// valida_edi.addEventListener("submit", (e) =>{
+//     e.preventDefault();
 
-    if(campos_edi.clave_edi && campos_edi.telefono_edi){
-        editar_usuario.reset();
+//     if(campos_edi.clave_edi && campos_edi.telefono_edi){
+//         editar_usuario.reset();
 
-        document.querySelectorAll('.formulario_grupo_correcto_editar').forEach((icono_edi) => {
-            icono_edi.classList.remove('formulario_grupo_correcto_editar');
-        });
+//         document.querySelectorAll('.formulario_grupo_correcto_editar').forEach((icono_edi) => {
+//             icono_edi.classList.remove('formulario_grupo_correcto_editar');
+//         });
 
-    }else {
-        return false;
+//     }else {
+//         return false;
        
-    }
+//     }
 
-});
+// });
