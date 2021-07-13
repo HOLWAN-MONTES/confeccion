@@ -563,11 +563,13 @@ $hora = date("H:i:s");
 
     <!----------------------------------------- MOSTRAR TODOS LOS USUARIOS REGISTRADOS------------------------- -->
     <div class="todosLosusuarios" id="todosLosusuarios">
+        <div class="titulotodslosusu">
+            <h2>USUARIOS REGISTRADOS</h2>
+        </div>
             <!-- boton de cerrar los usuarios -->
-                <div>
-                    <form action="" method="POST" id="form-buscador-user">
-                        <input type="number" name="docu" id="buscador-user">
-                    </form>
+            <div class="headerUsuarios">
+                <div class="btn-m-users">
+                   
                     <form action="" method="post" id="for_Usuario" >
                         <input type="hidden" name="usuario" value="1">
                         <button id="btn_Admin" >Administrador</button>
@@ -580,12 +582,16 @@ $hora = date("H:i:s");
                     <form action="" method="post">
                         <button id="todo">Todo los usuarios</button>
                     </form>
-                    
+                    <form action="" method="POST" id="form-buscador-user">
+                        <input type="number" name="docu" id="buscador-user">
+                    </form>
                     
                 </div>
-                <div>
+                <div class="iconouserr">
                 <i id="desaparecerTodosUsers" class="cerrarTodosUsers fas fa-times-circle"></i>
                 </div>
+            </div>
+            
                 
 
         <div class="containergeneralff" id="conte-user">
@@ -616,9 +622,6 @@ $hora = date("H:i:s");
                         <div>TIPO DOCUMENTO :<p> <?=$usuario["tipo_docu"]?></p></div>
                     </div>  
                 </div>
-
-    
-               
             <?php
             }
             ?> 
