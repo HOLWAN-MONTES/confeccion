@@ -404,35 +404,37 @@ $hora = date("H:i:s");
                         
                         <div>
                             <b>RESPONSABLE = <!-- echo nombre de la persona logueada "admin" --></b> <p><?=$_SESSION['NOMBRE']?></p>
-                            <input type="hidden" name="responsable" id="" value="<?=$_SESSION['DOCUMENTO']?>">
+                            <input type="hidden" name="responsable" id="respon" value="<?=$_SESSION['DOCUMENTO']?>">
                         </div>      
                         <div>
-                            <b>PROVEEDOR = <!-- nombre de proveedor --></b> <select name="provedor" id="proveedor"> 
-                            <option>Seleccione el proveedor</option>
-                <!-- GUYS -->                 <?php
-                            $sql_porveedor = "SELECT * from usuario WHERE ID_TIP_USU = 3";
-                            $consulta_proveedor = mysqli_query($connection,$sql_porveedor);
-                            foreach($consulta_proveedor as $proveedor) {
-                                ?> <option value="<?=$proveedor['NIT']?>"><?=$proveedor['NOMBRE']?> </option>
-                            <?php
-                            }
-                            ?>
+                            <b>PROVEEDOR = <!-- nombre de proveedor --></b> 
+                            <select name="provedor" id="proveedor"> 
+                                <option>Seleccione el proveedor</option>
+                                <!-- GUYS -->
+                                <?php
+                                $sql_porveedor = "SELECT * FROM usuario WHERE ID_TIP_USU = 3";
+                                $consulta_proveedor = mysqli_query($connection,$sql_porveedor);
+                                foreach($consulta_proveedor as $proveedor) {
+                                ?> 
+                                    <option value="<?=$proveedor['NIT']?>"><?=$proveedor['NOMBRE']?> </option>
+                                <?php
+                                }
+                                ?>
                             </select>
                         </div>
                         <div>
-                            <b>FECHA = <!-- fecha actual-today --></b><p><?=$fecha?></p>
+                            <b>FECHA = <!-- fecha actual-today --></b><p id="fecha"><?=$fecha?></p>
                         </div>
                         <div>
-                            <b>HORA = <!-- hora actual- --></b><p><?=$hora?></p>
+                            <b>HORA = <!-- hora actual- --></b><p id="hora"><?=$hora?></p>
                         </div>
 
                     </div>
-                </form>
                 
                     <div class="categorias">
                             <div class="categoriass">
-                                <label for="">CATEGORIA</label>    
-                                    <select class="input6" name="categorias" id="categoria" required>
+                                <label for="">CATEGORIA</label> <br>  
+                                    <select class="inp_cate" name="categorias" id="categoria" style="text-transform: uppercase;" required>
                                         <option>SELECCIONAR</option>
                                         <?php
                                         $tipo2 = "SELECT * FROM tipo_ingreso";
@@ -447,24 +449,23 @@ $hora = date("H:i:s");
                                         ?>
                                     </select>
                             </div>
-                            <div class="fff">
-                                <div id="factura"></div>    
+                            <div class="nom_cant_ins">
                                 <div class="NombreCate">
-                                        <label for="">NOMBRE</label> 
-                                        <select class="input6" name="categorias" id="nom_catego" required>
+                                        <label for="" >NOMBRE</label> <br>
+                                        <select class="inp_nom" name="categorias" id="nom_catego" style="text-transform: uppercase;" required>
                                             <option>SELECCIONAR</option>
                                         </select>
                                 </div>
 
                                 <div class="cantidadSe">
-                                    <label for="">CANTIDAD</label>
-                                    <input type="number" id="cantidad" placeholder="CANTIDAD">
+                                    <label for="">CANTIDAD</label> <br>
+                                    <input type="number" id="cantidad" class="cant_ing_ins" placeholder="CANTIDAD">
                                 </div>
                             
                            
 
                                 <div class="bnt">
-                                    <input type="button" value="AGREGAR" id="btn_productos"> <!-- agregar a la lista -->
+                                    <input type="button" value="AGREGAR" class="agre_insu" id="btn_productos"> <!-- agregar a la lista -->
                                 </div>
                             </div>    
                        
@@ -472,7 +473,7 @@ $hora = date("H:i:s");
                     </div>
                         <div class="agregarTodosLosListados">
                             <!-- ACA VAN TODOS LOS LISTADOS DE LO QUE SEA AGREGUE -->
-                            <table id="tabla_ing_insu">
+                            <table id="tabla_ing_insu" class="tab_ing_adm">
                                 <thead>
                                 <tr class="tab-ml">
                                     <td class="tab_ml">CATEGORIA</td>
@@ -481,13 +482,13 @@ $hora = date("H:i:s");
                                     <td class="tab_ml">ACCION</td>
                                 </tr>
                                 </thead>
-                                <tbody> </tbody>
+                                <tbody id="mostrar_insumos" class="mostrar_insu"> </tbody>
                             </table>
                         </div>
                         
                         <div class="btnesEnv_can">
                             <div>
-                                <input type="button" value="ENVIAR"> <!-- enviar a la db -->
+                                <input type="submit" id="envia_ing_ins" value="ENVIAR"> <!-- enviar a la db -->
                             </div>
                             <div>
                                 <input type="button" value="CANCELAR">
