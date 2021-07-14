@@ -102,6 +102,7 @@ admin.addEventListener("click", (e) => {
         method:"POST",
         body:dato
     }).then(res => res.text()).then(info => {
+        console.log(info)
         conte_user.innerHTML=`${info}`
     })
 })
