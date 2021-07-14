@@ -4,17 +4,7 @@
 
 
 
-const conteActa = document.getElementById("conte-user")
 
-function actualizar(params) {
-
-    fetch("../../php/admin/actualizar.php", {
-        method:"POST"
-    }).then(res => res.text()).then(info => {
-        conteActa.innerHTML = `${info}`
-    })
-
-}
 
 //Validacion Del Form De Editar 
 

@@ -2,20 +2,20 @@
 require_once("../conections/conexion.php");
 
 
-$tip_maquinaria = $_POST['maquina'];
+$tip_insumo = $_POST['Inptipinsu'];
 
-if($tip_maquinaria === ""){
+if($tip_insumo === ""){
     echo 2;
 }else{
-    $cosul_maqui = "SELECT * FROM tipo_maquina WHERE NOM_TIP_MAQUINARIA = '$tip_maquinaria'";
+    $cosul_maqui = "SELECT * FROM tipo_insumo WHERE NOM_TIP_INSUMO = '$tip_insumo'";
     $confirma = mysqli_query($connection,$cosul_maqui);
     $datos = mysqli_fetch_assoc($confirma);
 
-    if($datos['NOM_TIP_MAQUINARIA'] == $tip_maquinaria){
+    if($datos['NOM_TIP_INSUMO'] == $tip_insumo){
         echo 1;
     }
     else{
-        $sql = "INSERT INTO tipo_maquina (NOM_TIP_MAQUINARIA) VALUES('$tip_maquinaria')";
+        $sql = "INSERT INTO tipo_insumo (NOM_TIP_INSUMO) VALUES('$tip_insumo')";
         $insertar = mysqli_query($connection,$sql);
             
         if($insertar){

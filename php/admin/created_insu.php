@@ -1,29 +1,32 @@
 <?php
 require_once("../conections/conexion.php");
 
-# RECIBIR DATOS DEL FORMULARIO 
 $tipo_insumo = $_POST['tip_insumo'];
 $nombre_insumo = $_POST['NombreInsumo'];
 $marca_insumo = $_POST['marca_insumo'];
 $color_insumo = $_POST['color_insumo'];
 
 
+if($tipo_insumo === "" || $nombre_insumo === "" || $marca_insumo === "" || $color_insumo === ""){
+    echo 2;
+}else{
+    $cosul_maqui = "SELECT * FROM insumo WHERE NOM_INSUMO = '$nombre_insumo'";
+    $confirma = mysqli_query($connection,$cosul_maqui);
+    $datos = mysqli_fetch_assoc($confirma);
 
-    $validacion = "SELECT * from insumos where NOM_INSUMOS = '$nombre_insumo'";
-    $consul_vali = mysqli_query($connection,$validacion);
-    $dato_vali = mysqli_fetch_assoc($consul_vali);
-        if ($dato_vali['NOM_INSUMOS'] == $nombre_insumo){
+    if($datos['NOM_INSUMO'] == $nombre_insumo){
+        echo 1;
+    }
+    else{
+        $sql = "INSERT INTO insumo (ID_TIP_INSUMO, NOM_INSUMO, ID_MARCA, ID_COLOR)  values ($tipo_insumo,'$nombre_insumo',$marca_insumo,$color_insumo)";
+        $insertar = mysqli_query($connection,$sql);
+            
+        if($insertar){
             echo 3;
-        }
-        else{
-             //Hacemos la consulta para que me seleccione los datos en la BD y valide
-                $sql = "INSERT INTO insumos (ID_TIPO_INSUMO, NOM_INSUMOS, ID_MARCA, ID_COLOR)  values ($tipo_insumo,'$nombre_insumo',$marca_insumo,$color_insumo)";
-                $insertarInsumo = mysqli_query($connection,$sql);
+        }else{
+            echo 2;
+        } 
+    }
+}
 
-                if ($insertarInsumo){
-                    echo 1;
-                }else {
-                    echo 2;
-                }
-        }
 ?>
