@@ -295,8 +295,6 @@ li{
 }
 
 
-
-
 .cuartalinea{
     width: 100%;
     grid-template-columns: 50% 50% ;
@@ -338,16 +336,17 @@ li{
 
 /*------------------validacion de los inputs----------------------------------*/
 .formulario__validacion-estado {
+    width: 8px;
 	position: relative;
 	right: -45%;
 	bottom: 25px;
-	z-index: 100;
+	z-index: 10;
 	font-size: 16px;
 	opacity: 0;
 }
 .formulario__input-error {
 	font-size: 12px;
-	margin-bottom: 0;
+	margin-top: -6%;
 	display: none;
 }
 .formulario__input-error-activo {
@@ -373,16 +372,17 @@ li{
 }
 /*Validacion Campos De Editar Usuario*/
 .formulario_validacion_estado_editar {
+    width: 8px;
 	position: relative;
 	right: -45%;
 	bottom: 25px;
-	z-index: 100;
+	z-index: 10;
 	font-size: 16px;
 	opacity: 0;
 }
 .formulario_input_error_editar {
 	font-size: 12px;
-	margin-bottom: 0;
+	margin-top: -6%;
 	display: none;
 }
 .formulario_input-error_activo_editar {
@@ -410,7 +410,7 @@ li{
 /* CREAR TIPO DE USUARIO TIPO DE DOCUMENTO SELECCIONAR CAJITA DEBAJO DEL INPUT---------------------- */
 
 .agregaradi{
-    color:#ff6819 ;
+    color:#ff6819;
     cursor: pointer;
 }
 
@@ -497,10 +497,6 @@ li{
     cursor: pointer;
    color: red;
 }
-
-
-
-
 
 
 
@@ -786,7 +782,7 @@ li{
 }
 /* -FORMULARIOS PEQUEÑOS PARA CREAR TIPOS 'COLOR-MARCA-ETC...'  */
 
-.crearTipoDeInsumo,.CrearMarca, .CrearColor, .crearTipoDeTele,
+.crearTipoDeInsumo,.CrearMarca, .CrearMarcaTextil, .CrearColor, .crearTipoDeTele,
 .crearMarcaMaterialTextil, .crearTipoDeMaquinaria{
     padding: 10px;
     background-color: #1882764f;
@@ -1104,7 +1100,8 @@ li{
 .contentFormMaterialG{
     border: 1px solid rgba(58, 56, 56, 0.308);
     width: 70%;
-    margin: 0 auto;margin-top: 13%;
+    margin: 0 auto;
+    margin-top: 13%;
     background-color: #188276;
     border-radius: 10px;
     padding: 10px;
@@ -1148,7 +1145,6 @@ li{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     text-align: center;
-
     padding: 5px;
   
 }
@@ -1157,6 +1153,7 @@ li{
     padding: 6px 35px 6px 35px;
     text-align: center;
     width: 100%;
+   
 }
 
 .tercerafilaMaterialtext{
@@ -1173,18 +1170,24 @@ li{
     cursor: pointer;
 
 }
+/*----------clase para abrir las ventanas pequeñas-----------*/
+.agregaradi{
+    width: 100%;
+    height: 13px;
+}
 /*------------------validacion de los inputs de material textil----------------------------------*/
 .formulario__validacion-estado_mate {
+    width: 8px;
 	position: relative;
-	right: -45%;
+	right: -93%;
 	bottom: 25px;
-	z-index: 100;
+	z-index: 10;
 	font-size: 16px;
 	opacity: 0;
 }
 .formulario__input-error_mate {
 	font-size: 12px;
-	margin-bottom: 0;
+	margin-top: -10%;
 	display: none;
 }
 .formulario__input-error-activo_mate {
