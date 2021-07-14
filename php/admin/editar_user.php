@@ -46,7 +46,7 @@
         $correo = $_PUT['cor'];
         $contra = $_PUT['contra'];
         $docume = $_PUT['docum'];
-        $foto = $_PUT['imagen'] ["name"];
+        $foto = $_PUT['imagen'] ;
 
         
         

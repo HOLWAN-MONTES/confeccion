@@ -283,7 +283,7 @@ $hora = date("H:i:s");
 
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea2 cuartalinea2Enviar">
-                        <div><input class="input2 file" accept="image/png,image/jpeg,image/jpg" type="file" id="imagen_edi" required name="imagen"/></div>
+                        <div><input class="input2 file"  type="file" id="imagen_edi" required name="imagen"/></div>
                         <div><input class="input2 actualizar" type="submit" name="actualiza" id="reg_edi" value="ACTUALIZAR"></div>
                     </div>
 
