@@ -830,31 +830,31 @@ $hora = date("H:i:s");
             </div>
             <div>
                
-                <form  action="" class="formularioCrearMaqui">
+                <form  action="" class="formularioCrearMaqui" method="POST" id="form_crear_maqui">
                     
                     <div class="primeraLineaMa">
                             <div class="asd">
                                 <label for="">SERIAL</label>
                                 <div>
-                                <input type="text" name="" id="">
+                                <input type="text" name="serial" id="serial">
                                 </div>  
                             </div>
                             <div class="asd">
                                 <label for="">PLACA SENA</label>
-                                <input type="text" >
+                                <input type="text" name="placa_sena" id="placa_sena">
                             </div>
                             <div class="asd">
                                 <label for="">NOMBRE MAQUINARIA</label>
-                                <input type="text" >
+                                <input type="text" name="nombre_maqui" id="nombre_maqui">
                             </div>
                     </div>
                     <div class="segundaLineaMa">
                         <div>
                             <label for="">MARCA DE MAQUINARIA </label>    
-                            <select class="input5" name="tip_insumo"  required>
+                            <select class="input5" name="marca_maqui"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM tipo_usuario";
+                                    $tipo = "SELECT * FROM marca";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
@@ -869,7 +869,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">COLOR DE MAQUINARIA</label>    
-                            <select class="input5" name="tip_insumo"  required>
+                            <select class="input5" name="color_maqui"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM color";
@@ -887,10 +887,10 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">TIPO DE MAQUINARIA</label>    
-                            <select class="input5 labeltipma" name="tip_insumo"  required>
+                            <select class="input5 labeltipma" name="tipo_maqui"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM tipo_usuario";
+                                    $tipo = "SELECT * FROM tipo_maquina";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
@@ -906,7 +906,7 @@ $hora = date("H:i:s");
                     </div>
 
                     <div class="terceraLineaMa">
-                        <input type="button" value="ENVIAR">
+                        <input type="button" value="ENVIAR" id="enviar_maqui" name="enviar_maqui">
                     </div>
 
                 </form>
@@ -1090,6 +1090,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/created_material.js"></script>
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
+    <script src="../../js/users/admin/created_maquinaria.js"></script>
     <script src="./../../tablas_dinamicas/jquery.dynamicTable-1.0.0.js"></script>
     <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
