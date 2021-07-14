@@ -46,7 +46,7 @@
         $correo = $_PUT['cor'];
         $contra = $_PUT['contra'];
         $docume = $_PUT['docum'];
-        $foto = $_PUT['imagen'] ;
+        $foto = $_PUT['foto'];
 
         
         
@@ -54,7 +54,8 @@
         $consul = "UPDATE usuario SET CLAVE = '$contra', CELULAR = $telefono, CORREO = '$correo', FOTO = '$foto' 
                 WHERE DOCUMENTO = '$docume'";
         $query = mysqli_query($connection, $consul);
-        $res;
+        echo $foto;
+        /* $res;
         // UPDATE usuario SET usuario.PASSWORD = '54', TELEFONO = 3124124, CORREO = 'oscarllanos.com' WHERE DOCUMENTO = '1007'
         if($query){
             $res = array(
@@ -72,6 +73,6 @@
                 'data' => []
             ); 
         }
-        echo json_encode($res);
-    }
+        echo json_encode($res);*/
+    } 
 ?>

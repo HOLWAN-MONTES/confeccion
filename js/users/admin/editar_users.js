@@ -119,9 +119,9 @@ document.addEventListener('submit', (e)=>{
         }).then(result => {
             if (result.isConfirmed) {
                 fetch('../../php/admin/editar_user.php', option)
-                .then(res => res.ok ? res.json() : Promise.reject(res))
+                .then(res => res.text())
                 .then(datos => {
-                    
+                    console.log(datos)
                     const {err, status, statusText} = datos;
                     if(status >= 200 && status < 300){
                         Swal.fire('Actualizado!', 'Se actualizo con exito', 'success')
