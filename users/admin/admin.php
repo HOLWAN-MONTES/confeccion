@@ -263,7 +263,7 @@ $hora = date("H:i:s");
                     <div class="terceralinea2">
                         <div id="grupo__clave_edi">
                             <label for="">CONTRASEÑA</label>    
-                            <input class="input2 clave" type="password" name="contra_edi" id="contra-edi" placeholder="CONTRASEÑA" autocomplete="off" required>
+                            <input class="input2 clave" type="password" name="contrasena_edi" id="contra-edi" placeholder="CONTRASEÑA" autocomplete="off" required>
                             <i class="formulario_validacion_estado_editar fas fa-times-circle"></i>
                             <p class="formulario_input_error_editar">La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.</p>
                         </div>
@@ -285,7 +285,7 @@ $hora = date("H:i:s");
 
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea2 cuartalinea2Enviar">
-                        <div><input class="input2 file" accept="image/png,image/jpeg,image/jpg" type="file" id="imagen_edi" required name="imagen"/></div>
+                        <div><input class="input2 file"  type="file" id="imagen_edi" required name="imagen"/></div>
                         <div><input class="input2 actualizar" type="submit" name="actualiza" id="reg_edi" value="ACTUALIZAR"></div>
                     </div>
 

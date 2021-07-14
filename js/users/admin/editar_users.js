@@ -59,7 +59,7 @@ document.addEventListener('keypress', (e)=>{
                     if(data.lenght !== 0 && err != true){
                         const {DOCUMENTO, ID_TIP_DOCU, ID_TIP_USU, NOMBRE, APELLIDO, PASSWORD, FECHA_NACIMIENTO, CELULAR, CORREO, FOTO} = data;
                         docmen.value = DOCUMENTO;
-                        documento.disabled = true;
+                        documento.disabled = false;
                         nomb.value = NOMBRE;
                         nomb.disabled = true;
                         apel.value = APELLIDO;
@@ -72,8 +72,9 @@ document.addEventListener('keypress', (e)=>{
                         edad.disabled = true;
                         celu.value = CELULAR;
                         correo.value = CORREO;
-                        correo.disabled = true;
-                        foto.value = FOTO;
+                        correo.disabled = false;
+                        
+                        contra.value = PASSWORD;
                        
                         // console.log(foto.value);
                     }
@@ -95,21 +96,9 @@ document.addEventListener('keypress', (e)=>{
 })
 
 document.addEventListener('submit', (e)=>{
-    if(e.target === formu){
+    
         e.preventDefault();
-        const option = {
-            method: "PUT",
-            headers: {
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify({
-                docum: docmen.value,
-                tele: celu.value,
-                cor: correo.value,
-                contra: contra.value,
-                foto: foto.value,
-            })
-        }
+        const option = new FormData(formu)
         Swal.fire({
             title: 'Esta seguro de actualizar?',
             icon: 'warning',
@@ -118,8 +107,11 @@ document.addEventListener('submit', (e)=>{
             denyButtonText: `No actualizar`,
         }).then(result => {
             if (result.isConfirmed) {
-                fetch('../../php/admin/editar_user.php', option)
-                .then(res => res.ok ? res.json() : Promise.reject(res))
+                fetch('../../php/admin/editarUsuario.php', {
+                    method:"POST",
+                    body:option
+                })
+                .then(res => res.json())
                 .then(datos => {
                     console.log(datos)
                     const {err, status, statusText} = datos;
@@ -130,7 +122,7 @@ document.addEventListener('submit', (e)=>{
                         document.querySelectorAll('.formulario_grupo_correcto_editar').forEach((icono_edi) => {
                             icono_edi.classList.remove('formulario_grupo_correcto_editar');
                         });
-                        
+                        actualizar()
                     }
                     else{
                         Swal.fire('No actualizado', 'No se actualizo el usuario', 'info')
@@ -139,7 +131,7 @@ document.addEventListener('submit', (e)=>{
                     console.log(datos);
                     
                 })
-                .catch(error => console.error(error));
+                .catch(error => console.error(error));git 
             } 
             else{
                 Swal.fire({
@@ -151,5 +143,5 @@ document.addEventListener('submit', (e)=>{
                 documento.disabled = false
             }
         })   
-    }
+    
 })
