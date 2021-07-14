@@ -579,6 +579,10 @@ $hora = date("H:i:s");
                         <input type="hidden" name="usuario" value="2">
                         <button id="bt_instru" >Instructor</button>
                     </form>
+                    <form action="" method="post" id="form_empresa">
+                        <input type="hidden" name="usuario" value="3">
+                        <button id="btn_empresa" >Empresa</button>
+                    </form>
                     <form action="" method="post">
                         <button id="todo">Todo los usuarios</button>
                     </form>

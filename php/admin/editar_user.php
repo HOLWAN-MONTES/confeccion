@@ -46,7 +46,10 @@
         $correo = $_PUT['cor'];
         $contra = $_PUT['contra'];
         $docume = $_PUT['docum'];
-        $foto = $_PUT['foto'];
+        $foto = $_PUT['imagen'] ["name"];
+
+        
+        
 
         $consul = "UPDATE usuario SET CLAVE = '$contra', CELULAR = $telefono, CORREO = '$correo', FOTO = '$foto' 
                 WHERE DOCUMENTO = '$docume'";

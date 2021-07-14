@@ -50,9 +50,10 @@ enviar.addEventListener("click", (e) => {
             document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
                 icono.classList.remove('formulario__grupo-correcto');
             });
+            actualizar()
             formulario.reset()
             documento_user.disabled = false
-            actualizar()
+            
         }else if(info == 2){
             Swal.fire({
                 title: 'Error!',
