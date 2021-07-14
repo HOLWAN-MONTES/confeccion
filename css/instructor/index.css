@@ -141,11 +141,11 @@
     cursor: pointer;
 }
 /*------------------ ventana prestamos----------------------------- */
-.ventana_one{
+#ventana_one{
     display: none;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,255,0,0.6);
+    background-color:#707c7e80;
     margin-top: -100vh;
     position: absolute;
 }
@@ -170,7 +170,7 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 10PX;
     background-color: white;
     margin: 5% 5%;
-    margin-top: 100px;
+    margin-top: 3%;
     padding: 4%;
 }
 .formu_presta{
@@ -186,7 +186,59 @@ input[type=number]::-webkit-outer-spin-button {
     margin-left: 100px;
     margin-right: 10px;
 }
-.pet_pres{
+/*inputs del formulario de solicitud de prestamos*/
+.categ{
+    outline: none;
+    padding: 5px;
+    width: 100%; 
+}
+.categoriass{
+    margin-left: 10%;
+    position: absolute;
+}
+.prestamo{
+    outline: none;
+    padding: 5px;
+    width: 100%; 
+}
+.nom_cant_categoria{
+    width: 100%;
+}
+.nom_categoria{
+    position: absolute;
+    margin-left: 33%;
+}
+.cant_pres{
+    outline: none;
+    padding: 3px;
+    width: 70%;
+}
+.cant_prestamo{
+    position: absolute;
+    
+    margin-left: 48%;
+}
+.btn_agregar{
+    outline: none;
+    padding: 3px;
+    position: absolute;
+    margin-left: 30%;
+    margin-top: 5%;
+}
+.tablaInfo{
+    margin-top: 10%;
+    margin-left: 23%;
+    width: 50%;
+    font-weight: bold; 
+}
+.tab_ml, .agregado{
+    border: 1px solid #23ad9dc5;
+    padding: 1%; 
+}
+.enviar_solic{
+    margin-top: 2%;
+}
+/* .pet_pres{
     margin-top: -3%;
     font-size: 25px;
 }
@@ -219,20 +271,20 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 10px;
 }
 /*Estilos para la tabla de prestamos agregados*/
-.tabla_info{
+/* .tabla_info{
     margin-left: 23%;
     width: 50%;
     font-weight: bold;
 }
 .tab_ml, .agregado{
     border: 1px solid #23ad9dc5;
-}
+} */ 
 
 /*------------------ ventana devoluciones----------------------------- */
 .ventana_two{
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,255,0.2);
+    background-color: #707c7e80;
     margin-top: -100vh;
     position: absolute;
     display: none;
@@ -245,7 +297,7 @@ input[type=number]::-webkit-outer-spin-button {
     gap: 20px;
 
 }
-input[type=number]::-webkit-inner-spin-button,
+/* input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -307,14 +359,14 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 10px;
 }
 /*Estilos para la tabla de prestamos agregados*/
-.tabla_dev{
+/* .tabla_dev{
     margin-left: 23%;
     width: 50%;
     font-weight: bold;
 }
 .tab_ml, .agregado{
     border: 1px solid #23ad9dc5;
-}
+} */ 
 
 /*------------------ ventana prestamos pendientes----------------------------- */
 .ventana_tres{
