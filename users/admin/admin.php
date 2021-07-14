@@ -8,6 +8,8 @@ if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
 
 }
+
+
 /* 
 $sql_marca= "SELECT * from marca";
 $consulta_marca = mysqli_query($connection,$sql_marca);
@@ -251,7 +253,7 @@ $hora = date("H:i:s");
                             </select>
                         </div>
                         <div>
-                            <label for="">EDAD</label>    
+                            <label for="">FECHA NACIMIENTO</label>    
                             <input class="input2" required type="date" name="edad" id="edad-edi" placeholder="EDAD">
                         </div>
                     </div>
@@ -261,7 +263,7 @@ $hora = date("H:i:s");
                     <div class="terceralinea2">
                         <div id="grupo__clave_edi">
                             <label for="">CONTRASEÑA</label>    
-                            <input class="input2 clave" type="password" name="contra_edi" id="contra-edi" placeholder="CONTRASEÑA" autocomplete="off" required>
+                            <input class="input2 clave" type="password" name="contrasena_edi" id="contra-edi" placeholder="CONTRASEÑA" autocomplete="off" required>
                             <i class="formulario_validacion_estado_editar fas fa-times-circle"></i>
                             <p class="formulario_input_error_editar">La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.</p>
                         </div>
@@ -283,7 +285,7 @@ $hora = date("H:i:s");
 
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea2 cuartalinea2Enviar">
-                        <div><input class="input2 file" accept="image/png,image/jpeg,image/jpg" type="file" id="imagen_edi" required name="imagen"/></div>
+                        <div><input class="input2 file"  type="file" id="imagen_edi" required name="imagen"/></div>
                         <div><input class="input2 actualizar" type="submit" name="actualiza" id="reg_edi" value="ACTUALIZAR"></div>
                     </div>
 
@@ -578,6 +580,10 @@ $hora = date("H:i:s");
                         <input type="hidden" name="usuario" value="2">
                         <button id="bt_instru" >Instructor</button>
                     </form>
+                    <form action="" method="post" id="form_empresa">
+                        <input type="hidden" name="usuario" value="3">
+                        <button id="btn_empresa" >Empresa</button>
+                    </form>
                     <form action="" method="post">
                         <button id="todo">Todo los usuarios</button>
                     </form>
@@ -660,6 +666,8 @@ $hora = date("H:i:s");
                             <div>
                                 <label for="">NOMBRE DEL INSUMO</label>
                                 <input class="input5 NombreInsumo" type="text" name="NombreInsumo" id="NombreInsumo" placeholder="NOMBRE DEL INSUMO" required style="text-transform:uppercase">
+                                <i class="formulario__validacion-estado_insu fas fa-times-circle"></i>
+                                <p class="formulario__input-error_insu">El nombre del insumo tiene entre 4 a 16 dígitos, no puede tener numeros ni caracteres especiales.</p>
                             </div>
                         </div>
 
@@ -722,46 +730,49 @@ $hora = date("H:i:s");
             <div >
                 <form method="POST" class="rojo" id="crear_material" autocomplete="off">
                     <div class="primerafilaMaterialtext">
+                        
                         <div class="filasinter" id="grupo__nombre_mate">
                             <label for="">NOMBRE MATERIAL TEXTIL</label>
                             <input class="input7" type="text" placeholder="NOMBRE" name="nombre_tela" id="nombre_tela" style="text-transform:uppercase" required>
                             <i class="formulario__validacion-estado_mate fas fa-times-circle"></i>
-                            <p class="formulario__input-error_mate">El nombre tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
+                            <p class="formulario__input-error_mate">El nombre del material textil tiene entre 4 a 16 dígitos, no puede tener numeros ni caracteres especiales.</p>
                         </div>
+
                         <div class="filasinter">
                             <label for="">TIPO DE TELA</label>
                             <select class="input7" name="tipo_tela" id="tipo_tela" required style="text-transform:uppercase" >
-                                    <option value="">SELECCIONAR</option>
-                                    <?php
-                                    $sql_tela = "SELECT * from tipo_material_textil";
-                                    $consulta_tela = mysqli_query($connection,$sql_tela);
-                                        foreach ($consulta_tela as $tipo_tela){
-                                    ?>
-                                    <option  value="<?=$tipo_tela['ID_TIP_MATE_TEXTIL']?>">
-                                    <?=$tipo_tela['NOM_TIP_MATE_TEXTIL']?>
-                                    </option>
-                                    <?php
+                                <option value="">SELECCIONAR</option>
+                                <?php
+                                $sql_tela = "SELECT * from tipo_material_textil";
+                                $consulta_tela = mysqli_query($connection,$sql_tela);
+                                    foreach ($consulta_tela as $tipo_tela){
+                                ?>
+                                <option  value="<?=$tipo_tela['ID_TIP_MATE_TEXTIL']?>">
+                                <?=$tipo_tela['NOM_TIP_MATE_TEXTIL']?>
+                                </option>
+                                <?php
                                     }
-                                    ?>
+                                ?>
                                     
                             </select>
                             <h6 class="agregaradi" id="crartipodetela">CREAR TIPO DE TELA</h6>
                         </div>
+
                         <div class="filasinter">
                             <label for="">MARCA</label>
                             <select class="input7" name="tipo_marca" id="tipo_marca" required style="text-transform:uppercase">
-                                    <option value="">SELECCIONAR</option>
-                                    <?php
-                                    $sql_marca_tex = "SELECT * FROM marca";
-                                    $consulta_marca_tex = mysqli_query($connection,$sql_marca_tex);
-                                        foreach ( $consulta_marca_tex as $marca_ma){
-                                    ?>
-                                    <option value="<?=$marca_ma['ID_MARCA']?>">
-                                        <?=$marca_ma['NOM_MARCA']?>
-                                    </option>
-                                    <?php
+                                <option value="">SELECCIONAR</option>
+                                <?php
+                                $sql_marca_tex = "SELECT * FROM marca WHERE ID_TIP_MARCA = 1";
+                                $consulta_marca_tex = mysqli_query($connection,$sql_marca_tex);
+                                    foreach ( $consulta_marca_tex as $marca_ma){
+                                ?>
+                                <option value="<?=$marca_ma['ID_MARCA']?>">
+                                   <?=$marca_ma['NOM_MARCA']?>
+                                </option>
+                                <?php
                                     }
-                                    ?>
+                                ?>
                                    
                             </select>
                             <h6 class="agregaradi" id="btnmarcaTex">CREAR MARCA</h6>
@@ -769,37 +780,36 @@ $hora = date("H:i:s");
 
                     </div>
                     <div class="segundafilaMaterialtext">
+
                         <div class="filasinter">
                             <label for="">COLOR</label>
-                                <select class="input7" name="tipo_color" id="tipo_color" required style="text-transform:uppercase" selected>
-                                    <option value="">SELECCIONAR</option>
-                                    <?php
-                                    $sql_color_tex = "SELECT * FROM color";
-                                    $consulta_color_tex = mysqli_query($connection,$sql_color_tex);
-                                        foreach($consulta_color_tex as $color_ma){
-                                    ?>
-                                    <option name="" value="<?=$color_ma['ID_COLOR']?>">
-                                        <?=$color_ma['NOM_COLOR']?> 
-                                    </option>
-                                    <?php
+                            <select class="input7" name="tipo_color" id="tipo_color" required style="text-transform:uppercase" selected>
+                                <option value="">SELECCIONAR</option>
+                                <?php
+                                $sql_color_tex = "SELECT * FROM color";
+                                $consulta_color_tex = mysqli_query($connection,$sql_color_tex);
+                                    foreach($consulta_color_tex as $color_ma){
+                                ?>
+                                <option name="" value="<?=$color_ma['ID_COLOR']?>">
+                                    <?=$color_ma['NOM_COLOR']?> 
+                                </option>
+                                <?php
                                     }
-                                    ?>
+                                ?>
                                     
                             </select>
                             <h6 class="agregaradi" id="crearcolorMate">CREAR COLOR</h6>
-                        </div>   
+                        </div>
+
                         <div class="filasinter" id="grupo__metraje_mate">
                             <label for="">METRAJE</label>
                             <input class="input7" placeholder="METRAJE" name="metraje" id="metraje" type="number" required>
                             <i class="formulario__validacion-estado_mate fas fa-times-circle"></i>
-                            <p class="formulario__input-error_mate">El telefono solo puede contener numeros y el maximo son 10 dígitos.</p>
+                            <p class="formulario__input-error_mate">El metraje solo puede contener numeros y el maximo son 5 dígitos.</p>
                         </div>
-                     <!--    <div class="filasinter">
-                            <label for="">CANTIDAD ROLLOS</label>
-                            <input class="input7" placeholder="" type="number" required>
-                        </div>   -->
-
+                     
                     </div>
+
                     <div class="tercerafilaMaterialtext">
                         <input class="input7" type="submit" value="CREAR" name="material_tex" id="material_tex">
                     </div>
@@ -819,29 +829,31 @@ $hora = date("H:i:s");
             </div>
             <div>
                
-                <form  action="" class="formularioCrearMaqui">
+                <form  action="" class="formularioCrearMaqui" method="POST" id="form_crear_maqui">
                     
                     <div class="primeraLineaMa">
-                        <div class="asd">
-                            <label for="">SERIAL</label>
-                            <div>
-                            <input type="text" name="" id="">
+                            <div class="asd">
+                                <label for="">SERIAL</label>
+                                <div>
+                                <input type="text" name="serial" id="serial">
+                                </div>  
                             </div>
-                            
-                        </div>
-                        <div class="asd">
-                            <label for="">PLACA SENA</label>
-                            <input type="text" >
-                        </div>
+                            <div class="asd">
+                                <label for="">PLACA SENA</label>
+                                <input type="text" name="placa_sena" id="placa_sena">
+                            </div>
+                            <div class="asd">
+                                <label for="">NOMBRE MAQUINARIA</label>
+                                <input type="text" name="nombre_maqui" id="nombre_maqui">
+                            </div>
                     </div>
-                    
                     <div class="segundaLineaMa">
                         <div>
                             <label for="">MARCA DE MAQUINARIA </label>    
-                            <select class="input5" name="tip_insumo"  required>
+                            <select class="input5" name="marca_maqui"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM tipo_usuario";
+                                    $tipo = "SELECT * FROM marca";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
@@ -856,7 +868,7 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">COLOR DE MAQUINARIA</label>    
-                            <select class="input5" name="tip_insumo"  required>
+                            <select class="input5" name="color_maqui"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
                                     $tipo = "SELECT * FROM color";
@@ -874,10 +886,10 @@ $hora = date("H:i:s");
                         </div>
                         <div>
                             <label for="">TIPO DE MAQUINARIA</label>    
-                            <select class="input5 labeltipma" name="tip_insumo"  required>
+                            <select class="input5 labeltipma" name="tipo_maqui"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM tipo_usuario";
+                                    $tipo = "SELECT * FROM tipo_maquina";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
@@ -893,7 +905,7 @@ $hora = date("H:i:s");
                     </div>
 
                     <div class="terceraLineaMa">
-                        <input type="button" value="ENVIAR">
+                        <input type="button" value="ENVIAR" id="enviar_maqui" name="enviar_maqui">
                     </div>
 
                 </form>
@@ -915,10 +927,10 @@ $hora = date("H:i:s");
             <div>
                 
                 <h1>CREAR TIPO DE INSUMO</h1>
-                <form class="contentform"  action="#" method="POST">
+                <form class="contentform"  action="#" method="POST" id="fomrTipinsu">
                     
-                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
-                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" id="Inptipinsu" name="Inptipinsu"required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR" id="btnTipinsu"></div>
                 </form>
             </div>
         </div>
@@ -935,6 +947,22 @@ $hora = date("H:i:s");
                     
                     <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
                     <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--formulario crear marca de material textil-->
+    <div class="CrearMarcaTextil" id="CrearMarcaTextil">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="cerrarmarcaTex">X</div>
+            <div>
+                
+                <h1>CREAR MARCA.</h1>
+                <form class="contentform" id="regMarcaMate" method="POST" autocomplete="off">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" name="in_marcaTela" id="in_marcaTela" required></div>
+                    <div><input class="btn_peque_form" type="submit" id="enviar_marcaMater" value="CREAR"></div>
                 </form>
             </div>
         </div>
@@ -1037,7 +1065,7 @@ $hora = date("H:i:s");
                 <!--  INVENTARIOS-->
                 <li class="activado"><a>INVENTARIO <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
-                        <li id="invMaquinaria" class="uno invMaquinaria"><a>INV DE MAQUINARIA</a></li>
+                        <li id="invMaquinaria" class="uno invMaquinaria"><a href="../../inventarios/maquinaria.php">INV DE MAQUINARIA</a></li>
                         <li id="invMaterialText" class="uno invMateralT"><a>INV DE MATERIAL TEXTIL</a></li>
                         <li id="invInsumo" class="uno invInsumos"><a>INV DE INSUMOS</a></li>
                     </ul>
@@ -1061,6 +1089,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/created_material.js"></script>
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
+    <script src="../../js/users/admin/created_maquinaria.js"></script>
     <script src="./../../tablas_dinamicas/jquery.dynamicTable-1.0.0.js"></script>
     <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>

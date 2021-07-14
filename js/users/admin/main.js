@@ -217,9 +217,15 @@ insumo_cerrar.addEventListener('click',function(){
 
 })
 
+//CERRAR EL FORMULARIO DE MATERIAL TEXTIL
+const form_materialTex = document.getElementById('crear_material')
+
 cerrarmaterialTex.addEventListener('click',function(){
     containerCrearMaterialTextil.style.display = 'none';
-
+    form_materialTex.reset();
+    document.querySelectorAll('.formulario__grupo-correcto_mate').forEach((icono_mate) => {
+        icono_mate.classList.remove('formulario__grupo-correcto_mate');
+    });
 })
 
 
@@ -250,7 +256,7 @@ btn_tipo_insumo.addEventListener('click',function(){
 })
 
 
-/* crearmarca */
+/* crear marca */
 cerrarmarcac.addEventListener('click',function(){
     CrearMarca.style.display = "none"
 })
@@ -261,8 +267,17 @@ bntcrearmarcamaqui.addEventListener('click',function(){
     CrearMarca.style.display = "block"
 })
 
+/* crear marca de material textil*/
+const cerrarMarcaTex = document.getElementById('cerrarmarcaTex')
+
+cerrarMarcaTex.addEventListener('click',function(){
+    CrearMarcaTextil.style.display = "none"
+})
+
+
+const CrearMarcaTextil = document.getElementById('CrearMarcaTextil')
 btnmarcaTextil.addEventListener('click',function(){
-    CrearMarca.style.display = "block"
+    CrearMarcaTextil.style.display = "block"
 })
 
 
@@ -319,8 +334,6 @@ btnreportes.addEventListener('click',function(){
 
 //------------------------------ tablas de inventarios --------------------------------
 btninvMaquinaria.addEventListener('click',function(){
-    alert('invMaquinaria')
-
     menusañedidos.style.display = "none";
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";

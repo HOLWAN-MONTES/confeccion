@@ -1,7 +1,7 @@
 <?php
     require '../conections/conexion.php';
     header('Content-Type: application/json');
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if($_SERVER['REQUEST_METHOD'] == 'POST' ){
         $_POST = json_decode(file_get_contents('php://input'), true);
         $docume = $_POST['docum'];
         
@@ -40,34 +40,5 @@
         
 
     }
-    elseif($_SERVER['REQUEST_METHOD'] == 'PUT'){
-        $_PUT = json_decode(file_get_contents('php://input'), true);
-        $telefono = $_PUT['tele'];
-        $contra = $_PUT['contra'];
-        $docume = $_PUT['docum'];
-        $foto = $_PUT['foto'];
-
-        $consul = "UPDATE usuario SET CLAVE = '$contra', CELULAR = $telefono, FOTO = '$foto' 
-                WHERE DOCUMENTO = '$docume'";
-        $query = mysqli_query($connection, $consul);
-        $res;
-        // UPDATE usuario SET usuario.PASSWORD = '54', TELEFONO = 3124124, CORREO = 'oscarllanos.com' WHERE DOCUMENTO = '1007'
-        if($query){
-            $res = array(
-                'err' => false, 
-                'status' => http_response_code(200),
-                'statusText' => 'Hizo la consulta bien',
-                'data' => $query
-            );    
-        }
-        else{
-            $res = array(
-                'err' => true, 
-                'status' => http_response_code(500),
-                'statusText' => 'No hizo la consulta bien',
-                'data' => []
-            ); 
-        }
-        echo json_encode($res);
-    }
+    
 ?>
