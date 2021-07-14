@@ -334,8 +334,6 @@ btnreportes.addEventListener('click',function(){
 
 //------------------------------ tablas de inventarios --------------------------------
 btninvMaquinaria.addEventListener('click',function(){
-    alert('invMaquinaria')
-
     menusañedidos.style.display = "none";
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";

@@ -859,14 +859,14 @@ li{
 }
 
 .titulotodslosusu{
-    color: wheat;
+    color: black;
     text-align: center;
     font-size: 30px;
-    background-color: rgb(83, 83, 83);
+    background-color: #ff6712;
 }
 
 .headerUsuarios{
-    background-color: rgb(83, 83, 83);
+    background-color: #ff6712;
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
@@ -880,7 +880,7 @@ li{
 }
 
 .btn-m-users form button{
-    background-color: rgb(83, 83, 83); 
+    background-color: #ff6712;
     cursor: pointer;
     border: none;
     color: white;
@@ -892,7 +892,7 @@ li{
 }
 
 .btn-m-users form button:hover{
-    background-color: rgb(61, 61, 61);
+    background-color: #da5000;
 }
 
 .contentFormularioUsers{
