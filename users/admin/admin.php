@@ -665,6 +665,8 @@ $hora = date("H:i:s");
                             <div>
                                 <label for="">NOMBRE DEL INSUMO</label>
                                 <input class="input5 NombreInsumo" type="text" name="NombreInsumo" id="NombreInsumo" placeholder="NOMBRE DEL INSUMO" required style="text-transform:uppercase">
+                                <i class="formulario__validacion-estado_insu fas fa-times-circle"></i>
+                                <p class="formulario__input-error_insu">El nombre del insumo tiene entre 4 a 16 dígitos, no puede tener numeros ni caracteres especiales.</p>
                             </div>
                         </div>
 
@@ -829,19 +831,21 @@ $hora = date("H:i:s");
                 <form  action="" class="formularioCrearMaqui">
                     
                     <div class="primeraLineaMa">
-                        <div class="asd">
-                            <label for="">SERIAL</label>
-                            <div>
-                            <input type="text" name="" id="">
+                            <div class="asd">
+                                <label for="">SERIAL</label>
+                                <div>
+                                <input type="text" name="" id="">
+                                </div>  
                             </div>
-                            
-                        </div>
-                        <div class="asd">
-                            <label for="">PLACA SENA</label>
-                            <input type="text" >
-                        </div>
+                            <div class="asd">
+                                <label for="">PLACA SENA</label>
+                                <input type="text" >
+                            </div>
+                            <div class="asd">
+                                <label for="">NOMBRE MAQUINARIA</label>
+                                <input type="text" >
+                            </div>
                     </div>
-                    
                     <div class="segundaLineaMa">
                         <div>
                             <label for="">MARCA DE MAQUINARIA </label>    
@@ -922,10 +926,10 @@ $hora = date("H:i:s");
             <div>
                 
                 <h1>CREAR TIPO DE INSUMO</h1>
-                <form class="contentform"  action="#" method="POST">
+                <form class="contentform"  action="#" method="POST" id="fomrTipinsu">
                     
-                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
-                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" id="Inptipinsu" name="Inptipinsu"required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR" id="btnTipinsu"></div>
                 </form>
             </div>
         </div>
