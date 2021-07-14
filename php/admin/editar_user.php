@@ -43,12 +43,11 @@
     elseif($_SERVER['REQUEST_METHOD'] == 'PUT'){
         $_PUT = json_decode(file_get_contents('php://input'), true);
         $telefono = $_PUT['tele'];
-        $correo = $_PUT['cor'];
         $contra = $_PUT['contra'];
         $docume = $_PUT['docum'];
         $foto = $_PUT['foto'];
 
-        $consul = "UPDATE usuario SET CLAVE = '$contra', CELULAR = $telefono, CORREO = '$correo', FOTO = '$foto' 
+        $consul = "UPDATE usuario SET CLAVE = '$contra', CELULAR = $telefono, FOTO = '$foto' 
                 WHERE DOCUMENTO = '$docume'";
         $query = mysqli_query($connection, $consul);
         $res;

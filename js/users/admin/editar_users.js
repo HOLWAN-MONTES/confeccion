@@ -103,10 +103,9 @@ document.addEventListener('submit', (e)=>{
             },
             body: JSON.stringify({
                 docum: docmen.value,
-                tele: celu.value,
-                cor: correo.value,
                 contra: contra.value,
                 foto: foto.value,
+                tele: celu.value
             })
         }
         Swal.fire({

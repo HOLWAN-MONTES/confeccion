@@ -398,7 +398,7 @@ $hora = date("H:i:s");
             <h1>REGISTRO DE INGRESO DE INSUMOS</h1>
             
             <div class="contengeneralbb">
-                <form  action="" method="post" id="form_proveedor">
+                <form  action="../../php/admin/ingreso_insumos.php" method="POST" id="form_proveedor">
                     <div class="primeraSeccionFechas">
                         
                         <div>
@@ -422,14 +422,13 @@ $hora = date("H:i:s");
                             </select>
                         </div>
                         <div>
-                            <b>FECHA = <!-- fecha actual-today --></b><p id="fecha"><?=$fecha?></p>
+                            <b>FECHA = <!-- fecha actual-today --></b><p id="fecha" name="fecha"><?=$fecha?></p>
                         </div>
                         <div>
-                            <b>HORA = <!-- hora actual- --></b><p id="hora"><?=$hora?></p>
+                            <b>HORA = <!-- hora actual- --></b><p id="hora" name="hora"><?=$hora?></p>
                         </div>
 
                     </div>
-                
                     <div class="categorias">
                             <div class="categoriass">
                                 <label for="">CATEGORIA</label> <br>  
