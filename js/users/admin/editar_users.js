@@ -121,7 +121,7 @@ document.addEventListener('submit', (e)=>{
                 fetch('../../php/admin/editar_user.php', option)
                 .then(res => res.ok ? res.json() : Promise.reject(res))
                 .then(datos => {
-                    console.log(datos)
+                    
                     const {err, status, statusText} = datos;
                     if(status >= 200 && status < 300){
                         Swal.fire('Actualizado!', 'Se actualizo con exito', 'success')
@@ -139,7 +139,7 @@ document.addEventListener('submit', (e)=>{
                     console.log(datos);
                     
                 })
-                .catch(error => console.error(error));
+                .catch(error => console.error(error));git 
             } 
             else{
                 Swal.fire({
