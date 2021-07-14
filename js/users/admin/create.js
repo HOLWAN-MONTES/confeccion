@@ -1,3 +1,4 @@
+
 //VARIABLES PARA EL FORMULARIO DE REGISTRO DE USUARIO
 const formulario = document.getElementById("crear_usuario")
 const documento_user = document.getElementById("docu")
@@ -6,6 +7,25 @@ const valida = document.getElementById("reg")
 const valida_edi = document.getElementById("reg_edi") 
 
 const enviar = document.getElementById("reg")
+
+//FUNCION DE ACTUALIZAR 
+
+
+
+const conteActa = document.getElementById("conte-user")
+
+function actualizar() {
+
+    fetch("../../php/admin/actualizar.php", {
+        method:"POST"
+    }).then(res => res.text()).then(info => {
+        conteActa.innerHTML = `${info}`
+    })
+
+}
+
+
+
 
 //  CONEXION AL ARCHIVO PHP PARA EL FORMULARIO CREAR USUARIO
 enviar.addEventListener("click", (e) => {
@@ -30,9 +50,10 @@ enviar.addEventListener("click", (e) => {
             document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
                 icono.classList.remove('formulario__grupo-correcto');
             });
+            actualizar()
             formulario.reset()
             documento_user.disabled = false
-            actualizar()
+            
         }else if(info == 2){
             Swal.fire({
                 title: 'Error!',
@@ -174,5 +195,4 @@ inputs.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
     input.addEventListener('blur', validarFormulario);
 });
-
 

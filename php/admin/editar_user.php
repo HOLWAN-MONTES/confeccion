@@ -48,6 +48,9 @@
         $docume = $_PUT['docum'];
         $foto = $_PUT['foto'];
 
+        
+        
+
         $consul = "UPDATE usuario SET CLAVE = '$contra', CELULAR = $telefono, CORREO = '$correo', FOTO = '$foto' 
                 WHERE DOCUMENTO = '$docume'";
         $query = mysqli_query($connection, $consul);

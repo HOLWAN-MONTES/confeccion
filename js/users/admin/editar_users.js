@@ -17,11 +17,12 @@ var foto = document.getElementById('imagen_edi');
 
 const conteAct = document.getElementById("conte-user")
 
-function actualizar(params) {
+function actualizar() {
 
     fetch("../../php/admin/actualizar.php", {
         method:"POST"
     }).then(res => res.text()).then(info => {
+        console.log(info)
         conteAct.innerHTML = `${info}`
     })
 
@@ -73,7 +74,7 @@ document.addEventListener('keypress', (e)=>{
                         correo.value = CORREO;
                         correo.disabled = true;
                         foto.value = FOTO;
-                        actualizar()
+                       
                         // console.log(foto.value);
                     }
                     else{
@@ -120,6 +121,7 @@ document.addEventListener('submit', (e)=>{
                 fetch('../../php/admin/editar_user.php', option)
                 .then(res => res.ok ? res.json() : Promise.reject(res))
                 .then(datos => {
+                    console.log(datos)
                     const {err, status, statusText} = datos;
                     if(status >= 200 && status < 300){
                         Swal.fire('Actualizado!', 'Se actualizo con exito', 'success')
@@ -128,12 +130,14 @@ document.addEventListener('submit', (e)=>{
                         document.querySelectorAll('.formulario_grupo_correcto_editar').forEach((icono_edi) => {
                             icono_edi.classList.remove('formulario_grupo_correcto_editar');
                         });
+                        
                     }
                     else{
                         Swal.fire('No actualizado', 'No se actualizo el usuario', 'info')
                         documento.disabled = false 
                     }
                     console.log(datos);
+                    
                 })
                 .catch(error => console.error(error));
             } 
