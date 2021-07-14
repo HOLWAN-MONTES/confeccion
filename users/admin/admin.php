@@ -8,6 +8,8 @@ if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
 
 }
+
+
 /* 
 $sql_marca= "SELECT * from marca";
 $consulta_marca = mysqli_query($connection,$sql_marca);
