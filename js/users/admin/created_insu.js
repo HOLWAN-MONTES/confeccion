@@ -91,6 +91,21 @@ inputs_mate.forEach((input) => {
     input.addEventListener('blur', formularioInsu);
 });
 
+//^ buscador 
+
+datoBuscador.addEventListener("keyup", (e) => {
+    e.preventDefault()  
+    const dato = new FormData(formBuscador)
+
+    fetch("../../php/admin/buscador.php", {
+        method:"POST",
+        body:dato
+    }).then(res => res.text()).then(info => {
+        console.log(info)
+        conte_user.innerHTML=`${info}`
+    })
+})
+
 //^ busacar por el tipo de usuario
 
 admin.addEventListener("click", (e) => {
