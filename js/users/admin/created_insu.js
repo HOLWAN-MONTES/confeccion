@@ -14,6 +14,8 @@ const formusuario = document.getElementById("for_Usuario")
 const instructor = document.getElementById("bt_instru")
 const forminstructor = document.getElementById("form_instructor")
 const todos = document.getElementById("todo")
+const btn_empresa = document.getElementById("btn_empresa")
+const form_empresa = document.getElementById("form_empresa")
 
 //  CONEXION AL ARCHIVO PHP PARA EL FORmInsu DE CREAR INSUMOS 
 enviarInsu.addEventListener("click", (e) => {
@@ -71,6 +73,19 @@ instructor.addEventListener("click", (e) => {
     e.preventDefault()
 
     const dato = new FormData(forminstructor)
+
+    fetch("../../php/admin/tipoUsuario.php", {
+        method:"POST",
+        body:dato
+    }).then(res => res.text()).then(info => {
+        conte_user.innerHTML=`${info}`
+    })
+})
+
+btn_empresa.addEventListener("click", (e) => {
+    e.preventDefault()
+
+    const dato = new FormData(form_empresa)
 
     fetch("../../php/admin/tipoUsuario.php", {
         method:"POST",

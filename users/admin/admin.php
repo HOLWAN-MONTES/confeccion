@@ -251,7 +251,7 @@ $hora = date("H:i:s");
                             </select>
                         </div>
                         <div>
-                            <label for="">EDAD</label>    
+                            <label for="">FECHA NACIMIENTO</label>    
                             <input class="input2" required type="date" name="edad" id="edad-edi" placeholder="EDAD">
                         </div>
                     </div>
@@ -579,6 +579,10 @@ $hora = date("H:i:s");
                         <input type="hidden" name="usuario" value="2">
                         <button id="bt_instru" >Instructor</button>
                     </form>
+                    <form action="" method="post" id="form_empresa">
+                        <input type="hidden" name="usuario" value="3">
+                        <button id="btn_empresa" >Empresa</button>
+                    </form>
                     <form action="" method="post">
                         <button id="todo">Todo los usuarios</button>
                     </form>
@@ -723,46 +727,49 @@ $hora = date("H:i:s");
             <div >
                 <form method="POST" class="rojo" id="crear_material" autocomplete="off">
                     <div class="primerafilaMaterialtext">
+                        
                         <div class="filasinter" id="grupo__nombre_mate">
                             <label for="">NOMBRE MATERIAL TEXTIL</label>
                             <input class="input7" type="text" placeholder="NOMBRE" name="nombre_tela" id="nombre_tela" style="text-transform:uppercase" required>
                             <i class="formulario__validacion-estado_mate fas fa-times-circle"></i>
-                            <p class="formulario__input-error_mate">El nombre tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
+                            <p class="formulario__input-error_mate">El nombre del material textil tiene entre 4 a 16 dígitos, no puede tener numeros ni caracteres especiales.</p>
                         </div>
+
                         <div class="filasinter">
                             <label for="">TIPO DE TELA</label>
                             <select class="input7" name="tipo_tela" id="tipo_tela" required style="text-transform:uppercase" >
-                                    <option value="">SELECCIONAR</option>
-                                    <?php
-                                    $sql_tela = "SELECT * from tipo_material_textil";
-                                    $consulta_tela = mysqli_query($connection,$sql_tela);
-                                        foreach ($consulta_tela as $tipo_tela){
-                                    ?>
-                                    <option  value="<?=$tipo_tela['ID_TIP_MATE_TEXTIL']?>">
-                                    <?=$tipo_tela['NOM_TIP_MATE_TEXTIL']?>
-                                    </option>
-                                    <?php
+                                <option value="">SELECCIONAR</option>
+                                <?php
+                                $sql_tela = "SELECT * from tipo_material_textil";
+                                $consulta_tela = mysqli_query($connection,$sql_tela);
+                                    foreach ($consulta_tela as $tipo_tela){
+                                ?>
+                                <option  value="<?=$tipo_tela['ID_TIP_MATE_TEXTIL']?>">
+                                <?=$tipo_tela['NOM_TIP_MATE_TEXTIL']?>
+                                </option>
+                                <?php
                                     }
-                                    ?>
+                                ?>
                                     
                             </select>
                             <h6 class="agregaradi" id="crartipodetela">CREAR TIPO DE TELA</h6>
                         </div>
+
                         <div class="filasinter">
                             <label for="">MARCA</label>
                             <select class="input7" name="tipo_marca" id="tipo_marca" required style="text-transform:uppercase">
-                                    <option value="">SELECCIONAR</option>
-                                    <?php
-                                    $sql_marca_tex = "SELECT * FROM marca";
-                                    $consulta_marca_tex = mysqli_query($connection,$sql_marca_tex);
-                                        foreach ( $consulta_marca_tex as $marca_ma){
-                                    ?>
-                                    <option value="<?=$marca_ma['ID_MARCA']?>">
-                                        <?=$marca_ma['NOM_MARCA']?>
-                                    </option>
-                                    <?php
+                                <option value="">SELECCIONAR</option>
+                                <?php
+                                $sql_marca_tex = "SELECT * FROM marca WHERE ID_TIP_MARCA = 1";
+                                $consulta_marca_tex = mysqli_query($connection,$sql_marca_tex);
+                                    foreach ( $consulta_marca_tex as $marca_ma){
+                                ?>
+                                <option value="<?=$marca_ma['ID_MARCA']?>">
+                                   <?=$marca_ma['NOM_MARCA']?>
+                                </option>
+                                <?php
                                     }
-                                    ?>
+                                ?>
                                    
                             </select>
                             <h6 class="agregaradi" id="btnmarcaTex">CREAR MARCA</h6>
@@ -770,37 +777,36 @@ $hora = date("H:i:s");
 
                     </div>
                     <div class="segundafilaMaterialtext">
+
                         <div class="filasinter">
                             <label for="">COLOR</label>
-                                <select class="input7" name="tipo_color" id="tipo_color" required style="text-transform:uppercase" selected>
-                                    <option value="">SELECCIONAR</option>
-                                    <?php
-                                    $sql_color_tex = "SELECT * FROM color";
-                                    $consulta_color_tex = mysqli_query($connection,$sql_color_tex);
-                                        foreach($consulta_color_tex as $color_ma){
-                                    ?>
-                                    <option name="" value="<?=$color_ma['ID_COLOR']?>">
-                                        <?=$color_ma['NOM_COLOR']?> 
-                                    </option>
-                                    <?php
+                            <select class="input7" name="tipo_color" id="tipo_color" required style="text-transform:uppercase" selected>
+                                <option value="">SELECCIONAR</option>
+                                <?php
+                                $sql_color_tex = "SELECT * FROM color";
+                                $consulta_color_tex = mysqli_query($connection,$sql_color_tex);
+                                    foreach($consulta_color_tex as $color_ma){
+                                ?>
+                                <option name="" value="<?=$color_ma['ID_COLOR']?>">
+                                    <?=$color_ma['NOM_COLOR']?> 
+                                </option>
+                                <?php
                                     }
-                                    ?>
+                                ?>
                                     
                             </select>
                             <h6 class="agregaradi" id="crearcolorMate">CREAR COLOR</h6>
-                        </div>   
+                        </div>
+
                         <div class="filasinter" id="grupo__metraje_mate">
                             <label for="">METRAJE</label>
                             <input class="input7" placeholder="METRAJE" name="metraje" id="metraje" type="number" required>
                             <i class="formulario__validacion-estado_mate fas fa-times-circle"></i>
-                            <p class="formulario__input-error_mate">El telefono solo puede contener numeros y el maximo son 10 dígitos.</p>
+                            <p class="formulario__input-error_mate">El metraje solo puede contener numeros y el maximo son 5 dígitos.</p>
                         </div>
-                     <!--    <div class="filasinter">
-                            <label for="">CANTIDAD ROLLOS</label>
-                            <input class="input7" placeholder="" type="number" required>
-                        </div>   -->
-
+                     
                     </div>
+
                     <div class="tercerafilaMaterialtext">
                         <input class="input7" type="submit" value="CREAR" name="material_tex" id="material_tex">
                     </div>
@@ -936,6 +942,22 @@ $hora = date("H:i:s");
                     
                     <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
                     <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--formulario crear marca de material textil-->
+    <div class="CrearMarcaTextil" id="CrearMarcaTextil">
+        <div class="containerTip">
+                
+                <div class="btncrrarALl" id="cerrarmarcaTex">X</div>
+            <div>
+                
+                <h1>CREAR MARCA.</h1>
+                <form class="contentform" id="regMarcaMate" method="POST" autocomplete="off">
+                    
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" name="in_marcaTela" id="in_marcaTela" required></div>
+                    <div><input class="btn_peque_form" type="submit" id="enviar_marcaMater" value="CREAR"></div>
                 </form>
             </div>
         </div>
