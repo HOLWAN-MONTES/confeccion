@@ -23,7 +23,7 @@ const campos_edi = {
 
 const FormularioEditar = (e) =>{
     switch (e.target.name){
-        case "contra_edi":
+        case "contrasena_edi":
             EditarCampo(expresiones_edi.clave_edi, e.target, 'clave_edi');//El ultimo parametro tendra que llevar el id de div que almacena todo
         break;
         case "tele_edi":
@@ -54,20 +54,3 @@ inputs_edi.forEach((input) => {
     input.addEventListener('keyup', FormularioEditar);
     input.addEventListener('blur', FormularioEditar);
 });
-
-// valida_edi.addEventListener("submit", (e) =>{
-//     e.preventDefault();
-
-//     if(campos_edi.clave_edi && campos_edi.telefono_edi){
-//         editar_usuario.reset();
-
-//         document.querySelectorAll('.formulario_grupo_correcto_editar').forEach((icono_edi) => {
-//             icono_edi.classList.remove('formulario_grupo_correcto_editar');
-//         });
-
-//     }else {
-//         return false;
-       
-//     }
-
-// });

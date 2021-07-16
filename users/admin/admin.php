@@ -285,7 +285,7 @@ $hora = date("H:i:s");
 
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea2 cuartalinea2Enviar">
-                        <div><input class="input2 file"  type="file" id="imagen_edi" required name="imagen"/></div>
+                        <div><input class="input2 file"  type="file" id="imagen_edi" accept="image/png,image/jpeg,image/jpg" required name="imagen"/></div>
                         <div><input class="input2 actualizar" type="submit" name="actualiza" id="reg_edi" value="ACTUALIZAR"></div>
                     </div>
 
@@ -400,7 +400,7 @@ $hora = date("H:i:s");
             <h1>REGISTRO DE INGRESO DE INSUMOS</h1>
             
             <div class="contengeneralbb">
-                <form  action="" method="post" id="form_proveedor">
+                <form  action="../../php/admin/ingreso_insumos.php" method="POST" id="form_proveedor">
                     <div class="primeraSeccionFechas">
                         
                         <div>
@@ -413,25 +413,24 @@ $hora = date("H:i:s");
                                 <option>Seleccione el proveedor</option>
                                 <!-- GUYS -->
                                 <?php
-                                $sql_porveedor = "SELECT * FROM usuario WHERE ID_TIP_USU = 3";
+                                $sql_porveedor = "SELECT * FROM empresa";
                                 $consulta_proveedor = mysqli_query($connection,$sql_porveedor);
                                 foreach($consulta_proveedor as $proveedor) {
                                 ?> 
-                                    <option value="<?=$proveedor['NIT']?>"><?=$proveedor['NOMBRE']?> </option>
+                                    <option value="<?=$proveedor['NIT_DOC']?>"><?=$proveedor['NOM_EMPRESA']?> </option>
                                 <?php
                                 }
                                 ?>
                             </select>
                         </div>
                         <div>
-                            <b>FECHA = <!-- fecha actual-today --></b><p id="fecha"><?=$fecha?></p>
+                            <b>FECHA = <!-- fecha actual-today --></b><p id="fecha" name="fecha"><?=$fecha?></p>
                         </div>
                         <div>
-                            <b>HORA = <!-- hora actual- --></b><p id="hora"><?=$hora?></p>
+                            <b>HORA = <!-- hora actual- --></b><p id="hora" name="hora"><?=$hora?></p>
                         </div>
 
                     </div>
-                
                     <div class="categorias">
                             <div class="categoriass">
                                 <label for="">CATEGORIA</label> <br>  
@@ -1081,7 +1080,6 @@ $hora = date("H:i:s");
 
     </div>
 
-
     <script src="../../js/users/admin/main.js"></script>
     <script src="../../js/users/admin/editar_users.js"></script>
     <script src="../../js/users/admin/eliminar_usu.js"></script>
@@ -1091,7 +1089,6 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
     <script src="../../js/users/admin/created_maquinaria.js"></script>
-    <script src="./../../tablas_dinamicas/jquery.dynamicTable-1.0.0.js"></script>
     <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 
