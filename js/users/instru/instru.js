@@ -1,3 +1,4 @@
+//VARIABLES DEL FORMULARIO DE REGISTRO DEL PRESTAMO
 const contenedor_one = document.getElementById('ventana_one');
 const btn_ventana_one = document.getElementById('one');
 const btn_cerrar = document.getElementById('cerrar1');
@@ -14,19 +15,21 @@ const btn_ventana_cuatro = document.getElementById('cuatro');
 
 const elemento = document.getElementById('agregado');
 //Ventana modal 1
-btn_ventana_one.addEventListener("click",function(){
+btn_ventana_one.addEventListener('click', function(){
     contenedor_one.style.display="block";
 })
+
+
 btn_cerrar.addEventListener('click', function(e){
     e.preventDefault();
-    $('option:selected').removeAttr("selected"); //Vacia los campos de los selects cuando agrega
-    $('input[type="number"]').val('');
-    var elemento = document.getElementById('agregado');
-    var filas_tabla = elemento.getElementsByTagName('tr');
-    var contador_celd = filas_tabla.length;
-    for (var x=contador_celd-1; x>0; x--) {
-        elemento.removeChild(filas_tabla[x]);
-    }
+    // $('option:selected').removeAttr("selected"); //Vacia los campos de los selects cuando agrega
+    // $('input[type="number"]').val('');
+    // var elemento = document.getElementById('agregado');
+    // var filas_tabla = elemento.getElementsByTagName('tr');
+    // var contador_celd = filas_tabla.length;
+    // for (var x=contador_celd-1; x>0; x--) {
+    //     elemento.removeChild(filas_tabla[x]);
+    // }
     contenedor_one.style.display = 'none';
 })
 

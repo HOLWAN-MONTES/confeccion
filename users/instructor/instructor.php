@@ -7,7 +7,7 @@ if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
 }
 $consu = "SELECT * FROM usuario WHERE DOCUMENTO = '$usario' AND ID_TIP_USU = 2";
-$query = mysqli_query($connection , $consu);
+$query = mysqli_query($connection, $consu);
 $file = mysqli_fetch_assoc($query);
 $nom = $file['NOMBRE'];
 date_default_timezone_set("America/Bogota");
@@ -25,6 +25,7 @@ $hora = date("H:i:s");
     <link rel="stylesheet" href="../../css/instructor/index.css">
     <script src="https://kit.fontawesome.com/7b875e4198.js" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+   
     <title>INSTRUCTOR</title>
 </head>
 
@@ -44,10 +45,10 @@ $hora = date("H:i:s");
             </div>
             <div class="inf">
                 <H1>INSTRUCTOR@</H1>
-                <h4>NOMBRE : <?php echo $_SESSION['NOMBRE'] ;?> <?php echo $_SESSION['APELLIDO']; ?></h4>
-                <h4> TELEFONO :<?php echo $_SESSION['TELEFONO'] ; ?></h4>
-                <h4> CORREO :<?php echo $_SESSION['CORREO'] ; ?></h4>
-                <h4> EDAD :<?php echo $_SESSION['EDAD'] ; ?></h4>                  
+                <h4>NOMBRE: <?php echo $_SESSION['NOMBRE'] ;?> <?php echo $_SESSION['APELLIDO']; ?></h4>
+                <h4>TELEFONO: <?php echo $_SESSION['TELEFONO'] ; ?></h4>
+                <h4>CORREO: <?php echo $_SESSION['CORREO'] ; ?></h4>
+                <h4>FEC. NAC: <?php echo $_SESSION['EDAD'] ; ?></h4>                  
             </div>
         </div>
          <!-------------------opciones del instructor---------------------- -->
@@ -80,7 +81,7 @@ $hora = date("H:i:s");
         <div class="cerrar1" id="cerrar1">
             <a href=""><i class="fas fa-times-circle"></i></a>
         </div>
-        <form action="" id="formul_prest" method="post" class="formu_presta">
+        <form id="formul_prest" method="POST" class="formu_presta" autocomplete="off">
             <div class="primeraSeccionFechas">
                 <div>
                     <p>RESPONSABLE</p><p id="reponsable"><?php echo $nom; ?></p>
@@ -93,24 +94,82 @@ $hora = date("H:i:s");
                 </div>
 
             </div>
-            <div class="categorias" id="cate">
+
+            <div class="categoria" id="categoria">
+                <div class="categoriass">
+                    <label for="">CATEGORIA</label>    
+                    <select class="categ" name="categ" id="categ"  style="text-transform: uppercase;" required>
+                        <option value="0">SELECCIONAR</option>
+                        <?php
+                        $tipoPres = "SELECT * FROM tipo_ingreso";
+                        $inser = mysqli_query($connection ,$tipoPres);
+                        while($tip = mysqli_fetch_array($inser)){
+                        ?>
+                        <option name="tipo_material" id="opcion_mate" value="<?php echo $tip[0]; ?>">
+                            <?php echo $tip[1]; ?>
+                        </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="nom_cant_categoria">
+                    <div class="nom_categoria">
+                        <label for="">NOMBRE</label>
+                        <select class="prestamo" name="prestamo" id="prestamo">
+                            <option value="0">SELECCIONAR</option>
+                        </select>
+                    </div>
+
+                    <div class="cant_prestamo">
+                        <label for="">CANTIDAD</label>
+                        <input type="number" class="cant_pres" id="cantid_pres" name="cantid_pres" placeholder="CANTIDAD" required>
+                    </div>
+
+                    <div class="boton">
+                        <input type="button" class="btn_agregar" id="agregar" value="AGREGAR"> <!--AGREGAR A LA LISTA-->
+                    </div>
+
+                </div>
+    
+            </div>
+
+            <div class="agregarPrestamos_lista">
+                <!-- ACA VAN TODOS LOS LISTADOS DE LO QUE SEA AGREGUE -->
+                <table class="tablaInfo" id="tablaInfo">
+                    <thead class="tab">
+                        <tr class="tab-ml">
+                            <td class="tab_ml">CATEGORIA</td>
+                            <td class="tab_ml">NOMBRE</td>
+                            <td class="tab_ml">CANTIDAD</td>
+                            <td class="tab_ml">ACCION</td>
+                        </tr>
+                    </thead>
+                    <tbody class="agregado" id="agregado">
+                        <tr>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="enviar_solic">
+                <div>
+                    <input type="button" name="solicitar_prest" id="solicitar_prest" value="ENVIAR">
+                </div>
+                <div>
+                    <input type="button" value="CANCELAR">
+                </div> 
+
+            </div>
+
+            <!-- <div class="categorias" id="cate">
 
                 <div class="categoriass">
                     <label for="">CATEGORIA</label>    
-                        <select class="input6 tip_mat" name="categorias" id="ti_pres" required>
-                            <option>SELECCIONAR</option>
-                            <?php
-                            $tipo2 = "SELECT * FROM tipo_material";
-                            $inser2 = mysqli_query($connection ,$tipo2);
-                            while($tip2 = mysqli_fetch_array($inser2)){
-                            ?>
-                            <option name="tip_material" id="op_mat" value="<?php echo $tip2[0]; ?>">
-                                <?php echo $tip2[1]; ?>
-                            </option>
-                            <?php
-                            }
-                            ?>
-                        </select>
+                        
                 </div>
                 <div class="NombreCate">
                     <label for="" class="nome">NOMBRE</label> 
@@ -125,15 +184,15 @@ $hora = date("H:i:s");
                 </div>
 
                 <div class="bnt">
-                    <input type="button" class="btn_agre" id="agregar" value="AGREGAR"> <!-- agregar a la lista -->
-                </div>
+                    <input type="button" class="btn_agre" id="agregar" value="AGREGAR"> agregar a la lista -->
+                <!-- </div> -->
 
             
             
-            </div>
-                <div class="agregarTodosLosListados">
+            <!-- </div> 
+                <div class="agregarTodosLosListados"> --> 
                     <!-- ACA VAN TODOS LOS LISTADOS DE LO QUE SEA AGREGUE -->
-                    <table class="tabla_info" id="tab_info">
+                    <!-- <table class="tabla_info" id="tab_info">
                         <thead class="tab">
                             <tr class="tab-ml">
                                 <td class="tab_ml">CATEGORIA</td>
@@ -147,14 +206,14 @@ $hora = date("H:i:s");
                                 <td></td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                     <!-- CA VAN TODOS LOS LISTADOS DE LO QUE SE AGREGUE -->
-                </div>
+                <!-- </div>
 
                 <div>
-                    <input type="submit" id="envia_prest" value="ENVIAR"> <!-- enviar a la db -->
-                </div> 
-                <div id="estado" style="display:none;"></div>     
+                    <input type="submit" id="envia_prest" value="ENVIAR"> enviar a la db -->
+                <!-- </div> 
+                <div id="estado" style="display:none;"></div>      -->
         </form>
     </div>
 </div>
@@ -165,7 +224,7 @@ $hora = date("H:i:s");
         <div class="cerrar2" id="cerrar2">
             <a href=""><i class="fas fa-times-circle"></i></a>
         </div>
-        <form action="" method="post" class="formu_dev">
+        <form method="POST" class="formu_dev">
             <div class="primeraSeccionFechasDev">
                 <div>
                     <p>RESPONSABLE</p><p id="reponsable_dev"><?php echo $nom; ?></p>
@@ -178,47 +237,27 @@ $hora = date("H:i:s");
                 </div>
 
             </div>
-            <div class="categorias_dev" id="cate">
+            <!-- <div class="categorias_dev" id="cate">
 
                 <div class="categoriass">
                     <label for="">CATEGORIA</label>    
                         <select class="input6 tip_mat" name="categorias" id="ti_dev" required>
                             <option>SELECCIONAR</option>
-                            <?php
-                            $tipo2 = "SELECT * FROM tipo_material WHERE ID_TIP_MATE = 2";
-                            $inser2 = mysqli_query($connection ,$tipo2);
-                            while($tip2 = mysqli_fetch_array($inser2)){
-                            ?>
-                            <option name="tip_material" id="op_mat" value="<?php echo $tip2[0]; ?>">
-                                <?php echo $tip2[1]; ?>
-                            </option>
-                            <?php
-                            }
-                            ?>
+                            
                         </select>
                 </div>
                 <div class="NombreCate">
                     <label for="" class="nome_dev">NOMBRE</label> 
                         <select class="input_nam" name="pres" id="dev_insu" required>
                             <option>SELECCIONAR</option>
-                            <?php
-                            $tipo3 = "SELECT * FROM insumos";
-                            $inser3 = mysqli_query($connection ,$tipo3);
-                            while($tip3 = mysqli_fetch_array($inser3)){
-                            ?>
-                            <option name="tip_material" id="op_insu" value="<?php echo $tip3[0]; ?>">
-                                <?php echo $tip3[1]; ?>
-                            </option>
-                            <?php
-                            }
-                            ?>  
+                             
                         </select>
                 </div>
 
                 <div class="cantidadSe">
                     <label for="">CANTIDAD</label>
                     <input type="number" id="cant_dev" class="canti" placeholder="CANTIDAD">
-                </div>
+                </div> -->
 
                 <div class="bnt">
                     <input type="button" class="btn_dev" id="agregar_dev" value="AGREGAR"> <!-- agregar a la lista -->
@@ -226,10 +265,10 @@ $hora = date("H:i:s");
 
             
             
-            </div>
-                <div class="agregarTodosLosListadosDev">
+            <!-- </div>
+                <div class="agregarTodosLosListadosDev"> -->
                     <!-- ACA VAN TODOS LOS LISTADOS DE LO QUE SEA AGREGUE -->
-                    <table class="tabla_dev" id="tab_dev">
+                    <!-- <table class="tabla_dev" id="tab_dev">
                         <thead class="tab">
                             <tr class="tab-ml">
                                 <td class="tab_ml">CATEGORIA</td>
@@ -243,13 +282,13 @@ $hora = date("H:i:s");
                                 <td></td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                     <!-- CA VAN TODOS LOS LISTADOS DE LO QUE SE AGREGUE -->
-                </div>
+                <!-- </div>
 
                 <div>
                     <input type="submit" id="envia_dev" value="ENVIAR DEVOLUCION"> <!-- enviar a la db -->
-                </div>      
+                <!--</div>-->
         </form>
     </div>
 </div>
@@ -262,8 +301,8 @@ $hora = date("H:i:s");
       
 </div>
 
+    <script src="../../js/users/instru/instru.js"></script>
+    <script src="../../js/users/instru/valida_insu_mat.js"></script>
 
 </body>
-<script src="../../js/users/instru/instru.js"></script>
-<script src="../../js/users/instru/valida_insu_mat.js"></script>
 </html>
