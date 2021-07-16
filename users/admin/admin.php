@@ -285,7 +285,7 @@ $hora = date("H:i:s");
 
                     <!-- caja de foto-enviar -->
                     <div class="cuartalinea2 cuartalinea2Enviar">
-                        <div><input class="input2 file"  type="file" id="imagen_edi" required name="imagen"/></div>
+                        <div><input class="input2 file"  type="file" id="imagen_edi" accept="image/png,image/jpeg,image/jpg" required name="imagen"/></div>
                         <div><input class="input2 actualizar" type="submit" name="actualiza" id="reg_edi" value="ACTUALIZAR"></div>
                     </div>
 
@@ -413,11 +413,11 @@ $hora = date("H:i:s");
                                 <option>Seleccione el proveedor</option>
                                 <!-- GUYS -->
                                 <?php
-                                $sql_porveedor = "SELECT * FROM usuario WHERE ID_TIP_USU = 3";
+                                $sql_porveedor = "SELECT * FROM empresa";
                                 $consulta_proveedor = mysqli_query($connection,$sql_porveedor);
                                 foreach($consulta_proveedor as $proveedor) {
                                 ?> 
-                                    <option value="<?=$proveedor['NIT']?>"><?=$proveedor['NOMBRE']?> </option>
+                                    <option value="<?=$proveedor['NIT_DOC']?>"><?=$proveedor['NOM_EMPRESA']?> </option>
                                 <?php
                                 }
                                 ?>
@@ -1080,7 +1080,6 @@ $hora = date("H:i:s");
 
     </div>
 
-
     <script src="../../js/users/admin/main.js"></script>
     <script src="../../js/users/admin/editar_users.js"></script>
     <script src="../../js/users/admin/eliminar_usu.js"></script>
@@ -1090,7 +1089,6 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
     <script src="../../js/users/admin/created_maquinaria.js"></script>
-    <script src="./../../tablas_dinamicas/jquery.dynamicTable-1.0.0.js"></script>
     <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 

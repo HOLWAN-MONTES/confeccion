@@ -9,27 +9,28 @@ const factura = document.getElementById("factura")
 
 
 //Registro De Ingreso De Insumos
-$(document).ready(function(){
+$(document).ready(function(){//Se lee el documento y se asigna una funcion
     recargarLista();
-    $('#categoria').change(function(){
-        recargarLista();
+    $('#categoria').change(function(){//Traemos el id del select y asignamos el evento change 
+        recargarLista();//Cuando se de cambio en o click en ese select llamara la funcion
     });
 })
 
 function recargarLista(){
     $.ajax({
-        type:"POST",
-        url: '../../php/admin/categorias.php',
-        data: "ingreso_insumo=" + $('#categoria').val(),
+        type:"POST",//Metodo post
+        url: '../../php/admin/categorias.php',//Direccionamiento de archivo
+        data: "ingreso_insumo=" + $('#categoria').val(),//Se le asigna a una vble el valor que trae el select 
         success: function(r){
-            $('#nom_catego').html(r);
+            $('#nom_catego').html(r);//Lo mostramos en pantalla
         }
     });
 }
 
 //Registro De insumos
-const datos = [];
-var id_datos = 0;
+
+var datos = [];
+var id_datos = 1;
 var can_edi = 0;
 var cantidad;
 var canti_edi;
@@ -47,6 +48,7 @@ $(document).ready(function(){
 
 function agregar(){
     const cate = document.getElementById('categoria');
+    const cates = document.getElementById('categoria').value;
     const categorias = cate.options[cate.selectedIndex].text;
     const nombre= document.getElementById('nom_catego').value;
     const nom = document.getElementById('nom_catego');
@@ -64,15 +66,13 @@ function agregar(){
                 "id_datos": id_datos,
                 "responsable": respon,
                 "proveedor": proveedor,
-                "categorias": categorias,
-                "name": name,
+                "categorias": cates,
+                "name": nombre,
                 "cantidad": cantidad,
                 "fecha": fec,
                 "hora": hor
             }
         );
-        console.log(datos[0]);
-        console.log(datos)
         id_datos++;
         can_edi++;
         id_row = "row"+id_datos;
@@ -99,13 +99,13 @@ $(document).on("click", ".deleteButton", function(e){
     e.preventDefault();
     $(this).parents('tr').eq(0).remove();
     datos.splice(id_row, 1);
-    console.log(datos)
+    console.log(datos);
     Swal.fire({
         title: 'Eliminado!',
         text: 'El insumo se elimino',
         icon: 'success',
         confirmButtonText: 'Continuar'
-    })
+    });
 });
 function editarInsumo(e){
     e.preventDefault();
@@ -113,9 +113,52 @@ function editarInsumo(e){
     if(canti_edi){
         var _this = this;//Esta linea recupera el elemento o lugar el cual se llamo esta funcion
         var cantid = editarSelec(_this).innerHTML = canti_edi;//Llama a la funcion y recibe el objeto el cual es donde se llama la funcion
-        $(this).parent().parent().find("td:eq(2)").html(cantid);  
-        console.log(datos);         
-        // console.log(fila);
+        // console.log(cantid);
+        $(this).parent().parent().find("td:eq(2)").html(canti_edi);
+        var llaves = Object.keys(datos);
+        console.log(llaves);
+        // let i = 0;
+        for(i = 0; i < datos.length; i++) {
+            console.log(llaves);
+            console.log(llaves.length);
+        // console.log(i);
+            // console.log(datos);
+            // var nuevo = 
+            // console.log(nuevo);
+        
+        }
+        
+        
+        // var llaves = Object.keys(datos);
+        //     console.log(llaves);
+        // datos.forEach((item, index) => {
+        //     console.log(index);
+        //     console.log("a[" + index + "] =" + item);
+        //     datos[index]["cantidad"] = cantid;
+        //     if(index > 0){
+        //         console.log("Si sirvio el if");
+        //         datos[index]["cantidad"] = cantid;
+        //         console.log(datos)
+        //     }
+        //     console.log(datos);
+        //     // datos[0].cantidad = cantid;
+        // });
+        datos[0]['cantidad'] = cantid;
+        console.log(datos);
+        
+        // console.log(datos);
+        // var llaves = Object.keys(datos);
+        // console.log(llaves);
+        // for(let i = 0; i < llaves.length; i++) {
+        //     // console.log(llaves);
+        //     // console.log(llaves.length);
+        //     // console.log(i);
+        //     console.log(datos);
+        //     datos[i].cantidad = cantid;
+            
+        // }
+        datos[llaves].cantidad = cantid;
+        // datos[].cantidad = cantid;//De esta manera 
     }
     else{
         Swal.fire({
@@ -126,33 +169,46 @@ function editarInsumo(e){
         });
     }
 }
-
+console.log(datos);
 function editarSelec(objetoPresionado){
     var can_ed = objetoPresionado.parentNode.parentNode;//Se obtiene en donde se presiono
     var cantidades = can_ed.getElementsByTagName("td")[2].innerHTML;//Se obtiene la etiqueta y la posicion de la celda
-
+    
     return cantidades;//Retornara esta vble y viajara en la funcion llamada
 }
 
 function guardarInsumo(e){
     e.preventDefault();
+    console.log(datos);
     var json = JSON.stringify(datos);//Convierte el array en una cadena de caracteres
     $.ajax({
-        url: './../../php/admin/ingreso_insumos.php',
+        url: '../../php/admin/ingreso_insumos.php',
         method: "POST",
         data: "json="+json,
         success: function(r){
-            console.log("HolA sI LO hIzO");
             console.log(r);
             const envia = JSON.parse(r);
             console.log(envia.status);
             if(envia.status === 200){
-                alert("Se Registro Tu Prestamo Con Exito");
+                datos = [];
+                console.log(datos);
+                Swal.fire({
+                    title: 'Agregado!',
+                    text: 'Se registro el ingreso del insumo',
+                    icon: 'success',
+                    confirmButtonText: 'Continuar'
+                });
                 document.getElementById('mostrar_insumos').innerHTML = '';
+                $('#proveedor option:first').prop('selected', true);
             }
             else {  
                 // $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
-                alert("No Se Registro Tu Prestamo Con Exito");
+                Swal.fire({
+                    title: 'No agregado!',
+                    text: 'No se registro el insumo',
+                    icon: 'warning',
+                    confirmButtonText: 'Continuar'
+                });
             }
         }
     });

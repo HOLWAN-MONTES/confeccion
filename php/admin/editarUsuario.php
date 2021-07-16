@@ -3,7 +3,6 @@ require_once("../conections/conexion.php");
 
     
     $telefono = $_POST['tele_edi'];
-    $correo = $_POST['cor'];
     $contra = $_POST['contrasena_edi'];
     $docume = $_POST['docu'];
     $foto = $_FILES['imagen'] ["name"];
@@ -12,7 +11,7 @@ require_once("../conections/conexion.php");
     copy($ruta,$destino);
 
 
-    $consul = "UPDATE usuario SET CLAVE = '$contra', CELULAR = $telefono, CORREO = '$correo', FOTO = '$foto' 
+    $consul = "UPDATE usuario SET CLAVE = '$contra', CELULAR = $telefono, FOTO = '$foto' 
             WHERE DOCUMENTO = '$docume'";
     $query = mysqli_query($connection, $consul);
     
