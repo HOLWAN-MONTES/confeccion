@@ -118,11 +118,11 @@ function editarInsumo(e){
         // console.log(cantid);
         $(this).parent().parent().find("td:eq(2)").html(canti_edi);
         var llaves = Object.keys(datos);
-        console.log(llaves);
+        console.log(`linea 121 ${llaves}`);
         // let i = 0;
         for(i = 0; i < datos.length; i++) {
-            console.log(llaves);
-            console.log(llaves.length);
+            console.log(`linea 124 ${llaves}`);
+            console.log(`linea 125 ${llaves.length}`);
         // console.log(i);
             // console.log(datos);
             // var nuevo = 
@@ -171,7 +171,7 @@ function editarInsumo(e){
         });
     }
 }
-console.log(datos);
+
 function editarSelec(objetoPresionado){
     var can_ed = objetoPresionado.parentNode.parentNode;//Se obtiene en donde se presiono
     var cantidades = can_ed.getElementsByTagName("td")[2].innerHTML;//Se obtiene la etiqueta y la posicion de la celda
