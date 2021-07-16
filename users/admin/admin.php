@@ -117,7 +117,7 @@ $hora = date("H:i:s");
                             <select class="input1" name="tip_us_crea" id="tip_us_crea" required style="text-transform:uppercase">
                                 <option value="">SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM tipo_usuario";
+                                    $tipo = "SELECT  * FROM tipo_usuario  WHERE ID_TIP_USU <= 2";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>

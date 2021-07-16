@@ -34,7 +34,16 @@ if ($usario == "" || $usario == null) {
                 </form>
 
                 <form action="" method="post">
-                    <button id="todo">MAQUINAS : (cantidad)</button>
+                    <button id="todo">TODAS LAS MAQUINAS</button>
+                </form>
+                <form action="" method="post">
+                    <button id="todo">BUEN ESTADO</button>
+                </form>
+                <form action="" method="post">
+                    <button id="todo">REPARACION</button>
+                </form>
+                <form action="" method="post">
+                    <button id="todo">MAL ESTADO</button>
                 </form>
 
                 <form action="" method="POST" id="" class="buscarmaquinaria">
@@ -77,7 +86,7 @@ if ($usario == "" || $usario == null) {
                 
                 <div>COLOR :<p> <?=$maquinaria["NOM_COLOR"]?></p></div>
                 <div>ESTADO :<p> <?=$maquinaria["NOM_ESTADO"]?></p></div>
-                <div>OBSERVACIONES :<p> <?=$maquinaria["OBSERVACIONES"]?></p></div>
+                <div class="observaciones">OBSERVACIONES :<p> <?=$maquinaria["OBSERVACIONES"]?></p></div>
             </div>  
 
             <div class="contentGeneralBtns">
