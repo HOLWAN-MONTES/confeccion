@@ -242,7 +242,6 @@ main{
 .linea3{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    
 }
 
 
@@ -252,7 +251,6 @@ main{
 } */
 
 .cajasecun{
-    
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
@@ -265,7 +263,6 @@ main{
     display: inline-flex;
     width: 100%;
     background-color: #5eb318;
-
     bottom: 0;
     color: white;
 }
@@ -286,7 +283,6 @@ main{
 }
 
 .contentinfo{
-
     width: 40%;
     margin:0 auto;
 }
