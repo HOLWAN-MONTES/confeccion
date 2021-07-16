@@ -1067,7 +1067,7 @@ $hora = date("H:i:s");
                     <ul>
                         <li id="invMaquinaria" class="uno invMaquinaria"><a href="../../inventarios/maquinaria.php">INV DE MAQUINARIA</a></li>
                         <li id="invMaterialText" class="uno invMateralT"><a href="../../inventarios/materialTextil.php">INV DE MATERIAL TEXTIL</a></li>
-                        <li id="invInsumo" class="uno invInsumos"><a  href="../../inventarios/insumos.html">INV DE INSUMOS</a></li>
+                        <li id="invInsumo" class="uno invInsumos"><a  href="../../inventarios/insumos.php">INV DE INSUMOS</a></li>
                     </ul>
                 </li>
                 <li id="reportes"><a>REPORTES</a></li>
