@@ -44,8 +44,12 @@ const btncrearInsumoa = document.getElementById('crearInsumoa');
 const btncrearmaterialtext = document.getElementById('crearmaterialtext');
 const btncrearMaquinaria = document.getElementById('crearMaquinaria');
 
+/* CREAR EMPRESA Y TODO LO DE EMPRESA */
+const crearempresa = document.getElementById('crearempresa');
 
-
+crearempresa.addEventListener('click',function(){
+    alert('HOLAAAAA ESTO ES CREAR EMPRESA')
+})
 
 
 /* content */
@@ -340,17 +344,14 @@ btninvMaquinaria.addEventListener('click',function(){
 })
 
 btninvMaterialText.addEventListener('click',function(){
-    alert('invMaterialTextil')
 
     menusañedidos.style.display = "none";
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";
 })
 
+
 btninvInsumo.addEventListener('click',function(){
-    alert('invInsumo')
-
-
     menusañedidos.style.display = "none";
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";

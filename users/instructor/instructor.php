@@ -10,9 +10,11 @@ $consu = "SELECT * FROM usuario WHERE DOCUMENTO = '$usario' AND ID_TIP_USU = 2";
 $query = mysqli_query($connection, $consu);
 $file = mysqli_fetch_assoc($query);
 $nom = $file['NOMBRE'];
+$identificacion = $file['DOCUMENTO'];
 date_default_timezone_set("America/Bogota");
 $fecha = date("o-m-d");
-$hora = date("H:i:s");
+$hora = date("H:i:s"); 
+
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +26,8 @@ $hora = date("H:i:s");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/instructor/index.css">
     <script src="https://kit.fontawesome.com/7b875e4198.js" crossorigin="anonymous"></script>
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-   
+    <!--api de Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>INSTRUCTOR</title>
 </head>
 
@@ -53,7 +55,7 @@ $hora = date("H:i:s");
         </div>
          <!-------------------opciones del instructor---------------------- -->
         <div class="acciones">
-            <button class="editar"><a href="">EDITAR PERFIL</a></button>
+            <button class="editar"><a>EDITAR PERFIL</a></button>
             <button class="Cerrar"><a href="../../php/exit/salir.php">CERRAR SESIÓN</a></button>
         </div>
     </div>
@@ -84,13 +86,14 @@ $hora = date("H:i:s");
         <form id="formul_prest" method="POST" class="formu_presta" autocomplete="off">
             <div class="primeraSeccionFechas">
                 <div>
-                    <p>RESPONSABLE</p><p id="reponsable"><?php echo $nom; ?></p>
+                    <b>RESPONSABLE : <!-- nombre de la persona logeada --></b> <p><?=$_SESSION['NOMBRE'] ?></p>
+                    <input type="hidden" name="responsable" id="responsable" value="<?=$_SESSION['DOCUMENTO'] ?>">
                 </div>      
                 <div>
-                    <p>FECHA</p><p id="fecha"><?php echo $fecha; ?></p>
+                    <p>FECHA:</p><p id="fecha" name="fecha"><?= $fecha; ?></p>
                 </div>
                 <div>
-                    <p>HORA</p><p id="hora"><?php echo $hora; ?></p>
+                    <p>HORA:</p><p id="hora" name="hora"><?= $hora; ?></p>
                 </div>
 
             </div>
@@ -117,7 +120,7 @@ $hora = date("H:i:s");
                 <div class="nom_cant_categoria">
                     <div class="nom_categoria">
                         <label for="">NOMBRE</label>
-                        <select class="prestamo" name="prestamo" id="prestamo">
+                        <select class="prestamo" name="nom_categ" id="nom_categ" style="text-transform: uppercase;" required>
                             <option value="0">SELECCIONAR</option>
                         </select>
                     </div>
@@ -128,7 +131,7 @@ $hora = date("H:i:s");
                     </div>
 
                     <div class="boton">
-                        <input type="button" class="btn_agregar" id="agregar" value="AGREGAR"> <!--AGREGAR A LA LISTA-->
+                        <input type="button" class="btn_agregar" id="agregar_lista" value="AGREGAR"> <!--AGREGAR A LA LISTA-->
                     </div>
 
                 </div>
@@ -146,12 +149,7 @@ $hora = date("H:i:s");
                             <td class="tab_ml">ACCION</td>
                         </tr>
                     </thead>
-                    <tbody class="agregado" id="agregado">
-                        <tr>
-                            <td></td>
-                        </tr>
-
-                    </tbody>
+                    <tbody class="agregado" id="agregado">  </tbody>
                 </table>
             </div>
 
@@ -160,7 +158,7 @@ $hora = date("H:i:s");
                     <input type="button" name="solicitar_prest" id="solicitar_prest" value="ENVIAR">
                 </div>
                 <div>
-                    <input type="button" value="CANCELAR">
+                    <input type="button" id="btn_cance" value="CANCELAR">
                 </div> 
 
             </div>
@@ -302,7 +300,9 @@ $hora = date("H:i:s");
 </div>
 
     <script src="../../js/users/instru/instru.js"></script>
-    <script src="../../js/users/instru/valida_insu_mat.js"></script>
+    <script src="../../js/users/instru/valida_prestamo.js"></script>
+    <!--libreria para utilizar las alertas-->
+    <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
 </body>
 </html>
