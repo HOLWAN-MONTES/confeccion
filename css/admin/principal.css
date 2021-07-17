@@ -376,7 +376,7 @@ li{
 	position: relative;
 	right: -44%;
 	bottom: 25px;
-	z-index: 10;
+	z-index: 5;
 	font-size: 16px;
 	opacity: 0;
 }

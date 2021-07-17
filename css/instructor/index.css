@@ -190,10 +190,10 @@ input[type=number]::-webkit-outer-spin-button {
 .categ{
     outline: none;
     padding: 5px;
-    width: 100%; 
+    width: 85%; 
 }
 .categoriass{
-    margin-left: 10%;
+    margin-left: 8%;
     position: absolute;
 }
 .prestamo{
@@ -206,7 +206,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .nom_categoria{
     position: absolute;
-    margin-left: 33%;
+    margin-left: 29%;
 }
 .cant_pres{
     outline: none;
@@ -216,7 +216,7 @@ input[type=number]::-webkit-outer-spin-button {
 .cant_prestamo{
     position: absolute;
     
-    margin-left: 48%;
+    margin-left: 44%;
 }
 .btn_agregar{
     outline: none;
@@ -227,16 +227,28 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .tablaInfo{
     margin-top: 10%;
-    margin-left: 23%;
-    width: 50%;
+    margin-left: 15%;
+    width: 70%;
     font-weight: bold; 
+    overflow-y: scroll;
 }
-.tab_ml, .agregado{
-    border: 1px solid #23ad9dc5;
+.tab_ml, tr, td, .agregado{
+    border: 1px solid #fff;
     padding: 1%; 
 }
 .enviar_solic{
-    margin-top: 2%;
+    display: inline-flex;
+    margin-top: 3%;
+    
+}
+#solicitar_prest{
+    margin-top: 6%;
+    margin-right: 25%;
+    padding: 3px;
+}
+#btn_cance{
+    padding: 3px;
+    margin: 5%;
 }
 /* .pet_pres{
     margin-top: -3%;
