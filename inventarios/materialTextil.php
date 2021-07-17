@@ -6,44 +6,41 @@ $usario = $_SESSION["DOCUMENTO"];
 
 if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
-
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/inventarios/maquinaria.css">
-    <title>INVENTARIO MAQUINARIA</title>
+    <link rel="stylesheet" href="../css/inventarios/materialTextil.css">
+    <title>INVENTARIOS MATERIAL TEXTIL</title>
 </head>
 <body>
     <header>
         <div class="titulohea">
-            <h1>INVENTARIO DE MAQUINARIA</h1>
+            <h1>INVENTARIO DE MATERIAL TEXTIL</h1>
         </div>
         <div class="contenedorbotonesCrear">
             <div class="btn-m-users">
 
                 <form action="" method="post" id="" >
                     <input type="hidden" name="" value="1">
-                    <button id="" >CANTIDADES</button>
+                    <button id="" >----------------</button>
                 </form>
 
                 <form action="" method="post">
-                    <button id="todo">TODAS LAS MAQUINAS</button>
+                    <button id="todo">-------------</button>
                 </form>
                 <form action="" method="post">
-                    <button id="todo">BUEN ESTADO</button>
+                    <button id="todo">---------------</button>
                 </form>
                 <form action="" method="post">
-                    <button id="todo">REPARACION</button>
+                    <button id="todo">-------------</button>
                 </form>
                 <form action="" method="post">
-                    <button id="todo">MAL ESTADO</button>
+                    <button id="todo">----------------</button>
                 </form>
 
                 <form action="" method="POST" id="" class="buscarmaquinaria">
@@ -62,31 +59,28 @@ if ($usario == "" || $usario == null) {
     </header>
     <main>
         <div class="contenedorCajaInventario">
-
-      
         <?php
-        $consulta = "SELECT SERIAL_MAQUINARIA,PLACA_SENA,NOM_MAQUINARIA,tipo_maquina.NOM_TIP_MAQUINARIA,marca.NOM_MARCA,color.NOM_COLOR,estado.NOM_ESTADO,OBSERVACIONES FROM maquinaria,tipo_maquina,marca,color,estado where maquinaria.ID_TIP_MAQUINARIA=tipo_maquina.ID_TIP_MAQUINARIA and maquinaria.ID_MARCA=marca.ID_MARCA and maquinaria.ID_COLOR=color.ID_COLOR and maquinaria.ID_ESTADO=estado.ID_ESTADO";
+        $consulta = "SELECT ID_MATERIAL_TEXTIL,NOM_MATERIAL_TEXTIL,tipo_material_textil.NOM_TIP_MATE_TEXTIL,marca.NOM_MARCA,color.NOM_COLOR,METRAJE FROM material_textil,tipo_material_textil,marca,color WHERE material_textil.ID_TIP_MATE_TEXTIL=tipo_material_textil.ID_TIP_MATE_TEXTIL and material_textil.ID_MARCA=marca.ID_MARCA and material_textil.ID_COLOR=color.ID_COLOR";
 
-        $consulta_inve = mysqli_query($connection,$consulta);
+        $consulta_text = mysqli_query($connection,$consulta);
 
-        foreach ($consulta_inve as $maquinaria){
+        foreach ($consulta_text as $mtextil){
     ?>
         <div class="contentdocumentosotras">
            
             <div class="documentosotras" >
-                <div>SERIAL :<p> <?=$maquinaria["SERIAL_MAQUINARIA"]?> </p></div>
+                <div>ID MATERIAL :<p> <?=$mtextil["ID_MATERIAL_TEXTIL"]?> </p></div>
                                 
-                <div>PLACA SENA  :<p> <?=$maquinaria["PLACA_SENA"]?></p></div>
+                <div>NOMBRE :<p> <?=$mtextil["NOM_MATERIAL_TEXTIL"]?></p></div>
                 
-                <div>NOMBRE :<p> <?=$maquinaria["NOM_MAQUINARIA"]?> </p></div>
+                <div>TIPO DE MATERIAL :<p> <?=$mtextil["NOM_TIP_MATE_TEXTIL"]?> </p></div>
                 
-                <div>TIPO DE MAQUINA :<p> <?=$maquinaria["NOM_TIP_MAQUINARIA"]?> </p></div>
+                <div>MARCA:<p> <?=$mtextil["NOM_MARCA"]?> </p></div>
                 
-                <div>MARCA :<p> <?=$maquinaria["NOM_MARCA"]?></p></div>
+                <div>COLOR:<p> <?=$mtextil["NOM_COLOR"]?></p></div>
                 
-                <div>COLOR :<p> <?=$maquinaria["NOM_COLOR"]?></p></div>
-                <div>ESTADO :<p> <?=$maquinaria["NOM_ESTADO"]?></p></div>
-                <div class="observacioneste">OBSERVACIONES :<p> <?=$maquinaria["OBSERVACIONES"]?></p></div>
+                <div>METRAJE:<p> <?=$mtextil["METRAJE"]?> </p></div>
+
             </div>  
 
             <div class="contentGeneralBtns">

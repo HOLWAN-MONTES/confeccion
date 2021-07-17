@@ -1048,6 +1048,7 @@ $hora = date("H:i:s");
                 <li class="activado"><a>ADMIN.USUARIOS <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
                         <li id="registroUsu" class="uno registroUsuarios"><a >REGISTRO DE USUARIOS</a></li>
+                        <li id="crearempresa" class="uno crearempresa"><a >REGISTRO DE EMPRESA</a></li>
                         <li id="editarUsu" class="uno edita"><a >EDITAR USUARIOS</a></li>
                         <li id="eliminarUsu" class="uno eliminar"><a >ELIMINAR USUARIOS</a></li>
                         <li id="UsuariosRegistrados" class="uno usersRegis"><a >USUARIOS REGISTRADOS</a></li>
@@ -1066,8 +1067,8 @@ $hora = date("H:i:s");
                 <li class="activado"><a>INVENTARIO <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
                         <li id="invMaquinaria" class="uno invMaquinaria"><a href="../../inventarios/maquinaria.php">INV DE MAQUINARIA</a></li>
-                        <li id="invMaterialText" class="uno invMateralT"><a>INV DE MATERIAL TEXTIL</a></li>
-                        <li id="invInsumo" class="uno invInsumos"><a>INV DE INSUMOS</a></li>
+                        <li id="invMaterialText" class="uno invMateralT"><a href="../../inventarios/materialTextil.php">INV DE MATERIAL TEXTIL</a></li>
+                        <li id="invInsumo" class="uno invInsumos"><a  href="../../inventarios/insumos.php">INV DE INSUMOS</a></li>
                     </ul>
                 </li>
                 <li id="reportes"><a>REPORTES</a></li>
