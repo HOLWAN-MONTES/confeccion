@@ -340,17 +340,14 @@ btninvMaquinaria.addEventListener('click',function(){
 })
 
 btninvMaterialText.addEventListener('click',function(){
-    alert('invMaterialTextil')
 
     menusañedidos.style.display = "none";
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";
 })
 
+
 btninvInsumo.addEventListener('click',function(){
-    alert('invInsumo')
-
-
     menusañedidos.style.display = "none";
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";

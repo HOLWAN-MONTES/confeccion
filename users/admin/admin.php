@@ -1066,8 +1066,8 @@ $hora = date("H:i:s");
                 <li class="activado"><a>INVENTARIO <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
                         <li id="invMaquinaria" class="uno invMaquinaria"><a href="../../inventarios/maquinaria.php">INV DE MAQUINARIA</a></li>
-                        <li id="invMaterialText" class="uno invMateralT"><a>INV DE MATERIAL TEXTIL</a></li>
-                        <li id="invInsumo" class="uno invInsumos"><a>INV DE INSUMOS</a></li>
+                        <li id="invMaterialText" class="uno invMateralT"><a href="../../inventarios/materialTextil.php">INV DE MATERIAL TEXTIL</a></li>
+                        <li id="invInsumo" class="uno invInsumos"><a  href="../../inventarios/insumos.php">INV DE INSUMOS</a></li>
                     </ul>
                 </li>
                 <li id="reportes"><a>REPORTES</a></li>
