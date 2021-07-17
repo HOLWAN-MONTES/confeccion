@@ -30,20 +30,20 @@ if ($usario == "" || $usario == null) {
 
                 <form action="" method="post" id="" >
                     <input type="hidden" name="" value="1">
-                    <button id="" >CANTIDADES</button>
+                    <button id="cantidad" >CANTIDADES</button>
                 </form>
 
                 <form action="" method="post">
                     <button id="todo">TODAS LAS MAQUINAS</button>
                 </form>
                 <form action="" method="post">
-                    <button id="todo">BUEN ESTADO</button>
+                    <button id="buen_estado">BUEN ESTADO</button>
                 </form>
                 <form action="" method="post">
-                    <button id="todo">REPARACION</button>
+                    <button id="reparacion">REPARACION</button>
                 </form>
                 <form action="" method="post">
-                    <button id="todo">MAL ESTADO</button>
+                    <button id="mal_estado">MAL ESTADO</button>
                 </form>
 
                 <form action="" method="POST" id="" class="buscarmaquinaria">
@@ -64,52 +64,59 @@ if ($usario == "" || $usario == null) {
         <div class="contenedorCajaInventario">
 
       
-        <?php
-        $consulta = "SELECT SERIAL_MAQUINARIA,PLACA_SENA,NOM_MAQUINARIA,tipo_maquina.NOM_TIP_MAQUINARIA,marca.NOM_MARCA,color.NOM_COLOR,estado.NOM_ESTADO,OBSERVACIONES FROM maquinaria,tipo_maquina,marca,color,estado where maquinaria.ID_TIP_MAQUINARIA=tipo_maquina.ID_TIP_MAQUINARIA and maquinaria.ID_MARCA=marca.ID_MARCA and maquinaria.ID_COLOR=color.ID_COLOR and maquinaria.ID_ESTADO=estado.ID_ESTADO";
+                <?php
+                $consulta = "SELECT SERIAL_MAQUINARIA,PLACA_SENA,NOM_MAQUINARIA,tipo_maquina.NOM_TIP_MAQUINARIA,marca.NOM_MARCA,color.NOM_COLOR,estado.NOM_ESTADO,OBSERVACIONES FROM maquinaria,tipo_maquina,marca,color,estado where maquinaria.ID_TIP_MAQUINARIA=tipo_maquina.ID_TIP_MAQUINARIA and maquinaria.ID_MARCA=marca.ID_MARCA and maquinaria.ID_COLOR=color.ID_COLOR and maquinaria.ID_ESTADO=estado.ID_ESTADO";
 
-        $consulta_inve = mysqli_query($connection,$consulta);
+                $consulta_inve = mysqli_query($connection,$consulta);
 
-        foreach ($consulta_inve as $maquinaria){
-    ?>
-        <div class="contentdocumentosotras">
-           
-            <div class="documentosotras" >
-                <div>SERIAL :<p> <?=$maquinaria["SERIAL_MAQUINARIA"]?> </p></div>
-                                
-                <div>PLACA SENA  :<p> <?=$maquinaria["PLACA_SENA"]?></p></div>
+                foreach ($consulta_inve as $maquinaria){
+                ?>
+                <div class="contentdocumentosotras">
                 
-                <div>NOMBRE :<p> <?=$maquinaria["NOM_MAQUINARIA"]?> </p></div>
-                
-                <div>TIPO DE MAQUINA :<p> <?=$maquinaria["NOM_TIP_MAQUINARIA"]?> </p></div>
-                
-                <div>MARCA :<p> <?=$maquinaria["NOM_MARCA"]?></p></div>
-                
-                <div>COLOR :<p> <?=$maquinaria["NOM_COLOR"]?></p></div>
-                <div>ESTADO :<p> <?=$maquinaria["NOM_ESTADO"]?></p></div>
-                <div class="observacioneste">OBSERVACIONES :<p> <?=$maquinaria["OBSERVACIONES"]?></p></div>
-            </div>  
+                    <div class="documentosotras" >
+                        <div>SERIAL :<p> <?=$maquinaria["SERIAL_MAQUINARIA"]?> </p></div>
+                                        
+                        <div>PLACA SENA  :<p> <?=$maquinaria["PLACA_SENA"]?></p></div>
+                        
+                        <div>NOMBRE :<p> <?=$maquinaria["NOM_MAQUINARIA"]?> </p></div>
+                        
+                        <div>TIPO DE MAQUINA :<p> <?=$maquinaria["NOM_TIP_MAQUINARIA"]?> </p></div>
+                        
+                        <div>MARCA :<p> <?=$maquinaria["NOM_MARCA"]?></p></div>
+                        
+                        <div>COLOR :<p> <?=$maquinaria["NOM_COLOR"]?></p></div>
+                        <div>ESTADO :<p> <?=$maquinaria["NOM_ESTADO"]?></p></div>
+                        <div class="observacioneste">OBSERVACIONES :<p> <?=$maquinaria["OBSERVACIONES"]?></p></div>
+                    </div>  
 
-            <div class="contentGeneralBtns">
-                <div>
-                    <form action="" method="post" id="" >
-                        <input type="hidden" name="" value="1">
-                        <button id="" >EDITAR</button>
-                    </form>
+                    <div class="contentGeneralBtns">
+                        <div>
+                            <form action="" method="post" id="" >
+                                <input type="hidden" name="" value="1">
+                                <button id="" >EDITAR</button>
+                            </form>
+                        </div>
+                        <div>
+                            <form action="" method="post" id="" >
+                                <input type="hidden" name="" value="1">
+                                <button id="" >ELIMINAR</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <form action="" method="post" id="" >
-                        <input type="hidden" name="" value="1">
-                        <button id="" >ELIMINAR</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    <?php
-    }
-    ?> 
+                <?php
+                }
+                ?> 
       </div>
     </main>
+    <div class="fondo">
+        <div  class="ventana_maquinaria">
+            <h2>Maquinarias</h2>
+            <div id="contenido"></div>
+        </div>
+    </div>
     
     
+    <script src="../js/inventario/maquinaria.js"></script>
 </body>
 </html>
