@@ -44,8 +44,12 @@ const btncrearInsumoa = document.getElementById('crearInsumoa');
 const btncrearmaterialtext = document.getElementById('crearmaterialtext');
 const btncrearMaquinaria = document.getElementById('crearMaquinaria');
 
+/* CREAR EMPRESA Y TODO LO DE EMPRESA */
+const crearempresa = document.getElementById('crearempresa');
 
-
+crearempresa.addEventListener('click',function(){
+    alert('HOLAAAAA ESTO ES CREAR EMPRESA')
+})
 
 
 /* content */
