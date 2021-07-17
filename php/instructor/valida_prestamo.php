@@ -1,10 +1,11 @@
 <?php
-require '../conections/conexion.php';
+require_once('../conections/conexion.php');
+
 $presta = $_POST['prestamo'];
 $cadena="<select id='lista2' name='lista2'>";
 echo $cadena."<option value='0'>SELECCIONAR</option>";
 if($presta == 1){
-    $sql = "SELECT * FROM material_textil WHERE ID_TIP_MATE = $presta";
+    $sql = "SELECT * FROM material_textil";
     $query = mysqli_query($connection, $sql);
     $cadena="<select id='lista2' name='lista2'>";
     while($row=mysqli_fetch_array($query)){
@@ -13,7 +14,7 @@ if($presta == 1){
     echo $cadena."</select>";
 }
 elseif($presta == 2){
-    $sql = "SELECT * FROM insumos WHERE ID_TIP_MATE = $presta";
+    $sql = "SELECT * FROM insumo";
     $query = mysqli_query($connection, $sql);
     $cadena="<select id='lista2' name='lista2'>";
     while($row=mysqli_fetch_array($query)){
@@ -21,3 +22,5 @@ elseif($presta == 2){
     }
     echo $cadena."</select>";
 }
+
+?>
