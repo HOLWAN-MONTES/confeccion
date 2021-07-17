@@ -59,7 +59,6 @@ function agregar(){
     var fec =  $("#fecha").text();
     var hor =  $("#hora").text();
     // console.log(proveedor)
-    console.log(datos)
     
     if(cate != 0 && cate != '' && nombre != 0 && nombre != '' && cantidad != 0 && cantidad != ''){
         datos.push(
@@ -113,7 +112,6 @@ function editarInsumo(e){
     var canti_edi = parseInt(prompt("Cantidad Nueva"));
     if(canti_edi){
         var _this = this;//Esta linea recupera el elemento o lugar el cual se llamo esta funcion
-        console.log(_this)
         var cantid = editarSelec(_this).innerHTML = canti_edi;//Llama a la funcion y recibe el objeto el cual es donde se llama la funcion
         // console.log(cantid);
         $(this).parent().parent().find("td:eq(2)").html(canti_edi);
@@ -159,8 +157,18 @@ function editarInsumo(e){
         //     datos[i].cantidad = cantid;
             
         // }
-        //datos[llaves]["cantidad"] = cantid;
-        // datos[].cantidad =  [cantid;//De esta manera 
+        console.log(datos);
+        // datos[llaves]['cantidad'] = cantid;
+        if(datos[llaves]['id_datos'] == 1){
+            console.log("Parece que sirve el if");
+            datos[llaves]['cantidad'] = cantid;
+        }
+        else if(datos['id_datos'] > 1){
+            console.log("Parece que sirve el elif");
+            datos[llaves]['cantidad'] = cantid;
+        }
+        console.log(datos);
+        // datos[].cantidad = cantid;//De esta manera 
     }
     else{
         Swal.fire({
