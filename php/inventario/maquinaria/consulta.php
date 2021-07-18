@@ -50,7 +50,7 @@ if ($dato == 0){
     }
 }elseif ($dato == 5){
 
-    $consulta = "SELECT SERIAL_MAQUINARIA,PLACA_SENA,NOM_MAQUINARIA,tipo_maquina.NOM_TIP_MAQUINARIA,marca.NOM_MARCA,color.NOM_COLOR,estado.NOM_ESTADO,OBSERVACIONES FROM maquinaria,tipo_maquina,marca,color,estado where maquinaria.ID_TIP_MAQUINARIA=tipo_maquina.ID_TIP_MAQUINARIA and maquinaria.ID_MARCA=marca.ID_MARCA and maquinaria.ID_COLOR=color.ID_COLOR and maquinaria.ID_ESTADO=estado.ID_ESTADO and Mmaquinaria.ID_ESTADO = 5";
+    $consulta = "SELECT SERIAL_MAQUINARIA,PLACA_SENA,NOM_MAQUINARIA,tipo_maquina.NOM_TIP_MAQUINARIA,marca.NOM_MARCA,color.NOM_COLOR,estado.NOM_ESTADO,OBSERVACIONES FROM maquinaria,tipo_maquina,marca,color,estado where maquinaria.ID_TIP_MAQUINARIA=tipo_maquina.ID_TIP_MAQUINARIA and maquinaria.ID_MARCA=marca.ID_MARCA and maquinaria.ID_COLOR=color.ID_COLOR and maquinaria.ID_ESTADO=estado.ID_ESTADO and maquinaria.ID_ESTADO = 5";
 
     $consulta_inve = mysqli_query($connection,$consulta);
 
@@ -93,9 +93,9 @@ if ($dato == 0){
         ');
     }
 
-}else if($dato == 6){
+}elseif($dato == 6){
 
-    $consulta = "SELECT SERIAL_MAQUINARIA,PLACA_SENA,NOM_MAQUINARIA,tipo_maquina.NOM_TIP_MAQUINARIA,marca.NOM_MARCA,color.NOM_COLOR,estado.NOM_ESTADO,OBSERVACIONES FROM maquinaria,tipo_maquina,marca,color,estado where maquinaria.ID_TIP_MAQUINARIA=tipo_maquina.ID_TIP_MAQUINARIA and maquinaria.ID_MARCA=marca.ID_MARCA and maquinaria.ID_COLOR=color.ID_COLOR and maquinaria.ID_ESTADO=estado.ID_ESTADO and Mmaquinaria.ID_ESTADO = 5";
+    $consulta = "SELECT SERIAL_MAQUINARIA,PLACA_SENA,NOM_MAQUINARIA,tipo_maquina.NOM_TIP_MAQUINARIA,marca.NOM_MARCA,color.NOM_COLOR,estado.NOM_ESTADO,OBSERVACIONES FROM maquinaria,tipo_maquina,marca,color,estado where maquinaria.ID_TIP_MAQUINARIA=tipo_maquina.ID_TIP_MAQUINARIA and maquinaria.ID_MARCA=marca.ID_MARCA and maquinaria.ID_COLOR=color.ID_COLOR and maquinaria.ID_ESTADO=estado.ID_ESTADO and maquinaria.ID_ESTADO = 6";
 
     $consulta_inve = mysqli_query($connection,$consulta);
 
@@ -137,9 +137,9 @@ if ($dato == 0){
             </div>
         ');
     }
-}elseif ($dato == 4) {
+}elseif ($dato == 7) {
     
-    $consulta = "SELECT SERIAL_MAQUINARIA,PLACA_SENA,NOM_MAQUINARIA,tipo_maquina.NOM_TIP_MAQUINARIA,marca.NOM_MARCA,color.NOM_COLOR,estado.NOM_ESTADO,OBSERVACIONES FROM maquinaria,tipo_maquina,marca,color,estado where maquinaria.ID_TIP_MAQUINARIA=tipo_maquina.ID_TIP_MAQUINARIA and maquinaria.ID_MARCA=marca.ID_MARCA and maquinaria.ID_COLOR=color.ID_COLOR and maquinaria.ID_ESTADO=estado.ID_ESTADO and Mmaquinaria.ID_ESTADO = 4";
+    $consulta = "SELECT SERIAL_MAQUINARIA,PLACA_SENA,NOM_MAQUINARIA,tipo_maquina.NOM_TIP_MAQUINARIA,marca.NOM_MARCA,color.NOM_COLOR,estado.NOM_ESTADO,OBSERVACIONES FROM maquinaria,tipo_maquina,marca,color,estado where maquinaria.ID_TIP_MAQUINARIA=tipo_maquina.ID_TIP_MAQUINARIA and maquinaria.ID_MARCA=marca.ID_MARCA and maquinaria.ID_COLOR=color.ID_COLOR and maquinaria.ID_ESTADO=estado.ID_ESTADO and maquinaria.ID_ESTADO = 7";
 
     $consulta_inve = mysqli_query($connection,$consulta);
 
