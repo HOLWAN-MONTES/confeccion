@@ -13,6 +13,7 @@ if ($usario == "" || $usario == null) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +21,7 @@ if ($usario == "" || $usario == null) {
     <link rel="stylesheet" href="../css/inventarios/maquinaria.css">
     <title>INVENTARIO MAQUINARIA</title>
 </head>
+
 <body>
     <header>
         <div class="titulohea">
@@ -28,7 +30,7 @@ if ($usario == "" || $usario == null) {
         <div class="contenedorbotonesCrear">
             <div class="btn-m-users">
 
-                <form action="" method="post" id="" >
+                <form action="" method="post" id="">
                     <input type="hidden" name="" value="1">
                     <button id="cantidad" >CANTIDADES</button>
                 </form>
@@ -53,12 +55,12 @@ if ($usario == "" || $usario == null) {
             </div>
             <div class="iconouserr">
                 <a href="../users/admin/admin.php">
-                <div>x </div>
-            </a>
-               
+                    <div>x </div>
+                </a>
+
             </div>
         </div>
-       
+
     </header>
     <main>
         <div class="contenedorCajaInventario">
@@ -119,4 +121,5 @@ if ($usario == "" || $usario == null) {
     
     <script src="../js/inventario/maquinaria.js"></script>
 </body>
+
 </html>
