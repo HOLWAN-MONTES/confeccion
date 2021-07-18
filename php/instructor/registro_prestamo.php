@@ -14,22 +14,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql_1 = "INSERT INTO accion_realizada(ID_ACCION_REALIZADA, DOCU_ADMI, DOCU_INSTRUCTOR, FECHA, HORA, ID_ESTADO) VALUES('','','$instructor','$fecha','$hora',4)";
         $consul_1 = mysqli_query($connection,$sql_1);
         if($consul_1){
-            $verificar = "SELECT * FROM detalle_accion WHERE DOCU_INSTRUCTOR = '$instructor' ORDER BY ID_ACCION_REALIZADA DESC LIMIT 1";
+            $verificar = "SELECT * FROM accion_realizada WHERE DOCU_INSTRUCTOR = '$instructor' ORDER BY ID_ACCION_REALIZADA DESC LIMIT 1";
             $consu_2 = mysqli_query($connection, $verificar);
             $valida = mysqli_fetch_array($consu_2);
             $det_accion = $valida["ID_ACCION_REALIZADA"];
             if($consu_2){
                 foreach($materiales as $mater){
-                    $categ = $mater['categ'];
-                    $nom_categ = $mater['nom_categ'];
-                    $cantd = $mater['cantid_pres'];
+                    $categ = $mater['categorias'];
+                    $nom_categ = $mater['names'];
+                    $cantd = $mater['cantidad'];
 
                     $sql_insertar = "INSERT INTO detalle_accion(ID_DETA_ACCION, ID_ACCION_REALIZADA, ID_ACCION, ID_MATERIAL, CANTIDAD)
                                     VALUES ('', '$det_accion', 2, '$nom_categ', '$cantd')";
-                    $comprobar = mysqli_query($connection, $sql_insertar);
-                    if($comprobar){
+                    $comprobar = mysqli_query($connection,$sql_insertar);
+                   
+                    if ($comprobar){
                         if($categ == 1){
-                           $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION LIMIT 1"; 
+                           $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION DESC LIMIT 1"; 
                            $continuar = mysqli_query($connection, $final);
                            $dato_ultimo = mysqli_fetch_array($continuar);
                            $ultimo = $dato_ultimo['ID_DETA_ACCION'];
@@ -38,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                            $confirmar = mysqli_query($connection, $consu_bode);
                         }
                         elseif($categ == 2){
-                            $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION LIMIT 1"; 
+                            $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION DESC LIMIT 1"; 
                             $continuar = mysqli_query($connection, $final);
                             $dato_ultimo = mysqli_fetch_array($continuar);
                             $ultimo = $dato_ultimo['ID_DETA_ACCION'];
