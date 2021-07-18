@@ -124,15 +124,35 @@ function agregar(){
 console.log(datos);
 $(document).on("click", ".deleteButton", function(e){
     e.preventDefault();
-    $(this).parents('tr').eq(0).remove();
-    datos.splice(id_row, 1);
     Swal.fire({
-        title: 'Eliminado!',
-        text: 'El insumo se elimino',
-        icon: 'success',
-        confirmButtonText: 'Continuar'
-    });
+        title: 'Esta seguro de eliminarlo?',
+        icon: 'warning',
+        showDenyButton: true,
+        confirmButtonText: `Eliminar`,
+        denyButtonText: `No eliminar`,
+    }).then(result => {
+        if (result.isConfirmed) {
+            $(this).parents('tr').eq(0).remove();
+            datos.splice(id_row, 1);
+            Swal.fire({
+                title: 'Eliminado!',
+                text: 'El insumo se elimino',
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+            });
+        }
+        else{
+            Swal.fire({
+                title: 'No Eliminó!',
+                text: 'No se elimino el insumo',
+                icon: 'info',
+                confirmButtonText: 'Continuar'
+            });
+        }
+    })
+    
 });
+
 function editarInsumo(e){
     e.preventDefault();
     // var canti_edi = parseInt(prompt("Cantidad Nueva"));
@@ -217,8 +237,15 @@ function guardarInsumo(e){
                     document.getElementById('mostrar_insumos').innerHTML = '';
                     $('#proveedor option:first').prop('selected', true);
                     var actual = new Date();
-                
-                    document.getElementById("hora").innerHTML = hor_ac;
+                    var hor_ac = actual.getHours();
+                    var minutes = actual.getMinutes()
+                    var second = actual.getSeconds()
+                    if(hor_ac < 10) { hor_ac = '0' + hor_ac; }
+                    if(minutes < 10) { minutes = '0' + minutes; }
+                    if(second < 10) { second = '0' + second; }
+                    var hora_actual = hor_ac + ':' + minutes + ':' + second;
+                    console.log(hora_actual); 
+                    document.getElementById("hora").innerHTML = hora_actual;
                 }
                 else {  
                     // $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
@@ -243,13 +270,53 @@ function guardarInsumo(e){
 }
 function cancelarInsumo(e){
     e.preventDefault();
-    datos = [];
-    Swal.fire({
-        title: 'Cancelado!',
-        text: 'Se cancelo el ingreso del insumo',
-        icon: 'info',
-        confirmButtonText: 'Continuar'
-    });
-    document.getElementById('mostrar_insumos').innerHTML = '';
-    $('#proveedor option:first').prop('selected', true);
+    if(datos != ""){
+        Swal.fire({
+            title: 'Esta seguro de eliminarlo?',
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonText: `Cancelar`,
+            denyButtonText: `No Cancelar`,
+        }).then(result => {
+            if(result.isConfirmed){
+                datos = [];
+                Swal.fire({
+                    title: 'Cancelado!',
+                    text: 'Se cancelo el ingreso del insumo',
+                    icon: 'info',
+                    confirmButtonText: 'Continuar'
+                });
+                document.getElementById('mostrar_insumos').innerHTML = '';
+                $('#proveedor option:first').prop('selected', true);
+                var actual = new Date();
+                var hor_ac = actual.getHours();
+                var minutes = actual.getMinutes()
+                var second = actual.getSeconds()
+                if(hor_ac < 10) { hor_ac = '0' + hor_ac; }
+                if(minutes < 10) { minutes = '0' + minutes; }
+                if(second < 10) { second = '0' + second; }
+                var hora_actual = hor_ac + ':' + minutes + ':' + second;
+                console.log(hora_actual); 
+                document.getElementById("hora").innerHTML = hora_actual;
+            }
+            else{
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'No se cancelo el ingreso del insumo',
+                    icon: 'error',
+                    confirmButtonText: 'Continuar'
+                });
+            }
+        })
+    }
+    else{
+        Swal.fire({
+            title: 'Error!',
+            text: 'No puede cancelar valores vacios',
+            icon: 'error',
+            confirmButtonText: 'Continuar'
+        });
+    }
+    
+    
 }
