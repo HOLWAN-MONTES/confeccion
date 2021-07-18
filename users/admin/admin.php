@@ -847,6 +847,23 @@ $hora = date("H:i:s");
                                 <label for="">NOMBRE MAQUINARIA</label>
                                 <input type="text" name="nombre_maqui" id="nombre_maqui">
                             </div>
+                            <div class="asd">
+                                <label for="">ESTADO</label>
+                                <select class="input5" name="estado_maqui" id="estado_maqui"  required>
+                                <option >SELECCIONAR</option>
+                                <?php
+                                    $tipo = "SELECT * FROM estado";
+                                    $inser = mysqli_query($connection,$tipo);
+                                    while($tip = mysqli_fetch_array($inser)){
+                                ?>
+                                <option value="<?php echo $tip[0]; ?>">
+                                    <?php echo $tip[1]; ?>
+                                </option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                            </div>
                     </div>
                     <div class="segundaLineaMa">
                         <div>
@@ -904,7 +921,12 @@ $hora = date("H:i:s");
                             <h6 class="agregaradi agregaradi5" id="creartipodemaquinarr">CREAR TIPO DE MAQUINARIA</h6>
                         </div>
                     </div>
-
+                    <div class="cuartaLineaMa">
+                            <div class="asd">
+                                    <label for="obser_maqui">OBSERVACIONES MAQUINARIA</label>
+                                    <input type="text" name="obser_maqui" id="obser_maqui">
+                            </div>
+                    </div>            
                     <div class="terceraLineaMa">
                         <input type="button" value="ENVIAR" id="enviar_maqui" name="enviar_maqui">
                     </div>
