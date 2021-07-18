@@ -48,7 +48,7 @@ document.addEventListener('keypress', (e)=>{
                 fetch('../../php/admin/eliminar_users.php', option)
                     .then(res => res.ok ? res.json() : Promise.reject(res))
                     .then(datos => {
-                    console.log(datos);
+                    // console.log(datos);
                     const {err, status, statusText, data} = datos;
                     if(data.lenght !== 0 && err != true){
                         const {DOCUMENTO, ID_TIP_DOCU, ID_TIP_USU, NOMBRE, APELLIDO, PASSWORD, FECHA_NACIMIENTO, CELULAR, CORREO} = data;
@@ -118,8 +118,9 @@ document.addEventListener('submit', (e)=>{
                 else{
                     Swal.fire('No eliminado', 'No se elimino el usuario', 'info');
                     formul.reset();
+                    docu_elim.disabled = false;
                 }
-                console.log(datos);
+                // console.log(datos);
                 })
                 .catch(error => console.error(error));
             }

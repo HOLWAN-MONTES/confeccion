@@ -72,9 +72,9 @@ document.addEventListener('keypress', (e)=>{
                         edad.disabled = true;
                         celu.value = CELULAR;
                         correo.value = CORREO;
-                        correo.disabled = false;
+                        correo.disabled = true;
                         
-                        contra.value = PASSWORD;
+                        // contra.value = PASSWORD;
                        
                         // console.log(foto.value);
                     }
@@ -136,7 +136,7 @@ document.addEventListener('submit', (e)=>{
             else{
                 Swal.fire({
                     title: 'Error!',
-                    text: 'El usuario no existe',
+                    text: 'No se actualizo el usuario',
                     icon: 'error',
                     confirmButtonText: 'Continuar'
                 });

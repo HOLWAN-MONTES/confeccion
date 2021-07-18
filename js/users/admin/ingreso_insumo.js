@@ -9,26 +9,28 @@ const factura = document.getElementById("factura")
 
 
 //Registro De Ingreso De Insumos
-$(document).ready(function(){
+$(document).ready(function(){//Se lee el documento y se asigna una funcion
     recargarLista();
-    $('#categoria').change(function(){
-        recargarLista();
+    $('#categoria').change(function(){//Traemos el id del select y asignamos el evento change 
+        recargarLista();//Cuando se de cambio en o click en ese select llamara la funcion
     });
 })
 
 function recargarLista(){
     $.ajax({
-        type:"POST",
-        url: '../../php/admin/categorias.php',
-        data: "ingreso_insumo=" + $('#categoria').val(),
+        type:"POST",//Metodo post
+        url: '../../php/admin/categorias.php',//Direccionamiento de archivo
+        data: "ingreso_insumo=" + $('#categoria').val(),//Se le asigna a una vble el valor que trae el select 
         success: function(r){
-            $('#nom_catego').html(r);
+            $('#nom_catego').html(r);//Lo mostramos en pantalla
         }
     });
 }
 
-const datos = [];
-var id_datos = 0;
+//Registro De insumos
+
+var datos = [];
+var id_datos = 1;
 var can_edi = 0;
 var cantidad;
 var canti_edi;
@@ -42,10 +44,12 @@ $(document).ready(function(){
     });
     $(document).on("click", ".edit_btn", editarInsumo);  
     $(document).on("click", "#envia_ing_ins", guardarInsumo);  
+    $(document).on("click", "#cancel", cancelarInsumo);  
 });
 
 function agregar(){
     const cate = document.getElementById('categoria');
+    const cates = document.getElementById('categoria').value;
     const categorias = cate.options[cate.selectedIndex].text;
     const nombre= document.getElementById('nom_catego').value;
     const nom = document.getElementById('nom_catego');
@@ -58,33 +62,55 @@ function agregar(){
     // console.log(proveedor)
     
     if(cate != 0 && cate != '' && nombre != 0 && nombre != '' && cantidad != 0 && cantidad != ''){
-        datos.push(
-            {
-                "id_datos": id_datos,
-                "responsable": respon,
-                "proveedor": proveedor,
-                "categorias": categorias,
-                "name": name,
-                "cantidad": cantidad,
-                "fecha": fec,
-                "hora": hor
-            }
-        );
-        console.log(datos);
-        id_datos++;
-        can_edi++;
-        id_row = "row"+id_datos;
-        canti_edi = "canti" + can_edi;
-        const deleteButton = "<button class='deleteButton'>Eliminar</button>";
-        var editButton = `<button class='edit_btn'>Editar</button>`;
-        console.log(editButton);
-        fila='<tr id="'+ id_row +'" class="tr_val"><td>'+ categorias +'</td><td>'+ name +'</td><td id="'+ canti_edi +'" class="cant_ed">'+ cantidad +'</td><td>'+ editButton + deleteButton +'</td></tr>';
-        console.log(editButton);
-        console.log(fila);
-        $('#tabla_ing_insu').append(fila);
-        $('#categoria option:first').prop('selected', true); //Vacia los campos de los selects cuando agrega
-        $('#nom_catego').find('option').not(':first').remove(); //Vacia los campos de los selects cuando agrega
-        $('input[type="number"]').val(''); //Vacia el campo del input 
+        if(proveedor != '' && proveedor != 0){
+            datos.push(
+                {
+                    "id_datos": id_datos,
+                    "responsable": respon,
+                    "proveedor": proveedor,
+                    "categorias": cates,
+                    "name": nombre,
+                    "cantidad": cantidad,
+                    "fecha": fec,
+                    "hora": hor
+                }
+            );
+            id_datos++;
+            can_edi++;
+            id_row = "row"+id_datos;
+            canti_edi = "canti" + can_edi;
+            const deleteButton = "<button class='deleteButton'>ELIMINAR</button>";
+            var editButton = `<button class='edit_btn ${id_datos}'>EDITAR</button>`;
+            fila ='<tr id="'+ id_row +'" class="tr_val" ><td class="td_cat" style="border:1px solid #23ad9dc5;">'+ categorias +'</td><td class="td_nom" style="border:1px solid #23ad9dc5;">'+ name +'</td><td id="'+ canti_edi +'" class="cant_ed" style="border:1px solid #23ad9dc5;">'+ cantidad +'</td><td class="td_botones" style="border:1px solid #23ad9dc5;">'+ editButton + deleteButton +'</td></tr>';
+            
+            $('#tabla_ing_insu').append(fila);
+            $('#categoria option:first').prop('selected', true); //Vacia los campos de los selects cuando agrega
+            $('#nom_catego').find('option').not(':first').remove(); //Vacia los campos de los selects cuando agrega
+            $('input[type="number"]').val(''); //Vacia el campo del input 
+        }
+        else{
+            Swal.fire({
+                title: 'Dato Vacio',
+                text: 'Ingrese el proveedor por favor',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            })
+            
+        }
+        // datos.forEach(elemento =>{
+        //    const tbod = document.getElementById("mostrar_insumos");
+        //    tbod.style.border = "1px solid #23ad9dc5";
+        //    fila.style.border = "1px solid #23ad9dc5";
+        // })
+        // const cattegori = document.getElementsByTagName("tbody");
+        // console.log(cattegori);
+        // const nommb = document.getElementsByTagName("tbody td")[0];
+        // console.log(nommb);
+        // const cantti = document.getElementsByClassName("cant_ed");
+        // // console.log(cantti);
+        // const botones = document.getElementsByClassName("td_botones");
+        // cattegori.style.border = "1px solid #23ad9dc5";
+        // console.log(botones);
     }
     else{
         Swal.fire({
@@ -95,201 +121,202 @@ function agregar(){
         })
     }
 }  
-function guardarInsumo(e){
-    e.preventDefault();
-    var json = JSON.stringify(datos);//Convierte el array en una cadena de caracteres
-    $.ajax({
-        url: '../../php/admin/ingreso_insumos.php',
-        type: "POST",
-        data: "json="+json,
-        success: function(r){
-            console.log("HolA sI LO hIzO");
-            console.log(r);
-            const envia = JSON.parse(r);
-            console.log(envia.status);
-            if(envia.status === 200){
-                alert("Se Registro Tu Prestamo Con Exito");
-                document.getElementById('mostrar_insumos').innerHTML = '';
-            }
-            else {  
-                // $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
-                alert("No Se Registro Tu Prestamo Con Exito");
-            }
-        }
-    });
-    console.log(json);
-}
+console.log(datos);
 $(document).on("click", ".deleteButton", function(e){
     e.preventDefault();
-    $(this).parents('tr').eq(0).remove();
-    datos.splice(id_row, 1);
-    console.log(datos)
     Swal.fire({
-        title: 'Eliminado!',
-        text: 'El insumo se elimino',
-        icon: 'success',
-        confirmButtonText: 'Continuar'
+        title: 'Esta seguro de eliminarlo?',
+        icon: 'warning',
+        showDenyButton: true,
+        confirmButtonText: `Eliminar`,
+        denyButtonText: `No eliminar`,
+    }).then(result => {
+        if (result.isConfirmed) {
+            $(this).parents('tr').eq(0).remove();
+            datos.splice(id_row, 1);
+            Swal.fire({
+                title: 'Eliminado!',
+                text: 'El insumo se elimino',
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+            });
+        }
+        else{
+            Swal.fire({
+                title: 'No Eliminó!',
+                text: 'No se elimino el insumo',
+                icon: 'info',
+                confirmButtonText: 'Continuar'
+            });
+        }
     })
+    
 });
+
 function editarInsumo(e){
     e.preventDefault();
-    var canti_edi = parseInt(prompt("Cantidad Nueva"));
-    if(canti_edi){
-        var _this = this;//Esta linea recupera el elemento o lugar el cual se llamo esta funcion
-        var cantid = editarSelec(_this).innerHTML = canti_edi;//Llama a la funcion y recibe el objeto el cual es donde se llama la funcion
-        $(this).parent().parent().find("td:eq(2)").html(cantid);  
-        // console.log(fila);
+    // var canti_edi = parseInt(prompt("Cantidad Nueva"));
+    Swal.fire({
+        title: 'Edicion!',
+        text: 'Ingrese una nueva cantidad',
+        html: '<input type="number" class="num_cant" id="num_cant" placeholder="Ingrese La Cantidad Nueva" required>',
+        icon: 'question',
+        showDenyButton: true,
+        confirmButtonText: `Actualizar`,
+        denyButtonText: `No actualizar`,
+    }).then(result =>{
+        const id = e.target.classList[1] //^ me trae el identificador del botn
+        console.log(id);
+        const id_lista = id-2 //^ le resto 2 para igualarlo a index de la lista
+        console.log(id_lista);
+    
+        if (result.isConfirmed){
+            var nume = document.getElementById("num_cant").value;
+            if(nume != '' && nume != 0){
+                
+                var _this = this;//Esta linea recupera el elemento o lugar el cual se llamo esta funcion
+                var cantid = editarSelec(_this).innerHTML = parseInt(nume);//Llama a la funcion y recibe el objeto el cual es donde se llama la funcion
+                console.log(cantid);
+                $(this).parent().parent().find("td:eq(2)").html(parseInt(nume));//Reemplaza el valor actual html por valor editado y lo muestra en el html
+                console.log(datos)
+                datos[id_lista]['cantidad'] = cantid; //Asigno el valor nuevo al arreglo
+                Swal.fire({
+                    title: 'Editado :)',
+                    text: 'Ha sido editado con exito',
+                    icon: 'success',
+                    confirmButtonText: 'Continuar'
+                });
+            }
+            else{
+                Swal.fire({
+                    title: 'Ingrese una cantidad!',
+                    text: 'Digite una nueva cantidad',
+                    icon: 'error',
+                    confirmButtonText: 'Continuar'
+                });
+            }
+            
+            }
+        else{
+            Swal.fire({
+                title: 'Cancelado!',
+                text: 'Se canceló la edicion',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            });
+        }
+        
+    });
+}    
+    
+function editarSelec(objetoPresionado){
+    var can_ed = objetoPresionado.parentNode.parentNode;//Se obtiene en donde se presiono
+    var cantidades = can_ed.getElementsByTagName("td")[2].innerHTML;//Se obtiene la etiqueta y la posicion de la celda
+    
+    return cantidades;//Retornara esta vble y viajara en la funcion llamada
+}
+function guardarInsumo(e){
+    e.preventDefault();
+    // console.log(datos);
+    var json = JSON.stringify(datos);//Convierte el array en una cadena de caracteres
+    if(datos != ""){
+        $.ajax({
+            url: '../../php/admin/ingreso_insumos.php',
+            method: "POST",
+            data: "json="+json,
+            success: function(r){
+                const envia = JSON.parse(r);
+                if(envia.status === 200){
+                    datos = [];
+                    Swal.fire({
+                        title: 'Agregado!',
+                        text: 'Se registro el ingreso del insumo',
+                        icon: 'success',
+                        confirmButtonText: 'Continuar'
+                    });
+                    document.getElementById('mostrar_insumos').innerHTML = '';
+                    $('#proveedor option:first').prop('selected', true);
+                    var actual = new Date();
+                    var hor_ac = actual.getHours();
+                    var minutes = actual.getMinutes()
+                    var second = actual.getSeconds()
+                    if(hor_ac < 10) { hor_ac = '0' + hor_ac; }
+                    if(minutes < 10) { minutes = '0' + minutes; }
+                    if(second < 10) { second = '0' + second; }
+                    var hora_actual = hor_ac + ':' + minutes + ':' + second;
+                    console.log(hora_actual); 
+                    document.getElementById("hora").innerHTML = hora_actual;
+                }
+                else {  
+                    // $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
+                    Swal.fire({
+                        title: 'No agregado!',
+                        text: 'No se registro el insumo',
+                        icon: 'warning',
+                        confirmButtonText: 'Continuar'
+                    });
+                }
+            }
+        });
     }
-    else{
+    else {
         Swal.fire({
-            title: 'Cancelado!',
-            text: 'Se canceló la edicion',
-            icon: 'warning',
+            title: 'Error!',
+            text: 'Eliga una opcion para el proveedor y/o ingrese valores',
+            icon: 'error',
             confirmButtonText: 'Continuar'
         });
     }
 }
-
-function editarSelec(objetoPresionado){
-    var can_ed = objetoPresionado.parentNode.parentNode;//Se obtiene en donde se presiono
-    var cantidades = can_ed.getElementsByTagName("td")[2].innerHTML;//Se obtiene la etiqueta y la posicion de la celda
-
-    return cantidades;//Retornara esta vble y viajara en la funcion llamada
+function cancelarInsumo(e){
+    e.preventDefault();
+    if(datos != ""){
+        Swal.fire({
+            title: 'Esta seguro de eliminarlo?',
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonText: `Cancelar`,
+            denyButtonText: `No Cancelar`,
+        }).then(result => {
+            if(result.isConfirmed){
+                datos = [];
+                Swal.fire({
+                    title: 'Cancelado!',
+                    text: 'Se cancelo el ingreso del insumo',
+                    icon: 'info',
+                    confirmButtonText: 'Continuar'
+                });
+                document.getElementById('mostrar_insumos').innerHTML = '';
+                $('#proveedor option:first').prop('selected', true);
+                var actual = new Date();
+                var hor_ac = actual.getHours();
+                var minutes = actual.getMinutes()
+                var second = actual.getSeconds()
+                if(hor_ac < 10) { hor_ac = '0' + hor_ac; }
+                if(minutes < 10) { minutes = '0' + minutes; }
+                if(second < 10) { second = '0' + second; }
+                var hora_actual = hor_ac + ':' + minutes + ':' + second;
+                console.log(hora_actual); 
+                document.getElementById("hora").innerHTML = hora_actual;
+            }
+            else{
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'No se cancelo el ingreso del insumo',
+                    icon: 'error',
+                    confirmButtonText: 'Continuar'
+                });
+            }
+        })
+    }
+    else{
+        Swal.fire({
+            title: 'Error!',
+            text: 'No puede cancelar valores vacios',
+            icon: 'error',
+            confirmButtonText: 'Continuar'
+        });
+    }
+    
+    
 }
-
-
-// $(document).on('ready', principal());
-
-// function principal(){
-//     $("#btn_productos").on('click', agregarRow);
-//     $(document).on("click", ".btn_borrar", borrarInsumo);  
-//     $(document).on("click", ".edit_btn", editarInsumo);  
-// }
-
-// function agregarRow(){
-//     var cate = document.getElementById('categoria');
-//     var categorias = cate.options[cate.selectedIndex].text;
-//     var nombre= document.getElementById('nom_catego').value;
-//     var nom = document.getElementById('nom_catego');
-//     var name = nom.options[nom.selectedIndex].text;
-//     var cantidad = document.getElementById('cantidad').value;
-//     var deleteButton = "<button class='btn_borrar'>Eliminar</button>";
-//     var editButton = "<button class='edit_btn'>Editar</button>";
-//     if(cate != 0 && cate != '' && nombre != 0 && nombre != '' && cantidad != 0 && cantidad != ''){
-//         const nombre_tabla = document.getElementById("tabla_ing_insu");
-//         const fila = nombre_tabla.insertRow(1);
-    
-//         var celda = fila.insertCell(0);
-//         var celda2 = fila.insertCell(1);
-//         var celda3 = fila.insertCell(2);
-//         var celda4 = fila.insertCell(3);
-    
-//         celda.innerHTML = categorias;
-//         celda2.innerHTML = name;
-//         celda3.innerHTML = cantidad;
-//         celda4.innerHTML = deleteButton + editButton;  
-        
-//         celda.style.border="1px solid #23ad9dc5";
-//         celda2.style.border="1px solid #23ad9dc5";
-//         celda3.style.border="1px solid #23ad9dc5";
-//         celda4.style.border="1px solid #23ad9dc5";
-//         celda.style.padding="1%";
-//         celda2.style.padding="1%";
-//         celda3.style.padding="1%";
-//         celda4.style.padding="1%";
-    
-//         $('#categoria option:first').prop('selected', true); //Vacia los campos de los selects cuando agrega
-//         $('#nom_catego').find('option').not(':first').remove(); //Vacia los campos de los selects cuando agrega
-//         $('input[type="number"]').val(''); //Vacia el campo del input 
-//     }
-//     else{
-//         Swal.fire({
-//             title: 'Datos Vacios',
-//             text: 'Ingrese datos por favor',
-//             icon: 'warning',
-//             confirmButtonText: 'Continuar'
-//         });
-//     }
-//     $(document).submit('#envia_ing_ins', function(e){
-//         e.preventDefault();
-//         var cate_ins = document.getElementById('categoria').value;
-//         var nom_ins = document.getElementById('nom_catego').value;
-//         var proveedor = document.getElementById("proveedor").value;
-//         var cant = document.getElementById("cantidad").value;
-//         // var prov = document.getElementById('categoria').value;
-//         // var cate = cate_ins;
-//         // var nome = nom_ins;
-//         // console.log(cantid)
-//         var can = cant;    
-//         var prove = proveedor;
-//         var fec =  $("#fecha").text();
-//         var hor =  $("#hora").text();
-    
-//         $.ajax({
-//             url: '../../php/admin/ingreso_insumos.php',
-//             method: "POST",
-//             data: { categoria:cate_ins, nombre: nom_ins, canti: can, provee: prove, fecha: fec, hora: hor },
-//             success: function(r){
-//                 const envia = JSON.parse(r);
-//                 console.log(envia.status);
-//                 if(envia.status === 200){
-//                     alert("Se Registro Tu Prestamo Con Exito");
-//                     document.getElementById('mostrar_insumos').innerHTML = '';
-//                 }
-//                 else {  
-//                     // $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
-//                     alert("No Se Registro Tu Prestamo Con Exito");
-//                 }
-//             }
-//         });
-//     });
-// }
-// // console.log(agregarRow);
-// function editarInsumo(e){
-//     e.preventDefault();
-//     var canti_edi = parseInt(prompt("Cantidad Nueva"));
-//     if(canti_edi){
-//         var _this = this;//Esta linea recupera el elemento o lugar el cual se llamo esta funcion
-//         var cantid = editarSelec(_this).innerHTML = canti_edi;//Llama a la funcion y recibe el objeto el cual es donde se llama la funcion
-//         $(this).parent().parent().find("td:eq(2)").html(cantid);  
-//         // console.log(cantid);
-//     }
-//     else{
-//         Swal.fire({
-//             title: 'Cancelado!',
-//             text: 'Se canceló la edicion',
-//             icon: 'warning',
-//             confirmButtonText: 'Continuar'
-//         });
-//     }
-// }
-
-// function editarSelec(objetoPresionado){
-//     var can_ed = objetoPresionado.parentNode.parentNode;//Se obtiene en donde se presiono
-//     var cantidades = can_ed.getElementsByTagName("td")[2].innerHTML;//Se obtiene la etiqueta y la posicion de la celda
-
-//     return cantidades;//Retornara esta vble y viajara en la funcion llamada
-// }
-// function borrarInsumo(e){
-//     e.preventDefault();
-//     var _this = this; //Esta linea recupera el elemento o lugar el cual se llamo esta funcion
-// 	var array_f= obtenerSelec(_this); //Llama a la funcion y recibe el objeto el cual es donde se llama la funcion
-//     // console.log(array_f[0] + " - " + array_f[1] + " - " + array_f[2] + " - " + array_f[3]);//Muestra en consola el array returnado en la otra funcion
-// 	$(this).parent().parent().remove();//Elimina la fila en el cual se da click
-//     Swal.fire({
-//         title: 'Eliminado!',
-//         text: 'El insumo se elimino',
-//         icon: 'success',
-//         confirmButtonText: 'Continuar'
-//     })
-// }
-// function obtenerSelec(objectPressed){
-//     var filas = objectPressed.parentNode.parentNode; //Se obtiene en donde se presiono
-// 	var categorias = filas.getElementsByTagName("td")[0].innerHTML;
-// 	var name = filas.getElementsByTagName("td")[1].innerHTML;
-// 	var cantidad = filas.getElementsByTagName("td")[2].innerHTML;
-// 	var botones = filas.getElementsByTagName("td")[3].innerHTML;
-// 	var array_fila = [categorias, name, cantidad, botones];
-
-// 	return array_fila;//Retornara este arreglo y viajara en la funcion llamada
-// }

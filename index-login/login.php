@@ -4,7 +4,7 @@ session_start();
 
 ?>
 <?php
-    $sql_re = "SELECT * FROM tipo_usuario";
+    $sql_re = "SELECT  * FROM tipo_usuario  WHERE ID_TIP_USU <= 2";
     $query_re = mysqli_query($connection, $sql_re);
     $fila_re = mysqli_fetch_assoc($query_re);
 ?>
