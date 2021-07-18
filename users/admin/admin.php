@@ -410,7 +410,7 @@ $hora = date("H:i:s");
                         <div>
                             <b>PROVEEDOR = <!-- nombre de proveedor --></b> 
                             <select name="provedor" class="proveedor" id="proveedor" required> 
-                                <option>Seleccione el proveedor</option>
+                                <option value="0">Seleccione el proveedor</option>
                                 <!-- GUYS -->
                                 <?php
                                 $sql_porveedor = "SELECT * FROM empresa";
