@@ -2,6 +2,7 @@
     margin: 0;
     box-sizing: border-box;
     padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /*------- todo el header----- */
@@ -668,7 +669,7 @@ li{
 
 .contengeneralbb{
     margin-top: 10px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .primeraSeccionFechas{
@@ -730,6 +731,13 @@ li{
     
 }
 /*Tabla De ingreso de insumos*/
+.proveedor{
+    border-radius: 12px;
+    outline: none;
+    padding: 5px;
+    width: 50%; 
+    text-transform: uppercase; 
+}
 .inp_cate{
     border-radius: 12px;
     outline: none;
@@ -779,6 +787,15 @@ li{
 .tab_ml, .mostrar_insu{
     border: 1px solid #23ad9dc5;
     padding: 1%;
+}
+.cancel, .envia{
+    border-radius: 12px;
+    outline: none;
+    padding: 3px;
+}
+.cancel:hover, .envia:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 5px black;
 }
 /* -FORMULARIOS PEQUEÑOS PARA CREAR TIPOS 'COLOR-MARCA-ETC...'  */
 

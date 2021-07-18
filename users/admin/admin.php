@@ -405,11 +405,11 @@ $hora = date("H:i:s");
                         
                         <div>
                             <b>RESPONSABLE = <!-- echo nombre de la persona logueada "admin" --></b> <p><?=$_SESSION['NOMBRE']?></p>
-                            <input type="hidden" name="responsable" id="respon" value="<?=$_SESSION['DOCUMENTO']?>">
+                            <input type="hidden"  name="responsable" id="respon" value="<?=$_SESSION['DOCUMENTO']?>">
                         </div>      
                         <div>
                             <b>PROVEEDOR = <!-- nombre de proveedor --></b> 
-                            <select name="provedor" id="proveedor"> 
+                            <select name="provedor" class="proveedor" id="proveedor" required> 
                                 <option>Seleccione el proveedor</option>
                                 <!-- GUYS -->
                                 <?php
@@ -488,10 +488,10 @@ $hora = date("H:i:s");
                         
                         <div class="btnesEnv_can">
                             <div>
-                                <input type="submit" id="envia_ing_ins" value="ENVIAR"> <!-- enviar a la db -->
+                                <input type="submit" class="envia" id="envia_ing_ins" value="ENVIAR"> <!-- enviar a la db -->
                             </div>
                             <div>
-                                <input type="button" value="CANCELAR">
+                                <input type="button" class="cancel" id="cancel" value="CANCELAR">
                             </div> 
                         </div>
                       
