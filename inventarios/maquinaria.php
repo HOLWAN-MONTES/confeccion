@@ -9,8 +9,9 @@ if ($usario == "" || $usario == null) {
 
 }
 
+$sql_estado = "SELECT * from estado where ID_ESTADO in (5,6,7)";
+$consulta_estado = mysqli_query($connection,$sql_estado);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,8 +47,8 @@ if ($usario == "" || $usario == null) {
                     <button id="mal_estado">MAL ESTADO</button>
                 </form>
 
-                <form action="" method="POST" id="" class="buscarmaquinaria">
-                    <input type="number" name="docu" id="buscador-user" placeholder="Buscar">
+                <form action="" method="POST" id="buscador_serial" class="buscarmaquinaria">
+                    <input type="number" name="serialb" id="serial" placeholder="Buscar serial">
                 </form>
 
             </div>
@@ -92,14 +93,12 @@ if ($usario == "" || $usario == null) {
                     <div class="contentGeneralBtns">
                         <div>
                             <form action="" method="post" id="" >
-                                <input type="hidden" name="" value="1">
-                                <button id="" >EDITAR</button>
+                                <button class="editar" >EDITAR</button>
                             </form>
                         </div>
                         <div>
                             <form action="" method="post" id="" >
-                                <input type="hidden" name="" value="1">
-                                <button id="" >ELIMINAR</button>
+                                <button class="eliminar" >ELIMINAR</button>
                             </form>
                         </div>
                     </div>
@@ -109,14 +108,41 @@ if ($usario == "" || $usario == null) {
                 ?> 
       </div>
     </main>
+     <!-- ^ventana de las canidades  -->
     <div class="fondo">
         <div  class="ventana_maquinaria">
             <h2>Maquinarias</h2>
             <div id="contenido"></div>
         </div>
     </div>
-    
+    <!-- ^ ventana de editar -->
+    <div class="fondo2">
+        <div  class="ventana_maquinaria">
+            <h2>Formulario de Edicion</h2>
+            <form action="" method="post">
+                <label for="">Estado</label><br>
+                <select name="estado" id="estado">
+                    <option value="">Seleccione una opcion</option>
+                    <?php
+                    foreach($consulta_estado as $estado){
+                        ?> <option value="<?=$estado['ID_ESTADO']?>"><?=$estado['NOM_ESTADO']?></option>
+                    <?php
+                    }
+                    ?>
+                </select><br>
+                <label for="">Observacion</label><br>
+                <textarea name="observacion" id="obser"  class="areaTexto"></textarea><br>
+                <div>
+                    <button id="enviar_edicion">Enviar</button>
+                    <button id="cerrar_Edicion">Cerrar</button>
+                </div>
+                
+            </form>
+            
+        </div>
+    </div>
     
     <script src="../js/inventario/maquinaria.js"></script>
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>

@@ -34,14 +34,14 @@ if ($dato == 0){
                         <div class="contentGeneralBtns">
                             <div>
                                 <form action="" method="post" id="" >
-                                    <input type="hidden" name="" value="1">
-                                    <button id="" >EDITAR</button>
+                                    
+                                    <button class="editar" >EDITAR</button>
                                 </form>
                             </div>
                             <div>
                                 <form action="" method="post" id="" >
-                                    <input type="hidden" name="" value="1">
-                                    <button id="" >ELIMINAR</button>
+                                   
+                                    <button class="eliminar" >ELIMINAR</button>
                                 </form>
                             </div>
                         </div>
@@ -79,13 +79,13 @@ if ($dato == 0){
                             <div>
                                 <form action="" method="post" id="" >
                                     <input type="hidden" name="" value="1">
-                                    <button id="" >EDITAR</button>
+                                    <button class="editar" >EDITAR</button>
                                 </form>
                             </div>
                             <div>
                                 <form action="" method="post" id="" >
-                                    <input type="hidden" name="" value="1">
-                                    <button id="" >ELIMINAR</button>
+                                   
+                                    <button class="eliminar" >ELIMINAR</button>
                                 </form>
                             </div>
                         </div>
@@ -124,13 +124,13 @@ if ($dato == 0){
                             <div>
                                 <form action="" method="post" id="" >
                                     <input type="hidden" name="" value="1">
-                                    <button id="" >EDITAR</button>
+                                    <button class="editar" >EDITAR</button>
                                 </form>
                             </div>
                             <div>
                                 <form action="" method="post" id="" >
-                                    <input type="hidden" name="" value="1">
-                                    <button id="" >ELIMINAR</button>
+                                    
+                                    <button class="eliminar" >ELIMINAR</button>
                                 </form>
                             </div>
                         </div>
@@ -168,13 +168,13 @@ if ($dato == 0){
                             <div>
                                 <form action="" method="post" id="" >
                                     <input type="hidden" name="" value="1">
-                                    <button id="" >EDITAR</button>
+                                    <button class="editar" >EDITAR</button>
                                 </form>
                             </div>
                             <div>
                                 <form action="" method="post" id="" >
-                                    <input type="hidden" name="" value="1">
-                                    <button id="" >ELIMINAR</button>
+                                   
+                                    <button class="eliminar" >ELIMINAR</button>
                                 </form>
                             </div>
                         </div>
