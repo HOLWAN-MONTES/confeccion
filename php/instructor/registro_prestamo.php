@@ -30,23 +30,36 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                    
                     if ($comprobar){
                         if($categ == 1){
-                           $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION DESC LIMIT 1"; 
-                           $continuar = mysqli_query($connection, $final);
-                           $dato_ultimo = mysqli_fetch_array($continuar);
-                           $ultimo = $dato_ultimo['ID_DETA_ACCION'];
+                            $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION DESC LIMIT 1";
+                            $continuar = mysqli_query($connection, $final);
+                            $datos_finales = mysqli_fetch_array($continuar);
+                            $ultimos = $datos_finales["ID_DETA_ACCION"];
 
-                           $consu_bode = "UPDATE detalle_accion SET ID_BODEGA = 1 WHERE ID_DETA_ACCION '$ultimo'";
-                           $confirmar = mysqli_query($connection, $consu_bode);
+                            $sql_total = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_BODEGA = 1 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+                            $secuencia = mysqli_query($connection, $sql_total);
+                            $dato_total = mysqli_fetch_array($secuencia);
+                            $cantidad_total = $dato_total["CANTIDAD_TOTAL"];
+                            $insert_total = $cantidad_total - $cantd;
+
+                            $cons_bodega = "UPDATE detalle_accion SET ID_BODEGA = 1, CANTIDAD_TOTAL = '$insert_total' WHERE ID_DETA_ACCION = '$ultimos'";
+                            $consul_bodega = mysqli_query($connection,$cons_bodega); 
+                               
                         }
                         elseif($categ == 2){
-                            $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION DESC LIMIT 1"; 
+                            $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION DESC LIMIT 1";
                             $continuar = mysqli_query($connection, $final);
-                            $dato_ultimo = mysqli_fetch_array($continuar);
-                            $ultimo = $dato_ultimo['ID_DETA_ACCION'];
+                            $datos_finales = mysqli_fetch_array($continuar);
+                            $ultimos = $datos_finales["ID_DETA_ACCION"];
 
-                            $consu_bode = "UPDATE detalle_accion SET ID_BODEGA = 2 WHERE ID_DETA_ACCION '$ultimo'";
-                            $confirmar = mysqli_query($connection, $consu_bode);
+                            $sql_total = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_BODEGA = 2 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+                            $secuencia = mysqli_query($connection, $sql_total);
+                            $dato_total = mysqli_fetch_array($secuencia);
+                            $cantidad_total = $dato_total["CANTIDAD_TOTAL"];
+                            $insert_total = $cantidad_total - $cantd;
 
+                            $cons_bodega = "UPDATE detalle_accion SET ID_BODEGA = 2, CANTIDAD_TOTAL = '$insert_total' WHERE ID_DETA_ACCION = '$ultimos'";
+                            $consul_bodega = mysqli_query($connection,$cons_bodega); 
+                           
                         }
                         else{
 

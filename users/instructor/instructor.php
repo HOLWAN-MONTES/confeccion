@@ -155,10 +155,10 @@ $hora = date("H:i:s");
 
             <div class="enviar_solic">
                 <div>
-                    <input type="button" name="solicitar_prest" id="solicitar_prest" value="ENVIAR">
+                    <input type="submit" name="solicitar_prest" id="solicitar_prest" value="ENVIAR">
                 </div>
                 <div>
-                    <input type="button" id="btn_cance" value="CANCELAR">
+                    <input type="button" id="btn_cancelar_material" value="CANCELAR">
                 </div> 
 
             </div>
