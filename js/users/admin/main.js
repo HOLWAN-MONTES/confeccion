@@ -45,10 +45,22 @@ const btncrearmaterialtext = document.getElementById('crearmaterialtext');
 const btncrearMaquinaria = document.getElementById('crearMaquinaria');
 
 /* CREAR EMPRESA Y TODO LO DE EMPRESA */
-const crearempresa = document.getElementById('crearempresa');
+const btncrearempresa = document.getElementById('btncrearempresa');
+const contencrearEmpresa = document.getElementById('contencrearEmpresa');
+btncrearempresa.addEventListener('click',function(){
+    contencrearEmpresa.style.display = "block"
 
-crearempresa.addEventListener('click',function(){
-    alert('HOLAAAAA ESTO ES CREAR EMPRESA')
+    contentEditarUsuario.style.display = "none";
+    contentEliminarUsuario.style.display = "none";
+    contentIngresoDeInsumos.style.display = "none"
+    
+    containerCrearUsuario.style.display = "none";
+    containerCrearTipDocumento.style.display = "none"
+    menusañedidos.style.display = "none";
+   
+
+
+ 
 })
 
 
@@ -128,12 +140,14 @@ const btninvInsumo = document.getElementById('invInsumo');
 btnUsuariosRegistrados.addEventListener('click',function(){
     todosLosusuarios.style.display = "block";
     menusañedidos.style.display = "none";
+    contencrearEmpresa.style.display = "none"
 })
 
 /* cerrar todos los usuarios */
 desaparecerTodosUsers.addEventListener('click',function(){
     todosLosusuarios.style.display = "none";
     menusañedidos.style.display = "none";
+    contencrearEmpresa.style.display = "none"
 })
 
 
@@ -148,6 +162,7 @@ btnregistroUsu.addEventListener('click',function(){
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none"
     menusañedidos.style.display = "none";
+    contencrearEmpresa.style.display = "none"
 })
 
 
@@ -158,12 +173,14 @@ btn_tipo_documento.addEventListener('click',function(){
     containerCrearTipDocumento.style.display = "block"
     containerCrearUsuario.style.display = "none";
     menusañedidos.style.display = "none";
+    contencrearEmpresa.style.display = "none"
 
 })
 
 btn_esconder_containerCrearTipDocumento.addEventListener('click',function(){
     containerCrearTipDocumento.style.display = "none";
     menusañedidos.style.display = "none";
+    contencrearEmpresa.style.display = "none"
    
 })
 
@@ -178,6 +195,7 @@ btneditarUsu.addEventListener('click',function(){
     containerCrearUsuario.style.display = "none";
     menusañedidos.style.display = "none";
     containerCrearTipDocumento.style.display = "none"
+    contencrearEmpresa.style.display = "none"
 })
 
 //____btn eliminar usuario-----------------------------------------------------------------------
@@ -190,6 +208,7 @@ btneliminarUsu.addEventListener('click',function(){
 
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";
+    contencrearEmpresa.style.display = "none"
 })
 
 
@@ -203,6 +222,7 @@ btningreso.addEventListener('click',function(){
     
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";
+    contencrearEmpresa.style.display = "none"
     
 })
 
@@ -236,16 +256,19 @@ cerrarmaterialTex.addEventListener('click',function(){
 /* formulario maquinaria */
 cerrarMaquinaria.addEventListener('click',function(){
     containerCrearmaquinaria.style.display = "none"
+    contencrearEmpresa.style.display = "none"
 })
 
 
 /* ------------------------------------------------------------- */
 btncrearmaterialtext.addEventListener('click',function(){
     containerCrearMaterialTextil.style.display = "block";
+    contencrearEmpresa.style.display = "none"
 })
 /* ------------------------------------------------------------- */
 btncrearMaquinaria.addEventListener('click',function(){
     containerCrearmaquinaria.style.display = "block";
+    contencrearEmpresa.style.display = "none"
 })
 
 
@@ -253,22 +276,27 @@ btncrearMaquinaria.addEventListener('click',function(){
 /* -FORMULARIOS PEQUEÑOS PARA CREAR TIPOS 'COLOR-MARCA-ETC...'  */ 
 cerrartipoinsumo.addEventListener('click',function(){
     crearTipoDeInsumo.style.display = 'none'
+    contencrearEmpresa.style.display = "none"
 })
 
 btn_tipo_insumo.addEventListener('click',function(){
     crearTipoDeInsumo.style.display = 'block'
+    contencrearEmpresa.style.display = "none"
 })
 
 
 /* crear marca */
 cerrarmarcac.addEventListener('click',function(){
     CrearMarca.style.display = "none"
+    contencrearEmpresa.style.display = "none"
 })
 btn_marca_insumo.addEventListener('click',function(){
     CrearMarca.style.display = "block"
+    contencrearEmpresa.style.display = "none"
 })
 bntcrearmarcamaqui.addEventListener('click',function(){
     CrearMarca.style.display = "block"
+    contencrearEmpresa.style.display = "none"
 })
 
 /* crear marca de material textil*/
@@ -276,12 +304,14 @@ const cerrarMarcaTex = document.getElementById('cerrarmarcaTex')
 
 cerrarMarcaTex.addEventListener('click',function(){
     CrearMarcaTextil.style.display = "none"
+    contencrearEmpresa.style.display = "none"
 })
 
 
 const CrearMarcaTextil = document.getElementById('CrearMarcaTextil')
 btnmarcaTextil.addEventListener('click',function(){
     CrearMarcaTextil.style.display = "block"
+    contencrearEmpresa.style.display = "none"
 })
 
 
@@ -289,16 +319,20 @@ btnmarcaTextil.addEventListener('click',function(){
 /* color */
 crearcolorb.addEventListener('click',function(){
     CrearColor.style.display = "none"
+    contencrearEmpresa.style.display = "none"
 })
 btn_crear_color.addEventListener('click',function(){
     CrearColor.style.display = "block"
+    contencrearEmpresa.style.display = "none"
 })
 crearcolormaqui.addEventListener('click',function(){
     CrearColor.style.display = "block"
+    contencrearEmpresa.style.display = "none"
 })
 
 registrarcolorTex.addEventListener('click', function(){
     CrearColor.style.display = "block"
+    contencrearEmpresa.style.display = "none"
 })
 
 
@@ -320,6 +354,7 @@ btndevoluciones.addEventListener('click',function(){
     menusañedidos.style.display = "none";
     
     containerCrearUsuario.style.display = "none";
+    contencrearEmpresa.style.display = "none"
     containerCrearTipDocumento.style.display = "none";
 })
 
@@ -330,6 +365,7 @@ btnreportes.addEventListener('click',function(){
     menusañedidos.style.display = "none";
     
     containerCrearUsuario.style.display = "none";
+    contencrearEmpresa.style.display = "none"
     containerCrearTipDocumento.style.display = "none";
 })
 
@@ -341,12 +377,14 @@ btninvMaquinaria.addEventListener('click',function(){
     menusañedidos.style.display = "none";
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";
+    contencrearEmpresa.style.display = "none"
 })
 
 btninvMaterialText.addEventListener('click',function(){
 
     menusañedidos.style.display = "none";
     containerCrearUsuario.style.display = "none";
+    contencrearEmpresa.style.display = "none"
     containerCrearTipDocumento.style.display = "none";
 })
 
@@ -354,6 +392,7 @@ btninvMaterialText.addEventListener('click',function(){
 btninvInsumo.addEventListener('click',function(){
     menusañedidos.style.display = "none";
     containerCrearUsuario.style.display = "none";
+    contencrearEmpresa.style.display = "none"
     containerCrearTipDocumento.style.display = "none";
 })
 

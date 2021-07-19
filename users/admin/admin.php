@@ -501,6 +501,55 @@ $hora = date("H:i:s");
         
         </div>
 
+         <!--------------------------- CREAR EMPRESA ----------------------- -->
+        <div class="crearEmpresa" id="contencrearEmpresa">
+            <div class="contetFoempresa">
+                
+                <div class="tituloempre">
+                    <b>CREAR EMPRESA</b>
+                </div>
+                <div>
+                
+                    <form  action="" class="formularioCrearempresa" method="POST" id="">
+                        
+                        <div class="primeraLineaempresa">
+                                <div >
+                                    <label for="">NIT</label>
+                                    <input type="text" name="" id="">
+                                </div>
+                                <div >
+                                    <label for="">NOMBRE DE EMPRESA</label>
+                                    <input type="text" name="" id="">
+                                </div>
+                                <input type="hidden" name="tipo_usuario" id="">
+                                <div>
+                                    <label for="">RAZON SOCIAL </label>    
+                                    <input type="text" required >
+                                </div>
+                        </div>
+
+                        <div class="segundalineaempresa">
+                           
+                            <div>
+                                <label for="">TELEFONO</label>    
+                                <input type="number">
+                            </div>
+                            <div>
+                                <label for="">CORREO EMPRESA</label>    
+                                <input type="email" name="" id="">
+                            </div>
+                        </div>
+
+                        <div class="terceralineaempresa">
+                            <input type="button" value="CREAR" id="" name="">
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
         <!-- -----------------------------------------INVENTARIOS---------------- -->
     <!-- inventario de maquinaria -->
     <div class="contenedorinventariomaquinariageneral">
@@ -819,6 +868,7 @@ $hora = date("H:i:s");
         </div>   
     </div>
 
+   
     <!-- crear maquinaria -->
     <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">
         
@@ -918,7 +968,8 @@ $hora = date("H:i:s");
     
     <!--FORMULARIOS PEQUEÑOS PARA CREAR TIPOS 'COLOR-MARCA-ETC...'  -->
     
-   
+
+
 
     <div class="crearTipoDeInsumo" id="crearTipoDeInsumo">
         <div class="containerTip">
@@ -1019,10 +1070,8 @@ $hora = date("H:i:s");
     
     <div class="crearTipoDeMaquinaria" id="crearTipoDeMaquinaria">
         <div class="containerTip">
-                
                 <div class="btncrrarALl" id="btncerrartipodemaqui">X</div>
             <div>
-                
                 <h1>CREAR TIPO DE MAQUINARIA</h1>
                 <form class="contentform" id="crearTipo_maquinaria" method="POST" autocomplete="off">
                     
@@ -1048,13 +1097,11 @@ $hora = date("H:i:s");
                 <li class="activado"><a>ADMIN.USUARIOS <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
                         <li id="registroUsu" class="uno registroUsuarios"><a >REGISTRO DE USUARIOS</a></li>
-                        <li id="crearempresa" class="uno crearempresa"><a >REGISTRO DE EMPRESA</a></li>
+                        <li id="btncrearempresa" class="uno crearempresa"><a >REGISTRO DE EMPRESA</a></li>
                         <li id="editarUsu" class="uno edita"><a >EDITAR USUARIOS</a></li>
                         <li id="eliminarUsu" class="uno eliminar"><a >ELIMINAR USUARIOS</a></li>
                         <li id="UsuariosRegistrados" class="uno usersRegis"><a >USUARIOS REGISTRADOS</a></li>
                     </ul>
-
-
                 </li>
                 
                 <!-- INGRESO -->
