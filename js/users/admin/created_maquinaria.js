@@ -4,14 +4,16 @@ const enviarMaqui = document.getElementById("enviar_maqui")
 
 //  CONEXION AL ARCHIVO PHP PARA EL formMaqui DE CREAR INSUMOS 
 enviarMaqui.addEventListener("click", (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const dato = new FormData(formMaqui)
+    const dato = new FormData(formMaqui);
 
     fetch("../../php/admin/created_maquinaria.php", {
         method:"POST",
         body:dato
+
     }).then(res => res.text()).then(info => {
+        /* alert(info) */
         if(info == 1){
             Swal.fire({
                 title: 'Error!',
@@ -29,8 +31,7 @@ enviarMaqui.addEventListener("click", (e) => {
                 confirmButtonText: 'Continuar'
             })
 
-        }
-        else{
+        }else if(info == 3){
             Swal.fire({
                 title: 'Registrado!',
                 text: 'Se registro la maquina.',
@@ -39,6 +40,16 @@ enviarMaqui.addEventListener("click", (e) => {
                 
             })
             formMaqui.reset()
+        }else{
+            Swal.fire({
+                title: 'Ups algo salio mal!',
+                text: 'Verifica que no hallan datos vacios.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formMaqui.reset()
         }
+        
     })
 })
