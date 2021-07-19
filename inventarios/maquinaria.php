@@ -14,6 +14,7 @@ $consulta_estado = mysqli_query($connection,$sql_estado);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +22,7 @@ $consulta_estado = mysqli_query($connection,$sql_estado);
     <link rel="stylesheet" href="../css/inventarios/maquinaria.css">
     <title>INVENTARIO MAQUINARIA</title>
 </head>
+
 <body>
     <header>
         <div class="titulohea">
@@ -29,7 +31,7 @@ $consulta_estado = mysqli_query($connection,$sql_estado);
         <div class="contenedorbotonesCrear">
             <div class="btn-m-users">
 
-                <form action="" method="post" id="" >
+                <form action="" method="post" id="">
                     <input type="hidden" name="" value="1">
                     <button id="cantidad" >CANTIDADES</button>
                 </form>
@@ -54,12 +56,12 @@ $consulta_estado = mysqli_query($connection,$sql_estado);
             </div>
             <div class="iconouserr">
                 <a href="../users/admin/admin.php">
-                <div>x </div>
-            </a>
-               
+                    <div>x </div>
+                </a>
+
             </div>
         </div>
-       
+
     </header>
     <main>
         <div class="contenedorCajaInventario">
@@ -145,4 +147,5 @@ $consulta_estado = mysqli_query($connection,$sql_estado);
     <script src="../js/inventario/maquinaria.js"></script>
     <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
+
 </html>
