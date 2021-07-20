@@ -124,7 +124,7 @@ $consulta_estado = mysqli_query($connection,$sql_estado);
             <form action="" method="post">
                 <label for="">Estado</label><br>
                 <select name="estado" id="estado">
-                    <option value="">Seleccione una opcion</option>
+                    <option value="" id="option">Seleccione una opcion</option>
                     <?php
                     foreach($consulta_estado as $estado){
                         ?> <option value="<?=$estado['ID_ESTADO']?>"><?=$estado['NOM_ESTADO']?></option>

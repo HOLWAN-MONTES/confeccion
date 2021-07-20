@@ -15,6 +15,7 @@ const btn_cerrar_Edicion = document.getElementById("cerrar_Edicion")
 const estado_edicion = document.getElementById("estado")
 const obser = document.getElementById("obser")
 const enviar_edicion = document.getElementById("enviar_edicion")
+const option = document.getElementById("option")
 
 //^ FUNCIONES
 
@@ -32,7 +33,7 @@ function consulta (numero) {
     })
 }
 
-function editar_eliminar(action,id) {
+function editar_eliminar(action,id,mensaje,condiccion) {
     if(action == "eliminar"){
         Swal.fire({
             title: 'Esta seguro de eliminarlo?',
@@ -69,13 +70,16 @@ function editar_eliminar(action,id) {
             })
         }
         })
-    }else {
+    }else if (action == "editar") {
         fondo2.style.display="flex"
+        obser.textContent = mensaje
+        option.value = condiccion
+        option.textContent = condiccion
         enviar_edicion.addEventListener("click", (e) => {
             e.preventDefault()
             const estado = estado_edicion.value 
             const observa = obser.value
-            
+            console.log(`1 ${estado} 2 ${observa}`)
             fetch("../php/inventario/maquinaria/eliminar_editar.php",{
                 method:"POST",
                 body:JSON.stringify({
@@ -107,7 +111,7 @@ function editar_eliminar(action,id) {
            
        
         
-        })
+        }) 
     
         
     }
@@ -184,11 +188,22 @@ serial.addEventListener("keyup", (e) => {
 
 editar.addEventListener("click", (e) => {
     e.preventDefault()
+
     const accion = e.target.classList[0]
-    const identificador = e.path[4].firstElementChild.childNodes[1].lastChild.innerText
     
-    
-    editar_eliminar(accion,identificador)
+    if (accion == "editar" || accion == "eliminar") {
+        console.log(accion)
+        const identificador = e.path[4].firstElementChild.childNodes[1].lastChild.innerText
+        console.log(identificador)
+        const mensaje_observa = e.path[4].childNodes[1].children[7].lastChild.innerText
+        const mensaje_estado = e.path[4].childNodes[1].children[6].lastChild.innerText
+        console.log(mensaje_estado)
+        console.log(mensaje_observa)
+        
+        
+        editar_eliminar(accion,identificador,mensaje_observa,mensaje_estado) 
+    } 
+
   
 })
 
