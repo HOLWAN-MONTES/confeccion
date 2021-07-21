@@ -501,6 +501,55 @@ $hora = date("H:i:s");
         
         </div>
 
+         <!--------------------------- CREAR EMPRESA ------------action="../../php/admin/crearEmpresa.php"----------- -->
+        <div class="crearEmpresa" id="contencrearEmpresa">
+            <div class="contetFoempresa">
+                
+                <div class="tituloempre">
+                    <b>CREAR EMPRESA</b>
+                </div>
+                <div>
+                
+                    <form autocomplete="off"  id="formcrearEmpresa" class="formularioCrearempresa" method="POST" >
+                        
+                        <div class="primeraLineaempresa">
+                                <div >
+                                    <label for="">NIT</label>
+                                    <input required type="number" name="nit" id="" minlength="5" >
+                                </div>
+                                <div >
+                                    <label for="">NOMBRE DE EMPRESA</label>
+                                    <input required type="text" name="nomEmpresa" id="">
+                                </div>
+                               
+                                <div>
+                                    <label for="">RAZON SOCIAL </label>    
+                                    <input required type="text" name="razonSocial">
+                                </div>
+                        </div>
+
+                        <div class="segundalineaempresa">
+                           
+                            <div>
+                                <label for="">TELEFONO</label>    
+                                <input required type="number" name="telefonoEmpre">
+                            </div>
+                            <div>
+                                <label for="">CORREO EMPRESA</label>    
+                                <input required  name="correoEmpre" id="">
+                            </div>
+                        </div>
+
+                        <div class="terceralineaempresa">
+                            <input type="button" id="btnEnviarempre" value="CREAR"  name="">
+                        </div><!-- <input type="button" value=""> -->
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
         <!-- -----------------------------------------INVENTARIOS---------------- -->
     <!-- inventario de maquinaria -->
     <div class="contenedorinventariomaquinariageneral">
@@ -735,7 +784,7 @@ $hora = date("H:i:s");
                             <label for="">NOMBRE MATERIAL TEXTIL</label>
                             <input class="input7" type="text" placeholder="NOMBRE" name="nombre_tela" id="nombre_tela" style="text-transform:uppercase" required>
                             <i class="formulario__validacion-estado_mate fas fa-times-circle"></i>
-                            <p class="formulario__input-error_mate">El nombre del material textil tiene entre 4 a 16 dígitos, no puede tener numeros ni caracteres especiales.</p>
+                            <p class="formulario__input-error_mate">El nombre del material textil no debe tener caracteres especiales.</p>
                         </div>
 
                         <div class="filasinter">
@@ -819,6 +868,7 @@ $hora = date("H:i:s");
         </div>   
     </div>
 
+   
     <!-- crear maquinaria -->
     <div class="containerCrearmaquinaria" id="containerCrearmaquinaria">
         
@@ -940,7 +990,8 @@ $hora = date("H:i:s");
     
     <!--FORMULARIOS PEQUEÑOS PARA CREAR TIPOS 'COLOR-MARCA-ETC...'  -->
     
-   
+
+
 
     <div class="crearTipoDeInsumo" id="crearTipoDeInsumo">
         <div class="containerTip">
@@ -989,7 +1040,7 @@ $hora = date("H:i:s");
             </div>
         </div>
     </div>
-    
+    <!-- crear color -->
     <div class="CrearColor" id="CrearColor">
         <div class="containerTip">
                 
@@ -1041,10 +1092,8 @@ $hora = date("H:i:s");
     
     <div class="crearTipoDeMaquinaria" id="crearTipoDeMaquinaria">
         <div class="containerTip">
-                
                 <div class="btncrrarALl" id="btncerrartipodemaqui">X</div>
             <div>
-                
                 <h1>CREAR TIPO DE MAQUINARIA</h1>
                 <form class="contentform" id="crearTipo_maquinaria" method="POST" autocomplete="off">
                     
@@ -1070,13 +1119,11 @@ $hora = date("H:i:s");
                 <li class="activado"><a>ADMIN.USUARIOS <i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
                         <li id="registroUsu" class="uno registroUsuarios"><a >REGISTRO DE USUARIOS</a></li>
-                        <li id="crearempresa" class="uno crearempresa"><a >REGISTRO DE EMPRESA</a></li>
+                        <li id="btncrearempresa" class="uno crearempresa"><a >REGISTRO DE EMPRESA</a></li>
                         <li id="editarUsu" class="uno edita"><a >EDITAR USUARIOS</a></li>
                         <li id="eliminarUsu" class="uno eliminar"><a >ELIMINAR USUARIOS</a></li>
                         <li id="UsuariosRegistrados" class="uno usersRegis"><a >USUARIOS REGISTRADOS</a></li>
                     </ul>
-
-
                 </li>
                 
                 <!-- INGRESO -->
@@ -1093,7 +1140,13 @@ $hora = date("H:i:s");
                         <li id="invInsumo" class="uno invInsumos"><a  href="../../inventarios/insumos.php">INV DE INSUMOS</a></li>
                     </ul>
                 </li>
-                <li id="reportes"><a>REPORTES</a></li>
+                <li class="reportes" id="reportes"><a href="../../reportes/reportes.php">REPORTES<i class="icono derecha fas fa-chevron-down"></i></a>
+                    <ul>
+                        <li id="repMaquinaria" class="uno repMaquinaria"><a href="../../reportes/reportes_maquinaria.php">REPORTES DE MAQUINARIA</a></li>
+                        <li id="repMaterialText" class="uno repMateralT"><a href="../../reportes/reportes_mat_tex.php">REPORTES DE MATERIAL TEXTIL</a></li>
+                        <li id="repInsumo" class="uno repInsumos"><a  href="../../reportes/reportes_insumos.php">REPORTES DE INSUMOS</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
 
@@ -1112,6 +1165,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
     <script src="../../js/users/admin/created_maquinaria.js"></script>
+    <script src="../../js/users/admin/crearEmpresa.js"></script>
     <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 
