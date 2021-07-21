@@ -501,7 +501,7 @@ $hora = date("H:i:s");
         
         </div>
 
-         <!--------------------------- CREAR EMPRESA ----------------------- -->
+         <!--------------------------- CREAR EMPRESA ------------action="../../php/admin/crearEmpresa.php"----------- -->
         <div class="crearEmpresa" id="contencrearEmpresa">
             <div class="contetFoempresa">
                 
@@ -510,21 +510,21 @@ $hora = date("H:i:s");
                 </div>
                 <div>
                 
-                    <form  action="" class="formularioCrearempresa" method="POST" id="">
+                    <form autocomplete="off"  id="formcrearEmpresa" class="formularioCrearempresa" method="POST" >
                         
                         <div class="primeraLineaempresa">
                                 <div >
                                     <label for="">NIT</label>
-                                    <input type="text" name="" id="">
+                                    <input required type="number" name="nit" id="" minlength="5" >
                                 </div>
                                 <div >
                                     <label for="">NOMBRE DE EMPRESA</label>
-                                    <input type="text" name="" id="">
+                                    <input required type="text" name="nomEmpresa" id="">
                                 </div>
-                                <input type="hidden" name="tipo_usuario" id="">
+                               
                                 <div>
                                     <label for="">RAZON SOCIAL </label>    
-                                    <input type="text" required >
+                                    <input required type="text" name="razonSocial">
                                 </div>
                         </div>
 
@@ -532,17 +532,17 @@ $hora = date("H:i:s");
                            
                             <div>
                                 <label for="">TELEFONO</label>    
-                                <input type="number">
+                                <input required type="number" name="telefonoEmpre">
                             </div>
                             <div>
                                 <label for="">CORREO EMPRESA</label>    
-                                <input type="email" name="" id="">
+                                <input required  name="correoEmpre" id="">
                             </div>
                         </div>
 
                         <div class="terceralineaempresa">
-                            <input type="button" value="CREAR" id="" name="">
-                        </div>
+                            <input type="button" id="btnEnviarempre" value="CREAR"  name="">
+                        </div><!-- <input type="button" value=""> -->
 
                     </form>
 
@@ -1040,7 +1040,7 @@ $hora = date("H:i:s");
             </div>
         </div>
     </div>
-    
+    <!-- crear color -->
     <div class="CrearColor" id="CrearColor">
         <div class="containerTip">
                 
@@ -1159,6 +1159,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
     <script src="../../js/users/admin/created_maquinaria.js"></script>
+    <script src="../../js/users/admin/crearEmpresa.js"></script>
     <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 

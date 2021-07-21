@@ -1,11 +1,6 @@
 
 
 //FUNCION DE ACTUALIZAR 
-
-
-
-
-
 //Validacion Del Form De Editar 
 
 const editar_usuario = document.getElementById('form-edi');
