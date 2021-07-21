@@ -1,4 +1,4 @@
-//^ variables para e manejo del DOM 
+//^ ******************** variables para e manejo del DOM *************** 
 const cantida = document.getElementById("cantidad")
 const contenedor = document.getElementById("contenido")
 const fondo = document.querySelector(".fondo")
@@ -17,8 +17,9 @@ const obser = document.getElementById("obser")
 const enviar_edicion = document.getElementById("enviar_edicion")
 const option = document.getElementById("option")
 
-//^ FUNCIONES
+//^ **************  FUNCIONES *************
 
+//^ funcion de las consultas de mal estado,bueno o en reparacion
 function consulta (numero) {
     console.log(numero)
     fetch("../php/inventario/maquinaria/consulta.php",{
@@ -33,7 +34,9 @@ function consulta (numero) {
     })
 }
 
+//^ funcion de para editar o eliminar maquinaria
 function editar_eliminar(action,id,mensaje,condiccion) {
+    //^ proceso de eliminar
     if(action == "eliminar"){
         Swal.fire({
             title: 'Esta seguro de eliminarlo?',
@@ -70,16 +73,20 @@ function editar_eliminar(action,id,mensaje,condiccion) {
             })
         }
         })
+
+    //^ proceso de editar
     }else if (action == "editar") {
         fondo2.style.display="flex"
         obser.textContent = mensaje
         option.value = condiccion
         option.textContent = condiccion
+
+        //^ dar click en boton de editar
         enviar_edicion.addEventListener("click", (e) => {
             e.preventDefault()
             const estado = estado_edicion.value 
             const observa = obser.value
-            console.log(`1 ${estado} 2 ${observa}`)
+            
             fetch("../php/inventario/maquinaria/eliminar_editar.php",{
                 method:"POST",
                 body:JSON.stringify({
@@ -100,7 +107,7 @@ function editar_eliminar(action,id,mensaje,condiccion) {
                         if (res.isConfirmed) {
                             window.location = "maquinaria.php"
                         } else {
-                            
+                            window.location = "maquinaria.php"
                         }
                     })
                     
@@ -116,7 +123,7 @@ function editar_eliminar(action,id,mensaje,condiccion) {
         
     }
 }
-//^ CANTIDAD 
+//^ *************** BTN CANTIDAD ********** 
 
 cantida.addEventListener("click", (e) => {
     e.preventDefault()
@@ -133,12 +140,11 @@ fondo.addEventListener("click", () => {
     fondo.style.display="none"
 })
 
-//^ TODOS LOS MAQUINARIAS
+//^ ******************** TODAS LAS MAQUINARIAS ************
 
 todo.addEventListener("click", (e) => {
     //^ todas las tablas
     e.preventDefault()
-
     consulta(0)
     
 })
@@ -169,6 +175,7 @@ mal_estado.addEventListener("click", (e) => {
     
 })
 
+//^ ******************** buscador por la serial de la maquina ***********
 serial.addEventListener("keyup", (e) => {
     
 
@@ -184,23 +191,22 @@ serial.addEventListener("keyup", (e) => {
 
 })
 
-//^ botones de editar y eliminar
+//^ *************** botones de editar y eliminar ************
 
 editar.addEventListener("click", (e) => {
     e.preventDefault()
-
+    //^ identificar el boton para la accion de eliminar o editar
     const accion = e.target.classList[0]
     
     if (accion == "editar" || accion == "eliminar") {
-        console.log(accion)
+
+        //^ obtener los datos para para el proceso de eliminar y editar
         const identificador = e.path[4].firstElementChild.childNodes[1].lastChild.innerText
-        console.log(identificador)
         const mensaje_observa = e.path[4].childNodes[1].children[7].lastChild.innerText
         const mensaje_estado = e.path[4].childNodes[1].children[6].lastChild.innerText
-        console.log(mensaje_estado)
-        console.log(mensaje_observa)
         
         
+        //^ funcion donde se hace el proceso indicado 
         editar_eliminar(accion,identificador,mensaje_observa,mensaje_estado) 
     } 
 
