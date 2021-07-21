@@ -13,7 +13,10 @@ $nom = $file['NOMBRE'];
 $identificacion = $file['DOCUMENTO'];
 date_default_timezone_set("America/Bogota");
 $fecha = date("o-m-d");
-$hora = date("H:i:s"); 
+$hora = date("H:i:s");
+
+$fecha_de = date("o-m-d");
+$hora_de = date("H:i:s");
 
 ?>
 
@@ -98,6 +101,7 @@ $hora = date("H:i:s");
 
             </div>
 
+            <!--select para elegir la categoria y material a prestar-->
             <div class="categoria" id="categoria">
                 <div class="categoriass">
                     <label for="">CATEGORIA</label>    
@@ -139,8 +143,8 @@ $hora = date("H:i:s");
             </div>
 
             <div class="agregarPrestamos_lista">
-                <!-- ACA VAN TODOS LOS LISTADOS DE LO QUE SEA AGREGUE -->
-                <table class="tablaInfo" id="tablaInfo">
+                <!-- listado donde va a ir los materiales a prestar -->
+                <table class="tablaInfo" id="tablaInfo"  style="text-transform: uppercase;">
                     <thead class="tab">
                         <tr class="tab-ml">
                             <td class="tab_ml">CATEGORIA</td>
@@ -153,6 +157,7 @@ $hora = date("H:i:s");
                 </table>
             </div>
 
+            <!--botones para agregar a la BD o cancelar todo-->
             <div class="enviar_solic">
                 <div>
                     <input type="submit" name="solicitar_prest" id="solicitar_prest" value="ENVIAR">
@@ -222,19 +227,89 @@ $hora = date("H:i:s");
         <div class="cerrar2" id="cerrar2">
             <a href=""><i class="fas fa-times-circle"></i></a>
         </div>
-        <form method="POST" class="formu_dev">
+        <form method="POST" class="formulario_devol" id="formulario_devol">
             <div class="primeraSeccionFechasDev">
                 <div>
-                    <p>RESPONSABLE</p><p id="reponsable_dev"><?php echo $nom; ?></p>
+                <b>RESPONSABLE : <!-- nombre de la persona logeada --></b> <p><?=$_SESSION['NOMBRE'] ?></p>
+                    <input type="hidden" name="responsable_devol" id="responsable_devol" value="<?=$_SESSION['DOCUMENTO'] ?>">
                 </div>      
                 <div>
-                    <p>FECHA</p><p id="fecha_dev"><?php echo $fecha; ?></p>
+                    <p>FECHA:</p><p id="fecha_dev" name="fecha_dev"><?php echo $fecha_de; ?></p>
                 </div>
                 <div>
-                    <p>HORA</p><p id="hora_dev"><?php echo $hora; ?></p>
+                    <p>HORA:</p><p id="hora_dev" name="hora_dev"><?php echo $hora_de; ?></p>
                 </div>
 
             </div>
+
+            <!-- select para elegir el insumo a devolver-->
+            <div class="categ_devol" id="categ_devol">
+                <div class="cate_de">
+                    <label for="">CATEGORIA</label>
+                    <select class="cate_dev" name="cate_dev" id="cate_dev" style="text-transform: uppercase;" required>
+                        <option value="0">SELECCIONAR</option>
+                        <?php
+                        $tipoDevol = "SELECT * FROM tipo_ingreso WHERE ID_TIP_INGRESO >= 2";
+                        $inserta = mysqli_query($connection ,$tipoDevol);
+                        while($tipo = mysqli_fetch_array($inserta)){
+                        ?>
+                        <option name="op_cate" id="op_cate" value="<?php echo $tipo[0]; ?>">
+                            <?php echo $tipo[1]; ?>
+                        </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="nom_cate_dev">
+                    <div class="nom_devol">
+                        <label for="">NOMBRE</label>
+                        <select class="devolucion" name="devolucion" id="devolucion" style="text-transform: uppercase;" required>
+                            <option value="0">SELECCIONAR</option>
+                        </select>
+                    </div>
+
+                    <div class="can_de">
+                        <label for="">CANTIDAD</label>
+                        <input type="number" class="cant_devol" name="cant_devol" id="cant_devol" placeholder="CANTIDAD" required>
+                    </div>
+
+                    <div class="boton_de">
+                        <input type="button" class="agre_devo" id="agre_devo" value="AGREGAR">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="agregarDevolucion_lista">
+                <!--lista donde van a ir los insumos agregado-->
+                <table class="tabla_devol" id="tabla_devol" style="text-transform: uppercase;">
+                    <thead class="tabl">
+                        <tr class="tabl-ml">
+                            <td class="tabl_ml">CATEGORIA</td>
+                            <td class="tabl_ml">NOMBRE</td>
+                            <td class="tabl_ml">CANTIDAD</td>
+                            <td class="tabl_ml">ACCION</td>
+                        </tr>
+                    </thead> 
+                    <tbody class="ver_devol" id="ver_devol">  </tbody>
+
+                </table>
+            </div>
+
+            <div class="enviar_devolucion">
+                <div>
+                    <input type="button" name="devolver_insu" id="devolver_insu" value="ENVIAR">
+                </div>
+
+                <div>
+                    <input type="button" id="cancelar_insumo" value="CANCELAR">
+                </div>
+            </div>
+
+
+
             <!-- <div class="categorias_dev" id="cate">
 
                 <div class="categoriass">
@@ -257,9 +332,9 @@ $hora = date("H:i:s");
                     <input type="number" id="cant_dev" class="canti" placeholder="CANTIDAD">
                 </div> -->
 
-                <div class="bnt">
+                <!-- <div class="bnt">
                     <input type="button" class="btn_dev" id="agregar_dev" value="AGREGAR"> <!-- agregar a la lista -->
-                </div>
+                <!-- </div> --> 
 
             
             
@@ -285,21 +360,36 @@ $hora = date("H:i:s");
                 <!-- </div>
 
                 <div>
-                    <input type="submit" id="envia_dev" value="ENVIAR DEVOLUCION"> <!-- enviar a la db -->
+                    <input type="submit" id="envia_dev" value="ENVIAR DEVOLUCION"> <!- enviar a la db -->
                 <!--</div>-->
         </form>
     </div>
 </div>
 <!------------- ventana de prestamo pendiente de material------------------ -->
 <div class="ventana_tres" id="ventana_tres">
+    <div class="contentPrestamosPendientes" id="contentPrestamosPendientes">
+        <h1>Aqui van los prestamos pendientes</h1>
+        <div class="cerrar3" id="cerrar3">
+            <a href=""><i class="fas fa-times-circle"></i></a>
+        </div>
+
+    </div>
       
 </div>
 <!------------- ventana de devolucion pendiente  de material------------------ -->
 <div class="ventana_cuatro" id="ventana_cuatro">
+    <div class="contentDevolucionesPendientes" id="contentDevolucionesPendientes">
+        <h1>Aqui van las devoluciones pendientes</h1>
+        <div class="cerrar4" id="cerrar4">
+            <a href=""><i class="fas fa-times-circle"></i></a>
+        </div>
+
+    </div>
       
 </div>
 
     <script src="../../js/users/instru/instru.js"></script>
+    <script src="../../js/users/instru/validar_devol.js"></script>
     <script src="../../js/users/instru/valida_prestamo.js"></script>
     <!--libreria para utilizar las alertas-->
     <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>

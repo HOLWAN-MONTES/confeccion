@@ -1,23 +1,23 @@
 // registro de peticion de materiales a prestar 
-$(document).ready(function(){
+$(document).ready(function(){ //se asigna una funcion 
     recargarLista();
-    $('#categ').change(function(){
-        recargarLista();
+    $('#categ').change(function(){ //se trae el id y se asigna al evento
+        recargarLista(); // al dar click llama la funcion
     });
 })
 
 function recargarLista(){
     $.ajax({
-        type:"POST",
-        url: '../../php/instructor/valida_prestamo.php',
-        data: "prestamo=" + $('#categ').val(),
+        type:"POST", //metodo por el cual se envian los datos
+        url: '../../php/instructor/valida_prestamo.php', // direcciona al archivo y ejecuta lo que tiene 
+        data: "prestamo=" + $('#categ').val(), // creamos una vble que se le asigna el valor que tenga el select
         success: function(r){
-            $('#nom_categ').html(r);
+            $('#nom_categ').html(r); //mostramos el select
         }
     });
 }
 
-// funcion para agregar los materiales a la tabla 
+//llamar la funcion para agregar a la tabla
 
 $(document).ready(function(){
     $('#agregar_lista').click(function(){
@@ -25,7 +25,7 @@ $(document).ready(function(){
     });
     $(document).on("click", ".editar_btn", editarMaterial); // llamar a la funcion para editar cantidad
     $(document).on("click", "#solicitar_prest", guardarMateriales); // llamar la funcion para enviar a la BD
-    $(document).on("click", "#btn_cancelar_material", cancelarMaterial);
+    $(document).on("click", "#btn_cancelar_material", cancelarMaterial); //llamar la funcion para cancelar lo que tenga en la tabla
 
 });
 
@@ -39,10 +39,11 @@ var canti_edit;
 var ids_row;
 var fila;
 
+//funcion que trae el valor que contenga los select para agregarlos a la tabla
 function agregarPres(){
     const catego = document.getElementById('categ');
     const cates = document.getElementById('categ').value;
-    const categ_pres = catego.options [catego.selectedIndex].text;
+    const categ_pres = catego.options[catego.selectedIndex].text;
     const nomb = document.getElementById('nom_categ').value;
     const nom = document.getElementById('nom_categ');
     const names = nom.options[nom.selectedIndex].text;
@@ -81,7 +82,7 @@ function agregarPres(){
 
     }else{
         Swal.fire({
-            title: 'Advertencia!',
+            title: '¡Advertencia!',
             text: 'Por favor rellene el formulario correctamente.',
             icon: 'warning',
             confirmButtonText: 'Continuar'
@@ -95,26 +96,26 @@ console.log(datos);
 $(document).on("click", ".delete_button", function(e){
     e.preventDefault();
     Swal.fire({
-        title: 'Esta seguro de eliminar el material!',
+        title: '¿Esta seguro de eliminar el material?',
         icon: 'warning',
         showDenyButton: true,
         confirmButtonText: `Eliminar`,
         denyButtonText: `No eliminar`,
     }).then(result => {
         if(result.isConfirmed) {
-            $(this).parents('tr').eq(0).remove();
+            $(this).parents('tr').eq(0).remove(); //obtenemos el elemento y eliminamos
             datos.splice(ids_row, 1);
             Swal.fire({
-                title: 'Eliminado!',
-                text: 'El material se elimino de la tabla',
+                title: '¡Eliminado!',
+                text: 'El material se elimino de la tabla.',
                 icon: 'success',
                 confirmButtonText: 'Continuar'
             })
         }
         else{
             Swal.fire({
-                title: 'No eliminado!',
-                text: 'No se elimino el material',
+                title: '¡No eliminado!',
+                text: 'No se elimino el material.',
                 icon: 'info',
                 confirmButtonText: 'Continuar'
             })
@@ -124,11 +125,11 @@ $(document).on("click", ".delete_button", function(e){
 })
 
 
-//editar la cantidad del producto seleccionados 
+//editar la cantidad del material seleccionados 
 function editarMaterial(e){
     e.preventDefault();
     Swal.fire({
-        title: 'Editar!',
+        title: '¡Editar!',
         text: 'Edite la cantidad por una nueva',
         html: '<input type="number" class="nuevas" id="nuevas" placeholder="Digite la nueva cantidad" required>',
         icon: 'question',
@@ -137,21 +138,21 @@ function editarMaterial(e){
         denyButtonText: `No actualizar`,
     })
     .then(resul =>{
-        const orden = e.target.classList[1];
+        const orden = e.target.classList[1]; //traemos el identificador el boton
         console.log(orden);
-        const compra = orden-2 
+        const compra = orden-2 //restamos 2 para igualarlos a index de la lista
         console.log(compra);
         if(resul.isConfirmed){
             var nueva_canti = document.getElementById("nuevas").value;
             if(nueva_canti != '' && nueva_canti != 0){
-                var _this = this;//Esta linea recupera el elemento o lugar el cual se llamo esta funcion
+                var _this = this;//Esta linea recupera el elemento el cual se llamo esta funcion
                 var canti_nueva = editContenido(_this).innerHTML = parseInt(nueva_canti);//Llama a la funcion y recibe el objeto el cual es donde se llama la funcion
                 console.log(canti_nueva);
                 $(this).parent().parent().find("td:eq(2)").html(parseInt(nueva_canti));//Reemplaza el valor actual html por valor editado y lo muestra en el html
                 console.log(datos)
                 datos[compra]['cantidad'] = canti_nueva; //Asigno el valor nuevo al arreglo
                 Swal.fire({
-                    title: 'editado!',
+                    title: '¡editado!',
                     text: 'La edicion se realizo exitosamente.',
                     icon: 'success',
                     confirmButtonText: 'Continuar'
@@ -159,7 +160,7 @@ function editarMaterial(e){
             }
             else{
                 Swal.fire({
-                    title: 'Digite una cantidad valida!',
+                    title: '¡Digite una cantidad valida!',
                     text: 'Digite una nueva cantidad del material.',
                     icon: 'error',
                     confirmButtonText: 'Continuar'
@@ -169,7 +170,7 @@ function editarMaterial(e){
                
         }else{
             Swal.fire({
-                title: 'Cancelado!',
+                title: '¡Cancelado!',
                 text: 'Se canceló la edicion del material.',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
@@ -205,12 +206,13 @@ function guardarMateriales(e){
                 if(envios.status === 200){
                     datos = [];
                     Swal.fire({
-                        title: 'Agregado!',
+                        title: '¡Enviado!',
                         text: 'Se registro el prestamo del material.',
                         icon: 'success',
                         confirmButtonText: 'Continuar'
                     });
                     console.log(datos);
+                    //limpiamos los datos que esten en la tabla
                     document.getElementById('agregado').innerHTML = '';
                     var actual = new Date();
                     var hor_ac = actual.getHours();
@@ -225,7 +227,7 @@ function guardarMateriales(e){
 
                 }else{
                     Swal.fire({
-                        title: 'Advertencia!',
+                        title: '¡Advertencia!',
                         text: 'No se registro el prestamo.',
                         icon: 'warning',
                         confirmButtonText: 'Continuar'
@@ -237,8 +239,8 @@ function guardarMateriales(e){
 
     }else{
         Swal.fire({
-            title: 'Error!',
-            text: 'Ingrese los datos a la tabla para enviarlos',
+            title: '¡Error!',
+            text: 'Ingrese los datos a la tabla para enviarlos.',
             icon: 'error',
             confirmButtonText: 'Continuar'
         }); 
@@ -252,7 +254,7 @@ function cancelarMaterial(e){
     if(datos != ""){
         
         Swal.fire({
-            title: 'Esta seguro de cancelar el prestamo!',
+            title: '¿Esta seguro de cancelar el prestamo?',
             icon: 'warning',
             showDenyButton: true,
             confirmButtonText: `Cancelar`,
@@ -261,12 +263,13 @@ function cancelarMaterial(e){
         .then(resulta =>{
             if(resulta.isConfirmed){
                 Swal.fire({
-                    title: 'Cancelado!',
-                    text: 'Se cancelo el ingreso del insumo',
+                    title: '¡Cancelado!',
+                    text: 'Se cancelo el ingreso del material.',
                     icon: 'info',
                     confirmButtonText: 'Continuar'
                 });
                 datos = [];
+                //limpiamos lo que tenga en la tabla
                 document.getElementById('agregado').innerHTML = '';
                 var actual = new Date();
                 var hor_ac = actual.getHours();
@@ -281,7 +284,7 @@ function cancelarMaterial(e){
             }
             else{
                 Swal.fire({
-                    title: 'Error!',
+                    title: '¡Error!',
                     text: 'No se cancelo el prestamo del material.',
                     icon: 'error',
                     confirmButtonText: 'Continuar'
@@ -292,7 +295,7 @@ function cancelarMaterial(e){
     }
     else{
         Swal.fire({
-            title: 'Error!',
+            title: '¡Error!',
             text: 'No puede cancelar datos vacios.',
             icon: 'error',
             confirmButtonText: 'Continuar'
