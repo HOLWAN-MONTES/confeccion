@@ -32,11 +32,11 @@ if($serial !== "" && $placa_sena !=="" && $nombre_maquina !== "" && $estado_maqu
     $verificar_placasena = mysqli_query($connection, "SELECT * FROM maquinaria WHERE PLACA_SENA = $placa_sena");
 
     if(mysqli_num_rows($verificar_placasena) > 0){
-        echo '
+      /*   echo '
         <script>
         alert("la placa esta repetida ");
         </script>
-        '
+        '; */
         echo 2;
         exit();
     }

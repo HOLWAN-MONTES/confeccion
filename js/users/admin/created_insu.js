@@ -47,9 +47,9 @@ enviarInsu.addEventListener("click", (e) => {
         }
         else{
             Swal.fire({
-                title: 'Registrado!',
-                text: 'Se registro el insumo.',
-                icon: 'success',
+                title: 'Advertencia!',
+                text: 'Llena los campos correctamente.',
+                icon: 'warning',
                 confirmButtonText: 'Continuar'
                 
             })

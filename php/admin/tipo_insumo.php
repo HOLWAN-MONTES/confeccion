@@ -10,7 +10,7 @@ if($tip_insumo !== ""){
 
     $sql = "INSERT INTO tipo_insumo (NOM_TIP_INSUMO) values('$tip_insumo')";
   
-    $verificar_tipoMaqui = mysqli_query($connection, "SELECT * FROM tipo_insumo WHERE NOM_TIP_INSUMO = $tip_insumo");
+    $verificar_tipoMaqui = mysqli_query($connection, "SELECT * FROM tipo_insumo WHERE NOM_TIP_INSUMO = '$tip_insumo'");
   
     if(mysqli_num_rows($verificar_tipoMaqui) > 0){
     

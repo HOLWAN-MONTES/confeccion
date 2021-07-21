@@ -1000,11 +1000,12 @@ $hora = date("H:i:s");
                 <div class="btncrrarALl" id="cerrartipoinsumo">X</div>
             <div>
                 
-                <h1>CREAR TIPO DE INSUMO</h1>
-                <form class="contentform"  action="#" method="POST" id="fomrTipinsu">
+                <h1>CREAR TIPO DE INSUMO</h1><!-- id="fomrTipinsu" action="../../php/admin/tipo_insumo.php"-->
+                <form class="contentform"   id="fomrTipinsu" method="POST" >
                     
-                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" id="Inptipinsu" name="Inptipinsu" pattern ="[A-Z\s]" required></div>
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" id="Inptipinsu" name="Inptipinsu"  required></div>
                     <div><input class="btn_peque_form" type="button" value="CREAR" id="btnTipinsu"></div>
+                    <!-- <div><input class="btn_peque_form" type="submit" value="CREAR" ></div> -->
                 </form>
             </div>
         </div>
