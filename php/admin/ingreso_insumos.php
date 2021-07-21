@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $uso = "SELECT * FROM ingreso_material WHERE DOCUMENTO = '$responsable' AND NIT_DOC = '$proveedor' ORDER BY ID_INGRE_MATERIAL DESC LIMIT 1";
             $consul = mysqli_query($connection, $uso);
             $dato = mysqli_fetch_array($consul);
-            $doc_ingre_mat = $dato["ID_INGRE_MATERIAL"];
+            $doc_ingre_mat = $dato["ID_INGRE_MATERIAL"];     
             if ($consul){
                 foreach($insumos as $insumo){
                     $categoria = $insumo['categorias'];
