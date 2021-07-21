@@ -1130,7 +1130,7 @@ $hora = date("H:i:s");
                 <li id="ingreso" class="activado"><a>INGRESO </a></li>
                     
 
-                <li id="devoluciones"><a >DEVOLUCIONES </a></li>
+                <li  id="devolucion"><a href="../../devoluciones/devoluciones.php">DEVOLUCIONES</a></li>
                
                 <!--  INVENTARIOS-->
                 <li class="activado"><a>INVENTARIO <i class="icono derecha fas fa-chevron-down"></i></a>
