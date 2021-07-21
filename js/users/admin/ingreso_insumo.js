@@ -13,6 +13,7 @@ $(document).ready(function(){//Se lee el documento y se asigna una funcion
     recargarLista();
     $('#categoria').change(function(){//Traemos el id del select y asignamos el evento change 
         recargarLista();//Cuando se de cambio en o click en ese select llamara la funcion
+        // $('#nom_catego option:selected').hide();
     });
 })
 
@@ -51,42 +52,56 @@ function agregar(){
     const cate = document.getElementById('categoria');
     const cates = document.getElementById('categoria').value;
     const categorias = cate.options[cate.selectedIndex].text;
-    const nombre= document.getElementById('nom_catego').value;
+    const nombre = document.getElementById('nom_catego').value;
     const nom = document.getElementById('nom_catego');
     const name = nom.options[nom.selectedIndex].text;
     cantidad = document.getElementById('cantidad').value;
     var respon = document.getElementById('respon').value;
     var proveedor = document.getElementById("proveedor").value;
+    var prov = document.getElementById("proveedor");
     var fec =  $("#fecha").text();
     var hor =  $("#hora").text();
     // console.log(proveedor)
     
     if(cate != 0 && cate != '' && nombre != 0 && nombre != '' && cantidad != 0 && cantidad != ''){
-        if(proveedor != '' && proveedor != 0){
-            datos.push(
-                {
-                    "id_datos": id_datos,
-                    "responsable": respon,
-                    "proveedor": proveedor,
-                    "categorias": cates,
-                    "name": nombre,
-                    "cantidad": cantidad,
-                    "fecha": fec,
-                    "hora": hor
-                }
-            );
-            id_datos++;
-            can_edi++;
-            id_row = "row"+id_datos;
-            canti_edi = "canti" + can_edi;
-            const deleteButton = "<button class='deleteButton'>ELIMINAR</button>";
-            var editButton = `<button class='edit_btn ${id_datos}'>EDITAR</button>`;
-            fila ='<tr id="'+ id_row +'" class="tr_val" ><td class="td_cat" style="border:1px solid #23ad9dc5;">'+ categorias +'</td><td class="td_nom" style="border:1px solid #23ad9dc5;">'+ name +'</td><td id="'+ canti_edi +'" class="cant_ed" style="border:1px solid #23ad9dc5;">'+ cantidad +'</td><td class="td_botones" style="border:1px solid #23ad9dc5;">'+ editButton + deleteButton +'</td></tr>';
-            
-            $('#tabla_ing_insu').append(fila);
-            $('#categoria option:first').prop('selected', true); //Vacia los campos de los selects cuando agrega
-            $('#nom_catego').find('option').not(':first').remove(); //Vacia los campos de los selects cuando agrega
-            $('input[type="number"]').val(''); //Vacia el campo del input 
+        if(proveedor != '' && proveedor != 0){      
+            if (checkId(name)) {
+                Swal.fire({
+                    title: 'Dato Repetido!',
+                    text: 'Ingrese otro insumo por favor, este ya se encuentra en la lista',
+                    icon: 'warning',
+                    confirmButtonText: 'Continuar'
+                });
+                $('#categoria option:first').prop('selected', true); //Vacia los campos de los selects cuando agrega
+                $('#nom_catego').find('option').not(':first').remove(); //Vacia los campos de los selects cuando agrega
+                $('input[type="number"]').val(''); //Vacia el campo del input 
+            }
+            else{
+                datos.push(
+                    {
+                        "id_datos": id_datos,
+                        "responsable": respon,
+                        "proveedor": proveedor,
+                        "categorias": cates,
+                        "name": nombre,
+                        "cantidad": cantidad,
+                        "fecha": fec,
+                        "hora": hor
+                    }
+                );
+                id_datos++;
+                can_edi++;
+                id_row = "row"+id_datos;
+                canti_edi = "canti" + can_edi;
+                const deleteButton = "<button class='deleteButton'>ELIMINAR</button>";
+                var editButton = `<button class='edit_btn ${id_datos}'>EDITAR</button>`;
+                fila ='<tr id="'+ id_row +'" class="tr_val" ><td class="td_cat" style="border:1px solid #23ad9dc5;">'+ categorias +'</td><td for="nomb" class="td_nom" id="nom_cate" style="border:1px solid #23ad9dc5;">'+ name +'</td><td id="'+ canti_edi +'" class="cant_ed" style="border:1px solid #23ad9dc5;">'+ cantidad +'</td><td class="td_botones" style="border:1px solid #23ad9dc5;">'+ editButton + deleteButton +'</td></tr>';
+                $('#tabla_ing_insu').append(fila);
+                $('#categoria option:first').prop('selected', true); //Vacia los campos de los selects cuando agrega
+                $('#nom_catego').find('option').not(':first').remove(); //Vacia los campos de los selects cuando agrega
+                $('input[type="number"]').val(''); //Vacia el campo del input 
+                prov.disabled = true;
+            }
         }
         else{
             Swal.fire({
@@ -97,22 +112,9 @@ function agregar(){
             })
             
         }
-        // datos.forEach(elemento =>{
-        //    const tbod = document.getElementById("mostrar_insumos");
-        //    tbod.style.border = "1px solid #23ad9dc5";
-        //    fila.style.border = "1px solid #23ad9dc5";
-        // })
-        // const cattegori = document.getElementsByTagName("tbody");
-        // console.log(cattegori);
-        // const nommb = document.getElementsByTagName("tbody td")[0];
-        // console.log(nommb);
-        // const cantti = document.getElementsByClassName("cant_ed");
-        // // console.log(cantti);
-        // const botones = document.getElementsByClassName("td_botones");
-        // cattegori.style.border = "1px solid #23ad9dc5";
-        // console.log(botones);
     }
     else{
+        console.log();
         Swal.fire({
             title: 'Datos Vacios',
             text: 'Ingrese datos por favor',
@@ -120,8 +122,14 @@ function agregar(){
             confirmButtonText: 'Continuar'
         })
     }
+}
+function checkId(name){
+    let ids = document.querySelectorAll('#tabla_ing_insu td[for="nomb"]');
+    console.log(ids);
+    return [].filter.call(ids, td => td.textContent === name).length === 1;
 }  
 console.log(datos);
+
 $(document).on("click", ".deleteButton", function(e){
     e.preventDefault();
     Swal.fire({
@@ -234,8 +242,12 @@ function guardarInsumo(e){
                         icon: 'success',
                         confirmButtonText: 'Continuar'
                     });
+                    var prov = document.getElementById("proveedor");
                     document.getElementById('mostrar_insumos').innerHTML = '';
                     $('#proveedor option:first').prop('selected', true);
+                    $('#categoria option:first').prop('selected', true); //Vacia los campos de los selects cuando agrega
+                    $('#nom_catego').find('option').not(':first').remove(); //Vacia los campos de los selects cuando agrega
+                    $('input[type="number"]').val(''); //Vacia el campo del input 
                     var actual = new Date();
                     var hor_ac = actual.getHours();
                     var minutes = actual.getMinutes()
@@ -246,6 +258,7 @@ function guardarInsumo(e){
                     var hora_actual = hor_ac + ':' + minutes + ':' + second;
                     console.log(hora_actual); 
                     document.getElementById("hora").innerHTML = hora_actual;
+                    prov.disabled = false;
                 }
                 else {  
                     // $('#estado').html('<hr><p>Error al guardar los datos.</p><hr>');
@@ -286,8 +299,12 @@ function cancelarInsumo(e){
                     icon: 'info',
                     confirmButtonText: 'Continuar'
                 });
+                var prov = document.getElementById("proveedor");
                 document.getElementById('mostrar_insumos').innerHTML = '';
                 $('#proveedor option:first').prop('selected', true);
+                $('#categoria option:first').prop('selected', true); //Vacia los campos de los selects cuando agrega
+                $('#nom_catego').find('option').not(':first').remove(); //Vacia los campos de los selects cuando agrega
+                $('input[type="number"]').val(''); //Vacia el campo del input 
                 var actual = new Date();
                 var hor_ac = actual.getHours();
                 var minutes = actual.getMinutes()
@@ -298,6 +315,7 @@ function cancelarInsumo(e){
                 var hora_actual = hor_ac + ':' + minutes + ':' + second;
                 console.log(hora_actual); 
                 document.getElementById("hora").innerHTML = hora_actual;
+                prov.disabled = false;
             }
             else{
                 Swal.fire({
