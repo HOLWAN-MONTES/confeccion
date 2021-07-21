@@ -41,13 +41,14 @@ if ($usario == "" || $usario == null) {
                 $consulta = "SELECT * FROM accion_realizada INNER JOIN estado on accion_realizada.ID_ESTADO=estado.ID_ESTADO INNER JOIN usuario ON accion_realizada.DOCU_ADMI=usuario.DOCUMENTO INNER JOIN detalle_accion ON detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA WHERE `DOCU_ADMI`=$usario  AND detalle_accion.ID_ACCION=1";
 
                 $consulta_inve = mysqli_query($connection,$consulta);
+                $_SESSION['id_dev'] =$maquinaria['ID_ACCION_REALIZADA'];
 
                 foreach ($consulta_inve as $maquinaria){
                 ?>
                 <div class="contentdocumentosotras">
                 
                     <div class="documentosotras" >
-                        <div>INSTRUCTOR :<p> <?=$maquinaria["NOMBRE"]?> </p></div>
+                        <div>INSTRUCTOR :<p> <?=$maquinaria["NOMBRE"]?>  </p></div>
                                         
                         <div>FECHA  :<p> <?=$maquinaria["FECHA"]?></p></div>
                         
@@ -66,7 +67,7 @@ if ($usario == "" || $usario == null) {
                         </div>
                         <div>
                             <form action="" method="post" id="" >
-                                <input type="hidden" name="" value="1">
+                                <input type="hidden" name="id_dev" value="$_SESSION['id_dev']">
                                 <button id="" >VER DETALLE</button>
                             </form>
                         </div>
@@ -81,7 +82,9 @@ if ($usario == "" || $usario == null) {
                 <?php
                 }
                 ?> 
+
       </div>
+
     </main>
     <div class="fondo">
         <div  class="ventana_maquinaria">
@@ -89,6 +92,8 @@ if ($usario == "" || $usario == null) {
             <div id="contenido"></div>
         </div>
     </div>
+
+
     
 <!--     
     <script src="devoluciones.js"></script> -->

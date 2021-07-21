@@ -13,7 +13,8 @@
             echo '<script> window.location="devoluciones.php" </script>';
         }else{
         
-            echo("f");
+            echo  "<script>alert('algo salio mal con tu devolucion')</script>";
+            echo '<script> window.location="devoluciones.php" </script>';
             
         }
 

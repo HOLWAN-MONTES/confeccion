@@ -53,15 +53,6 @@ a{
     justify-content: flex-start;
 }
 
-.buscarmaquinaria{
-    width: 20%;
-}
-
-.buscarmaquinaria input {
-    width: 100%;
-}
-
-
 .btn-m-users form button{
     background-color: #ff6712;
     cursor: pointer;
@@ -173,4 +164,11 @@ input[type=number] { -moz-appearance:textfield; }
     background-color: white;
     border: solid 2px var(--naranjaOScuro);
     padding: 5px 15px;
+}
+
+.contenedor_deta{
+    background-color: aqua;
+    position: absolute;
+    width: 30%;
+
 }
