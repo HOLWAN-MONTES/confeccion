@@ -38,7 +38,7 @@ if ($usario == "" || $usario == null) {
 
       
                 <?php
-                $consulta = "SELECT * FROM accion_realizada INNER JOIN estado on accion_realizada.ID_ESTADO=estado.ID_ESTADO INNER JOIN usuario ON accion_realizada.DOCU_ADMI=usuario.DOCUMENTO INNER JOIN detalle_accion ON detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA WHERE `DOCU_ADMI`=$usario AND accion_realizada.ID_ESTADO=7 AND detalle_accion.ID_ACCION=1";
+                $consulta = "SELECT * FROM accion_realizada INNER JOIN estado on accion_realizada.ID_ESTADO=estado.ID_ESTADO INNER JOIN usuario ON accion_realizada.DOCU_ADMI=usuario.DOCUMENTO INNER JOIN detalle_accion ON detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA WHERE `DOCU_ADMI`=$usario  AND detalle_accion.ID_ACCION=1";
 
                 $consulta_inve = mysqli_query($connection,$consulta);
 
@@ -59,7 +59,7 @@ if ($usario == "" || $usario == null) {
 
                     <div class="contentGeneralBtns">
                         <div>
-                            <form action="" method="post" id="aceptar" >
+                            <form action="aceptar.php" method="POST" id="aceptar" >
                                 <input type="hidden" name="id_deta" value="<?=$maquinaria["ID_ACCION_REALIZADA"]?>">
                                 <button id="" >ACEPTAR</button>
                             </form>
@@ -71,8 +71,8 @@ if ($usario == "" || $usario == null) {
                             </form>
                         </div>
                         <div>
-                            <form action="" method="post" id="" >
-                                <input type="hidden" name="" value="1">
+                            <form action="denegar.php" method="post" id="" >
+                                <input type="hidden" name="id_detalle" value="<?=$maquinaria["ID_ACCION_REALIZADA"]?>">
                                 <button id="" >DENEGAR</button>
                             </form>
                         </div>
@@ -90,7 +90,7 @@ if ($usario == "" || $usario == null) {
         </div>
     </div>
     
-    
-    <script src="devoluciones.js"></script>
+<!--     
+    <script src="devoluciones.js"></script> -->
 </body>
 </html>
