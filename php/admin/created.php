@@ -24,15 +24,38 @@ if($documento !== "" && $nombre !== "" && $apellido !== "" && $tipo_usuario !== 
 && $edad !== "" && $contra !== "" && $telefono !== "" && $correo !== "" && $foto !== ""){
 
     $sql = "INSERT INTO usuario (DOCUMENTO, ID_TIP_DOCU, ID_TIP_USU, NOMBRE, APELLIDO, CLAVE, FECHA_NACIMIENTO, CELULAR, CORREO, FOTO) values ('$documento','$tipo_documento','$tipo_usuario','$nombre','$apellido','$contra','$edad','$telefono','$correo','$foto')";
+    
+    $verificar_celular = mysqli_query($connection, "SELECT * FROM usuario WHERE CELULAR='$telefono'");
+
+    if(mysqli_num_rows($verificar_celular) > 0){
+        //verificar que el numero de telefono no este repetido
+        echo 1;
+        
+        exit();
+    }
+    
+
+    $verificar_correoElec = mysqli_query($connection, "SELECT * FROM usuario WHERE CORREO='$correo'");
+
+    if(mysqli_num_rows($verificar_correoElec) > 0){
+        //verificar que el correo no este repetido
+        echo 2;
+
+        exit();
+    }
+
     $insertar = mysqli_query($connection,$sql);
     if ($insertar){
-        echo 1;
+        //insertar en la base de datos
+        echo 3;
     }else{
-        echo 2;
+        //verificar que el documento no este repetido
+        echo 4;
     }
     
 }else{
-   echo 3; 
+    //llenar los campos que esten vacios
+   echo 5; 
 }
 
 ?>
