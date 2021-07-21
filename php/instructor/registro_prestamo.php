@@ -11,25 +11,30 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($materiales == "" and $materiales == 0){
         echo "fallo en validacion";
     }else{
+        //consulta para insertar a la tabla accion realizada para el prestamo
         $sql_1 = "INSERT INTO accion_realizada(ID_ACCION_REALIZADA, DOCU_ADMI, DOCU_INSTRUCTOR, FECHA, HORA, ID_ESTADO) VALUES('','','$instructor','$fecha','$hora',4)";
         $consul_1 = mysqli_query($connection,$sql_1);
         if($consul_1){
+            //consulta que se trae el id para insertarla en el detalle de accion
             $verificar = "SELECT * FROM accion_realizada WHERE DOCU_INSTRUCTOR = '$instructor' ORDER BY ID_ACCION_REALIZADA DESC LIMIT 1";
             $consu_2 = mysqli_query($connection, $verificar);
             $valida = mysqli_fetch_array($consu_2);
             $det_accion = $valida["ID_ACCION_REALIZADA"];
             if($consu_2){
+                //creamos un ciclo 
                 foreach($materiales as $mater){
                     $categ = $mater['categorias'];
                     $nom_categ = $mater['names'];
                     $cantd = $mater['cantidad'];
 
+                    //insertamos a la base de datos segun el material y la cantidad
                     $sql_insertar = "INSERT INTO detalle_accion(ID_DETA_ACCION, ID_ACCION_REALIZADA, ID_ACCION, ID_MATERIAL, CANTIDAD)
                                     VALUES ('', '$det_accion', 2, '$nom_categ', '$cantd')";
                     $comprobar = mysqli_query($connection,$sql_insertar);
                    
                     if ($comprobar){
                         if($categ == 1){
+                            //consulta para traer el id del ultimo detalle de la tabla
                             $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION DESC LIMIT 1";
                             $continuar = mysqli_query($connection, $final);
                             $datos_finales = mysqli_fetch_array($continuar);
@@ -41,12 +46,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             // $cantidad_total = $dato_total["CANTIDAD_TOTAL"];
                             // $insert_total = $cantidad_total - $cantd; 
                             
-
+                            //consulta que edita la tabla para identificar de que bodega se presta el material
                             $cons_bodega = "UPDATE detalle_accion SET ID_BODEGA = 1 WHERE ID_DETA_ACCION = '$ultimos'";
                             $consul_bodega = mysqli_query($connection,$cons_bodega); 
                                
                         }
                         elseif($categ == 2){
+                            //consulta para traer el id del ultimo detalle de la tabla
                             $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION DESC LIMIT 1";
                             $continuar = mysqli_query($connection, $final);
                             $datos_finales = mysqli_fetch_array($continuar);
@@ -58,6 +64,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             // $cantidad_total = $dato_total["CANTIDAD_TOTAL"];
                             // $insert_total = $cantidad_total - $cantd;
 
+                            //consulta que edita la tabla para identificar de que bodega se presta el material
                             $cons_bodega = "UPDATE detalle_accion SET ID_BODEGA = 2 WHERE ID_DETA_ACCION = '$ultimos'";
                             $consul_bodega = mysqli_query($connection,$cons_bodega); 
                            
