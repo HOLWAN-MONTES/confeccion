@@ -47,6 +47,11 @@ const btncrearMaquinaria = document.getElementById('crearMaquinaria');
 /* CREAR EMPRESA Y TODO LO DE EMPRESA */
 const crearempresa = document.getElementById('crearempresa');
 
+/*Reportes opciones*/
+const btnrepMaquinaria = document.getElementById("repMaquinaria");
+const btnrepMatTex = document.getElementById("repMaterialText");
+const btnrepInsumo = document.getElementById("repMaquinaria");
+
 crearempresa.addEventListener('click',function(){
     alert('HOLAAAAA ESTO ES CREAR EMPRESA')
 })
@@ -326,13 +331,27 @@ btndevoluciones.addEventListener('click',function(){
 
 //reportes-----------------------------------------------------------------------------------------
 btnreportes.addEventListener('click',function(){
-    alert('reportes')
+    // alert('reportes')
     menusañedidos.style.display = "none";
     
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none";
 })
-
+btnrepMaquinaria.addEventListener('click', function(){
+    menusañedidos.style.display = "none";
+    containerCrearUsuario.style.display = "none";
+    containerCrearTipDocumento.style.display = "none";
+})
+btnrepMatTex.addEventListener('click', function(){
+    menusañedidos.style.display = "none";
+    containerCrearUsuario.style.display = "none";
+    containerCrearTipDocumento.style.display = "none";
+})
+btnrepInsumo.addEventListener('click', function(){
+    menusañedidos.style.display = "none";
+    containerCrearUsuario.style.display = "none";
+    containerCrearTipDocumento.style.display = "none";
+})
 
 
 
