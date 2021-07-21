@@ -53,15 +53,6 @@ a{
     justify-content: flex-start;
 }
 
-.buscarmaquinaria{
-    width: 20%;
-}
-
-.buscarmaquinaria input {
-    width: 100%;
-}
-
-
 .btn-m-users form button{
     background-color: #ff6712;
     cursor: pointer;
@@ -150,7 +141,7 @@ margin: 0;
 }
 input[type=number] { -moz-appearance:textfield; }
 
-.fondo, .fondo2{
+.fondo{
     position: fixed;
     top: 0px;
     left: 0px;
@@ -173,45 +164,11 @@ input[type=number] { -moz-appearance:textfield; }
     background-color: white;
     border: solid 2px var(--naranjaOScuro);
     padding: 5px 15px;
-    
 }
 
-.aviso {
-    text-align: center;
-    width: 100%;
-    margin-top: 20%;
-}
+.contenedor_deta{
+    background-color: aqua;
+    position: absolute;
+    width: 30%;
 
-
-
-.areaTexto{
-    max-width: 100%; 
-    min-width:100%;
-    max-height: 200px;
-    min-height: 200px;
-}
-
-.fondo2 form {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 20px;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.fondo2 .ventana_maquinaria {
-    width: 50%;
-    background-color: var(--naranjaOScuro);
-    border: solid 2px white;
-    padding: 5px 15px;
-    color: white;
-    border-radius: 10px;
-}
-
-.fondo2 button {
-    padding: 3px 10px;
-    margin-bottom: 20px;
 }

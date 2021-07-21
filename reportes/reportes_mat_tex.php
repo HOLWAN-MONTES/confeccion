@@ -18,26 +18,37 @@ if ($usario == "" || $usario == null) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/inventarios/insumos.css">
-    <title>INSUMOS</title>
+    <title>REPORTES</title>
 </head>
 <body>
     <header>
         <div class="titulohea">
-            <h1>INVENTARIO DE INSUMOS</h1>
+            <h1>REPORTE DE INGRESOS DE MATERIAL TEXTIL</h1>
         </div>
         <div class="contenedorbotonesCrear">
             <div class="btn-m-users">
 
                 <form action="" method="post" id="" >
                     <input type="hidden" name="" value="1">
-                    <button id="cantidad" >CANTIDADES</button>
+                    <button id="" >ANUAL</button>
                 </form>
 
-                
-
-                <form action="" method="POST" id="" class="">
-                    <input type="number" name="docu" id="buscador-insumo" placeholder="Buscar">
+                <form action="" method="post">
+                    <button id="todo">MENSUAL</button>
                 </form>
+                <form action="" method="post">
+                    <button id="todo">SEMANAL</button>
+                </form>
+                <form action="" method="post">
+                    <button id="todo">-------------------</button>
+                </form>
+                <form action="" method="post">
+                    <button id="todo">---------------------</button>
+                </form>
+
+                <!-- <form action="" method="POST" id="" class="buscarmaquinaria">
+                    <input type="number" name="docu" id="buscador-user" placeholder="Buscar">
+                </form> -->
 
             </div>
             <div class="iconouserr">
@@ -95,13 +106,5 @@ if ($usario == "" || $usario == null) {
     ?> 
       </div>
     </main>
-     <!-- ^ventana de las canidades  -->
-     <div class="fondo">
-        <div  class="ventana_maquinaria">
-            <h2>Maquinarias</h2>
-            <div id="contenido"></div>
-        </div>
-    </div>
-    <script src="../js/inventario/insumo.js"></script>
 </body>
 </html>
