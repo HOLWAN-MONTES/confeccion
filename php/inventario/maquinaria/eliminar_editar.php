@@ -10,15 +10,30 @@ if ($accion == "editar") {
     $estado = $_POST["estado"];
     $observacion = $_POST["observacion"];
 
-    
-    $sql_editar = "UPDATE maquinaria SET ID_ESTADO = '$estado',OBSERVACIONES='$observacion' where SERIAL_MAQUINARIA = '$identificador'";
-    $consulta_editar = mysqli_query($connection,$sql_editar);
+    if($estado == 5 || $estado == 6 || $estado == 7){
 
-    if($consulta_editar){
-        echo 1;
+        $sql_editar = "UPDATE maquinaria SET ID_ESTADO = '$estado',OBSERVACIONES='$observacion' where SERIAL_MAQUINARIA = '$identificador'";
+        $consulta_editar = mysqli_query($connection,$sql_editar);
+
+        if($consulta_editar){
+            echo 1;
+        }else{
+            echo 2;
+        } 
+
     }else{
-        echo 2;
+
+        $sql_editar = "UPDATE maquinaria SET OBSERVACIONES='$observacion' where SERIAL_MAQUINARIA = '$identificador'";
+        $consulta_editar = mysqli_query($connection,$sql_editar);
+
+        if($consulta_editar){
+            echo 1;
+        }else{
+            echo 2;
+        } 
+
     }
+    
 
 
 }else{

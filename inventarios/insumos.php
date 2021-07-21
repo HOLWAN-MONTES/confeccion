@@ -30,24 +30,13 @@ if ($usario == "" || $usario == null) {
 
                 <form action="" method="post" id="" >
                     <input type="hidden" name="" value="1">
-                    <button id="" >-------------</button>
+                    <button id="cantidad" >CANTIDADES</button>
                 </form>
 
-                <form action="" method="post">
-                    <button id="todo">-------------------</button>
-                </form>
-                <form action="" method="post">
-                    <button id="todo">----------------------</button>
-                </form>
-                <form action="" method="post">
-                    <button id="todo">-------------------</button>
-                </form>
-                <form action="" method="post">
-                    <button id="todo">---------------------</button>
-                </form>
+                
 
-                <form action="" method="POST" id="" class="buscarmaquinaria">
-                    <input type="number" name="docu" id="buscador-user" placeholder="Buscar">
+                <form action="" method="POST" id="" class="">
+                    <input type="number" name="docu" id="buscador-insumo" placeholder="Buscar">
                 </form>
 
             </div>
@@ -106,5 +95,13 @@ if ($usario == "" || $usario == null) {
     ?> 
       </div>
     </main>
+     <!-- ^ventana de las canidades  -->
+     <div class="fondo">
+        <div  class="ventana_maquinaria">
+            <h2>Maquinarias</h2>
+            <div id="contenido"></div>
+        </div>
+    </div>
+    <script src="../js/inventario/insumo.js"></script>
 </body>
 </html>
