@@ -53,11 +53,9 @@ btncrearempresa.addEventListener('click',function(){
     contentEditarUsuario.style.display = "none";
     contentEliminarUsuario.style.display = "none";
     contentIngresoDeInsumos.style.display = "none"
-    
     containerCrearUsuario.style.display = "none";
     containerCrearTipDocumento.style.display = "none"
     menusañedidos.style.display = "none";
-   
 })
 
  

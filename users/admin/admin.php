@@ -501,9 +501,9 @@ $hora = date("H:i:s");
         
         </div>
 
-         <!--------------------------- CREAR EMPRESA ------------action="../../php/admin/crearEmpresa.php"----------- -->
-        <div class="crearEmpresa" id="contencrearEmpresa">
-            <div class="contetFoempresa">
+         <!--------------------------- CREAR EMPRESA ---id="contencrearEmpresa"-------------------- -->
+        <div class="crearEmpresa" >
+            <div class="contetFoempresa" action="../../php/admin/crearEmpresa.php">
                 
                 <div class="tituloempre">
                     <b>CREAR EMPRESA</b>
@@ -542,7 +542,7 @@ $hora = date("H:i:s");
 
                         <div class="terceralineaempresa">
                             <input type="button" id="btnEnviarempre" value="CREAR"  name="">
-                        </div><!-- <input type="button" value=""> -->
+                        </div><!-- <input type="button" value="CREAR"> -->
 
                     </form>
 
@@ -1157,7 +1157,7 @@ $hora = date("H:i:s");
     </div>
 
     <script src="../../js/users/admin/main.js"></script>
-    <script src="../../js/users/admin/editar_users.js"></script>
+<!--     <script src="../../js/users/admin/editar_users.js"></script>
     <script src="../../js/users/admin/eliminar_usu.js"></script>
     <script src="../../js/users/admin/created_user.js"></script>
     <script src="../../js/users/admin/create.js"></script>
@@ -1165,7 +1165,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/ingreso_insumo.js"></script>
     <script src="../../js/users/admin/created_insu.js"></script>
     <script src="../../js/users/admin/created_maquinaria.js"></script>
-    <script src="../../js/users/admin/crearEmpresa.js"></script>
+    <script src="../../js/users/admin/crearEmpresa.js"></script> -->
     <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 
