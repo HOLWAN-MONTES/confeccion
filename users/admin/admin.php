@@ -784,7 +784,7 @@ $hora = date("H:i:s");
                             <label for="">NOMBRE MATERIAL TEXTIL</label>
                             <input class="input7" type="text" placeholder="NOMBRE" name="nombre_tela" id="nombre_tela" style="text-transform:uppercase" required>
                             <i class="formulario__validacion-estado_mate fas fa-times-circle"></i>
-                            <p class="formulario__input-error_mate">El nombre del material textil tiene entre 4 a 16 dígitos, no puede tener numeros ni caracteres especiales.</p>
+                            <p class="formulario__input-error_mate">El nombre del material textil no debe tener caracteres especiales.</p>
                         </div>
 
                         <div class="filasinter">
