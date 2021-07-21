@@ -175,39 +175,61 @@ const enviarTipInsu = document.getElementById('btnTipinsu')
 enviarTipInsu.addEventListener('click', (e) => {
     e.preventDefault()
 
-    const formMarcaM = new FormData(formTipInsu)
+    const formtipinsumo = new FormData(formTipInsu)
 
     fetch("../../php/admin/tipo_insumo.php", {
         method:"POST",
-        body:formMarcaM
+        body:formtipinsumo
     })
     .then(res => res.text()).then(info => {
+        /* alert(info) */
         if(info == 1){
             Swal.fire({
                 title: 'Error!',
-                text: 'La marca del material textil ya existe.',
+                text: 'La el tipo de insumo ya existe.',
                 icon: 'error',
                 confirmButtonText: 'Continuar'
             })
-            formTipInsu.reset()
+            formMaqui.reset()
+
         }else if(info == 2){
             Swal.fire({
-                title: 'Advertencia!',
-                text: 'Por favor rellena el formulario correctamente.',
-                icon: 'warning',
-                confirmButtonText: 'Continuar'
-            })
-            
-        }else{
-            Swal.fire({
                 title: 'Registrado!',
-                text: 'Se registro la marca del material textil.',
+                text: 'Se registro el tipo de insumo.',
                 icon: 'success',
                 confirmButtonText: 'Continuar'
                 
             })
-            formTipInsu.reset()
+            formMaqui.reset()
+        }else if(info == 3){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'El tipo de insumo esta repetido.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formMaqui.reset()
+        }else if(info == 4){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'Campos vacios, llena los campos correctamente',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formMaqui.reset()
         }
+        else{
+            Swal.fire({
+                title: 'Ups algo salio mal!',
+                text: 'Verifica que no hallan datos vacios.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formMaqui.reset()
+        }
+        
     })
-
 })

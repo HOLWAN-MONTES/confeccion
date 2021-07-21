@@ -25,9 +25,9 @@ enviarMaqui.addEventListener("click", (e) => {
 
         }else if(info == 2){
             Swal.fire({
-                title: 'Advertencia!',
-                text: 'Por favor rellena el formulario correctamente o verifica que no hallan datos vacios.',
-                icon: 'warning',
+                title: 'Error!',
+                text: 'La maquina ya existe.',
+                icon: 'error',
                 confirmButtonText: 'Continuar'
             })
 
@@ -40,7 +40,26 @@ enviarMaqui.addEventListener("click", (e) => {
                 
             })
             formMaqui.reset()
-        }else{
+        }else if(info == 4){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'El serial esta repetido.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formMaqui.reset()
+        }else if(info == 5){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'Campos vacios, llena los campos correctamente',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formMaqui.reset()
+        }
+        else{
             Swal.fire({
                 title: 'Ups algo salio mal!',
                 text: 'Verifica que no hallan datos vacios.',
