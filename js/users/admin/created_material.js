@@ -241,14 +241,14 @@ const formularioTela = (e) =>{
                 document.querySelector('#grupo__nombre_mate i').classList.add('fa-check-circle');
                 document.querySelector('#grupo__nombre_mate i').classList.remove('fa-times-circle');
                 document.querySelector('#grupo__nombre_mate .formulario__input-error_mate').classList.remove('formulario__input-error-activo_mate');
-               
+                enviarMate.disabled = false;
             }else{
                 document.getElementById('grupo__nombre_mate').classList.add('formulario__grupo-incorrecto_mate');
                 document.getElementById('grupo__nombre_mate').classList.remove('formulario__grupo-correcto_mate');
                 document.querySelector('#grupo__nombre_mate i').classList.add('fa-times-circle');
                 document.querySelector('#grupo__nombre_mate i').classList.remove('fa-check-circle');
                 document.querySelector('#grupo__nombre_mate .formulario__input-error_mate').classList.add('formulario__input-error-activo_mate');
-               
+                enviarMate.disabled = true;
             }
         break;
         case "metraje":
@@ -258,14 +258,14 @@ const formularioTela = (e) =>{
                 document.querySelector('#grupo__metraje_mate i').classList.add('fa-check-circle');
                 document.querySelector('#grupo__metraje_mate i').classList.remove('fa-times-circle');
                 document.querySelector('#grupo__metraje_mate .formulario__input-error_mate').classList.remove('formulario__input-error-activo_mate');
-               
+                enviarMate.disabled = false;
             }else{
                 document.getElementById('grupo__metraje_mate').classList.add('formulario__grupo-incorrecto_mate');
                 document.getElementById('grupo__metraje_mate').classList.remove('formulario__grupo-correcto_mate');
                 document.querySelector('#grupo__metraje_mate i').classList.add('fa-times-circle');
                 document.querySelector('#grupo__metraje_mate i').classList.remove('fa-check-circle');
                 document.querySelector('#grupo__metraje_mate .formulario__input-error_mate').classList.add('formulario__input-error-activo_mate');
-               
+                enviarMate.disabled = true;
             }
         break;
     }

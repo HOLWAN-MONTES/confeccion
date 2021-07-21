@@ -246,7 +246,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-right: 25%;
     padding: 3px;
 }
-#btn_cance{
+#btn_cancelar_material{
     padding: 3px;
     margin: 5%;
 }
@@ -309,12 +309,102 @@ input[type=number]::-webkit-outer-spin-button {
     gap: 20px;
 
 }
-/* input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 .contentIngresoDeDevoluciones{
+    display: block;
+    text-align: center;
+    width: 90%;
+    height: auto;
+    border-radius: 10PX;
+    background-color: white;
+    margin: 5% 5%;
+    margin-top: 3%;
+    padding: 4%;
+}
+.formulario_devol{
+    margin-top: 1%;
+    background-color: #23ad9dc5;
+    padding: 5%; 
+}
+.cerrar2 a i{
+    font-size: 40px;
+    color: red;
+    float: right;
+    margin-top: -4%;
+    margin-left: 100px;
+    margin-right: 10px;
+}
+
+/*input del formulario para devolucion de material*/
+.cate_dev{
+    outline: none;
+    padding: 5px;
+    width: 85%;
+}
+.cate_de{
+    margin-left: 8%;
+    position: absolute;
+}
+.devolucion{
+    outline: none;
+    padding: 5px;
+    width: 100%;
+}
+.nom_cate_dev{
+    width: 100%; 
+}
+.nom_devol{
+    position: absolute;
+    margin-left: 29%;
+}
+.cant_devol{
+    outline: none;
+    padding: 3px;
+    width: 70%;
+}
+.can_de{
+    position: absolute;
+    
+    margin-left: 44%; 
+}
+.agre_devo{
+    outline: none;
+    padding: 3px;
+    position: absolute;
+    margin-left: 30%;
+    margin-top: 5%;
+}
+.tabla_devol{
+    margin-top: 10%;
+    margin-left: 15%;
+    width: 70%;
+    font-weight: bold; 
+    overflow-y: scroll;
+}
+.tabl_ml, tr, td, .ver_devol{
+    border: 1px solid #fff;
+    padding: 1%; 
+} 
+.enviar_devolucion{
+    display: inline-flex;
+    margin-top: 3%;   
+}
+#devolver_insu{
+    margin-top: 6%;
+    margin-right: 25%;
+    padding: 3px;
+}
+#cancelar_insumo{
+    padding: 3px;
+    margin: 5%; 
+}
+
+
+/*.contentIngresoDeDevoluciones{
     display: block;
     text-align: center;
     width: 90%;
@@ -330,14 +420,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #23ad9dc5;
     padding: 5%;
 }
-.cerrar2 a i{
-    font-size: 40px;
-    color: red;
-    float: right;
-    margin-top: -4%;
-    margin-left: 100px;
-    margin-right: 10px;
-}
+
 .pet_dev{
     margin-top: -3%;
     font-size: 25px;
@@ -384,19 +467,57 @@ input[type=number]::-webkit-outer-spin-button {
 .ventana_tres{
     width: 100%;
     height: 100vh;
-    background-color: rgba(255,0,0,0.2);
+    background-color: #707c7e80;
     margin-top: -100vh;
     position: absolute;
     display: none;
+}
+.contentPrestamosPendientes{
+    display: block;
+    text-align: center;
+    width: 90%;
+    height: auto;
+    border-radius: 10PX;
+    background-color: white;
+    margin: 5% 5%;
+    margin-top: 3%;
+    padding: 4%;
+}
+.cerrar3 a i{
+    font-size: 40px;
+    color: red;
+    float: right;
+    margin-top: -4%;
+    margin-left: 100px;
+    margin-right: 10px;
 }
 /*------------------ ventana devoluciones pendientes----------------------------- */
 .ventana_cuatro{
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,255,0,0.2);
+    background-color: #707c7e80;
     margin-top: -100vh;
     position: absolute;
     display: none;
+}
+.contentDevolucionesPendientes{
+    display: block;
+    text-align: center;
+    width: 90%;
+    height: auto;
+    border-radius: 10PX;
+    background-color: white;
+    margin: 5% 5%;
+    margin-top: 3%;
+    padding: 4%;
+}
+.cerrar4 a i{
+    font-size: 40px;
+    color: red;
+    float: right;
+    margin-top: -4%;
+    margin-left: 100px;
+    margin-right: 10px;
 }
 /*Responsive Para Blackberry PlayBook*/
 /* @media only screen and (min-width: 600px) {
