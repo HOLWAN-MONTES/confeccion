@@ -715,7 +715,7 @@ $hora = date("H:i:s");
                             </div>
                             <div>
                                 <label for="">NOMBRE DEL INSUMO</label>
-                                <input class="input5 NombreInsumo" type="text" name="NombreInsumo" id="NombreInsumo" placeholder="NOMBRE DEL INSUMO" required style="text-transform:uppercase">
+                                <input class="input5 NombreInsumo" type="text" name="NombreInsumo" id="NombreInsumo" placeholder="NOMBRE DEL INSUMO" required style="text-transform:uppercase" pattern ="[A-Z\s]">
                                 <i class="formulario__validacion-estado_insu fas fa-times-circle"></i>
                                 <p class="formulario__input-error_insu">El nombre del insumo tiene entre 4 a 16 dígitos, no puede tener numeros ni caracteres especiales.</p>
                             </div>
@@ -879,8 +879,8 @@ $hora = date("H:i:s");
                 <b>INGRESO DE MAQUINARIA</b>
             </div>
             <div>
-               
-                <form  action="" class="formularioCrearMaqui" method="POST" id="form_crear_maqui">
+               <!--  -->
+                <form   class="formularioCrearMaqui" method="POST" id="form_crear_maqui" >
                     
                     <div class="primeraLineaMa">
                             <div class="asd">
@@ -979,6 +979,7 @@ $hora = date("H:i:s");
                     </div>            
                     <div class="terceraLineaMa">
                         <input type="button" value="ENVIAR" id="enviar_maqui" name="enviar_maqui">
+                        
                     </div>
 
                 </form>
@@ -1000,11 +1001,12 @@ $hora = date("H:i:s");
                 <div class="btncrrarALl" id="cerrartipoinsumo">X</div>
             <div>
                 
-                <h1>CREAR TIPO DE INSUMO</h1>
-                <form class="contentform"  action="#" method="POST" id="fomrTipinsu">
+                <h1>CREAR TIPO DE INSUMO</h1><!-- id="fomrTipinsu" action="../../php/admin/tipo_insumo.php"-->
+                <form class="contentform"   id="fomrTipinsu" method="POST" >
                     
-                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" id="Inptipinsu" name="Inptipinsu"required ></div>
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" id="Inptipinsu" name="Inptipinsu"  required></div>
                     <div><input class="btn_peque_form" type="button" value="CREAR" id="btnTipinsu"></div>
+                    <!-- <div><input class="btn_peque_form" type="submit" value="CREAR" ></div> -->
                 </form>
             </div>
         </div>

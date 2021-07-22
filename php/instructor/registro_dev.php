@@ -12,33 +12,40 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($devoluciones == "" and $devoluciones == 0){
         echo "fallo la validacion";
     }else{
+        //consulta para insertar a la tabla accion realizada para la devolucion
         $sql_1 = "INSERT INTO accion_realizada(ID_ACCION_REALIZADA, DOCU_ADMI, DOCU_INSTRUCTOR, FECHA, HORA, ID_ESTADO) VALUES('','','$respons','$fecha','$hora',4)";
         $consulta_1 = mysqli_query($connection,$sql_1);
         if($consulta_1){
+            //consulta que se trae el id para insertarla en el detalle de accion
             $verificar = "SELECT * FROM accion_realizada WHERE DOCU_INSTRUCTOR = '$respons' ORDER BY ID_ACCION_REALIZADA DESC LIMIT 1";
             $consul_2 = mysqli_query($connection, $verificar);
             $valida = mysqli_fetch_array($consul_2);
             $det_accion = $valida["ID_ACCION_REALIZADA"];
             if($consul_2){
+                //creamos un ciclo
                 foreach($devoluciones as $debe){
                     $categ = $debe['categoria'];
                     $nom_categ = $debe['nombres'];
                     $cantd = $debe['cantidad'];
 
+                     //insertamos a la base de datos segun el material y la cantidad
                     $sql_insertar = "INSERT INTO detalle_accion(ID_DETA_ACCION, ID_ACCION_REALIZADA, ID_ACCION, ID_MATERIAL, CANTIDAD)
                                     VALUES ('', '$det_accion', 1, '$nom_categ', '$cantd')";
                     $comprobar = mysqli_query($connection,$sql_insertar);
                     
+                    //consulta para traer el id del ultimo detalle de la tabla
                     $final = "SELECT ID_DETA_ACCION FROM detalle_accion WHERE ID_ACCION_REALIZADA = '$det_accion' ORDER BY ID_DETA_ACCION DESC LIMIT 1";
                     $continuar = mysqli_query($connection, $final);
                     $datos_finales = mysqli_fetch_array($continuar);
                     $ultimos = $datos_finales["ID_DETA_ACCION"];
 
+                    //consulta que suma la cantidad del insumo y la suma
                     $consulta_3 = "SELECT SUM(CANTIDAD) FROM detalle_accion WHERE ID_BODEGA = '2'";
                     $total_final = mysqli_query($connection,$consulta_3);
                     $tot_canti = mysqli_fetch_array($total_final);
                     $cand_total = $tot_canti[0] + $cantd;
 
+                     //consulta que edita la tabla para identificar que la devolucion entra a la bodega de insumo
                     $cons_bodega = "UPDATE detalle_accion SET ID_BODEGA = 2, CANTIDAD_TOTAL = '$cand_total' WHERE ID_DETA_ACCION = '$ultimos'";
                     $consul_bodega = mysqli_query($connection,$cons_bodega); 
 
