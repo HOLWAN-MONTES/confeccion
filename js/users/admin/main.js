@@ -49,7 +49,7 @@ const btncrearempresa = document.getElementById('btncrearempresa');
 const contencrearEmpresa = document.getElementById('contencrearEmpresa');
 btncrearempresa.addEventListener('click',function(){
     contencrearEmpresa.style.display = "block"
-
+    alert('toco el btn empresa')
     contentEditarUsuario.style.display = "none";
     contentEliminarUsuario.style.display = "none";
     contentIngresoDeInsumos.style.display = "none"
@@ -158,6 +158,7 @@ desaparecerTodosUsers.addEventListener('click',function(){
 // --------fromularios de administrador de usuarios ------------------------------------------------
 //___btn registro de usuario
 btnregistroUsu.addEventListener('click',function(){
+    
     contentCrearUsuario.style.display = "block";
     contentEditarUsuario.style.display = "none";
     contentEliminarUsuario.style.display = "none";

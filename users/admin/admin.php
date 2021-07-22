@@ -503,28 +503,28 @@ $hora = date("H:i:s");
 
          <!--------------------------- CREAR EMPRESA ---id="contencrearEmpresa"-------------------- -->
         <div class="crearEmpresa" >
-            <div class="contetFoempresa" action="../../php/admin/crearEmpresa.php">
+            <div class="contetFoempresa" >
                 
                 <div class="tituloempre">
                     <b>CREAR EMPRESA</b>
                 </div>
                 <div>
                 
-                    <form autocomplete="off"  id="formcrearEmpresa" class="formularioCrearempresa" method="POST" >
+                    <form autocomplete="off"  id="formcrearEmpresa" action="../../php/admin/crearEmpresa.php" class="formularioCrearempresa" method="POST" >
                         
                         <div class="primeraLineaempresa">
                                 <div >
                                     <label for="">NIT</label>
-                                    <input required type="number" name="nit" id="" minlength="5" >
+                                    <input  type="number" name="nit" id="" minlength="5" >
                                 </div>
                                 <div >
                                     <label for="">NOMBRE DE EMPRESA</label>
-                                    <input required type="text" name="nomEmpresa" id="">
+                                    <input  type="text" name="nomEmpresa" id="">
                                 </div>
                                
                                 <div>
                                     <label for="">RAZON SOCIAL </label>    
-                                    <input required type="text" name="razonSocial">
+                                    <input  type="text" name="razonSocial">
                                 </div>
                         </div>
 
@@ -532,17 +532,18 @@ $hora = date("H:i:s");
                            
                             <div>
                                 <label for="">TELEFONO</label>    
-                                <input required type="number" name="telefonoEmpre">
+                                <input  type="number" name="telefonoEmpre">
                             </div>
                             <div>
                                 <label for="">CORREO EMPRESA</label>    
-                                <input required  name="correoEmpre" id="">
+                                <input   name="correoEmpre" id="">
                             </div>
                         </div>
 
                         <div class="terceralineaempresa">
-                            <input type="button" id="btnEnviarempre" value="CREAR"  name="">
-                        </div><!-- <input type="button" value="CREAR"> -->
+                            <!-- <input type="button" id="btnEnviarempre" value="CREAR"  name=""> -->
+                            <input type="submit" value="CREAR">
+                        </div>
 
                     </form>
 
@@ -1157,7 +1158,7 @@ $hora = date("H:i:s");
     </div>
 
     <script src="../../js/users/admin/main.js"></script>
-<!--     <script src="../../js/users/admin/editar_users.js"></script>
+  <!--   <script src="../../js/users/admin/editar_users.js"></script>
     <script src="../../js/users/admin/eliminar_usu.js"></script>
     <script src="../../js/users/admin/created_user.js"></script>
     <script src="../../js/users/admin/create.js"></script>
