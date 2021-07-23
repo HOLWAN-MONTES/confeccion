@@ -1140,7 +1140,7 @@ $hora = date("H:i:s");
                         <li id="invInsumo" class="uno invInsumos"><a  href="../../inventarios/insumos.php">INV DE INSUMOS</a></li>
                     </ul>
                 </li>
-                <li class="reportes" id="reportes"><a href="../../reportes/reportes.php">REPORTES<i class="icono derecha fas fa-chevron-down"></i></a>
+                <li class="reportes" id="reportes"><a>REPORTES<i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
                         <li id="repMaquinaria" class="uno repMaquinaria"><a href="../../reportes/reportes_maquinaria.php">REPORTES DE MAQUINARIA</a></li>
                         <li id="repMaterialText" class="uno repMateralT"><a href="../../reportes/reportes_mat_tex.php">REPORTES DE MATERIAL TEXTIL</a></li>
