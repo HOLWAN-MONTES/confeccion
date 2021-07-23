@@ -65,50 +65,43 @@ if ($usario == "" || $usario == null) {
 
       
         <?php
-        $consulta = "SELECT * FROM detalle_ingreso INNER JOIN ingreso_material 
-                    ON detalle_ingreso.ID_INGRE_MATERIAL = detalle_ingreso.ID_INGRE_MATERIAL 
-                    INNER JOIN usuario ON ingreso_material.DOCUMENTO = usuario.DOCUMENTO
-                    INNER JOIN empresa ON ingreso_material.NIT_DOC = empresa.NIT_DOC
-                    INNER JOIN tipo_ingreso ON detalle_ingreso.ID_TIP_INGRESO = tipo_ingreso.ID_TIP_INGRESO 
-                    INNER JOIN bodega ON detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA";
+        $consulta = "SELECT * FROM ingreso_material INNER JOIN usuario 
+                    ON ingreso_material.DOCUMENTO = usuario.DOCUMENTO INNER JOIN empresa 
+                    ON ingreso_material.NIT_DOC = empresa.NIT_DOC";
 
         $consulta_repo_maq = mysqli_query($connection,$consulta);
-            while ($tip = mysqli_fetch_array($consulta_repo_maq)){
+            foreach($consulta_repo_maq as $rep_maq){
         ?>
-            <div class="contentdocumentosotras">
+            <div class="contentdocumentosotras" id="contentdocumentosotras">
             
-                <div class="documentosotras" >
-                    <div>NUM. RECIBO :<p> <?=$tip["ID_INGRE_MATERIAL"]?> </p></div>
+                <div class="documentosotras" id="documentosotras">
+                    <div>NUM. RECIBO :<p id="ingre_mat"> <?=$rep_maq["ID_INGRE_MATERIAL"]?> </p></div>
                                     
-                    <div>NOMBRE RESPONSABLE:<p> <?=$tip["NOMBRE"]?></p></div>
+                    <div>NOMBRE RESPONSABLE:<p> <?=$rep_maq["NOMBRE"]?></p></div>
                     
-                    <div>PROVEEDOR :<p> <?=$tip["NOM_EMPRESA"]?> </p></div>
+                    <div>PROVEEDOR :<p> <?=$rep_maq["NOM_EMPRESA"]?> </p></div>
                     
-                    <div>FECHA :<p> <?=$tip["FECHA"]?></p></div>
+                    <div>FECHA :<p> <?=$rep_maq["FECHA"]?></p></div>
                     
-                    <div>HORA :<p> <?=$tip["HORA"]?></p></div>
+                    <div>HORA :<p> <?=$rep_maq["HORA"]?></p></div>
+
     
-                    <div>TIPO DE INGRESO :<p> <?=$tip["NOM_TIP_INGRESO"]?></p></div>
+                    <!-- <div>TIPO DE INGRESO :<p> <$rep_maq["NOM_TIP_INGRESO"]?></p></div> -->
     
-                    <div>BODEGA :<p> <?=$tip["NOM_BODEGA"]?></p></div>
+                   <!-- <div>BODEGA :<p> $rep_maq["NOM_BODEGA"]</p></div> -->
     
                     
-    
+
                 </div>  
-    
+                <div id="deta_ingre_mat"></div>
                 <div class="contentGeneralBtns">
                     <div>
                         <form action="" method="post" id="" >
-                            <input type="hidden" name="" value="1">
-                            <button id="" >EDITAR</button>
+                            <!-- <input type="hidden" name="" value="1"> -->
+                            <button id="ver_mas" >VER MAS INFO</button>
                         </form>
                     </div>
-                    <div>
-                        <form action="" method="post" id="" >
-                            <input type="hidden" name="" value="1">
-                            <button id="" >ELIMINAR</button>
-                        </form>
-                    </div>
+                    
                 </div>
             </div>
         <?php
@@ -121,4 +114,5 @@ if ($usario == "" || $usario == null) {
       </div>
     </main>
 </body>
+<script src="../js/reportes/reportes_maquinaria.js"></script>
 </html>
