@@ -10,8 +10,6 @@ const enviar = document.getElementById("reg")
 
 //FUNCION DE ACTUALIZAR 
 
-
-
 const conteActa = document.getElementById("conte-user")
 
 function actualizar() {
@@ -38,11 +36,27 @@ enviar.addEventListener("click", (e) => {
         method:"POST",
         body:formulario_reg
     })
-    .then(res => res.text()).then(info => {
+    .then(res => res.text()).then(info => {       
         if (info == 1) {
             Swal.fire({
+                title: 'Advertencia!',
+                text: 'El numero de celular ya existe.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            })
+              
+        }else if(info == 2){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'El correo electronico ya existe.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            })
+           
+        }else if(info == 3){
+            Swal.fire({
                 title: 'Registrado!',
-                text: 'Se registro el usuario',
+                text: 'Se registro el usuario exitosamente.',
                 icon: 'success',
                 confirmButtonText: 'Continuar'
                 
@@ -53,8 +67,8 @@ enviar.addEventListener("click", (e) => {
             actualizar()
             formulario.reset()
             documento_user.disabled = false
-            
-        }else if(info == 2){
+        }
+        else if(info == 4){
             Swal.fire({
                 title: 'Error!',
                 text: 'El usuario con este documento ya existe',
@@ -65,7 +79,8 @@ enviar.addEventListener("click", (e) => {
                 icono.classList.remove('formulario__grupo-correcto');
             });
             formulario.reset()
-        }else{
+        }
+        else{
             Swal.fire({
                 title: 'Advertencia!',
                 text: 'Por favor rellena el formulario correctamente.',
@@ -127,7 +142,7 @@ insertar.addEventListener("click", (e) => {
 
 
 //   VALIDACION DEL FORMULARIO
-
+const btn_usuario = document.getElementById('reg')
 const crear_usuario = document.getElementById('crear_usuario');
 const inputs = document.querySelectorAll('#crear_usuario input');
 
@@ -175,13 +190,16 @@ const validarFormulario = (e) =>{
 
 const validarCampo = (expresion, input, campo) => {
 	if(expresion.test(input.value)){
+        btn_usuario.disabled = false;
 		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
 		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
 		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
 		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
 		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
 		campos[campo] = true;
+       
 	} else {
+        btn_usuario.disabled = true;
 		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
 		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
 		document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');

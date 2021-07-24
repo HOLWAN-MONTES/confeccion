@@ -18,7 +18,7 @@ const campos_edi = {
 
 const FormularioEditar = (e) =>{
     switch (e.target.name){
-        case "contrasena_edi":
+        case "contra_edi":
             EditarCampo(expresiones_edi.clave_edi, e.target, 'clave_edi');//El ultimo parametro tendra que llevar el id de div que almacena todo
         break;
         case "tele_edi":

@@ -4,10 +4,14 @@
     box-sizing: border-box;
 }
 
+:root {
+    --naranja : #ff6712;
+    --naranjaOScuro: #da5000;
+}
 
 header{
     width: 100%;
-    background-color: #ff6712;
+    background-color: var(--naranja);
 }
 
 
@@ -48,15 +52,6 @@ a{
     display: flex;
     justify-content: flex-start;
 }
-
-.buscarmaquinaria{
-    width: 20%;
-}
-
-.buscarmaquinaria input {
-    width: 100%;
-}
-
 
 .btn-m-users form button{
     background-color: #ff6712;
@@ -146,13 +141,7 @@ margin: 0;
 }
 input[type=number] { -moz-appearance:textfield; }
 
-.aviso {
-    text-align: center;
-    width: 100%;
-    margin-top: 20%;
-}
-
-.fondo, .fondo2{
+.fondo{
     position: fixed;
     top: 0px;
     left: 0px;
@@ -175,7 +164,11 @@ input[type=number] { -moz-appearance:textfield; }
     background-color: white;
     border: solid 2px var(--naranjaOScuro);
     padding: 5px 15px;
-    
 }
 
+.contenedor_deta{
+    background-color: aqua;
+    position: absolute;
+    width: 30%;
 
+}

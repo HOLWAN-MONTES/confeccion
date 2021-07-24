@@ -47,9 +47,9 @@ enviarInsu.addEventListener("click", (e) => {
         }
         else{
             Swal.fire({
-                title: 'Registrado!',
-                text: 'Se registro el insumo.',
-                icon: 'success',
+                title: 'Advertencia!',
+                text: 'Llena los campos correctamente.',
+                icon: 'warning',
                 confirmButtonText: 'Continuar'
                 
             })
@@ -170,44 +170,72 @@ todos.addEventListener("click", (e) => {
 
 //CONEXION AL ARCHIVO PHP CON EL FORMLARIO DE TIPO DE INSUMO
 const formTipInsu = document.getElementById('fomrTipinsu')
+
 const enviarTipInsu = document.getElementById('btnTipinsu')
 
 enviarTipInsu.addEventListener('click', (e) => {
     e.preventDefault()
-
-    const formMarcaM = new FormData(formTipInsu)
+    const inpu_ing_insu = document.getElementById('Inptipinsu').value;
+    console.log(inpu_ing_insu)
+    const formtipinsumo = new FormData(formTipInsu)
 
     fetch("../../php/admin/tipo_insumo.php", {
         method:"POST",
-        body:formMarcaM
+        body:JSON.stringify({
+            "inpu_tip_ins" : inpu_ing_insu,
+            "formu":formtipinsumo
+        })
+        // body:formtipinsumo
     })
     .then(res => res.text()).then(info => {
+        console.log(info) 
         if(info == 1){
             Swal.fire({
                 title: 'Error!',
-                text: 'La marca del material textil ya existe.',
+                text: 'La el tipo de insumo ya existe.',
                 icon: 'error',
                 confirmButtonText: 'Continuar'
             })
             formTipInsu.reset()
+
         }else if(info == 2){
             Swal.fire({
-                title: 'Advertencia!',
-                text: 'Por favor rellena el formulario correctamente.',
-                icon: 'warning',
-                confirmButtonText: 'Continuar'
-            })
-            
-        }else{
-            Swal.fire({
                 title: 'Registrado!',
-                text: 'Se registro la marca del material textil.',
+                text: 'Se registro el tipo de insumo.',
                 icon: 'success',
                 confirmButtonText: 'Continuar'
                 
             })
             formTipInsu.reset()
+        }else if(info == 3){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'No se inserto el tipo de insumo',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formTipInsu.reset()
+        }else if(info == 4){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'Campos vacios, llena los campos correctamente',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formTipInsu.reset()
         }
+        else{
+            Swal.fire({
+                title: 'Ups algo salio mal!',
+                text: 'Verifica los datos',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formTipInsu.reset()
+        }
+        
     })
-
 })

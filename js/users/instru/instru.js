@@ -3,18 +3,20 @@ const contenedor_one = document.getElementById('ventana_one');
 const btn_ventana_one = document.getElementById('one');
 const btn_cerrar = document.getElementById('cerrar1');
 
+//VARIABLES DEL FORMULARIO DE REGISTRO DE LAS DEVOLUCIONES
 const contenedor_two = document.getElementById('ventana_two');
 const btn_ventana_two = document.getElementById('two');
 const btn_cerrar2 = document.getElementById('cerrar2');
 
+//variables donde aparecen los prestamos pendientes
 const contenedor_tres = document.getElementById('ventana_tres');
 const btn_ventana_tres = document.getElementById('tres');
+const btn_cerrar3 = document.getElementById('cerrar3')
 
+//variables donde aparecen las devoluciones pendientes
 const contenedor_cuatro = document.getElementById('ventana_cuatro');
 const btn_ventana_cuatro = document.getElementById('cuatro');
-
-// const elemento = document.getElementById('agregado');
-const tabla_prestamo = document.getElementById('tablaInfo')
+const btn_cerrar4 = document.getElementById('cerrar4')
 
 // Ventana modal 1 y formulario de peticion de prestamos
 btn_ventana_one.addEventListener('click', function(){
@@ -28,7 +30,10 @@ btn_cerrar.addEventListener('click', function(e){
     $('#categ option:first').prop('selected', true);
     $('#nom_categ').find('option').not(':first').remove();
     $('input[type="number"]').val('');
+    //vaciar la tabla cuando se cierra el formulario
+    document.getElementById('agregado').innerHTML = '';
 
+    contenedor_one.style.display = 'none';
     // vaciar la tabla con su contenido
     // var tablaPrestamo = document.getElementById('tablaInfo');
     // var fila_tabla = tablaPrestamo.getElementsByTagName('tr');
@@ -43,28 +48,49 @@ btn_cerrar.addEventListener('click', function(e){
     // for (var x=contador_celd-1; x>0; x--) {
     //     elemento.removeChild(filas_tabla[x]);
     // }
-    contenedor_one.style.display = 'none';
 })
 
 
-//Ventana modal 2
+//Ventana modal 2 y formulario de las devoluciones
 btn_ventana_two.addEventListener("click",function(){
     contenedor_two.style.display="block";
 })
+//cerrar la ventana de las devoluciones
 btn_cerrar2.addEventListener('click', function(e){
     e.preventDefault();
+    //vaciar los campos o select del formualrio
+    $('#cate_dev option:first').prop('selected', true);
+    $('#devolucion').find('option').not(':first').remove();
+    $('input[type="number"]').val('');
+    //vaciar la tabla
+    document.getElementById('ver_devol').innerHTML = '';
+
     contenedor_two.style.display="none";
 })
 
-//Ventana modal 3
+//Ventana modal 3, donde aparecen los pestamos pendientes
 btn_ventana_tres.addEventListener("click",function(){
     contenedor_tres.style.display="block";
 })
 
-//Ventana modal 4
+//cerrar ventana
+btn_cerrar3.addEventListener('click', function(e){
+    e.preventDefault();
+
+    contenedor_tres.style.display="none";
+})
+
+//Ventana modal 4, donde van las devoluciones pendientes
 btn_ventana_cuatro.addEventListener("click",function(){
     contenedor_cuatro.style.display="block";  
 })
+
+btn_cerrar4.addEventListener('click', function(e){
+    e.preventDefault();
+
+    contenedor_cuatro.style.display="none";
+})
+
 
 
 

@@ -51,7 +51,7 @@ btnEnviarempre.addEventListener("click", (e) => {
         }else if(info == 5){
             Swal.fire({
                 title: 'Advertencia!',
-                text: 'Verifica que no hallan datos vacios',
+                text: 'Llena el formulario correctamente',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
             })
