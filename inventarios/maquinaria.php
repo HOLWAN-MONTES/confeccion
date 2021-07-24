@@ -65,11 +65,8 @@ $consulta_estado = mysqli_query($connection,$sql_estado);
     </header>
     <main>
         <div class="contenedorCajaInventario">
-
-      
                 <?php
                 $consulta = "SELECT SERIAL_MAQUINARIA,PLACA_SENA,NOM_MAQUINARIA,tipo_maquina.NOM_TIP_MAQUINARIA,marca.NOM_MARCA,color.NOM_COLOR,estado.NOM_ESTADO,OBSERVACIONES FROM maquinaria,tipo_maquina,marca,color,estado where maquinaria.ID_TIP_MAQUINARIA=tipo_maquina.ID_TIP_MAQUINARIA and maquinaria.ID_MARCA=marca.ID_MARCA and maquinaria.ID_COLOR=color.ID_COLOR and maquinaria.ID_ESTADO=estado.ID_ESTADO";
-
                 $consulta_inve = mysqli_query($connection,$consulta);
 
                 foreach ($consulta_inve as $maquinaria){
