@@ -67,7 +67,9 @@ if ($usario == "" || $usario == null) {
         <?php
         $consulta = "SELECT * FROM ingreso_material INNER JOIN usuario 
                     ON ingreso_material.DOCUMENTO = usuario.DOCUMENTO INNER JOIN empresa 
-                    ON ingreso_material.NIT_DOC = empresa.NIT_DOC";
+                    ON ingreso_material.NIT_DOC = empresa.NIT_DOC INNER JOIN detalle_ingreso ON
+                    ingreso_material.ID_INGRE_MATERIAL = detalle_ingreso.ID_INGRE_MATERIAL
+                    WHERE detalle_ingreso.ID_TIP_INGRESO = 3";
 
         $consulta_repo_maq = mysqli_query($connection,$consulta);
             foreach($consulta_repo_maq as $rep_maq){
@@ -84,21 +86,13 @@ if ($usario == "" || $usario == null) {
                     <div>FECHA :<p> <?=$rep_maq["FECHA"]?></p></div>
                     
                     <div>HORA :<p> <?=$rep_maq["HORA"]?></p></div>
-
-    
-                    <!-- <div>TIPO DE INGRESO :<p> <$rep_maq["NOM_TIP_INGRESO"]?></p></div> -->
-    
-                   <!-- <div>BODEGA :<p> $rep_maq["NOM_BODEGA"]</p></div> -->
-    
-                    
-
                 </div>  
                 <div id="deta_ingre_mat"></div>
                 <div class="contentGeneralBtns">
                     <div>
                         <form action="" method="post" id="" >
                             <!-- <input type="hidden" name="" value="1"> -->
-                            <button id="ver_mas" >VER MAS INFO</button>
+                            <button id="ver_mas" class="ver_mas" data-id="<?php echo $rep_maq["ID_INGRE_MATERIAL"]?>">VER MAS INFO</button>
                         </form>
                     </div>
                     
