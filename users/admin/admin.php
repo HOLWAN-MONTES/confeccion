@@ -518,12 +518,12 @@ $hora = date("H:i:s");
                                     <input  type="number" name="nit" id="" minlength="5" >
                                 </div>
                                 <div >
-                                    <label for="">RAZON SOCIAL</label>
+                                    <label for="">Nombre de la empresa</label>
                                     <input  type="text" name="nomEmpresa" id="">
                                 </div>
                                
                                 <div>
-                                    <label for=""></label>    
+                                    <label for="">Nombre  de empleado</label>    
                                     <input  type="text" name="razonSocial">
                                 </div>
                         </div>
