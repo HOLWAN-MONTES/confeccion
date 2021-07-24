@@ -33,10 +33,9 @@ const btneliminarUsu = document.getElementById('eliminarUsu');
 const contentIngresoDeInsumos = document.getElementById('contentIngresoDeInsumos');
 const btningreso = document.getElementById('ingreso');
 
+
 /* sub-crear */
 const content_general_form = document.getElementById('content_general_form');
-
-
 
 /* otras opciones de ingreso -crear insumo-crear maquinaria- crear material textil*/
 const menusañedidos = document.getElementById('menusañedidos');
@@ -47,26 +46,21 @@ const btncrearMaquinaria = document.getElementById('crearMaquinaria');
 /* CREAR EMPRESA Y TODO LO DE EMPRESA */
 const btncrearempresa = document.getElementById('btncrearempresa');
 const contencrearEmpresa = document.getElementById('contencrearEmpresa');
+
 btncrearempresa.addEventListener('click',function(){
-    contencrearEmpresa.style.display = "block"
-    alert('toco el btn empresa')
-    contentEditarUsuario.style.display = "none";
-    contentEliminarUsuario.style.display = "none";
+    contentCrearUsuario.style.display = "none"
+    contentEditarUsuario.style.display = "none"
+    contentEliminarUsuario.style.display = "none"
+    todosLosusuarios.style.display = "none"
+    menusañedidos.style.display = "none"
     contentIngresoDeInsumos.style.display = "none"
-    containerCrearUsuario.style.display = "none";
-    containerCrearTipDocumento.style.display = "none"
-    menusañedidos.style.display = "none";
+    contencrearEmpresa.style.display = "block"
 })
-
  
-
 /*Reportes opciones*/
 const btnrepMaquinaria = document.getElementById("repMaquinaria");
 const btnrepMatTex = document.getElementById("repMaterialText");
 const btnrepInsumo = document.getElementById("repMaquinaria");
-
-
-
 
 /* content */
 const containerCrearInsumo = document.getElementById('containerCrearInsumo');
@@ -100,7 +94,6 @@ const crearcolorb = document.getElementById('crearcolorb');
 const crearcolormaqui = document.getElementById('crearcolormaqui');
 const registrarcolorTex = document.getElementById('crearcolorMate')
 
-
 /* crearTipoDeTele */
 const btncerrartipodetela = document.getElementById('btncerrartipodetela');
 const crearTipoDeTele = document.getElementById('crearTipoDeTele');
@@ -109,11 +102,11 @@ const crearTipoDeTele = document.getElementById('crearTipoDeTele');
 const btncrearmaterialtextf = document.getElementById('btncrearmaterialtextf');
 const crearMarcaMaterialTextil = document.getElementById('crearMarcaMaterialTextil')
 
-
 /* tipo de maquinaria */
 const crearTipoDeMaquinaria = document.getElementById('crearTipoDeMaquinaria');
 const btncerrartipodemaqui = document.getElementById('btncerrartipodemaqui')
 const creartipodemaquinarr = document.getElementById('creartipodemaquinarr')
+
 btncerrartipodemaqui.addEventListener('click',function(){
     crearTipoDeMaquinaria.style.display = "none"
 })

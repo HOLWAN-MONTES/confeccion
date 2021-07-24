@@ -178,7 +178,6 @@ mal_estado.addEventListener("click", (e) => {
 //^ ******************** buscador por la serial de la maquina ***********
 serial.addEventListener("keyup", (e) => {
     
-
     const dato = new FormData(buscador_serial)
     console.log("si entra")
     fetch("../php/inventario/maquinaria/buscador.php",{
@@ -188,8 +187,8 @@ serial.addEventListener("keyup", (e) => {
         console.log(info)
         contenedor_principal.innerHTML = `${info}`
     })
-
 })
+
 
 //^ *************** botones de editar y eliminar ************
 
