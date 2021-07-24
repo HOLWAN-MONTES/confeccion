@@ -38,17 +38,24 @@ if ($usario == "" || $usario == null) {
 
       
                 <?php
-                $consulta = "SELECT * FROM accion_realizada INNER JOIN estado on accion_realizada.ID_ESTADO=estado.ID_ESTADO INNER JOIN usuario ON accion_realizada.DOCU_ADMI=usuario.DOCUMENTO INNER JOIN detalle_accion ON detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA WHERE `DOCU_ADMI`=$usario  AND detalle_accion.ID_ACCION=1";
+                $consulta = "SELECT * FROM accion_realizada INNER JOIN estado on accion_realizada.ID_ESTADO=estado.ID_ESTADO INNER JOIN usuario ON accion_realizada.DOCU_INSTRUCTOR=usuario.DOCUMENTO INNER JOIN detalle_accion ON detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA INNER JOIN ficha ON ficha.DOCUMENTO=accion_realizada.DOCU_INSTRUCTOR INNER JOIN formacion ON ficha.ID_FORMACION=formacion.ID_FORMACION INNER JOIN jornada ON ficha.ID_JORNADA=jornada.ID_JORNADA WHERE detalle_accion.ID_ACCION=1 ";
 
                 $consulta_inve = mysqli_query($connection,$consulta);
-                $_SESSION['id_dev'] =$maquinaria['ID_ACCION_REALIZADA'];
+                
 
                 foreach ($consulta_inve as $maquinaria){
+                    $id_Dev =$maquinaria['ID_ACCION_REALIZADA'];
                 ?>
                 <div class="contentdocumentosotras">
                 
                     <div class="documentosotras" >
                         <div>INSTRUCTOR :<p> <?=$maquinaria["NOMBRE"]?>  </p></div>
+
+                        <div>FICHA :<p> <?=$maquinaria["NUM_FICHA"]?>  </p></div>
+
+                        <div>FORMACION :<p> <?=$maquinaria["NOM_FORMACION"]?>  </p></div>
+
+                        <div>JORNADA :<p> <?=$maquinaria["NOM_JORNADA"]?>  </p></div>
                                         
                         <div>FECHA  :<p> <?=$maquinaria["FECHA"]?></p></div>
                         
@@ -56,19 +63,41 @@ if ($usario == "" || $usario == null) {
                         
                         <div>ESTADO :<p> <?=$maquinaria["NOM_ESTADO"]?> </p></div>
                         
+                        <div>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>MATERIAL</th>
+                                    <th>CANTIDAD DEVUELTA</th>
+                                    <th>CANTIDAD TOTAL</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $sql = "SELECT * FROM detalle_accion INNER JOIN accion_realizada on detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA INNER JOIN insumo ON detalle_accion.ID_MATERIAL=insumo.ID_INSUMO WHERE detalle_accion.ID_ACCION_REALIZADA=$id_Dev";
+                                $consultaN = mysqli_query($connection,$sql);
+                                foreach ($consultaN as $datoapre){
+                                    ?> <tr>
+                                        <td><?=$datoapre["NOM_INSUMO"]?></td>
+                                        <td><?=$datoapre["CANTIDAD"]?></td>
+                                        <td><?=$datoapre["CANTIDAD_TOTAL"]?></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>  
 
                     <div class="contentGeneralBtns">
+
+
                         <div>
                             <form action="aceptar.php" method="POST" id="aceptar" >
                                 <input type="hidden" name="id_deta" value="<?=$maquinaria["ID_ACCION_REALIZADA"]?>">
                                 <button id="" >ACEPTAR</button>
-                            </form>
-                        </div>
-                        <div>
-                            <form action="" method="post" id="" >
-                                <input type="hidden" name="id_dev" value="$_SESSION['id_dev']">
-                                <button id="" >VER DETALLE</button>
                             </form>
                         </div>
                         <div>
