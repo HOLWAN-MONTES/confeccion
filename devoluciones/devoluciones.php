@@ -41,7 +41,7 @@ if ($usario == "" || $usario == null) {
                 $consulta = "SELECT * FROM accion_realizada INNER JOIN estado on accion_realizada.ID_ESTADO=estado.ID_ESTADO INNER JOIN usuario ON accion_realizada.DOCU_ADMI=usuario.DOCUMENTO INNER JOIN detalle_accion ON detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA WHERE `DOCU_ADMI`=$usario  AND detalle_accion.ID_ACCION=1";
 
                 $consulta_inve = mysqli_query($connection,$consulta);
-                $_SESSION['id_dev'] =$maquinaria['ID_ACCION_REALIZADA'];
+              /*   $_SESSION['id_dev'] =$maquinaria['ID_ACCION_REALIZADA']; */
 
                 foreach ($consulta_inve as $maquinaria){
                 ?>
