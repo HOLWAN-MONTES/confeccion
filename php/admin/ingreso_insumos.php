@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $fecha = $insumos[0]['fecha'];
     $hora = $insumos[0]['hora'];
     
-    if($insumos == "" and $insumos == 0){
+    if($insumos == "" && $insumos == 0){
         echo "Efe en la valida";
     }
     else{
