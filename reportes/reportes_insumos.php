@@ -61,7 +61,7 @@ if ($usario == "" || $usario == null) {
        
     </header>
     <main>
-        <div class="contenedorCajaInventario">
+        <div class="contenedorCajaInventario" id="content">
 
       
         <?php
