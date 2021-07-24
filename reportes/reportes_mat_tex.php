@@ -23,7 +23,7 @@ if ($usario == "" || $usario == null) {
 <body>
     <header>
         <div class="titulohea">
-            <h1>REPORTE DE INGRESOS DE MATERIAL TEXTIL</h1>
+            <h1>REPORTE DE INGRESOS DE MAQUINARIA</h1>
         </div>
         <div class="contenedorbotonesCrear">
             <div class="btn-m-users">
@@ -65,46 +65,64 @@ if ($usario == "" || $usario == null) {
 
       
         <?php
-        $consulta = "SELECT ID_INSUMO,NOM_INSUMO,tipo_insumo.NOM_TIP_INSUMO,marca.NOM_MARCA,color.NOM_COLOR FROM insumo,tipo_insumo,marca,color WHERE insumo.ID_TIP_INSUMO=tipo_insumo.ID_TIP_INSUMO and insumo.ID_MARCA=marca.ID_MARCA and insumo.ID_COLOR=color.ID_COLOR";
+        $consulta = "SELECT * FROM ingreso_material INNER JOIN usuario 
+                    ON ingreso_material.DOCUMENTO = usuario.DOCUMENTO INNER JOIN empresa 
+                    ON ingreso_material.NIT_DOC = empresa.NIT_DOC INNER JOIN detalle_ingreso ON
+                    ingreso_material.ID_INGRE_MATERIAL = detalle_ingreso.ID_INGRE_MATERIAL 
+                    INNER JOIN tipo_ingreso ON detalle_ingreso.ID_TIP_INGRESO = tipo_ingreso.ID_TIP_INGRESO
+                    INNER JOIN material_textil ON detalle_ingreso.ID_MATERIAL_TEXTIL = material_textil.ID_MATERIAL_TEXTIL
+                    INNER JOIN bodega ON detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA
+                    WHERE detalle_ingreso.ID_TIP_INGRESO = 1";
 
-        $consulta_insumos = mysqli_query($connection,$consulta);
+        $consulta_repo_maq = mysqli_query($connection,$consulta);
+            foreach($consulta_repo_maq as $rep_maq){
+                $cons = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_TIP_INGRESO = 1 
+                        ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+                $consul = mysqli_query($connection, $cons);
+                $dato = mysqli_fetch_array($consul);
+                $cant_maq = $dato["CANTIDAD_TOTAL"]; 
+        ?>
+            <div class="contentdocumentosotras" id="contentdocumentosotras">
+            
+                <div class="documentosotras" id="documentosotras">
+                    <div>NUM. RECIBO :<p id="ingre_mat"> <?=$rep_maq["ID_INGRE_MATERIAL"]?> </p></div>
+                                    
+                    <div>NOMBRE RESPONSABLE:<p> <?=$rep_maq["NOMBRE"]?></p></div>
+                    
+                    <div>PROVEEDOR :<p> <?=$rep_maq["NOM_EMPRESA"]?> </p></div>
+                    
+                    <div>FECHA :<p> <?=$rep_maq["FECHA"]?></p></div>
+                    
+                    <div>HORA :<p> <?=$rep_maq["HORA"]?></p></div>
 
-        foreach ($consulta_insumos as $insumos){
-    ?>
-        <div class="contentdocumentosotras">
-           
-            <div class="documentosotras" >
-                <div>ID :<p> <?=$insumos["ID_INSUMO"]?> </p></div>
-                                
-                <div>NOMBRE  :<p> <?=$insumos["NOM_INSUMO"]?></p></div>
-                
-                <div>TIPO DE INSUMO :<p> <?=$insumos["NOM_TIP_INSUMO"]?> </p></div>
-                
-                <div>MARCA :<p> <?=$insumos["NOM_MARCA"]?></p></div>
-                
-                <div>COLOR :<p> <?=$insumos["NOM_COLOR"]?></p></div>
+                    <div>TIPO DE INGRESO :<p> <?=$rep_maq["NOM_TIP_INGRESO"]?></p></div>
 
-            </div>  
+                    <div>NOMBRE DE MATERIAL TEXTIL :<p> <?=$rep_maq["NOM_MATERIAL_TEXTIL"]?></p></div>
 
-            <div class="contentGeneralBtns">
-                <div>
-                    <form action="" method="post" id="" >
-                        <input type="hidden" name="" value="1">
-                        <button id="" >EDITAR</button>
-                    </form>
-                </div>
-                <div>
-                    <form action="" method="post" id="" >
-                        <input type="hidden" name="" value="1">
-                        <button id="" >ELIMINAR</button>
-                    </form>
+                    <div>CANTIDAD :<p> <?=$rep_maq["CANTIDAD"]?></p></div>
+
+                    <div>BODEGA :<p> <?=$rep_maq["NOM_BODEGA"]?></p></div>
+
+                    <div>CANTIDAD TOTAL :<p> <?=$cant_maq?></p></div>
+                </div>  
+                <div class="contentGeneralBtns">
+                    <div>
+                        <form action="" method="post" id="" >
+                            <!-- <input type="hidden" name="" value="1"> -->
+                            <button id="ver_mas" class="ver_mas" data-id="<?php echo $rep_maq["ID_INGRE_MATERIAL"]?>">VER MAS INFO</button>
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
-    <?php
-    }
-    ?> 
+        <?php
+            }
+        ?> 
+
+        
+    
       </div>
     </main>
 </body>
+<script src="../js/reportes/reportes_maquinaria.js"></script>
 </html>
