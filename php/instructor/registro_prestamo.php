@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         echo "fallo en validacion";
     }else{
         //consulta para insertar a la tabla accion realizada para el prestamo
-        $sql_1 = "INSERT INTO accion_realizada(ID_ACCION_REALIZADA, DOCU_ADMI, DOCU_INSTRUCTOR, FECHA, HORA, ID_ESTADO) VALUES('','','$instructor','$fecha','$hora',4)";
+        $sql_1 = "INSERT INTO accion_realizada(ID_ACCION_REALIZADA, DOCU_ADMI, DOCU_INSTRUCTOR, FECHA, HORA, ID_ESTADO) VALUES('','','$instructor','$fecha','$hora',7)";
         $consul_1 = mysqli_query($connection,$sql_1);
         if($consul_1){
             //consulta que se trae el id para insertarla en el detalle de accion
@@ -40,14 +40,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             $datos_finales = mysqli_fetch_array($continuar);
                             $ultimos = $datos_finales["ID_DETA_ACCION"];
 
-                            // $sql_total = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_BODEGA = 1 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
-                            // $secuencia = mysqli_query($connection, $sql_total);
-                            // $dato_total = mysqli_fetch_array($secuencia);
-                            // $cantidad_total = $dato_total["CANTIDAD_TOTAL"];
-                            // $insert_total = $cantidad_total - $cantd; 
+                            $sql_total = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_BODEGA = 1 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+                            $secuencia = mysqli_query($connection, $sql_total);
+                            $dato_total = mysqli_fetch_array($secuencia);
+                            $cantidad_total = $dato_total["CANTIDAD_TOTAL"];
+                            
                             
                             //consulta que edita la tabla para identificar de que bodega se presta el material
-                            $cons_bodega = "UPDATE detalle_accion SET ID_BODEGA = 1 WHERE ID_DETA_ACCION = '$ultimos'";
+                            $cons_bodega = "UPDATE detalle_accion SET ID_BODEGA = 1, CANTIDAD_TOTAL = '$cantidad_total' WHERE ID_DETA_ACCION = '$ultimos'";
                             $consul_bodega = mysqli_query($connection,$cons_bodega); 
                                
                         }
@@ -58,14 +58,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             $datos_finales = mysqli_fetch_array($continuar);
                             $ultimos = $datos_finales["ID_DETA_ACCION"];
 
-                            // $sql_total = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_BODEGA = 2 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
-                            // $secuencia = mysqli_query($connection, $sql_total);
-                            // $dato_total = mysqli_fetch_array($secuencia);
-                            // $cantidad_total = $dato_total["CANTIDAD_TOTAL"];
-                            // $insert_total = $cantidad_total - $cantd;
+                            $sql_total = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_BODEGA = 2 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+                            $secuencia = mysqli_query($connection, $sql_total);
+                            $dato_total = mysqli_fetch_array($secuencia);
+                            $cantidad_total = $dato_total["CANTIDAD_TOTAL"];
 
                             //consulta que edita la tabla para identificar de que bodega se presta el material
-                            $cons_bodega = "UPDATE detalle_accion SET ID_BODEGA = 2 WHERE ID_DETA_ACCION = '$ultimos'";
+                            $cons_bodega = "UPDATE detalle_accion SET ID_BODEGA = 2, CANTIDAD_TOTAL = '$cantidad_total' WHERE ID_DETA_ACCION = '$ultimos'";
                             $consul_bodega = mysqli_query($connection,$cons_bodega); 
                            
                         }
