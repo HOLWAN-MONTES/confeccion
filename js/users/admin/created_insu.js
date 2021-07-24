@@ -61,7 +61,7 @@ const ingre_insumo = document.getElementById("CrearInsumoForm")
 const inputs_insu = document.querySelectorAll("#CrearInsumoForm input")
 
 const expresiones_insu = {
-    nombre_insu: /^[a-zA-Z0-9\s]{4,16}$/, // Letras y espacios, pueden llevar acentos.
+    nombre_insu: /^[a-zA-Z\s]{4,16}$/, // Letras y espacios, pueden llevar acentos.
     metraje: /^\d{2,5}$/ // 2 a 5 numeros.  
 }
 

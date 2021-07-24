@@ -383,7 +383,60 @@ $hora_de = date("H:i:s");
         <div class="cerrar4" id="cerrar4">
             <a href=""><i class="fas fa-times-circle"></i></a>
         </div>
+        <form method="POST" class="formulario_devol" id="formulario_devol">
+            <div class="primeraSeccionFechasDev">
+                <div>
+                <b>RESPONSABLE : <!-- nombre de la persona logeada --></b> <p style="text-transform: uppercase;"><?=$_SESSION['NOMBRE'] ?></p>
+                    <input type="hidden" name="responsable_devol" id="responsable_devol"  value="<?=$_SESSION['DOCUMENTO'] ?>">
+                </div>      
+                <div>
+                    <p>FECHA:</p><p id="fecha_dev" name="fecha_dev"><?php echo $fecha_de; ?></p>
+                </div>
+                <div>
+                    <p>HORA:</p><p id="hora_dev" name="hora_dev"><?php echo $hora_de; ?></p>
+                </div>
 
+            </div>
+
+            <!-- tabla devolucion -->
+            <table>
+            <?php
+                $usuario = $_SESSION['DOCUMENTO'];
+                $consul="SELECT * FROM detalle_accion INNER JOIN accion_realizada on detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA 
+                INNER JOIN insumo ON detalle_accion.ID_MATERIAL=insumo.ID_INSUMO
+                WHERE accion_realizada.DOCU_INSTRUCTOR = $usuario";
+                $resultado=mysqli_query($connection,$consul);
+            ?>
+            <thead>
+                <tr>
+                    <td>DEVOLUCION</td>
+                    <td>CANTIDAD PRESTADA</td>
+                    <td>CANTIDAD FALTANTE</td>
+                    <td>CANTIDAD A DEVOLVER</td>
+                    <td>OBSERVASIONES</td>
+                    <td>DEVOLVER</td>
+                    <td>CANCELAR</td>
+                </tr>
+            </thead>
+            <?php
+                while($mostrar1=mysqli_fetch_assoc($resultado)){
+            ?>
+            <tbody>
+                <tr>
+                   <td style="text-transform: uppercase;"><?php echo $mostrar1['NOM_INSUMO']; ?></td>
+                   <td style="text-transform: uppercase;"><?php echo $mostrar1['CANTIDAD']; ?></td>
+                   <td>3231</td>
+                   <td><input type="number" class="cant_devol" name="cant_devol" id="cant_devol" placeholder="CANTIDAD" required></td>
+                   <td><input type="text" id="obser_devol" name="obser_devol"></td>
+                   <td><input type="button" name="devolver_insu" id="devolver_insu" value="ENVIAR"></td>
+                   <td><input type="button" id="cancelar_insumo" value="CANCELAR"></td>
+                </tr>
+            </tbody>
+            <?php
+            }
+            ?>
+            </table>
+        </form>             
     </div>
       
 </div>
