@@ -27,8 +27,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $canti = $insumo['cantidad'];
                     if($categoria == 1){
                         $sql_inser_insumos = "INSERT INTO detalle_ingreso(ID_DETA_INGRESO, ID_INGRE_MATERIAL, 
-                        ID_TIP_INGRESO, ID_MATERIAL, CANTIDAD, ID_BODEGA)
-                        VALUES ('', '$doc_ingre_mat', '$categoria', '$nom_cate', '$canti', 0)";
+                        ID_TIP_INGRESO, ID_MATERIAL_TEXTIL, ID_INSUMO, SERIAL_MAQUINARIA, CANTIDAD, ID_BODEGA)
+                        VALUES ('', '$doc_ingre_mat', '$categoria', '$nom_cate', 7, 0, '$canti', 0)";
                         $cons_inser_insum = mysqli_query($connection,$sql_inser_insumos); 
                         if($cons_inser_insum){
                             $ultimo = "SELECT ID_DETA_INGRESO FROM detalle_ingreso WHERE ID_INGRE_MATERIAL = '$doc_ingre_mat' ORDER BY ID_DETA_INGRESO DESC LIMIT 1";
