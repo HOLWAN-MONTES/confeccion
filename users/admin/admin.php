@@ -501,30 +501,30 @@ $hora = date("H:i:s");
         
         </div>
 
-         <!--------------------------- CREAR EMPRESA ------------action="../../php/admin/crearEmpresa.php"----------- -->
-        <div class="crearEmpresa" id="contencrearEmpresa">
-            <div class="contetFoempresa">
+         <!--------------------------- CREAR EMPRESA ---id="contencrearEmpresa"-------------------- -->
+        <div class="crearEmpresa" >
+            <div class="contetFoempresa" >
                 
                 <div class="tituloempre">
                     <b>CREAR EMPRESA</b>
                 </div>
                 <div>
                 
-                    <form autocomplete="off"  id="formcrearEmpresa" class="formularioCrearempresa" method="POST" >
-                        
+                    <form autocomplete="off"  id="formcrearEmpresa"  class="formularioCrearempresa" method="POST" >
+                        <!-- action="../../php/admin/crearEmpresa.php" -->
                         <div class="primeraLineaempresa">
                                 <div >
-                                    <label for="">NIT</label>
-                                    <input required type="number" name="nit" id="" minlength="5" >
+                                    <label for="">NIT - DOCUMENTO</label>
+                                    <input  type="number" name="nit" id="" minlength="5" >
                                 </div>
                                 <div >
                                     <label for="">NOMBRE DE EMPRESA</label>
-                                    <input required type="text" name="nomEmpresa" id="">
+                                    <input  type="text" name="nomEmpresa" id="">
                                 </div>
                                
                                 <div>
                                     <label for="">RAZON SOCIAL </label>    
-                                    <input required type="text" name="razonSocial">
+                                    <input  type="text" name="razonSocial">
                                 </div>
                         </div>
 
@@ -532,17 +532,18 @@ $hora = date("H:i:s");
                            
                             <div>
                                 <label for="">TELEFONO</label>    
-                                <input required type="number" name="telefonoEmpre">
+                                <input  type="number" name="telefonoEmpre">
                             </div>
                             <div>
                                 <label for="">CORREO EMPRESA</label>    
-                                <input required  name="correoEmpre" id="">
+                                <input   name="correoEmpre" id="">
                             </div>
                         </div>
 
                         <div class="terceralineaempresa">
                             <input type="button" id="btnEnviarempre" value="CREAR"  name="">
-                        </div><!-- <input type="button" value=""> -->
+                            <!-- <input type="submit" value="CREAR"> -->
+                        </div>
 
                     </form>
 
@@ -714,7 +715,7 @@ $hora = date("H:i:s");
                             </div>
                             <div>
                                 <label for="">NOMBRE DEL INSUMO</label>
-                                <input class="input5 NombreInsumo" type="text" name="NombreInsumo" id="NombreInsumo" placeholder="NOMBRE DEL INSUMO" required style="text-transform:uppercase">
+                                <input class="input5 NombreInsumo" type="text" name="NombreInsumo" id="NombreInsumo" placeholder="NOMBRE DEL INSUMO" required style="text-transform:uppercase" pattern ="[A-Z\s]">
                                 <i class="formulario__validacion-estado_insu fas fa-times-circle"></i>
                                 <p class="formulario__input-error_insu">El nombre del insumo tiene entre 4 a 16 dígitos, no puede tener numeros ni caracteres especiales.</p>
                             </div>
@@ -878,8 +879,8 @@ $hora = date("H:i:s");
                 <b>INGRESO DE MAQUINARIA</b>
             </div>
             <div>
-               
-                <form  action="" class="formularioCrearMaqui" method="POST" id="form_crear_maqui">
+               <!--  -->
+                <form   class="formularioCrearMaqui" method="POST" id="form_crear_maqui" >
                     
                     <div class="primeraLineaMa">
                             <div class="asd">
@@ -978,6 +979,7 @@ $hora = date("H:i:s");
                     </div>            
                     <div class="terceraLineaMa">
                         <input type="button" value="ENVIAR" id="enviar_maqui" name="enviar_maqui">
+                        
                     </div>
 
                 </form>
@@ -999,11 +1001,12 @@ $hora = date("H:i:s");
                 <div class="btncrrarALl" id="cerrartipoinsumo">X</div>
             <div>
                 
-                <h1>CREAR TIPO DE INSUMO</h1>
-                <form class="contentform"  action="#" method="POST" id="fomrTipinsu">
+                <h1>CREAR TIPO DE INSUMO</h1><!-- id="fomrTipinsu" action="../../php/admin/tipo_insumo.php"-->
+                <form class="contentform"   id="fomrTipinsu" method="POST" >
                     
-                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" id="Inptipinsu" name="Inptipinsu"required ></div>
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" id="Inptipinsu" name="Inptipinsu"  required></div>
                     <div><input class="btn_peque_form" type="button" value="CREAR" id="btnTipinsu"></div>
+                    <!-- <div><input class="btn_peque_form" type="submit" value="CREAR" ></div> -->
                 </form>
             </div>
         </div>
@@ -1140,7 +1143,7 @@ $hora = date("H:i:s");
                         <li id="invInsumo" class="uno invInsumos"><a  href="../../inventarios/insumos.php">INV DE INSUMOS</a></li>
                     </ul>
                 </li>
-                <li class="reportes" id="reportes"><a href="../../reportes/reportes.php">REPORTES<i class="icono derecha fas fa-chevron-down"></i></a>
+                <li class="reportes" id="reportes"><a>REPORTES<i class="icono derecha fas fa-chevron-down"></i></a>
                     <ul>
                         <li id="repMaquinaria" class="uno repMaquinaria"><a href="../../reportes/reportes_maquinaria.php">REPORTES DE MAQUINARIA</a></li>
                         <li id="repMaterialText" class="uno repMateralT"><a href="../../reportes/reportes_mat_tex.php">REPORTES DE MATERIAL TEXTIL</a></li>

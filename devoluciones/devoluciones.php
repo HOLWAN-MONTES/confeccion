@@ -44,7 +44,6 @@ if ($usario == "" || $usario == null) {
                 
 
                 foreach ($consulta_inve as $maquinaria){
-                    $id_Dev =$maquinaria['ID_ACCION_REALIZADA'];
                 ?>
                 <div class="contentdocumentosotras">
                 

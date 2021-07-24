@@ -25,13 +25,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $categoria = $insumo['categorias'];
                     $nom_cate = $insumo['name'];
                     $canti = $insumo['cantidad'];
-
-                    $sql_inser_insumos = "INSERT INTO detalle_ingreso(ID_DETA_INGRESO, ID_INGRE_MATERIAL, 
-                                            ID_TIP_INGRESO, ID_MATERIAL, CANTIDAD)
-                                            VALUES ('', '$doc_ingre_mat', '$categoria', '$nom_cate', '$canti')";
-                    $cons_inser_insum = mysqli_query($connection,$sql_inser_insumos); 
-                    if ($cons_inser_insum){
-                        if($categoria == 1){
+                    if($categoria == 1){
+                        $sql_inser_insumos = "INSERT INTO detalle_ingreso(ID_DETA_INGRESO, ID_INGRE_MATERIAL, 
+                        ID_TIP_INGRESO, ID_MATERIAL, CANTIDAD, ID_BODEGA)
+                        VALUES ('', '$doc_ingre_mat', '$categoria', '$nom_cate', '$canti', 0)";
+                        $cons_inser_insum = mysqli_query($connection,$sql_inser_insumos); 
+                        if($cons_inser_insum){
                             $ultimo = "SELECT ID_DETA_INGRESO FROM detalle_ingreso WHERE ID_INGRE_MATERIAL = '$doc_ingre_mat' ORDER BY ID_DETA_INGRESO DESC LIMIT 1";
                             $con_ulti = mysqli_query($connection, $ultimo);
                             $dat_ulti = mysqli_fetch_array($con_ulti);
@@ -44,42 +43,98 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                             $cons_bod = "UPDATE detalle_ingreso SET ID_BODEGA = 1, CANTIDAD_TOTAL = '$cani_total' WHERE ID_DETA_INGRESO = '$ulti_arr'";
                             $consu_bod = mysqli_query($connection,$cons_bod); 
-                            
-                        }
-                        elseif($categoria == 2){
-                            $ultimo = "SELECT ID_DETA_INGRESO FROM detalle_ingreso WHERE ID_INGRE_MATERIAL = '$doc_ingre_mat' ORDER BY ID_DETA_INGRESO DESC LIMIT 1";
-                                $con_ulti = mysqli_query($connection, $ultimo);
-                                $dat_ulti = mysqli_fetch_array($con_ulti);
-                                $ulti_arr = $dat_ulti["ID_DETA_INGRESO"];
-    
-                                $consult = "SELECT SUM(CANTIDAD) FROM detalle_ingreso WHERE ID_TIP_INGRESO = 2";
-                                $total = mysqli_query($connection,$consult);
-                                $tot_canti = mysqli_fetch_array($total);
-                                $cani_total = $tot_canti[0];
-    
-                                $cons_bod = "UPDATE detalle_ingreso SET ID_BODEGA = 2, CANTIDAD_TOTAL = '$cani_total' WHERE ID_DETA_INGRESO = '$ulti_arr'";
-                                $consu_bod = mysqli_query($connection,$cons_bod); 
-                        }
-                        elseif($categoria == 3){
-                            $ultimo = "SELECT ID_DETA_INGRESO FROM detalle_ingreso WHERE ID_INGRE_MATERIAL = '$doc_ingre_mat' ORDER BY ID_DETA_INGRESO DESC LIMIT 1";
-                                $con_ulti = mysqli_query($connection, $ultimo);
-                                $dat_ulti = mysqli_fetch_array($con_ulti);
-                                $ulti_arr = $dat_ulti["ID_DETA_INGRESO"];
-    
-                                $consult = "SELECT SUM(CANTIDAD) FROM detalle_ingreso WHERE ID_TIP_INGRESO = 3";
-                                $total = mysqli_query($connection,$consult);
-                                $tot_canti = mysqli_fetch_array($total);
-                                $cani_total = $tot_canti[0];
-    
-                                $cons_bod = "UPDATE detalle_ingreso SET ID_BODEGA = 3, CANTIDAD_TOTAL = '$cani_total' WHERE ID_DETA_INGRESO = '$ulti_arr'";
-                                $consu_bod = mysqli_query($connection,$cons_bod); 
-                        }
-                        else{
-
                         }
                     }
-                    
-                    
+                    elseif($categoria == 2){
+                        $sql_inser_insumos = "INSERT INTO detalle_ingreso(ID_DETA_INGRESO, ID_INGRE_MATERIAL, 
+                        ID_TIP_INGRESO, ID_MATERIAL_TEXTIL, ID_INSUMO, SERIAL_MAQUINARIA, CANTIDAD)
+                        VALUES ('', '$doc_ingre_mat', '$categoria', 7, '$nom_cate', 0, '$canti')";
+
+                        $cons_inser_insum = mysqli_query($connection,$sql_inser_insumos); 
+                        if($cons_inser_insum){
+                            $ultimo = "SELECT ID_DETA_INGRESO FROM detalle_ingreso WHERE ID_INGRE_MATERIAL = '$doc_ingre_mat' ORDER BY ID_DETA_INGRESO DESC LIMIT 1";
+                            $con_ulti = mysqli_query($connection, $ultimo);
+                            $dat_ulti = mysqli_fetch_array($con_ulti);
+                            $ulti_arr = $dat_ulti["ID_DETA_INGRESO"];
+
+                            $consult = "SELECT SUM(CANTIDAD) FROM detalle_ingreso WHERE ID_TIP_INGRESO = 2";
+                            $total = mysqli_query($connection,$consult);
+                            $tot_canti = mysqli_fetch_array($total);
+                            $cani_total = $tot_canti[0];
+
+                            $cons_bod = "UPDATE detalle_ingreso SET ID_BODEGA = 2, CANTIDAD_TOTAL = '$cani_total' WHERE ID_DETA_INGRESO = '$ulti_arr'";
+                            $consu_bod = mysqli_query($connection,$cons_bod); 
+                        }
+                    }
+                    elseif($categoria == 3){
+                        $sql_inser_insumos = "INSERT INTO detalle_ingreso(ID_DETA_INGRESO, ID_INGRE_MATERIAL, 
+                        ID_TIP_INGRESO, ID_MATERIAL_TEXTIL, ID_INSUMO, SERIAL_MAQUINARIA, CANTIDAD)
+                        VALUES ('', '$doc_ingre_mat', '$categoria', 7, 7, '$nom_cate', '$canti')";
+                        
+                        $cons_inser_insum = mysqli_query($connection,$sql_inser_insumos); 
+                        if($cons_inser_insum){
+                            $ultimo = "SELECT ID_DETA_INGRESO FROM detalle_ingreso WHERE ID_INGRE_MATERIAL = '$doc_ingre_mat' ORDER BY ID_DETA_INGRESO DESC LIMIT 1";
+                            $con_ulti = mysqli_query($connection, $ultimo);
+                            $dat_ulti = mysqli_fetch_array($con_ulti);
+                            $ulti_arr = $dat_ulti["ID_DETA_INGRESO"];
+
+                            $consult = "SELECT SUM(CANTIDAD) FROM detalle_ingreso WHERE ID_TIP_INGRESO = 3";
+                            $total = mysqli_query($connection,$consult);
+                            $tot_canti = mysqli_fetch_array($total);
+                            $cani_total = $tot_canti[0];
+
+                            $cons_bod = "UPDATE detalle_ingreso SET ID_BODEGA = 3, CANTIDAD_TOTAL = '$cani_total' WHERE ID_DETA_INGRESO = '$ulti_arr'";
+                            $consu_bod = mysqli_query($connection,$cons_bod); 
+                        }
+                    }
+                    // if ($cons_inser_insum){
+                    //     if($categoria == 1){
+                    //         $ultimo = "SELECT ID_DETA_INGRESO FROM detalle_ingreso WHERE ID_INGRE_MATERIAL = '$doc_ingre_mat' ORDER BY ID_DETA_INGRESO DESC LIMIT 1";
+                    //         $con_ulti = mysqli_query($connection, $ultimo);
+                    //         $dat_ulti = mysqli_fetch_array($con_ulti);
+                    //         $ulti_arr = $dat_ulti["ID_DETA_INGRESO"];
+
+                    //         $consult = "SELECT SUM(CANTIDAD) FROM detalle_ingreso WHERE ID_TIP_INGRESO = 1";
+                    //         $total = mysqli_query($connection,$consult);
+                    //         $tot_canti = mysqli_fetch_array($total);
+                    //         $cani_total = $tot_canti[0];
+
+                    //         $cons_bod = "UPDATE detalle_ingreso SET ID_BODEGA = 1, CANTIDAD_TOTAL = '$cani_total' WHERE ID_DETA_INGRESO = '$ulti_arr'";
+                    //         $consu_bod = mysqli_query($connection,$cons_bod); 
+                            
+                    //     }
+                    //     elseif($categoria == 2){
+                    //         $ultimo = "SELECT ID_DETA_INGRESO FROM detalle_ingreso WHERE ID_INGRE_MATERIAL = '$doc_ingre_mat' ORDER BY ID_DETA_INGRESO DESC LIMIT 1";
+                    //             $con_ulti = mysqli_query($connection, $ultimo);
+                    //             $dat_ulti = mysqli_fetch_array($con_ulti);
+                    //             $ulti_arr = $dat_ulti["ID_DETA_INGRESO"];
+    
+                    //             $consult = "SELECT SUM(CANTIDAD) FROM detalle_ingreso WHERE ID_TIP_INGRESO = 2";
+                    //             $total = mysqli_query($connection,$consult);
+                    //             $tot_canti = mysqli_fetch_array($total);
+                    //             $cani_total = $tot_canti[0];
+    
+                    //             $cons_bod = "UPDATE detalle_ingreso SET ID_BODEGA = 2, CANTIDAD_TOTAL = '$cani_total' WHERE ID_DETA_INGRESO = '$ulti_arr'";
+                    //             $consu_bod = mysqli_query($connection,$cons_bod); 
+                    //     }
+                    //     elseif($categoria == 3){
+                    //         $ultimo = "SELECT ID_DETA_INGRESO FROM detalle_ingreso WHERE ID_INGRE_MATERIAL = '$doc_ingre_mat' ORDER BY ID_DETA_INGRESO DESC LIMIT 1";
+                    //             $con_ulti = mysqli_query($connection, $ultimo);
+                    //             $dat_ulti = mysqli_fetch_array($con_ulti);
+                    //             $ulti_arr = $dat_ulti["ID_DETA_INGRESO"];
+    
+                    //             $consult = "SELECT SUM(CANTIDAD) FROM detalle_ingreso WHERE ID_TIP_INGRESO = 3";
+                    //             $total = mysqli_query($connection,$consult);
+                    //             $tot_canti = mysqli_fetch_array($total);
+                    //             $cani_total = $tot_canti[0];
+    
+                    //             $cons_bod = "UPDATE detalle_ingreso SET ID_BODEGA = 3, CANTIDAD_TOTAL = '$cani_total' WHERE ID_DETA_INGRESO = '$ulti_arr'";
+                    //             $consu_bod = mysqli_query($connection,$cons_bod); 
+                    //     }
+                    //     else{
+
+                    //     }  
+                    }
                 }
             }
             $res = array(
@@ -88,15 +143,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 "statusText"=>"Todo esta bien",
             );
             echo json_encode($res);
-        }
-        else{
-            $res = array(
-                'err' => true, 
-                'status' => http_response_code(500),
-                'statusText' => 'Usted no hizo la consulta bien',
-            ); 
-            echo json_encode($res);
-        }
+        
+        // else{
+        //     $res = array(
+        //         'err' => true, 
+        //         'status' => http_response_code(500),
+        //         'statusText' => 'Usted no hizo la consulta bien',
+        //     ); 
+        //     echo json_encode($res);
+        // }
     }
     
     

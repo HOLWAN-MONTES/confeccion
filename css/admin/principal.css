@@ -662,61 +662,11 @@ li{
     color: #000;
 } */
 
-/* 
-
-.primeraLineaMa{
-    display: grid;
-    margin-bottom: 10px;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
-
-.fff{
-   
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 30px;
-
-}
-
-  
-
-.segundaLineaMa{
-   
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-
-    
-}
-
-.terceraLineaMa input{
-    margin-top: 10px;
-    padding: 6px 35px 6px 35px;
-    text-align: center;
-    width: 20%;
-}
-
-.asd{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-}
-
-.asd input{
-    margin-top: -10px;
-    padding: 6px 35px 6px 35px;
-    text-align: center;
-    width: 80%;
-    margin: 0 auto;
-} */
-
 
 /* crear empresa------------------------------------------------------------------------------------------------------------------------------------------ */
 
 .crearEmpresa{
-    display: none;
+    display: block;
     text-align: center;
     width: 80%;
     height: auto;

@@ -39,8 +39,24 @@ enviar.addEventListener("click", (e) => {
     .then(res => res.text()).then(info => {       
         if (info == 1) {
             Swal.fire({
+                title: 'Advertencia!',
+                text: 'El numero de celular ya existe.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            })
+              
+        }else if(info == 2){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'El correo electronico ya existe.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            })
+           
+        }else if(info == 3){
+            Swal.fire({
                 title: 'Registrado!',
-                text: 'Se registro el usuario',
+                text: 'Se registro el usuario exitosamente.',
                 icon: 'success',
                 confirmButtonText: 'Continuar'
                 
@@ -51,8 +67,8 @@ enviar.addEventListener("click", (e) => {
             actualizar()
             formulario.reset()
             documento_user.disabled = false
-            
-        }else if(info == 2){
+        }
+        else if(info == 4){
             Swal.fire({
                 title: 'Error!',
                 text: 'El usuario con este documento ya existe',
