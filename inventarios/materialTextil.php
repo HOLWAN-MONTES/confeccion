@@ -36,6 +36,11 @@ $consulta_tipo_material = mysqli_query($connection,$sql_tipo_material)
                     <button id="cantidad" >CANTIDAD</button>
                 </form>
 
+                <form action="" method="post" id="" >
+                    <input type="hidden" name="" value="1">
+                    <button id="todo" >TODO</button>
+                </form>
+
                 
                 <form action="" method="POST" id="" class="buscarmaquinaria">
                     <input type="text" name="docu" id="buscador-textil" placeholder="Buscar">
