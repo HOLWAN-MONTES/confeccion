@@ -3,6 +3,22 @@ const mostrarAnuncio = document.querySelectorAll('.agregoF');
 
 const crear = document.getElementById('crear');
 
+/* input de login en usuario */
+const input=  document.getElementById('usuario');
+const password = document.getElementById('password')
+
+
+input.addEventListener('input',function(){
+  if (this.value.length > 10) 
+     this.value = this.value.slice(0,10); 
+})
+
+password.addEventListener('input',function(){
+    if (this.value.length > 1) 
+       this.value = this.value.slice(0,3); 
+  })
+
+
 
 crear.addEventListener('click',(a)=>{
     a.preventDefault();
@@ -59,7 +75,6 @@ crear.addEventListener('click',(a)=>{
     })
 
 })
-
 
 
 

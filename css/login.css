@@ -185,43 +185,58 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-    }
+}
+
 input[type=number] { -moz-appearance:textfield; }
 
 
 /* BOTON */
 
 .btnEnviar{
-    
+    margin: 10px;
     border-radius: 10px;
     cursor: pointer;
     color: white;
     background-color: green;
-    width: auto ;
-    padding: 10px 20px 10px 20px;
+    width: 30%;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
 }
 
 
 /* imagen de logo de costura */
 .iamgenCos{
     width: 100%;
-   
-    
 }
 
 .contentLogo{    
-   
     width: 60%;
     margin: 0 auto;    
     margin-left: 20%;
 }
 
 .dddd{
-   
     width: 100%;
 }
 
+.agregoF{
+    border: 1px solid red;
+    width: 100%;
+}
 
+.olvidosuclave{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    border: 1px solid red;
+    width: 100%;
+    padding: 10px;
+}
+
+.olvidosuclave:hover{
+    color: black;
+    font-weight: bold;
+}
 
 
 

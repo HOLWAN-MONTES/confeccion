@@ -459,7 +459,7 @@ $hora = date("H:i:s");
 
                                 <div class="cantidadSe">
                                     <label for="">CANTIDAD</label> <br>
-                                    <input type="number" id="cantidad" class="cant_ing_ins" placeholder="CANTIDAD">
+                                    <input type="number" id="cantidad"  class="cant_ing_ins" placeholder="CANTIDAD">
                                 </div>
                             
                            
