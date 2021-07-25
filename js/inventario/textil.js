@@ -5,6 +5,8 @@ const cantida = document.getElementById("cantidad")
 const contenedor = document.getElementById("contenido")
 const fondo = document.querySelector(".fondo")
 const editar = document.querySelector(".contenedorCajaInventario")
+const marca = document.getElementById("marca")
+const tipo_material = document.getElementById("tipo_material")
 
 //^ ********************* FUNCIONES ******************
 
@@ -97,6 +99,22 @@ function editar_eliminar(action,id) {
     }
 }
 
+function buscador_tipo (accion,dato) {
+    console.log(accion + dato)
+
+    fetch("../php/inventario/textil/tipos.php",{
+        method:"POST",
+        body:JSON.stringify({
+            "marca_accion":accion,
+            "tipo_marca":dato
+        })
+        
+    }).then(res => res.text()).then(info => {
+        console.log(info)
+        contenedor_principal.innerHTML = `${info}`
+    })
+}
+
 //^ **************** BUSCADOR DE TEXTIL ********************* 
  
 buscador_insumo.addEventListener("keyup", () => {
@@ -149,4 +167,19 @@ editar.addEventListener("click", (e) => {
     } 
 
   
+})
+
+//^ ************************  buscador por la marca ****************
+
+marca.addEventListener("click", () => {
+    const dato = marca.value
+    console.log(dato)
+    buscador_tipo("marca",dato)
+})
+
+//^ **************************** buscador por tipo de material **************
+
+tipo_material.addEventListener("click", () => {
+    const dato = tipo_material.value
+    buscador_tipo("tipo_material",dato)
 })

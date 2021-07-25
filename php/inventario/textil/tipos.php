@@ -1,13 +1,16 @@
 <?php
 require_once("../../conections/conexion.php");
 
-$_POST = json_decode(file_get_contents("php://input"),true);
+$_POST=json_decode(file_get_contents("php://input"),true);
 
-$textil = $_POST["textil"];
+$tipo = $_POST['"marca_accion'];
+$dato = $_POST['tipo_marca'];
 
-if($textil == 1 || $textil == 2 || $textil == 3 || $textil == 4 || $textil == 5 || $textil == 6 || $textil == 7 || $textil == 8 || $textil == 9 || $textil == 0 ){
 
-    $consulta = "SELECT ID_MATERIAL_TEXTIL,NOM_MATERIAL_TEXTIL,tipo_material_textil.NOM_TIP_MATE_TEXTIL,marca.NOM_MARCA,color.NOM_COLOR,METRAJE FROM material_textil,tipo_material_textil,marca,color WHERE material_textil.ID_TIP_MATE_TEXTIL=tipo_material_textil.ID_TIP_MATE_TEXTIL and material_textil.ID_MARCA=marca.ID_MARCA and material_textil.ID_COLOR=color.ID_COLOR and material_textil.ID_MATERIAL_TEXTIL like '$textil%' ";
+
+if ($tipo == "marca") {
+    
+    $consulta = "SELECT ID_MATERIAL_TEXTIL,NOM_MATERIAL_TEXTIL,tipo_material_textil.NOM_TIP_MATE_TEXTIL,marca.NOM_MARCA,color.NOM_COLOR,METRAJE FROM material_textil,tipo_material_textil,marca,color WHERE material_textil.ID_TIP_MATE_TEXTIL=tipo_material_textil.ID_TIP_MATE_TEXTIL and material_textil.ID_MARCA=marca.ID_MARCA and material_textil.ID_COLOR=color.ID_COLOR and  material_textil.ID_MARCA = '$dato'";
 
     $consulta_text = mysqli_query($connection,$consulta);
 
@@ -44,7 +47,8 @@ if($textil == 1 || $textil == 2 || $textil == 3 || $textil == 4 || $textil == 5 
         ');
     }
 }else {
-    $consulta = "SELECT ID_MATERIAL_TEXTIL,NOM_MATERIAL_TEXTIL,tipo_material_textil.NOM_TIP_MATE_TEXTIL,marca.NOM_MARCA,color.NOM_COLOR,METRAJE FROM material_textil,tipo_material_textil,marca,color WHERE material_textil.ID_TIP_MATE_TEXTIL=tipo_material_textil.ID_TIP_MATE_TEXTIL and material_textil.ID_MARCA=marca.ID_MARCA and material_textil.ID_COLOR=color.ID_COLOR and  material_textil.NOM_MATERIAL_TEXTIL LIKE '$textil%'";
+    
+    $consulta = "SELECT ID_MATERIAL_TEXTIL,NOM_MATERIAL_TEXTIL,tipo_material_textil.NOM_TIP_MATE_TEXTIL,marca.NOM_MARCA,color.NOM_COLOR,METRAJE FROM material_textil,tipo_material_textil,marca,color WHERE material_textil.ID_TIP_MATE_TEXTIL=tipo_material_textil.ID_TIP_MATE_TEXTIL and material_textil.ID_MARCA=marca.ID_MARCA and material_textil.ID_COLOR=color.ID_COLOR and  material_textil.ID_TIP_MATE_TEXTIL = '$dato'";
 
     $consulta_text = mysqli_query($connection,$consulta);
 

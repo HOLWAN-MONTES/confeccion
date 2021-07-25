@@ -7,6 +7,12 @@ $usario = $_SESSION["DOCUMENTO"];
 if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
 }
+
+$sql_marca = "SELECT * from marca where ID_TIP_MARCA = 1";
+$consulta_marca = mysqli_query($connection,$sql_marca);
+
+$sql_tipo_material = "SELECT * from tipo_material_textil";
+$consulta_tipo_material = mysqli_query($connection,$sql_tipo_material)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +40,26 @@ if ($usario == "" || $usario == null) {
                 <form action="" method="POST" id="" class="buscarmaquinaria">
                     <input type="text" name="docu" id="buscador-textil" placeholder="Buscar">
                 </form>
+
+                <select name="" id="marca">
+                    <option value="">Seleccione una marca</option>
+                    <?php
+                    foreach($consulta_marca as $marca){
+                        ?> <option value="<?=$marca['ID_MARCA']?>"><?=$marca['NOM_MARCA']?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
+                <select name="" id="tipo_material">
+                    <option value="">Seleccione una material</option>
+                    <?php
+                    foreach($consulta_tipo_material as $material){
+                        ?> <option value="<?=$material['ID_TIP_MATE_TEXTIL']?>"><?=$material['NOM_TIP_MATE_TEXTIL']?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
+
 
             </div>
             <div class="iconouserr">
