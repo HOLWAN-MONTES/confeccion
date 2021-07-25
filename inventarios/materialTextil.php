@@ -7,6 +7,12 @@ $usario = $_SESSION["DOCUMENTO"];
 if ($usario == "" || $usario == null) {
     header("location: ../../php/exit/salir.php");
 }
+
+$sql_marca = "SELECT * from marca where ID_TIP_MARCA = 1";
+$consulta_marca = mysqli_query($connection,$sql_marca);
+
+$sql_tipo_material = "SELECT * from tipo_material_textil";
+$consulta_tipo_material = mysqli_query($connection,$sql_tipo_material)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,25 +33,33 @@ if ($usario == "" || $usario == null) {
 
                 <form action="" method="post" id="" >
                     <input type="hidden" name="" value="1">
-                    <button id="" >----------------</button>
+                    <button id="cantidad" >CANTIDAD</button>
                 </form>
 
-                <form action="" method="post">
-                    <button id="todo">-------------</button>
-                </form>
-                <form action="" method="post">
-                    <button id="todo">---------------</button>
-                </form>
-                <form action="" method="post">
-                    <button id="todo">-------------</button>
-                </form>
-                <form action="" method="post">
-                    <button id="todo">----------------</button>
-                </form>
-
+                
                 <form action="" method="POST" id="" class="buscarmaquinaria">
-                    <input type="number" name="docu" id="buscador-user" placeholder="Buscar">
+                    <input type="text" name="docu" id="buscador-textil" placeholder="Buscar">
                 </form>
+
+                <select name="" id="marca">
+                    <option value="">Seleccione una marca</option>
+                    <?php
+                    foreach($consulta_marca as $marca){
+                        ?> <option value="<?=$marca['ID_MARCA']?>"><?=$marca['NOM_MARCA']?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
+                <select name="" id="tipo_material">
+                    <option value="">Seleccione una material</option>
+                    <?php
+                    foreach($consulta_tipo_material as $material){
+                        ?> <option value="<?=$material['ID_TIP_MATE_TEXTIL']?>"><?=$material['NOM_TIP_MATE_TEXTIL']?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
+
 
             </div>
             <div class="iconouserr">
@@ -84,16 +98,11 @@ if ($usario == "" || $usario == null) {
             </div>  
 
             <div class="contentGeneralBtns">
+                
                 <div>
                     <form action="" method="post" id="" >
                         <input type="hidden" name="" value="1">
-                        <button id="" >EDITAR</button>
-                    </form>
-                </div>
-                <div>
-                    <form action="" method="post" id="" >
-                        <input type="hidden" name="" value="1">
-                        <button id="" >ELIMINAR</button>
+                        <button id="" class="eliminar" >ELIMINAR</button>
                     </form>
                 </div>
             </div>
@@ -103,7 +112,15 @@ if ($usario == "" || $usario == null) {
     ?> 
       </div>
     </main>
+     <!-- ^ventana de las canidades  -->
+     <div class="fondo">
+        <div  class="ventana_maquinaria">
+            <h2>Maquinarias</h2>
+            <div id="contenido"></div>
+        </div>
+    </div>
     
-    
+    <script src="../js/inventario/textil.js"></script>
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
