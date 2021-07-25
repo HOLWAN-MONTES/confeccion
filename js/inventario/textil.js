@@ -7,6 +7,7 @@ const fondo = document.querySelector(".fondo")
 const editar = document.querySelector(".contenedorCajaInventario")
 const marca = document.getElementById("marca")
 const tipo_material = document.getElementById("tipo_material")
+const todo = document.getElementById("todo")
 
 //^ ********************* FUNCIONES ******************
 
@@ -182,4 +183,14 @@ marca.addEventListener("click", () => {
 tipo_material.addEventListener("click", () => {
     const dato = tipo_material.value
     buscador_tipo("tipo_material",dato)
+})
+
+//^ ******************** TODO ******************
+
+todo.addEventListener("click", (e) => {
+    e.preventDefault()
+
+    fetch("../php/inventario/textil/todo.php",{method:"GET"}).then(res => res.text()).then(info => {
+        contenedor_principal.innerHTML=`${info}`
+    })
 })
