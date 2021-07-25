@@ -1,3 +1,8 @@
+var input=  document.getElementById('cantid_pres');
+input.addEventListener('input',function(){
+  if (this.value.length > 5) 
+     this.value = this.value.slice(0,5); 
+})
 // registro de peticion de materiales a prestar 
 $(document).ready(function(){ //se asigna una funcion 
     recargarLista();
@@ -31,13 +36,13 @@ $(document).ready(function(){
 
 // registro de materiales
 
-var datos = [];
+var datosPre = [];
 var id_dato = 1;
 var cant_edi = 0;
 var can;
 var canti_edit;
 var ids_row;
-var fila;
+var filas;
 
 //funcion que trae el valor que contenga los select para agregarlos a la tabla
 function agregarPres(){
@@ -53,33 +58,49 @@ function agregarPres(){
     var hora = $("#hora").text();
 
     if(catego != 0 && catego != '' && nomb != 0 && nomb != '' && cant_pres != 0 && cant_pres != ''){
-        // agregar elementos al arreglo
-        datos.push(
-            {
-                "id_dato": id_dato,
-                "responsable": respons,
-                "categorias": cates,
-                "names": nomb,
-                "cantidad": cant_pres,
-                "fecha": fecha,
-                "hora": hora
-            }
-        );
-        id_dato++;
-        cant_edi++;
-        ids_row = "row"+id_dato;
-        canti_edit = "canti" + cant_edi;
-        const deleteButton = "<button class='delete_button'>Eliminar</button>";
-        var editButton = `<button class='editar_btn ${id_dato}'>Editar</button>`;
-        fila='<tr id="'+ ids_row +'" class="tr_val" ><td class="td_cat">'+ categ_pres +'</td><td class="td_nom">'+ names +'</td><td id="'+ canti_edit +'" class="cant_ed" >'+ cant_pres +'</td><td class="td_botones">'+ editButton + deleteButton +'</td></tr>';
-        
-        $('#tablaInfo').append(fila); // agrega los datos capturados a la tabla
-        
-        // vaciar los campos de los select cuando se agrega un valor
-        $('#categ option:first').prop('selected', true);
-        $('#nom_categ').find('option').not(':first').remove();
-        $('input[type="number"]').val('');
+        if(check_id(names)) {
+            Swal.fire({
+                title: 'Datos Repetidos!',
+                text: 'Ingrese otro material, este ya se encuentra en la tabla.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            });
+            $('#categ option:first').prop('selected', true);
+            $('#nom_categ').find('option').not(':first').remove();
+            $('input[type="number"]').val('');
+        }
+        else{
+            // agregar elementos al arreglo
+            datosPre.push(
+                {
+                    "id_dato": id_dato,
+                    "responsable": respons,
+                    "categorias": cates,
+                    "names": nomb,
+                    "cantidad": cant_pres,
+                    "fecha": fecha,
+                    "hora": hora
+                }
+            );
+            id_dato++;
+            cant_edi++;
+            ids_row = "row"+id_dato;
+            canti_edit = "canti" + cant_edi;
+            const deleteButton = "<button class='delete_button'>ELIMINAR</button>";
+            var editButton = `<button class='editar_btn ${id_dato}'>EDITAR</button>`;
+            filas='<tr id="'+ ids_row +'" class="tr_val" ><td class="td_cat">'+ categ_pres +'</td><td for="nombr" class="td_nom" id="no_categ">'+ names +'</td><td id="'+ canti_edit +'" class="cant_ed" >'+ cant_pres +'</td><td class="td_botones">'+ editButton + deleteButton +'</td></tr>';
+            
+            $('#tablaInfo').append(filas); // agrega los datos capturados a la tabla
+            
+            // vaciar los campos de los select cuando se agrega un valor
+            $('#categ option:first').prop('selected', true);
+            $('#nom_categ').find('option').not(':first').remove();
+            $('input[type="number"]').val('');
+    
 
+        }
+       
+        
     }else{
         Swal.fire({
             title: '¡Advertencia!',
@@ -89,8 +110,14 @@ function agregarPres(){
         })
     }
 }
-console.log(datos);
+console.log(datosPre);
 
+function check_id(names){
+    let idss = document.querySelectorAll('#tablaInfo td[for="nombr"]');
+    console.log(idss);
+    return [].filter.call(idss, td => td.textContent === names).length === 1;
+}
+console.log(datosPre);
 
 // borrar la fila de la tabla 
 $(document).on("click", ".delete_button", function(e){
@@ -104,7 +131,7 @@ $(document).on("click", ".delete_button", function(e){
     }).then(result => {
         if(result.isConfirmed) {
             $(this).parents('tr').eq(0).remove(); //obtenemos el elemento y eliminamos
-            datos.splice(ids_row, 1);
+            datosPre.splice(ids_row, 1);
             Swal.fire({
                 title: '¡Eliminado!',
                 text: 'El material se elimino de la tabla.',
@@ -149,8 +176,8 @@ function editarMaterial(e){
                 var canti_nueva = editContenido(_this).innerHTML = parseInt(nueva_canti);//Llama a la funcion y recibe el objeto el cual es donde se llama la funcion
                 console.log(canti_nueva);
                 $(this).parent().parent().find("td:eq(2)").html(parseInt(nueva_canti));//Reemplaza el valor actual html por valor editado y lo muestra en el html
-                console.log(datos)
-                datos[compra]['cantidad'] = canti_nueva; //Asigno el valor nuevo al arreglo
+                console.log(datosPre)
+                datosPre[compra]['cantidad'] = canti_nueva; //Asigno el valor nuevo al arreglo
                 Swal.fire({
                     title: '¡editado!',
                     text: 'La edicion se realizo exitosamente.',
@@ -195,25 +222,28 @@ function editContenido(opciones){
 function guardarMateriales(e){
     e.preventDefault();
 
-    var json = JSON.stringify(datos); //convierte el array en una cadena de caracteres
-    if(datos != ""){
+    var jsonn = JSON.stringify(datosPre); //convierte el array en una cadena de caracteres
+    if(datosPre != ""){
         $.ajax({
             url:'../../php/instructor/registro_prestamo.php',
             method:"POST",
-            data: "json="+json,
+            data: "arreglo="+jsonn,
             success: function(a){
-                const envios = JSON.parse(a);
-                if(envios.status === 200){
-                    datos = [];
+                // const envios = JSON.parse(a);
+                // if(envios.status === 200){
+                    datosPre = [];
                     Swal.fire({
                         title: '¡Enviado!',
                         text: 'Se registro el prestamo del material.',
                         icon: 'success',
                         confirmButtonText: 'Continuar'
                     });
-                    console.log(datos);
+                    console.log(datosPre);
                     //limpiamos los datos que esten en la tabla
                     document.getElementById('agregado').innerHTML = '';
+                    $('#categ option:first').prop('selected', true);
+                    $('#nom_categ').find('option').not(':first').remove();
+                    $('input[type="number"]').val('');
                     var actual = new Date();
                     var hor_ac = actual.getHours();
                     var minutes = actual.getMinutes()
@@ -225,15 +255,16 @@ function guardarMateriales(e){
                    
                     document.getElementById("hora").innerHTML = hora_actual;
 
-                }else{
-                    Swal.fire({
-                        title: '¡Advertencia!',
-                        text: 'No se registro el prestamo.',
-                        icon: 'warning',
-                        confirmButtonText: 'Continuar'
-                    });
+                // }else{
+                //     Swal.fire({
+                //         title: '¡Advertencia!',
+                //         text: 'No se registro el prestamo.',
+                //         icon: 'warning',
+                //         confirmButtonText: 'Continuar'
+                //     });
                    
-                }
+                // }
+                
             }
         });
 
@@ -251,7 +282,7 @@ function guardarMateriales(e){
 
 function cancelarMaterial(e){
     e.preventDefault();
-    if(datos != ""){
+    if(datosPre != ""){
         
         Swal.fire({
             title: '¿Esta seguro de cancelar el prestamo?',
@@ -262,15 +293,18 @@ function cancelarMaterial(e){
         })
         .then(resulta =>{
             if(resulta.isConfirmed){
+                datosPre = [];
                 Swal.fire({
                     title: '¡Cancelado!',
-                    text: 'Se cancelo el ingreso del material.',
+                    text: 'Se cancelo el prestamo del material.',
                     icon: 'info',
                     confirmButtonText: 'Continuar'
                 });
-                datos = [];
                 //limpiamos lo que tenga en la tabla
                 document.getElementById('agregado').innerHTML = '';
+                $('#categ option:first').prop('selected', true);
+                $('#nom_categ').find('option').not(':first').remove();
+                $('input[type="number"]').val('');
                 var actual = new Date();
                 var hor_ac = actual.getHours();
                 var minutes = actual.getMinutes()
