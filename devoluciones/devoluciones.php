@@ -44,6 +44,7 @@ if ($usario == "" || $usario == null) {
                 
 
                 foreach ($consulta_inve as $maquinaria){
+                $id_Dev=$maquinaria["ID_ACCION_REALIZADA"]
                 ?>
                 <div class="contentdocumentosotras">
                 
@@ -66,9 +67,9 @@ if ($usario == "" || $usario == null) {
                             <table>
                                 <thead>
                                 <tr>
-                                    <th>MATERIAL    .</th>
-                                    <th>CANTIDAD   .</th>
-                                    <th>C_TOTAL .</th>
+                                    <th>MATERIAL</th>
+                                    <th>CANTIDAD</th>
+                                    <th>C_TOTAL</th>
                                 </tr>
                                 </thead>
                                 <tbody>

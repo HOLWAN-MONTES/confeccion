@@ -1,0 +1,22 @@
+<?php
+    require_once("../php/conections/conexion.php");
+    session_start();
+
+        $id = $_POST['id_deta'];
+        echo ($id);
+
+        $actualizar="UPDATE accion_realizada SET ID_ESTADO =3 WHERE ID_ACCION_REALIZADA=$id";
+        $consultaRR = mysqli_query($connection,$actualizar);
+
+        if($consultaRR){
+            echo  "<script>alert('devolucion aceptada')</script>";
+            echo '<script> window.location="devoluciones.php" </script>';
+        }else{
+        
+            echo  "<script>alert('algo salio mal con tu devolucion')</script>";
+            echo '<script> window.location="devoluciones.php" </script>';
+            
+        }
+
+
+?>
