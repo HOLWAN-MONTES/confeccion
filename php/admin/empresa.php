@@ -8,9 +8,9 @@ if ($consulta){
     
     foreach($consulta as $empresa){
         echo ('
-        <div class="contenedorFicha">
+        <div class="contenedorFichaEmpre">
             
-            <div class="documentosotras" >
+            <div class="documentosotrasEMPRE" >
                 <div>NIT de la empresa :<p>'.$empresa["NIT_DOC"].'</p></div>
                                     
                 <div>EMPLEADO :<p>'.$empresa["NOM_EMPLEADO"].'</p></div>
