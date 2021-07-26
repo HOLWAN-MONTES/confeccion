@@ -417,7 +417,7 @@ $hora = date("H:i:s");
                                 $consulta_proveedor = mysqli_query($connection,$sql_porveedor);
                                 foreach($consulta_proveedor as $proveedor) {
                                 ?> 
-                                    <option value="<?=$proveedor['NIT_DOC']?>"><?=$proveedor['NOM_EMPRESA']?> </option>
+                                    <option value="<?=$proveedor['NIT_DOC']?>"><?=$proveedor['NOM_EMPLEADO']?> </option>
                                 <?php
                                 }
                                 ?>
