@@ -108,7 +108,7 @@ $hora_de = date("H:i:s");
                     <select class="categ" name="categ" id="categ"  style="text-transform: uppercase;" required>
                         <option value="0">SELECCIONAR</option>
                         <?php
-                        $tipoPres = "SELECT * FROM tipo_ingreso";
+                        $tipoPres = "SELECT * FROM tipo_ingreso WHERE ID_TIP_INGRESO <= 2";
                         $inser = mysqli_query($connection ,$tipoPres);
                         while($tip = mysqli_fetch_array($inser)){
                         ?>
@@ -379,7 +379,7 @@ $hora_de = date("H:i:s");
 <!------------- ventana de devolucion pendiente  de material------------------ -->
 <div class="ventana_cuatro" id="ventana_cuatro">
     <div class="contentDevolucionesPendientes" id="contentDevolucionesPendientes">
-        <h1>Aqui van las devoluciones pendientes</h1>
+        <h1>HISTORIAL</h1>
         <div class="cerrar4" id="cerrar4">
             <a href=""><i class="fas fa-times-circle"></i></a>
         </div>
