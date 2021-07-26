@@ -79,13 +79,13 @@ if ($usario == "" || $usario == null) {
                 <div>
                     <form action="" method="post" id="" >
                         <input type="hidden" name="" value="1">
-                        <button id="" >EDITAR</button>
+                        <!-- <button id="" >EDITAR</button> -->
                     </form>
                 </div>
                 <div>
                     <form action="" method="post" id="" >
                         <input type="hidden" name="" value="1">
-                        <button id="" >ELIMINAR</button>
+                        <button id="" class="eliminar">ELIMINAR</button>
                     </form>
                 </div>
             </div>
@@ -103,5 +103,6 @@ if ($usario == "" || $usario == null) {
         </div>
     </div>
     <script src="../js/inventario/insumo.js"></script>
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>

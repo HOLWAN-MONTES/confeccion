@@ -70,16 +70,16 @@
     
                     <div class="segundalinea">
                         <div class="contentForm">
-                            <div class="tituloForm"><b>NOS PONDREMOS EN CONTECTO CONTIGO</b></div>
+                            <div class="tituloForm"><b>NOS PONDREMOS EN CONTACTO CONTIGO</b></div>
                             <div class="boycontenForm">
 
-                                <form >
+                                <form method="POST" action="../correos/correo.php" >
                                     <div class="primera">
-                                        <div><input class="inputs" type="text" placeholder="NOMBRE*"></div>
-                                        <div><input class="inputs" type="text" placeholder="APELLIDO*" name="" id=""></div>
+                                        <div><input name="nombre" class="inputs" type="text" placeholder="NOMBRE*"></div>
+                                        <div><input class="inputs" type="text" placeholder="APELLIDO*" name="apellido" id=""></div>
                                    
-                                        <div><input class="inputs" type="email" placeholder="EMAIL*"> </div>
-                                        <div><input class="inputs" type="number" placeholder="TELEFONO*"></div>
+                                        <div><input name="email" class="inputs" type="email" placeholder="EMAIL*"> </div>
+                                        <div><input name="telefono" class="inputs" type="number" placeholder="TELEFONO*"></div>
                                     </div>
                                     <div class="segunda">
                                         <textarea class="tetarea" name="comentarios" rows="10" cols="40" placeholder="COMENTARIOS"></textarea>

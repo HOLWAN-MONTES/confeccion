@@ -8,6 +8,7 @@ const datoBuscador = document.getElementById("buscador-user")
 const formBuscador = document.getElementById("form-buscador-user")
 const conte_user = document.getElementById("conte-user")
 
+
 //^ variables para el tipo de usuario de los botones
 const admin = document.getElementById("btn_Admin")
 const formusuario = document.getElementById("for_Usuario")
@@ -16,6 +17,10 @@ const forminstructor = document.getElementById("form_instructor")
 const todos = document.getElementById("todo")
 const btn_empresa = document.getElementById("btn_empresa")
 const form_empresa = document.getElementById("form_empresa")
+const empresa = document.getElementById("form_empresa")
+
+
+
 
 //  CONEXION AL ARCHIVO PHP PARA EL FORmInsu DE CREAR INSUMOS 
 enviarInsu.addEventListener("click", (e) => {
@@ -148,6 +153,16 @@ btn_empresa.addEventListener("click", (e) => {
     })
 })
 
+//^ buscardor de la empresa de usuarios registrado
+
+empresa.addEventListener("click", (e) => {
+    e.preventDefault()
+
+    fetch("../../php/admin/empresa.php",{method:"GET"}).then(res => res.text()).then(info => {
+        conte_user.innerHTML = `${info}`
+    })
+})
+
 // FUNCION DE ACTUALIZAR 
  
 function actualizar() {
@@ -239,3 +254,6 @@ enviarTipInsu.addEventListener('click', (e) => {
         
     })
 })
+
+
+

@@ -61,7 +61,11 @@ session_start();
                             ?>
                         </select><br> 
                     
-                        <button class="btnEnviar" id="crear">INGRESAR</button>
+                        <button class="btnEnviar" id="crear">INGRESAR</button> <br>
+                        <div class="hreff">
+                            
+                            <a href="../olvideClave/recuperarClave.html" class="olvidosuclave">¿Has olvidado tu contraseña?</a> 
+                        </div>
                     <div>
                 </form>
             

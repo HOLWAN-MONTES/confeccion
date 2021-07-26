@@ -1,10 +1,13 @@
 //^ ************* VARIABLES DE MANEJO DEL DOM *************
-const buscador_insumo = document.getElementById("buscador-insumo")
+const buscador_insumo = document.getElementById("buscador-textil")
 const contenedor_principal = document.querySelector(".contenedorCajaInventario")
 const cantida = document.getElementById("cantidad")
 const contenedor = document.getElementById("contenido")
 const fondo = document.querySelector(".fondo")
 const editar = document.querySelector(".contenedorCajaInventario")
+const marca = document.getElementById("marca")
+const tipo_material = document.getElementById("tipo_material")
+const todo = document.getElementById("todo")
 
 //^ ********************* FUNCIONES ******************
 
@@ -21,7 +24,7 @@ function editar_eliminar(action,id) {
             
             if(res.isConfirmed){
 
-                fetch("../php/inventario/insumos/eliminar.php",{
+                fetch("../php/inventario/textil/eliminar.php",{
                     method:"POST",
                     body:JSON.stringify({
                         "accion":action,
@@ -30,14 +33,14 @@ function editar_eliminar(action,id) {
             }).then(res => res.text()).then(info => {
                 if (info == 1) {
                     Swal.fire({
-                        title: `El insumo ${id} se elimino`,
+                        title: `El textil ${id} se elimino`,
                         icon: 'warning',
                         showDenyButton: false,
                         confirmButtonText: `Aceptar`,
                        
                     }).then(res => {
                         if (res.isConfirmed) {
-                            window.location = "insumos.php"
+                            window.location = "materialTextil.php"
                         } else {
                             
                         }
@@ -97,17 +100,34 @@ function editar_eliminar(action,id) {
     }
 }
 
-//^ **************** BUSCADOR DE INSUMO ********************* 
+function buscador_tipo (accion,dato) {
+    console.log(accion + dato)
+
+    fetch("../php/inventario/textil/tipos.php",{
+        method:"POST",
+        body:JSON.stringify({
+            "marca_accion":accion,
+            "tipo_marca":dato
+        })
+        
+    }).then(res => res.text()).then(info => {
+        console.log(info)
+        contenedor_principal.innerHTML = `${info}`
+    })
+}
+
+//^ **************** BUSCADOR DE TEXTIL ********************* 
  
 buscador_insumo.addEventListener("keyup", () => {
     const dato = buscador_insumo.value 
     console.log(dato)
-    fetch("../php/inventario/insumos/buscador.php",{
+    fetch("../php/inventario/textil/buscador.php",{
         method:"POST",
         body:JSON.stringify({
-            "insumo":dato
+            "textil":dato
         })
     }).then(res => res.text()).then(info => {
+        console.log(info)
         contenedor_principal.innerHTML=`${info}`
     })
 })
@@ -118,7 +138,7 @@ cantida.addEventListener("click", (e) => {
     e.preventDefault()
     fondo.style.display="flex"
 
-    fetch("../php/inventario/insumos/cantidad.php", {
+    fetch("../php/inventario/textil/cantidad.php", {
         method:"GET"
     }).then(res => res.text()).then(info => {
         contenedor.innerHTML = `${info}`
@@ -148,4 +168,29 @@ editar.addEventListener("click", (e) => {
     } 
 
   
+})
+
+//^ ************************  buscador por la marca ****************
+
+marca.addEventListener("click", () => {
+    const dato = marca.value
+    console.log(dato)
+    buscador_tipo("marca",dato)
+})
+
+//^ **************************** buscador por tipo de material **************
+
+tipo_material.addEventListener("click", () => {
+    const dato = tipo_material.value
+    buscador_tipo("tipo_material",dato)
+})
+
+//^ ******************** TODO ******************
+
+todo.addEventListener("click", (e) => {
+    e.preventDefault()
+
+    fetch("../php/inventario/textil/todo.php",{method:"GET"}).then(res => res.text()).then(info => {
+        contenedor_principal.innerHTML=`${info}`
+    })
 })
