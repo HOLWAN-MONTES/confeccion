@@ -12,15 +12,28 @@
 <header>
 
 </header>
+    <div class="contenedortodo">
+        <div class="logoss">
+            <div><img class="logo" src="../images/logo_sena.png" width="100px" alt=""></div>
 
-    <div>
-        <form method="POST" action="recuperarClave/correo.php" >
-            <div><input name="email"  type="email" placeholder="EMAIL*"> </div>
-            <div class="tercera">
-                <input   type="submit" value="ENVIAR">
+            <div><img class="logo" src="../images/LOGO_EM.png" width="100px" alt=""></div>
+        </div>
+        <div class="contenedorFormulario">
+
+            <h1>RECUPERAR CONTRASEÑA</h1>
+            <form method="POST" action="recuperarClave/correo.php" autocomplete="off">
+                <div><label for="">Ingresa tu correo electronico</label></div>
+                <div><input name="email"  type="email" placeholder="EMAIL*"> </div>
+                <div class="tercera">
+                    <input class="boton"  type="submit" value="ENVIAR">
+                </div>
+            </form>
+            <div class="contentV">
+                <a class="volver" href="../index-login/login.php">Volver</a>
             </div>
-        </form>
+        </div>
     </div>
+    
    
 </body>
 </html>

@@ -14,8 +14,8 @@ input.addEventListener('input',function(){
 })
 
 password.addEventListener('input',function(){
-    if (this.value.length > 1) 
-       this.value = this.value.slice(0,3); 
+    if (this.value.length > 16) 
+       this.value = this.value.slice(0,16); 
   })
 
 

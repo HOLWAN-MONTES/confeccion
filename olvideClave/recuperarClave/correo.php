@@ -25,7 +25,7 @@ if( $email !== "" ){
     $_SESSION['CLAVE'] = $dato['CLAVE'];
     
     if($dato){
-        echo "funciono";
+        /* echo "funciono"; */
         echo $_SESSION['CLAVE'];
 
         $mail = new PHPMailer(true);
@@ -109,15 +109,15 @@ if( $email !== "" ){
     
         $mail->send();
         echo '<script>alert ("Tu mensaje se envio con exito");</script>';
-        echo '<script>window.location="../seccionesIndex/contactenos.html"</script>'; 
+        echo '<script>window.location="../../index-login/login.php"</script>'; 
     
     } catch (Exception $e) {
         echo "Error Presentado: {$mail->ErrorInfo}";
     }
         
     }else{
-        echo '<script>alert ("Tu mensaje se envio con exito");</script>';
-        echo '<script>window.location="../seccionesIndex/contactenos.html"</script>';
+        echo '<script>alert ("EL CORREO NO EXISTE");</script>';
+        echo '<script>window.location="../../index-login/login.php"</script>';
         
     }
 
@@ -125,7 +125,7 @@ if( $email !== "" ){
     
 }else{
     echo '<script>alert("LLENA LOS CAMPOS COMPLETAMENTE")</script>'; 
-    echo '<script>window.location="../seccionesIndex/contactenos.html"</script>';
+    echo '<script>window.location="../recuperarClave.html"</script>';
 }
 
 ?>

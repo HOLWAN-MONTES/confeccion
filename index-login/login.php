@@ -39,15 +39,15 @@ session_start();
                     <div class="contentLogo">
                         <img class="iamgenCos" src="../images/LOGO_EM.png" alt="">
                     </div>
+                   
                 </div>
-
+                    
                 <form method="POST" id="formularioenviar" autocomplete="off">
-                    <div class="agregoF" id="agregoF">
-                        
+                    <div class="agregoF" id="agregoF"></div>
+
                         <input type="number" name="docuaprendiz" id="usuario" placeholder="DOCUMENTO" maxlength="12"  style="text-transform:uppercase">
                     
                         <input type="password" name="claveaprendiz" id="password" placeholder="Ingrese Clave" maxlength="20"  style="text-transform:uppercase">
-                        
                         <select class="seleccionTipo" id="tipodocu" name="tipodocu">
                             <option value="0">SELECCIONE SU CARGO</option>
                             <?php
@@ -60,9 +60,12 @@ session_start();
                             endforeach;
                             ?>
                         </select><br> 
-
-                        <button class="btnEnviar" id="crear">INGRESAR</button><br>
-                        <a href="../olvideClave/recuperarClave.html" class="olvidosuclave">¿Has olvidado tu contraseña?</a> 
+                    
+                        <button class="btnEnviar" id="crear">INGRESAR</button> <br>
+                        <div class="hreff">
+                            
+                            <a href="../olvideClave/recuperarClave.html" class="olvidosuclave">¿Has olvidado tu contraseña?</a> 
+                        </div>
                     <div>
                 </form>
             
