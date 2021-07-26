@@ -1,7 +1,7 @@
 <?php
 require_once("../../conections/conexion.php");
 
-$sql_maquinaria = "SELECT NOM_MAQUINARIA,COUNT(*) as cantidad FROM maquinaria GROUP BY NOM_MAQUINARIA";
+$sql_maquinaria = "SELECT NOM_MAQUINARIA,COUNT(*) as cantidad FROM maquinaria WHERE maquinaria.SERIAL_MAQUINARIA != 0 GROUP BY NOM_MAQUINARIA";
 $consulta_maquinaria = mysqli_query($connection,$sql_maquinaria);
 
 foreach($consulta_maquinaria as $cantidad){
