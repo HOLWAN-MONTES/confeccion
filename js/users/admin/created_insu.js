@@ -8,6 +8,7 @@ const datoBuscador = document.getElementById("buscador-user")
 const formBuscador = document.getElementById("form-buscador-user")
 const conte_user = document.getElementById("conte-user")
 
+
 //^ variables para el tipo de usuario de los botones
 const admin = document.getElementById("btn_Admin")
 const formusuario = document.getElementById("for_Usuario")
@@ -16,6 +17,10 @@ const forminstructor = document.getElementById("form_instructor")
 const todos = document.getElementById("todo")
 const btn_empresa = document.getElementById("btn_empresa")
 const form_empresa = document.getElementById("form_empresa")
+const empresa = document.getElementById("form_empresa")
+
+
+
 
 //  CONEXION AL ARCHIVO PHP PARA EL FORmInsu DE CREAR INSUMOS 
 enviarInsu.addEventListener("click", (e) => {
@@ -148,6 +153,16 @@ btn_empresa.addEventListener("click", (e) => {
     })
 })
 
+//^ buscardor de la empresa de usuarios registrado
+
+empresa.addEventListener("click", (e) => {
+    e.preventDefault()
+
+    fetch("../../php/admin/empresa.php",{method:"GET"}).then(res => res.text()).then(info => {
+        conte_user.innerHTML = `${info}`
+    })
+})
+
 // FUNCION DE ACTUALIZAR 
  
 function actualizar() {
@@ -170,19 +185,25 @@ todos.addEventListener("click", (e) => {
 
 //CONEXION AL ARCHIVO PHP CON EL FORMLARIO DE TIPO DE INSUMO
 const formTipInsu = document.getElementById('fomrTipinsu')
+
 const enviarTipInsu = document.getElementById('btnTipinsu')
 
 enviarTipInsu.addEventListener('click', (e) => {
     e.preventDefault()
-
+    const inpu_ing_insu = document.getElementById('Inptipinsu').value;
+    console.log(inpu_ing_insu)
     const formtipinsumo = new FormData(formTipInsu)
 
     fetch("../../php/admin/tipo_insumo.php", {
         method:"POST",
-        body:formtipinsumo
+        body:JSON.stringify({
+            "inpu_tip_ins" : inpu_ing_insu,
+            "formu":formtipinsumo
+        })
+        // body:formtipinsumo
     })
     .then(res => res.text()).then(info => {
-        /* alert(info) */
+        console.log(info) 
         if(info == 1){
             Swal.fire({
                 title: 'Error!',
@@ -190,7 +211,7 @@ enviarTipInsu.addEventListener('click', (e) => {
                 icon: 'error',
                 confirmButtonText: 'Continuar'
             })
-            formMaqui.reset()
+            formTipInsu.reset()
 
         }else if(info == 2){
             Swal.fire({
@@ -200,16 +221,16 @@ enviarTipInsu.addEventListener('click', (e) => {
                 confirmButtonText: 'Continuar'
                 
             })
-            formMaqui.reset()
+            formTipInsu.reset()
         }else if(info == 3){
             Swal.fire({
                 title: 'Advertencia!',
-                text: 'El tipo de insumo esta repetido.',
+                text: 'No se inserto el tipo de insumo',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
                 
             })
-            formMaqui.reset()
+            formTipInsu.reset()
         }else if(info == 4){
             Swal.fire({
                 title: 'Advertencia!',
@@ -218,18 +239,21 @@ enviarTipInsu.addEventListener('click', (e) => {
                 confirmButtonText: 'Continuar'
                 
             })
-            formMaqui.reset()
+            formTipInsu.reset()
         }
         else{
             Swal.fire({
                 title: 'Ups algo salio mal!',
-                text: 'Verifica que no hallan datos vacios.',
+                text: 'Verifica los datos',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
                 
             })
-            formMaqui.reset()
+            formTipInsu.reset()
         }
         
     })
 })
+
+
+

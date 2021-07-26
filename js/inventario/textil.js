@@ -1,41 +1,17 @@
-//^ ******************** variables para e manejo del DOM *************** 
+//^ ************* VARIABLES DE MANEJO DEL DOM *************
+const buscador_insumo = document.getElementById("buscador-textil")
+const contenedor_principal = document.querySelector(".contenedorCajaInventario")
 const cantida = document.getElementById("cantidad")
 const contenedor = document.getElementById("contenido")
 const fondo = document.querySelector(".fondo")
-const todo = document.getElementById("todo")
-const contenedor_principal = document.querySelector(".contenedorCajaInventario")
-const buen_estado = document.getElementById("buen_estado")
-const reparacion = document.getElementById("reparacion")
-const mal_estado = document.getElementById("mal_estado")
-const buscador_serial = document.getElementById("buscador_serial")
-const serial = document.getElementById("serial")
 const editar = document.querySelector(".contenedorCajaInventario")
-const fondo2 = document.querySelector(".fondo2")
-const btn_cerrar_Edicion = document.getElementById("cerrar_Edicion")
-const estado_edicion = document.getElementById("estado")
-const obser = document.getElementById("obser")
-const enviar_edicion = document.getElementById("enviar_edicion")
-const option = document.getElementById("option")
+const marca = document.getElementById("marca")
+const tipo_material = document.getElementById("tipo_material")
+const todo = document.getElementById("todo")
 
-//^ **************  FUNCIONES *************
+//^ ********************* FUNCIONES ******************
 
-//^ funcion de las consultas de mal estado,bueno o en reparacion
-function consulta (numero) {
-    console.log(numero)
-    fetch("../php/inventario/maquinaria/consulta.php",{
-        method:"POST",
-        body:JSON.stringify({
-            dato:numero
-        })
-        
-    }).then(res => res.text()).then(info => {
-        console.log(info)
-        contenedor_principal.innerHTML=`${info}`
-    })
-}
-
-//^ funcion de para editar o eliminar maquinaria
-function editar_eliminar(action,id,mensaje,condiccion) {
+function editar_eliminar(action,id) {
     //^ proceso de eliminar
     if(action == "eliminar"){
         Swal.fire({
@@ -48,7 +24,7 @@ function editar_eliminar(action,id,mensaje,condiccion) {
             
             if(res.isConfirmed){
 
-                fetch("../php/inventario/maquinaria/eliminar_editar.php",{
+                fetch("../php/inventario/textil/eliminar.php",{
                     method:"POST",
                     body:JSON.stringify({
                         "accion":action,
@@ -57,14 +33,14 @@ function editar_eliminar(action,id,mensaje,condiccion) {
             }).then(res => res.text()).then(info => {
                 if (info == 1) {
                     Swal.fire({
-                        title: `La maquinaria ${id} se elimino`,
+                        title: `El textil ${id} se elimino`,
                         icon: 'warning',
                         showDenyButton: false,
                         confirmButtonText: `Aceptar`,
                        
                     }).then(res => {
                         if (res.isConfirmed) {
-                            window.location = "maquinaria.php"
+                            window.location = "materialTextil.php"
                         } else {
                             
                         }
@@ -76,7 +52,7 @@ function editar_eliminar(action,id,mensaje,condiccion) {
 
     //^ proceso de editar
     }else if (action == "editar") {
-        fondo2.style.display="flex"
+        /* fondo2.style.display="flex"
         obser.textContent = mensaje
         option.value = condiccion
         option.textContent = condiccion
@@ -118,18 +94,51 @@ function editar_eliminar(action,id,mensaje,condiccion) {
            
        
         
-        }) 
+        })  */
     
         
     }
 }
+
+function buscador_tipo (accion,dato) {
+    console.log(accion + dato)
+
+    fetch("../php/inventario/textil/tipos.php",{
+        method:"POST",
+        body:JSON.stringify({
+            "marca_accion":accion,
+            "tipo_marca":dato
+        })
+        
+    }).then(res => res.text()).then(info => {
+        console.log(info)
+        contenedor_principal.innerHTML = `${info}`
+    })
+}
+
+//^ **************** BUSCADOR DE TEXTIL ********************* 
+ 
+buscador_insumo.addEventListener("keyup", () => {
+    const dato = buscador_insumo.value 
+    console.log(dato)
+    fetch("../php/inventario/textil/buscador.php",{
+        method:"POST",
+        body:JSON.stringify({
+            "textil":dato
+        })
+    }).then(res => res.text()).then(info => {
+        console.log(info)
+        contenedor_principal.innerHTML=`${info}`
+    })
+})
+
 //^ *************** BTN CANTIDAD ********** 
 
 cantida.addEventListener("click", (e) => {
     e.preventDefault()
     fondo.style.display="flex"
 
-    fetch("../php/inventario/maquinaria/cantidad.php", {
+    fetch("../php/inventario/textil/cantidad.php", {
         method:"GET"
     }).then(res => res.text()).then(info => {
         contenedor.innerHTML = `${info}`
@@ -140,57 +149,7 @@ fondo.addEventListener("click", () => {
     fondo.style.display="none"
 })
 
-//^ ******************** TODAS LAS MAQUINARIAS ************
-
-todo.addEventListener("click", (e) => {
-    //^ todas las tablas
-    e.preventDefault()
-    consulta(0)
-    
-})
-
-buen_estado.addEventListener("click", (e) => {
-    //^ estado bueno
-    e.preventDefault()
-    console.log("bueno")
-    consulta(5)
-    
-})
-
-reparacion.addEventListener("click", (e) => {
-    //^ En reparacion
-    e.preventDefault()
-    console.log("reparacion")
-
-    consulta(6)
-    
-})
-
-mal_estado.addEventListener("click", (e) => {
-    //^ mal estado
-    e.preventDefault()
-    console.log("mal estado")
-
-    consulta(7)
-    
-})
-
-//^ ******************** buscador por la serial de la maquina ***********
-serial.addEventListener("keyup", (e) => {
-    
-    const dato = new FormData(buscador_serial)
-    console.log("si entra")
-    fetch("../php/inventario/maquinaria/buscador.php",{
-        method:"POST",
-        body:dato
-    }).then(res => res.text()).then(info => {
-        console.log(info)
-        contenedor_principal.innerHTML = `${info}`
-    })
-})
-
-
-//^ *************** botones de editar y eliminar ************
+//^ *************************** ELIMINAR  **********************
 
 editar.addEventListener("click", (e) => {
     e.preventDefault()
@@ -201,18 +160,37 @@ editar.addEventListener("click", (e) => {
 
         //^ obtener los datos para para el proceso de eliminar y editar
         const identificador = e.path[4].firstElementChild.childNodes[1].lastChild.innerText
-        const mensaje_observa = e.path[4].childNodes[1].children[7].lastChild.innerText
-        const mensaje_estado = e.path[4].childNodes[1].children[6].lastChild.innerText
+       
         
         
         //^ funcion donde se hace el proceso indicado 
-        editar_eliminar(accion,identificador,mensaje_observa,mensaje_estado) 
+        editar_eliminar(accion,identificador) 
     } 
 
   
 })
 
-btn_cerrar_Edicion.addEventListener("click", (e) => {
+//^ ************************  buscador por la marca ****************
+
+marca.addEventListener("click", () => {
+    const dato = marca.value
+    console.log(dato)
+    buscador_tipo("marca",dato)
+})
+
+//^ **************************** buscador por tipo de material **************
+
+tipo_material.addEventListener("click", () => {
+    const dato = tipo_material.value
+    buscador_tipo("tipo_material",dato)
+})
+
+//^ ******************** TODO ******************
+
+todo.addEventListener("click", (e) => {
     e.preventDefault()
-    fondo2.style.display="none"
+
+    fetch("../php/inventario/textil/todo.php",{method:"GET"}).then(res => res.text()).then(info => {
+        contenedor_principal.innerHTML=`${info}`
+    })
 })

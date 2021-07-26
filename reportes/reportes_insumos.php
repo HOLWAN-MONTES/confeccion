@@ -30,26 +30,14 @@ if ($usario == "" || $usario == null) {
 
                 <form action="" method="post" id="" >
                     <input type="hidden" name="" value="1">
-                    <button id="" >ANUAL</button>
+                    <button id="" >GENERAL</button>
                 </form>
 
-                <form action="" method="post">
-                    <button id="todo">MENSUAL</button>
+                <form action="" id="form_repo_maq" method="post">
+                    <input type="date" class="fecha_ini">
+                    <input type="date" class="fecha_fin">
+                    <input type="submit" name="">
                 </form>
-                <form action="" method="post">
-                    <button id="todo">SEMANAL</button>
-                </form>
-                <form action="" method="post">
-                    <button id="todo">-------------------</button>
-                </form>
-                <form action="" method="post">
-                    <button id="todo">---------------------</button>
-                </form>
-
-                <!-- <form action="" method="POST" id="" class="buscarmaquinaria">
-                    <input type="number" name="docu" id="buscador-user" placeholder="Buscar">
-                </form> -->
-
             </div>
             <div class="iconouserr">
                 <a href="../users/admin/admin.php">
@@ -65,46 +53,84 @@ if ($usario == "" || $usario == null) {
 
       
         <?php
-        $consulta = "SELECT ID_INSUMO,NOM_INSUMO,tipo_insumo.NOM_TIP_INSUMO,marca.NOM_MARCA,color.NOM_COLOR FROM insumo,tipo_insumo,marca,color WHERE insumo.ID_TIP_INSUMO=tipo_insumo.ID_TIP_INSUMO and insumo.ID_MARCA=marca.ID_MARCA and insumo.ID_COLOR=color.ID_COLOR";
+        $consulta = "SELECT DISTINCT detalle_ingreso.ID_INGRE_MATERIAL FROM detalle_ingreso 
+                        WHERE detalle_ingreso.ID_TIP_INGRESO = 2    ";
 
-        $consulta_insumos = mysqli_query($connection,$consulta);
+        $consulta_repo_maq = mysqli_query($connection,$consulta);
+            foreach($consulta_repo_maq as $rep_maq){
+                $data2 = $rep_maq['ID_INGRE_MATERIAL'];
+                $cons2 = "SELECT * FROM detalle_ingreso INNER JOIN ingreso_material 
+                        ON detalle_ingreso.ID_INGRE_MATERIAL = ingreso_material.ID_INGRE_MATERIAL 
+                        INNER JOIN tipo_ingreso ON detalle_ingreso.ID_TIP_INGRESO = tipo_ingreso.ID_TIP_INGRESO
+                        INNER JOIN insumo ON detalle_ingreso.ID_INSUMO = insumo.ID_INSUMO INNER JOIN usuario 
+                        ON ingreso_material.DOCUMENTO = usuario.DOCUMENTO INNER JOIN empresa 
+                        ON ingreso_material.NIT_DOC = empresa.NIT_DOC INNER JOIN bodega 
+                        ON detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA WHERE detalle_ingreso.ID_TIP_INGRESO = 2
+                        AND detalle_ingreso.ID_INGRE_MATERIAL = '$data2'";
 
-        foreach ($consulta_insumos as $insumos){
-    ?>
-        <div class="contentdocumentosotras">
-           
-            <div class="documentosotras" >
-                <div>ID :<p> <?=$insumos["ID_INSUMO"]?> </p></div>
-                                
-                <div>NOMBRE  :<p> <?=$insumos["NOM_INSUMO"]?></p></div>
-                
-                <div>TIPO DE INSUMO :<p> <?=$insumos["NOM_TIP_INSUMO"]?> </p></div>
-                
-                <div>MARCA :<p> <?=$insumos["NOM_MARCA"]?></p></div>
-                
-                <div>COLOR :<p> <?=$insumos["NOM_COLOR"]?></p></div>
+                $consul2 = mysqli_query($connection, $cons2);
+                $dato2 = mysqli_fetch_array($consul2);
 
-            </div>  
+                $cons = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_TIP_INGRESO = 2 
+                        ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+                $consul = mysqli_query($connection, $cons);
+                $dato = mysqli_fetch_array($consul);
+                $cant_maq = $dato["CANTIDAD_TOTAL"]; 
+        ?>
+            <div class="contentdocumentosotras" id="contentdocumentosotras">
+            
+                <div class="documentosotras" id="documentosotras">
+                    <div>NUM. RECIBO :<p id="ingre_mat"> <?=$rep_maq["ID_INGRE_MATERIAL"]?> </p></div>
+                                    
+                    <div>NOMBRE RESPONSABLE:<p> <?=$dato2["NOMBRE"]?></p></div>
+                    
+                    <div>PROVEEDOR :<p style="text-transform: uppercase;"> <?=$dato2["NOM_EMPLEADO"]?> </p></div>
+                    
+                    <div>FECHA :<p> <?=$dato2["FECHA"]?></p></div>
+                    
+                    <div>HORA :<p> <?=$dato2["HORA"]?></p></div>
 
-            <div class="contentGeneralBtns">
-                <div>
-                    <form action="" method="post" id="" >
-                        <input type="hidden" name="" value="1">
-                        <button id="" >EDITAR</button>
-                    </form>
-                </div>
-                <div>
-                    <form action="" method="post" id="" >
-                        <input type="hidden" name="" value="1">
-                        <button id="" >ELIMINAR</button>
-                    </form>
+                    <div>TIPO DE INGRESO :<p style="text-transform: uppercase;"> <?=$dato2["NOM_TIP_INGRESO"]?></p></div>
+                    <?php
+                        $consultica2 = "SELECT insumo.NOM_INSUMO, CANTIDAD FROM insumo, detalle_ingreso
+                        WHERE detalle_ingreso.ID_INSUMO = insumo.ID_INSUMO AND 
+                        detalle_ingreso.ID_INGRE_MATERIAL = '$data2'";
+                        $consu_can2 = mysqli_query($connection, $consultica2);
+
+                        foreach($consu_can2 as $con2){
+                            // print_r($con);
+                        
+                    ?>
+
+                    <div>NOMBRE DE INSUMO :<p style="text-transform: uppercase;"> <?=$con2["NOM_INSUMO"]?></p></div>
+
+                    <div>CANTIDAD :<p> <?=$con2["CANTIDAD"]?></p></div>
+                    <?php
+                        }
+                    ?>
+
+                    <div>BODEGA :<p style="text-transform: uppercase;"> <?=$dato2["NOM_BODEGA"]?></p></div>
+
+                    <div>CANTIDAD TOTAL :<p> <?=$cant_maq?></p></div>
+                </div>  
+                <div class="contentGeneralBtns">
+                    <div>
+                        <form action="" method="post" id="" >
+                            <!-- <input type="hidden" name="" value="1"> -->
+                            <button id="ver_mas" class="imprimir" data-id="<?php echo $rep_maq["ID_INGRE_MATERIAL"]?>">IMPRIMIR REPORTES</button>
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
-    <?php
-    }
-    ?> 
+        <?php
+            }
+        ?> 
+
+        
+    
       </div>
     </main>
 </body>
+<script src="../js/reportes/reportes_maquinaria.js"></script>
 </html>

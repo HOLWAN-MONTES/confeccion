@@ -30,26 +30,14 @@ if ($usario == "" || $usario == null) {
 
                 <form action="" method="post" id="" >
                     <input type="hidden" name="" value="1">
-                    <button id="" >ANUAL</button>
+                    <button id="">GENERAL</button>
                 </form>
 
-                <form action="" method="post">
-                    <button id="todo">MENSUAL</button>
+                <form action="" id="form_repo_maq" method="post">
+                    <input type="date" class="fecha_ini">
+                    <input type="date" class="fecha_fin">
+                    <input type="submit" name="">
                 </form>
-                <form action="" method="post">
-                    <button id="todo">SEMANAL</button>
-                </form>
-                <form action="" method="post">
-                    <button id="todo">-------------------</button>
-                </form>
-                <form action="" method="post">
-                    <button id="todo">---------------------</button>
-                </form>
-
-                <!-- <form action="" method="POST" id="" class="buscarmaquinaria">
-                    <input type="number" name="docu" id="buscador-user" placeholder="Buscar">
-                </form> -->
-
             </div>
             <div class="iconouserr">
                 <a href="../users/admin/admin.php">
@@ -65,48 +53,78 @@ if ($usario == "" || $usario == null) {
 
       
         <?php
-        $consulta = "SELECT * FROM ingreso_material INNER JOIN usuario 
-                    ON ingreso_material.DOCUMENTO = usuario.DOCUMENTO INNER JOIN empresa 
-                    ON ingreso_material.NIT_DOC = empresa.NIT_DOC";
+        $consulta = "SELECT DISTINCT detalle_ingreso.ID_INGRE_MATERIAL FROM detalle_ingreso 
+                        WHERE detalle_ingreso.ID_TIP_INGRESO = 3";
 
         $consulta_repo_maq = mysqli_query($connection,$consulta);
             foreach($consulta_repo_maq as $rep_maq){
+                $data3 = $rep_maq['ID_INGRE_MATERIAL'];
+                $cons3 = "SELECT * FROM detalle_ingreso INNER JOIN ingreso_material 
+                        ON detalle_ingreso.ID_INGRE_MATERIAL = ingreso_material.ID_INGRE_MATERIAL 
+                        INNER JOIN tipo_ingreso ON detalle_ingreso.ID_TIP_INGRESO = tipo_ingreso.ID_TIP_INGRESO
+                        INNER JOIN maquinaria ON detalle_ingreso.SERIAL_MAQUINARIA = MAQUINARIA.SERIAL_MAQUINARIA 
+                        INNER JOIN usuario ON ingreso_material.DOCUMENTO = usuario.DOCUMENTO INNER JOIN empresa 
+                        ON ingreso_material.NIT_DOC = empresa.NIT_DOC INNER JOIN bodega 
+                        ON detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA WHERE detalle_ingreso.ID_TIP_INGRESO = 3
+                        AND detalle_ingreso.ID_INGRE_MATERIAL = '$data3'";
+
+                $consul3 = mysqli_query($connection, $cons3);
+                $dato3 = mysqli_fetch_array($consul3);
+        
+                $cons = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_TIP_INGRESO = 3
+                        ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+                $consul = mysqli_query($connection, $cons);
+                $dato = mysqli_fetch_array($consul);
+                $cant_maq = $dato["CANTIDAD_TOTAL"];
+                
         ?>
             <div class="contentdocumentosotras" id="contentdocumentosotras">
             
                 <div class="documentosotras" id="documentosotras">
                     <div>NUM. RECIBO :<p id="ingre_mat"> <?=$rep_maq["ID_INGRE_MATERIAL"]?> </p></div>
                                     
-                    <div>NOMBRE RESPONSABLE:<p> <?=$rep_maq["NOMBRE"]?></p></div>
+                    <div>NOMBRE RESPONSABLE:<p> <?=$dato3["NOMBRE"]?></p></div>
                     
-                    <div>PROVEEDOR :<p> <?=$rep_maq["NOM_EMPRESA"]?> </p></div>
+                    <div>PROVEEDOR :<p style="text-transform: uppercase;"> <?=$dato3["NOM_EMPLEADO"]?> </p></div>
                     
-                    <div>FECHA :<p> <?=$rep_maq["FECHA"]?></p></div>
+                    <div>FECHA :<p> <?=$dato3["FECHA"]?></p></div>
                     
-                    <div>HORA :<p> <?=$rep_maq["HORA"]?></p></div>
+                    <div>HORA :<p> <?=$dato3["HORA"]?></p></div>
+                    
+                    <div>TIPO DE INGRESO :<p style="text-transform: uppercase;"> <?=$dato3["NOM_TIP_INGRESO"]?></p></div>
+                    <?php
+                        $consultica3 = "SELECT maquinaria.NOM_MAQUINARIA, CANTIDAD FROM maquinaria, detalle_ingreso
+                        WHERE detalle_ingreso.SERIAL_MAQUINARIA = maquinaria.SERIAL_MAQUINARIA AND 
+                        detalle_ingreso.ID_INGRE_MATERIAL = '$data3'";
+                        $consu_can3 = mysqli_query($connection, $consultica3);
 
-    
-                    <!-- <div>TIPO DE INGRESO :<p> <$rep_maq["NOM_TIP_INGRESO"]?></p></div> -->
-    
-                   <!-- <div>BODEGA :<p> $rep_maq["NOM_BODEGA"]</p></div> -->
-    
-                    
+                        foreach($consu_can3 as $con3){
+                            // print_r($con);
+                        
+                    ?>
+                    <div>NOMBRE DE MAQUINARIA :<p style="text-transform: uppercase;"> <?=$con3["NOM_MAQUINARIA"]?></p></div>
 
-                </div>  
-                <div id="deta_ingre_mat"></div>
+                    <div>CANTIDAD :<p> <?=$con3["CANTIDAD"]?></p></div>
+                    <?php
+                        }
+                    ?>
+
+                    <div>BODEGA :<p style="text-transform: uppercase;"> <?=$dato3["NOM_BODEGA"]?></p></div>
+
+                    <div>CANTIDAD TOTAL :<p> <?=$cant_maq?></p></div>
+                </div>   
                 <div class="contentGeneralBtns">
                     <div>
                         <form action="" method="post" id="" >
-                            <!-- <input type="hidden" name="" value="1"> -->
-                            <button id="ver_mas" >VER MAS INFO</button>
+                            <button id="ver_mas" class="ver_mas" data-id="<?php echo $rep_maq["ID_INGRE_MATERIAL"]?>">IMPRIMIR REPORTES</button>
                         </form>
                     </div>
                     
                 </div>
             </div>
         <?php
-            }
-        // }
+                        
+        }
         ?> 
 
         
