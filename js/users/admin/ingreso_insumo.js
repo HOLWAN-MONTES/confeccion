@@ -126,7 +126,7 @@ function agregar(){
 function checkId(name){
     let ids = document.querySelectorAll('#tabla_ing_insu td[for="nomb"]');
     console.log(ids);
-    return [].filter.call(ids, td => td.textContent === name).length === 1;
+    return [].filter.call(ids, td => td.textContent === name).length === 1;//guarda los datos en un array y si hay mas de 1 enviara una alerta
 }  
 console.log(datos);
 
