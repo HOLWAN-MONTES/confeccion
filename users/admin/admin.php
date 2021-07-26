@@ -417,7 +417,7 @@ $hora = date("H:i:s");
                                 $consulta_proveedor = mysqli_query($connection,$sql_porveedor);
                                 foreach($consulta_proveedor as $proveedor) {
                                 ?> 
-                                    <option value="<?=$proveedor['NIT_DOC']?>"><?=$proveedor['NOM_EMPRESA']?> </option>
+                                    <option value="<?=$proveedor['NIT_DOC']?>"><?=$proveedor['NOM_EMPLEADO']?> </option>
                                 <?php
                                 }
                                 ?>
@@ -459,7 +459,7 @@ $hora = date("H:i:s");
 
                                 <div class="cantidadSe">
                                     <label for="">CANTIDAD</label> <br>
-                                    <input type="number" id="cantidad" class="cant_ing_ins" placeholder="CANTIDAD">
+                                    <input type="number" id="cantidad"  class="cant_ing_ins" placeholder="CANTIDAD">
                                 </div>
                             
                            
@@ -514,8 +514,8 @@ $hora = date("H:i:s");
                         <!-- action="../../php/admin/crearEmpresa.php" -->
                         <div class="primeraLineaempresa">
                                 <div >
-                                    <label for="">NIT - DOCUMENTO</label>
-                                    <input  type="number" name="nit" id="" minlength="5" >
+                                    <label for="">NIT - DOCUMENTO</label><!-- minlength="5" -->
+                                    <input  type="number" name="nit" id="">
                                 </div>
                                 <div >
                                     <label for="">Nombre de la empresa</label>

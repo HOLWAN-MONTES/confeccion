@@ -19,6 +19,9 @@ const btn_empresa = document.getElementById("btn_empresa")
 const form_empresa = document.getElementById("form_empresa")
 const empresa = document.getElementById("form_empresa")
 
+
+
+
 //  CONEXION AL ARCHIVO PHP PARA EL FORmInsu DE CREAR INSUMOS 
 enviarInsu.addEventListener("click", (e) => {
     e.preventDefault()
@@ -251,3 +254,6 @@ enviarTipInsu.addEventListener('click', (e) => {
         
     })
 })
+
+
+

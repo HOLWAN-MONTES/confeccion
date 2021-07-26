@@ -3,9 +3,8 @@ require_once("../../conections/conexion.php");
 
 $_POST=json_decode(file_get_contents("php://input"),true);
 
-$tipo = $_POST['"marca_accion'];
+$tipo = $_POST['marca_accion'];
 $dato = $_POST['tipo_marca'];
-
 
 
 if ($tipo == "marca") {
