@@ -528,7 +528,7 @@ $hora = date("H:i:s");
                                 </div>
                         </div>
 
-                        <div class="segundalineaempresa">
+                        <div class="segundalineaempresa"> 
                            
                             <div>
                                 <label for="">TELEFONO</label>    
