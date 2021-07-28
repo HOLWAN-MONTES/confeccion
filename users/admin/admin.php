@@ -566,16 +566,17 @@ $hora = date("H:i:s");
                                 <label for="">NUMERO DE FICHA</label><!-- minlength="5" -->
                                 <input  type="" name="" id="">
                             </div>
-                            <div >
+
+                            <div>
                                 <label for="">FORMACION</label>
-                                <select class="inp_cate" name="categorias" id="categoria" style="text-transform: uppercase;" required>
+                                <select class="crearficha" name="categorias" id="categoria" style="text-transform: uppercase;" required>
                                         <option>SELECCIONAR</option>
                                         <?php
                                         $tipo2 = "SELECT * FROM tipo_ingreso";
                                         $inser2 = mysqli_query($connection ,$tipo2);
                                         while($tip2 = mysqli_fetch_array($inser2)){
                                         ?>
-                                        <option name="tip_material" id="op_mat" value="<?php echo $tip2[0]; ?>">
+                                        <option name="tip_material" id="" value="<?php echo $tip2[0]; ?>">
                                             <?php echo $tip2[1]; ?>
                                         </option>
                                         <?php
@@ -584,10 +585,11 @@ $hora = date("H:i:s");
                                     </select>
                                     <p><a href="">crear formacion </a></p>
                             </div>
-                           
+
+
                             <div>
                                 <label for="">JORNADA</label>    
-                                <select class="inp_cate" name="categorias" id="categoria" style="text-transform: uppercase;" required>
+                                <select class="crearficha" name="categorias" id="categoria" style="text-transform: uppercase;" required>
                                         <option>SELECCIONAR</option>
                                         <?php
                                         $tipo2 = "SELECT * FROM tipo_ingreso";
@@ -608,7 +610,7 @@ $hora = date("H:i:s");
                        
                         <div>
                             <label for="">INSTRUCTOR</label>    
-                            <select class="inp_cate" name="categorias" id="categoria" style="text-transform: uppercase;" required>
+                            <select class="crearficha" name="categorias" id="categoria" style="text-transform: uppercase;" required>
                                         <option>SELECCIONAR</option>
                                         <?php
                                         $tipo2 = "SELECT * FROM tipo_ingreso";
