@@ -66,16 +66,16 @@ $hora_de = date("H:i:s");
     <div class="opciones">
          <!------------------- prestamos---------------------- -->
         <div class="uno">
-            <img id="one" class="logo_pre" src="../../images/Prestamo.jpg" alt="">
+            <img id="one" class="logo_pre" src="../../images/Prestamo.jpeg" alt="">
         </div>
          <!------------------- devoluciones---------------------- -->
         <div class="dos">
-            <img id="two" class="logo_de" src="../../images/devolucion.jpeg" alt="">
+            <img id="two" class="logo_de" src="../../images/devolucion1.jpeg" alt="">
         </div>
          <!------------------- devoluciones y prestamos pendientes---------------------- -->
         <div class="tres">
-            <img id="tres" class="cuatro" src="../../images/devolucion_pe.PNG" alt="">
-            <img id="cuatro" class="cinco" src="../../images/prestamo_pe.PNG" alt="">
+            <img id="tres" class="cuatro" src="../../images/devolucion_pe.jpeg" alt="">
+            <img id="cuatro" class="cinco" src="../../images/prestamo_pe.jpeg" alt="">
         </div>
     </div>
 </div>
@@ -402,45 +402,46 @@ $hora_de = date("H:i:s");
             <table>
             <?php
                 $usuario = $_SESSION['DOCUMENTO'];
-                $consul="SELECT * FROM detalle_accion INNER JOIN accion_realizada on detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA 
-                INNER JOIN insumo ON detalle_accion.ID_MATERIAL=insumo.ID_INSUMO
-                WHERE accion_realizada.DOCU_INSTRUCTOR = $usuario";
+                $consul="SELECT * FROM accion_realizada
+                INNER JOIN estado ON accion_realizada.ID_ESTADO=estado.ID_ESTADO
+                WHERE accion_realizada.DOCU_INSTRUCTOR = $usario AND accion_realizada.ID_ESTADO = '3'";
                 $resultado=mysqli_query($connection,$consul);
             ?>
             <thead>
                 <tr>
-                    <td>DEVOLUCION</td>
-                    <td>CANTIDAD PRESTADA</td>
-                    <td>CANTIDAD FALTANTE</td>
-                    <td>CANTIDAD A DEVOLVER</td>
-                    <td>OBSERVASIONES</td>
-                    <td>DEVOLVER</td>
-                    <td>CANCELAR</td>
+                    <td>ID FACTURA PRESTAMO</td>
+                    <td>ESTADO</td>
+                    <td>ACCION</td>
+                    <!-- <td>DEVOLVER</td>
+                    <td>CANCELAR</td> -->
                 </tr>
             </thead>
             <?php
                 while($mostrar1=mysqli_fetch_assoc($resultado)){
+                    $numFactura = $mostrar1['ID_ACCION_REALIZADA'];
             ?>
-            <tbody>
+            <tbody id="enviar_fact" class="enviar_fact">
                 <tr>
-                   <td style="text-transform: uppercase;"><?php echo $mostrar1['NOM_INSUMO']; ?></td>
-                   <td style="text-transform: uppercase;"><?php echo $mostrar1['CANTIDAD']; ?></td>
-                   <td>3231</td>
-                   <td><input type="number" class="cant_devol" name="cant_devol" id="cant_devol" placeholder="CANTIDAD" required></td>
+                   <td style="text-transform: uppercase;" id="num_factura"><?php echo $numFactura; ?></td>
+                   <td style="text-transform: uppercase;"><?php echo $mostrar1['ID_ESTADO']; ?></td>
+                   <td>
+                    
+                   <a class="traer_fact" href="" id="traer_fact" data-id="<?php echo $numFactura; ?>">DEVOLVER</a>
+                   </td>
+                   <!-- <td><input type="number" class="cant_devol" name="cant_devol" id="cant_devol" placeholder="CANTIDAD" required></td>
                    <td><input type="text" id="obser_devol" name="obser_devol"></td>
                    <td><input type="button" name="devolver_insu" id="devolver_insu" value="ENVIAR"></td>
-                   <td><input type="button" id="cancelar_insumo" value="CANCELAR"></td>
+                   <td><input type="button" id="cancelar_insumo" value="CANCELAR"></td> -->
                 </tr>
             </tbody>
             <?php
             }
             ?>
-            </table>
-        </form>             
+            </table>           
     </div>
       
 </div>
-
+    <script src="traer_fact.js"></script>        
     <script src="../../js/users/instru/instru.js"></script>
     <script src="../../js/users/instru/validar_devol.js"></script>
     <script src="../../js/users/instru/valida_prestamo.js"></script>

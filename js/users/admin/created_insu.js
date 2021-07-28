@@ -53,7 +53,7 @@ enviarInsu.addEventListener("click", (e) => {
         else{
             Swal.fire({
                 title: 'Advertencia!',
-                text: 'Llena los campos correctamente.',
+                text: 'Por favor rellena el formulario correctamente o verifica que no hallan datos vacios.',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
                 
