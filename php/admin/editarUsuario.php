@@ -3,7 +3,7 @@ require_once("../conections/conexion.php");
 
     
     $telefono = $_POST['tele_edi'];
-    $contra = $_POST['contrasena_edi'];
+    $contra = $_POST['contra_edi'];
     $docume = $_POST['docu'];
     $foto = $_FILES['imagen'] ["name"];
     $ruta = $_FILES["imagen"] ["tmp_name"];

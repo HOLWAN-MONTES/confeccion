@@ -1,12 +1,8 @@
 <?php
 require '../conections/conexion.php';
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    // echo"2132";
-    // exit;
     $fec_ini = $_GET['fec_ini'];
-    // print_r($fec_ini);
     $fec_fin = $_GET['fec_fin']; 
-    // print_r($fec_fin);
     
     $consulta = "SELECT DISTINCT detalle_ingreso.ID_INGRE_MATERIAL FROM detalle_ingreso 
                     INNER JOIN ingreso_material ON detalle_ingreso.ID_INGRE_MATERIAL = ingreso_material.ID_INGRE_MATERIAL 
@@ -25,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                     INNER JOIN usuario ON ingreso_material.DOCUMENTO = usuario.DOCUMENTO INNER JOIN empresa 
                     ON ingreso_material.NIT_DOC = empresa.NIT_DOC INNER JOIN bodega 
                     ON detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA WHERE detalle_ingreso.ID_TIP_INGRESO = 3 
-                    AND FECHA BETWEEN '$fec_ini' AND '$fec_fin'";
+                    AND FECHA BETWEEN '$fec_ini' AND '$fec_fin' AND detalle_ingreso.ID_INGRE_MATERIAL = '$data3'";
 
             $consul3 = mysqli_query($connection, $cons3);
             $dato3 = mysqli_fetch_array($consul3);
@@ -38,49 +34,69 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $cant_maq = $dato["CANTIDAD_TOTAL"];
             
             echo (' 
-            <div>NUM. RECIBO :<p id="ingre_mat"> <?=$rep_maq["ID_INGRE_MATERIAL"]?> </p></div>
-                                    
-            <div>NOMBRE RESPONSABLE:<p> <?=$dato3["NOMBRE"]?></p></div>
+            <div class="contentdocumentosotras" id="contentdocumentosotras">
             
-            <div>PROVEEDOR :<p style="text-transform: uppercase;"> <?=$dato3["NOM_EMPLEADO"]?> </p></div>
+                <div class="documentosotras" id="documentosotras">
+                    <div>NUM. RECIBO :<p id="ingre_mat">'. $rep_maq["ID_INGRE_MATERIAL"] .'</p></div>
+                                            
+                    <div>NOMBRE RESPONSABLE:<p>'.$dato3["NOMBRE"].'</p></div>
+                    
+                    <div>PROVEEDOR :<p style="text-transform: uppercase;">'. $dato3["NOM_EMPLEADO"].'</p></div>
+                    
+                    <div>FECHA :<p>'. $dato3["FECHA"].'</p></div>
+                    
+                    <div>HORA :<p>'.$dato3["HORA"].'</p></div>
+                    <table>
+                                <thead>
+                                    <tr>
+                                        <td class="tab_rep">TIPO DE INGRESO</td>
+                                        <td class="tab_rep">NOMBRE DE MAQUINARIA</td>
+                                        <td class="tab_rep">CANTIDAD</td>
+                                        <td class="tab_rep">BODEGA</td>
+                                        <td class="tab_rep">CANTIDAD TOTAL</td>
+                                    </tr>
+                                </thead>
+            ');
             
-            <div>FECHA :<p> <?=$dato3["FECHA"]?></p></div>
             
-            <div>HORA :<p> <?=$dato3["HORA"]?></p></div>
-            
-            <div>TIPO DE INGRESO :<p style="text-transform: uppercase;"> <?=$dato3["NOM_TIP_INGRESO"]?></p></div>
-            ."'
-            
-                $consultica3 = "SELECT maquinaria.NOM_MAQUINARIA, CANTIDAD FROM maquinaria, detalle_ingreso
+                $consultica3 = "SELECT maquinaria.NOM_MAQUINARIA, tipo_ingreso.NOM_TIP_INGRESO, CANTIDAD,
+                bodega.NOM_BODEGA FROM maquinaria, detalle_ingreso, tipo_ingreso, bodega
                 WHERE detalle_ingreso.SERIAL_MAQUINARIA = maquinaria.SERIAL_MAQUINARIA AND 
-                detalle_ingreso.ID_INGRE_MATERIAL = '$data3'";
+                detalle_ingreso.ID_TIP_INGRESO = tipo_ingreso.ID_TIP_INGRESO AND 
+                detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA AND detalle_ingreso.ID_TIP_INGRESO = 3
+                AND detalle_ingreso.ID_INGRE_MATERIAL = '$data3'";
                 $consu_can3 = mysqli_query($connection, $consultica3);
 
                 foreach($consu_can3 as $con3){
-                    // print_r($con);
+                    
+            
+            echo ('<tbody>
+                    <tr class="todo">
+                        <td class="tab_rep">'.$con3["NOM_TIP_INGRESO"].'</td>
+                        <td class="tab_rep">'.$con3["NOM_MAQUINARIA"].'</td>
+                        <td class="tab_rep">'.$con3["CANTIDAD"].'</td>
+                        <td class="tab_rep">'.$con3["NOM_BODEGA"].'</td>
+                        <td class="tab_rep">'.$cant_maq.'</td>
+                    </tr>
+                </tbody>');
+
+            }
+        echo('
+                </table>
+            </div>    
+            <div class="contentGeneralBtns">
+                <div>
+                    <form method="post">
+                        <button id="ver_mas" class="ver_mas" data-id="'. $rep_maq["ID_INGRE_MATERIAL"].'">IMPRIMIR REPORTES</button>
+                    </form>
+                </div>
                 
-            '".
-            <div>NOMBRE DE MAQUINARIA :<p style="text-transform: uppercase;"> <?=$con3["NOM_MAQUINARIA"]?></p></div>
-
-            <div>CANTIDAD :<p> <?=$con3["CANTIDAD"]?></p></div>."'
-            <?php
-                }
-            ?>'".
-            <div>BODEGA :<p style="text-transform: uppercase;"> <?=$dato3["NOM_BODEGA"]?></p></div>
-
-            <div>CANTIDAD TOTAL :<p> <?=$cant_maq?></p></div>
-        </div>   
-        <div class="contentGeneralBtns">
-            <div>
-                <form action="" method="post" id="" >
-                    <button id="ver_mas" class="ver_mas" data-id="<?php echo $rep_maq["ID_INGRE_MATERIAL"]?>">IMPRIMIR REPORTES</button>
-                </form>
             </div>
+        </div>
             
-        </div>'
-            
-        );
+        ');
         
+}
 }
 
 // if($dato3){
