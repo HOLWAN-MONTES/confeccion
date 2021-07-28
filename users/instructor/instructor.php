@@ -75,8 +75,8 @@ $hora_de = date("H:i:s");
          <!------------------- devoluciones y prestamos pendientes---------------------- -->
         <div class="tres">
 
-            <img id="tres" class="cuatro" src="../../images/devolucion_pe.jpeg" alt="">
-            <img id="cuatro" class="cinco" src="../../images/prestamo_pe.jpeg" alt="">
+            <img  id="tres" class="cuatro" src="../../images/devolucion_pe.jpeg" alt="">
+            <a href="../../php/instructor/prestamos_pendi.php"><img id="cuatro" class="cinco" src="../../images/prestamo_pe.jpeg" alt=""></a>
 
         </div>
     </div>
