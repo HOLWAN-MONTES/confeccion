@@ -407,7 +407,7 @@ $hora_de = date("H:i:s");
                 $usuario = $_SESSION['DOCUMENTO'];
                 $consul="SELECT * FROM accion_realizada
                 INNER JOIN estado ON accion_realizada.ID_ESTADO=estado.ID_ESTADO
-                WHERE accion_realizada.DOCU_INSTRUCTOR = $usario AND accion_realizada.ID_ESTADO = '3'";
+                WHERE accion_realizada.DOCU_INSTRUCTOR = '$usario' AND accion_realizada.ID_ESTADO = 3";
                 $resultado=mysqli_query($connection,$consul);
             ?>
             <thead>

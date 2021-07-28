@@ -47,8 +47,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     }
                     elseif($categoria == 2){
                         $sql_inser_insumos = "INSERT INTO detalle_ingreso(ID_DETA_INGRESO, ID_INGRE_MATERIAL, 
-                        ID_TIP_INGRESO, ID_MATERIAL_TEXTIL, ID_INSUMO, SERIAL_MAQUINARIA, CANTIDAD)
-                        VALUES ('', '$doc_ingre_mat', '$categoria', 7, '$nom_cate', 0, '$canti')";
+                        ID_TIP_INGRESO, ID_MATERIAL_TEXTIL, ID_INSUMO, SERIAL_MAQUINARIA, CANTIDAD, ID_BODEGA)
+                        VALUES ('', '$doc_ingre_mat', '$categoria', 7, '$nom_cate', 0, '$canti', 0)";
 
                         $cons_inser_insum = mysqli_query($connection,$sql_inser_insumos); 
                         if($cons_inser_insum){
@@ -68,8 +68,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     }
                     elseif($categoria == 3){
                         $sql_inser_insumos = "INSERT INTO detalle_ingreso(ID_DETA_INGRESO, ID_INGRE_MATERIAL, 
-                        ID_TIP_INGRESO, ID_MATERIAL_TEXTIL, ID_INSUMO, SERIAL_MAQUINARIA, CANTIDAD)
-                        VALUES ('', '$doc_ingre_mat', '$categoria', 7, 7, '$nom_cate', '$canti')";
+                        ID_TIP_INGRESO, ID_MATERIAL_TEXTIL, ID_INSUMO, SERIAL_MAQUINARIA, CANTIDAD, ID_BODEGA)
+                        VALUES ('', '$doc_ingre_mat', '$categoria', 7, 7, '$nom_cate', '$canti', 0)";
                         
                         $cons_inser_insum = mysqli_query($connection,$sql_inser_insumos); 
                         if($cons_inser_insum){
