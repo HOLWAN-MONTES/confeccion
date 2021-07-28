@@ -1,32 +1,34 @@
-<?php
+<?php 
 require_once("../conections/conexion.php");
+$_POST= json_decode(file_get_contents("php://input"),true);
 
-$tipo_insumo = $_POST['tip_insumo'];
-$nombre_insumo = $_POST['NombreInsumo'];
-$marca_insumo = $_POST['marca_insumo'];
-$color_insumo = $_POST['color_insumo'];
+$NombreInsumo = $_POST['nombre_insu'];
+$tipo_insumo = $_POST['tipo_insumo'];
+$marcas_insumo = $_POST['marcas_insumo'];
+$colores_insumo = $_POST['colores_insumo'];
 
 
-if($tipo_insumo === "" || $nombre_insumo === "" || $marca_insumo === "" || $color_insumo === ""){
-    echo 2;
-}else{
-    $cosul_maqui = "SELECT * FROM insumo WHERE NOM_INSUMO = '$nombre_insumo'";
-    $confirma = mysqli_query($connection,$cosul_maqui);
-    $datos = mysqli_fetch_assoc($confirma);
-
-    if($datos['NOM_INSUMO'] == $nombre_insumo){
+if($tipo_insumo !== "" && $NombreInsumo !== "" && $marcas_insumo !== "" && $colores_insumo !== ""){  
+    $verificar_Insumo = mysqli_query($connection, "SELECT * FROM insumo WHERE NOM_INSUMO = (UPPER('$NombreInsumo'))");
+    if(mysqli_num_rows($verificar_Insumo) == 1){
         echo 1;
+        exit();
     }
-    else{
-        $sql = "INSERT INTO insumo (ID_TIP_INSUMO, NOM_INSUMO, ID_MARCA, ID_COLOR)  values ($tipo_insumo,'$nombre_insumo',$marca_insumo,$color_insumo)";
-        $insertar = mysqli_query($connection,$sql);
-            
-        if($insertar){
-            echo 3;
-        }else{
+    else if($verificar_Insumo){
+        $sql = "INSERT INTO insumo (ID_TIP_INSUMO, NOM_INSUMO, ID_MARCA, ID_COLOR) values (UPPER('$tipo_insumo'),UPPER('$NombreInsumo'),UPPER('$marcas_insumo'),UPPER('$colores_insumo'))";
+        $consul = mysqli_query($connection,$sql);
+        if($consul){
             echo 2;
-        } 
+            exit();
+        }
+        else{
+            echo 3;
+            exit();
+        }
     }
-}
-
+    
+}else{
+    echo 4;
+    exit();
+} 
 ?>
