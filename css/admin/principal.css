@@ -746,7 +746,7 @@ li{
 
 /*-------------------------------------------- CREAR FICHA ------------------------------*/
 .contentcrearficha{
-    display: none;
+    display: block;
     text-align: center;
     width: 80%;
     height: auto;
@@ -778,6 +778,13 @@ li{
     padding: 10px;
     border-radius: 10px;
     display: grid;
+    width: 100%;
+}
+
+.crearficha{
+    border-radius: 12px;
+    outline: none;
+    padding: 5px;
     width: 100%;
 }
 
