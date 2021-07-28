@@ -23,15 +23,27 @@ const empresa = document.getElementById("form_empresa")
 
 
 //  CONEXION AL ARCHIVO PHP PARA EL FORmInsu DE CREAR INSUMOS 
-enviarInsu.addEventListener("click", (e) => {
+enviarInsu.addEventListener('click', (e) => {
     e.preventDefault()
-
-    const dato = new FormData(formInsu)
+    const nom_insu = document.getElementById('NombreInsumo').value;
+    const tip_insumo = document.getElementById('tip_insumo').value;
+    const marca_insumo = document.getElementById('marca_insumo').value;
+    const color_insumo = document.getElementById('color_insumo').value;
+    const formInsumo = new FormData(formInsu)
 
     fetch("../../php/admin/created_insu.php", {
         method:"POST",
-        body:dato
-    }).then(res => res.text()).then(info => {
+        body:JSON.stringify({
+            "nombre_insu" : nom_insu,
+            "tipo_insumo" : tip_insumo,
+            "marcas_insumo" : marca_insumo,
+            "colores_insumo" : color_insumo,
+            "formu":formInsumo
+        })
+        // body:formInsumo
+    })
+    .then(res => res.text()).then(info => {
+        console.log(info) 
         if(info == 1){
             Swal.fire({
                 title: 'Error!',
@@ -43,30 +55,50 @@ enviarInsu.addEventListener("click", (e) => {
 
         }else if(info == 2){
             Swal.fire({
-                title: 'Advertencia!',
-                text: 'Por favor rellena el formulario correctamente o verifica que no hallan datos vacios.',
-                icon: 'warning',
+                title: 'Registrado!',
+                text: 'Se registro el insumo.',
+                icon: 'success',
                 confirmButtonText: 'Continuar'
+                
             })
-
-        }
-        else{
+            formInsu.reset()
+        }else if(info == 3){
             Swal.fire({
                 title: 'Advertencia!',
-                text: 'Llena los campos correctamente.',
+                text: 'No se inserto el insumo',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formInsu.reset()
+        }else if(info == 4){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'Campos vacios, llena los campos correctamente',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
                 
             })
             formInsu.reset()
         }
+        else{
+            Swal.fire({
+                title: 'Ups algo salio mal!',
+                text: 'Verifica los datos',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+                
+            })
+            formInsu.reset()
+        }
+        
     })
 })
 const ingre_insumo = document.getElementById("CrearInsumoForm")
 const inputs_insu = document.querySelectorAll("#CrearInsumoForm input")
 
 const expresiones_insu = {
-    nombre_insu: /^[a-zA-Z0-9\s]{4,16}$/, // Letras y espacios, pueden llevar acentos.
+    nombre_insu: /^[a-zA-Z\s]{4,16}$/, // Letras y espacios, pueden llevar acentos.
     metraje: /^\d{2,5}$/ // 2 a 5 numeros.  
 }
 
@@ -207,7 +239,7 @@ enviarTipInsu.addEventListener('click', (e) => {
         if(info == 1){
             Swal.fire({
                 title: 'Error!',
-                text: 'La el tipo de insumo ya existe.',
+                text: 'EL tipo de insumo ya existe.',
                 icon: 'error',
                 confirmButtonText: 'Continuar'
             })
@@ -255,5 +287,47 @@ enviarTipInsu.addEventListener('click', (e) => {
     })
 })
 
+const crearMarca_Insumo = document.getElementById('regMarcaInsu')
+const regisMarca_insu = document.getElementById('enviar_marcaInsu')
+
+regisMarca_insu.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    const formMarcaInsu = new FormData(crearMarca_Insumo)
+
+    fetch("../../php/admin/marca_insumo.php", {
+        method:"POST",
+        body:formMarcaInsu
+    })
+    .then(res => res.text()).then(info => {
+        if(info == 1){
+            Swal.fire({
+                title: 'Error!',
+                text: 'La marca del insumo ya existe.',
+                icon: 'error',
+                confirmButtonText: 'Continuar'
+            })
+            crearMarca_Insumo.reset()
+        }else if(info == 2){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'Por favor rellena el formulario correctamente.',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            })
+            
+        }else{
+            Swal.fire({
+                title: 'Registrado!',
+                text: 'Se registro la marca del insumo.',
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+                
+            })
+            crearMarca_Insumo.reset()
+        }
+    })
+
+})
 
 
