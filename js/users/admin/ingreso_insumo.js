@@ -47,7 +47,6 @@ $(document).ready(function(){
     $(document).on("click", "#envia_ing_ins", guardarInsumo);  
     $(document).on("click", "#cancel", cancelarInsumo);  
 });
-
 function agregar(){
     const cate = document.getElementById('categoria');
     const cates = document.getElementById('categoria').value;
@@ -55,6 +54,7 @@ function agregar(){
     const nombre = document.getElementById('nom_catego').value;
     const nom = document.getElementById('nom_catego');
     const name = nom.options[nom.selectedIndex].text;
+    
     cantidad = document.getElementById('cantidad').value;
     var respon = document.getElementById('respon').value;
     var proveedor = document.getElementById("proveedor").value;
@@ -62,7 +62,7 @@ function agregar(){
     var fec =  $("#fecha").text();
     var hor =  $("#hora").text();
     // console.log(proveedor)
-    
+    // var input=  document.getElementById('cantid_pres');
     if(cate != 0 && cate != '' && nombre != 0 && nombre != '' && cantidad != 0 && cantidad != ''){
         if(proveedor != '' && proveedor != 0){      
             if (checkId(name)) {
@@ -128,8 +128,11 @@ function checkId(name){
     console.log(ids);
     return [].filter.call(ids, td => td.textContent === name).length === 1;//guarda los datos en un array y si hay mas de 1 enviara una alerta
 }  
-console.log(datos);
-
+const cant = document.getElementById('cantidad');
+cant.addEventListener('input',function(){
+    if (this.value.length > 3) 
+        this.value = this.value.slice(0,3); 
+})
 $(document).on("click", ".deleteButton", function(e){
     e.preventDefault();
     Swal.fire({

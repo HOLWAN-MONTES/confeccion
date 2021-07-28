@@ -9,9 +9,9 @@ const btn_ventana_two = document.getElementById('two');
 const btn_cerrar2 = document.getElementById('cerrar2');
 
 //variables donde aparecen los prestamos pendientes
-const contenedor_tres = document.getElementById('ventana_tres');
+const contenedor_tres = document.getElementById('ventana_cuatro');
 const btn_ventana_tres = document.getElementById('tres');
-const btn_cerrar3 = document.getElementById('cerrar3')
+const btn_cerrar3 = document.getElementById('cerrar4')
 
 //variables donde aparecen las devoluciones pendientes
 // const contenedor_cuatro = document.getElementById('ventana_cuatro');
@@ -69,16 +69,16 @@ btn_cerrar2.addEventListener('click', function(e){
 })
 
 //Ventana modal 3, donde aparecen los pestamos pendientes
-// btn_ventana_tres.addEventListener("click",function(){
-//     contenedor_tres.style.display="block";
-// })
+btn_ventana_tres.addEventListener("click",function(){
+    contenedor_tres.style.display="block";
+})
 
 // //cerrar ventana
-// btn_cerrar3.addEventListener('click', function(e){
-//     e.preventDefault();
+btn_cerrar3.addEventListener('click', function(e){
+    e.preventDefault();
 
-//     contenedor_tres.style.display="none";
-// })
+    contenedor_tres.style.display="none";
+})
 
 //Ventana modal 4, donde van las devoluciones pendientes
 // btn_ventana_cuatro.addEventListener("click",function(){

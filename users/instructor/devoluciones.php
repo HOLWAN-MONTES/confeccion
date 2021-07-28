@@ -29,6 +29,7 @@ $hora_de = date("H:i:s");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 <body>  
@@ -78,13 +79,15 @@ $hora_de = date("H:i:s");
             ?>
             <tbody>
                 <tr>
-                   <td style="text-transform: uppercase;"><?php echo $numFactura; ?></td>
+                   <td id="num_fac" style="text-transform: uppercase;"><?php echo $numFactura; ?></td>
                    <td style="text-transform: uppercase;"><?php echo $mostrar1['NOM_INSUMO']; ?></td>
-                   <td style="text-transform: uppercase;"><?php echo $mostrar1['CANTIDAD']; ?></td>
-                   <td><form action="validar_devol.php" method ="POST">
-                       <input type="number"  id ="cantidad_devolver" name = "cantidad_devolver">
-                       <input type="submit" name="enivar_devol" value="DEVOLVER">
-                    </form></td>
+                   <td id="canti" style="text-transform: uppercase;"><?php echo $mostrar1['CANTIDAD']; ?></td>
+                   <td>
+                        <form action="validar_devol.php" id="form_dev" method ="POST">
+                            <input type="number"  id ="cantidad_devolver" name = "cantidad_devolver">
+                            <input type="submit" name="enivar_devol" value="DEVOLVER">
+                        </form>
+                    </td>
                    <td>
                    </td>
                    <!-- <td><input type="number" class="cant_devol" name="cant_devol" id="cant_devol" placeholder="CANTIDAD" required></td>
@@ -101,5 +104,6 @@ $hora_de = date("H:i:s");
     </div>
       
 </div>
+<script src="traer_fact.js"></script>  
 </body>
 </html>

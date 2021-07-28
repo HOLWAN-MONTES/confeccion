@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         echo "fallo en validacion";
     }else{
         //consulta para insertar a la tabla accion realizada para el prestamo
-        $sql_1 = "INSERT INTO accion_realizada(ID_ACCION_REALIZADA, DOCU_ADMI, DOCU_INSTRUCTOR, FECHA, HORA, ID_ESTADO) VALUES('','','$instructor','$fecha','$hora',8)";
+        $sql_1 = "INSERT INTO accion_realizada(ID_ACCION_REALIZADA, DOCU_ADMI, DOCU_INSTRUCTOR, FECHA, HORA, ID_ESTADO) VALUES('',0,'$instructor','$fecha','$hora',8)";
         $consul_1 = mysqli_query($connection,$sql_1);
         if($consul_1){
             //consulta que se trae el id para insertarla en el detalle de accion

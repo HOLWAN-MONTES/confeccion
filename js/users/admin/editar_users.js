@@ -32,7 +32,6 @@ document.addEventListener('keypress', (e)=>{
     if(e.keyCode === 13){
         if(e.target === documento){
             e.preventDefault();
-            console.log("hola no refresque");
             if(documento.value === ""){
                 Swal.fire({
                     title: 'Error!',
@@ -96,7 +95,6 @@ document.addEventListener('keypress', (e)=>{
 })
 
 document.addEventListener('submit', (e)=>{
-    
         e.preventDefault();
         const option = new FormData(formu)
         Swal.fire({
@@ -131,7 +129,7 @@ document.addEventListener('submit', (e)=>{
                     console.log(datos);
                     
                 })
-                .catch(error => console.error(error));git 
+                .catch(error => console.error(error));
             } 
             else{
                 Swal.fire({
