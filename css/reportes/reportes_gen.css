@@ -1,0 +1,193 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+header{
+    width: 100%;
+    background-color: #ff6712;
+}
+
+
+/* header titulo */
+
+.iconouserr{
+  /*   border: 1px solid black; */
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+a{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.iconouserr div{
+    border: 1px solid rgba(90, 90, 90, 0.37);
+    width: 130%;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.titulohea{
+    text-align: center;
+    font-size: 20px;
+}
+
+.contenedorbotonesCrear{
+    width: 100%;
+    display: flex;
+}
+
+.contenedorbotonesCrear .btn-m-users{
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.buscarmaquinaria{
+    width: 20%;
+}
+
+.buscarmaquinaria input {
+    width: 100%;
+}
+
+
+.btn-m-users form button{
+    background-color: #ff6712;
+    cursor: pointer;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    width: 100%;
+}
+
+.btn-m-users form button:hover{
+    background-color: #da5000;
+}
+
+.btn-m-users{
+    width: 100%;
+    display: flex;
+    align-items: center;  
+}
+
+
+
+/* contenedor caja inventario */
+.contenedorCajaInventario{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.documentosotras{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.documentosotras div{
+    border: 1px solid rgb(43, 255, 0);
+    margin: 10px;
+    margin-left: 5%;
+    padding: 5px;
+    width: 90%;
+    word-wrap: break-word;
+}
+
+.contentdocumentosotras{
+    border: 1px solid red;
+    margin: 20px;
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+table{
+    margin: 10px;
+    margin-left: 12%;
+}
+.tab_rep{
+    border: 1px solid red;
+    padding: 10px;
+    width: 200px;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+}
+/* botones */
+.contentGeneralBtns{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+/* .contentGeneralBtns div{
+    border: 1px solid red;
+    width: 100%;
+} */
+
+.contentGeneralBtns button{
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+/* caja de observaciones para que no se salga */
+.observacioneste{
+    font-size: 1vw;
+}
+
+
+/* simbolo de los botones */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+input[type=number] { -moz-appearance:textfield; }
+
+.aviso {
+    text-align: center;
+    width: 100%;
+    margin-top: 20%;
+}
+
+.fondo, .fondo2{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(0, 0%,0%, 0.8);
+    
+    
+}
+
+.ventana_maquinaria {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border: solid 2px var(--naranjaOScuro);
+    padding: 5px 15px;
+    
+}
+
+

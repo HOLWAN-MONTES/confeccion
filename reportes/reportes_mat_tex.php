@@ -17,7 +17,7 @@ if ($usario == "" || $usario == null) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/inventarios/insumos.css">
+    <link rel="stylesheet" href="../css/reportes/reportes_gen.css">
     <title>REPORTES</title>
 </head>
 <body>
@@ -75,7 +75,7 @@ if ($usario == "" || $usario == null) {
                         ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
                 $consul = mysqli_query($connection, $cons);
                 $dato = mysqli_fetch_array($consul);
-                $cant_maq = $dato["CANTIDAD_TOTAL"]; 
+                $cant_mat = $dato["CANTIDAD_TOTAL"]; 
         ?>
             <div class="contentdocumentosotras" id="contentdocumentosotras">
             
@@ -90,30 +90,41 @@ if ($usario == "" || $usario == null) {
                     
                     <div>HORA :<p> <?=$dato1["HORA"]?></p></div>
 
-                    <div>TIPO DE INGRESO :<p style="text-transform: uppercase;"> <?=$dato1["NOM_TIP_INGRESO"]?></p></div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td class="tab_rep">TIPO DE INGRESO</td>
+                                <td class="tab_rep">NOM. MATERIAL TEXTIL</td>
+                                <td class="tab_rep">CANTIDAD</td>
+                                <td class="tab_rep">BODEGA</td>
+                                <td class="tab_rep">CANTIDAD TOTAL</td>
+                            </tr>
+                        </thead>
                     <?php
-                        $consultica1 = "SELECT material_textil.NOM_MATERIAL_TEXTIL, CANTIDAD 
-                        FROM material_textil, detalle_ingreso 
-                        WHERE detalle_ingreso.ID_MATERIAL_TEXTIL = material_textil.ID_MATERIAL_TEXTIL AND 
-                        detalle_ingreso.ID_INGRE_MATERIAL = '$data1'";
+                        $consultica1 = "SELECT material_textil.NOM_MATERIAL_TEXTIL, tipo_ingreso.NOM_TIP_INGRESO, CANTIDAD,
+                                        bodega.NOM_BODEGA FROM material_textil, detalle_ingreso, tipo_ingreso, bodega
+                                        WHERE detalle_ingreso.ID_MATERIAL_TEXTIL = material_textil.ID_MATERIAL_TEXTIL AND 
+                                        detalle_ingreso.ID_TIP_INGRESO = tipo_ingreso.ID_TIP_INGRESO AND detalle_ingreso.ID_TIP_INGRESO = 1
+                                        AND detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA AND detalle_ingreso.ID_INGRE_MATERIAL = '$data1'";
                         $consu_can1 = mysqli_query($connection, $consultica1);
 
                         foreach($consu_can1 as $con1){
-                            // print_r($con);
-                        
                     ?>
-
-                    <div>NOMBRE DE MATERIAL TEXTIL :<p style="text-transform: uppercase;"> <?=$con1["NOM_MATERIAL_TEXTIL"]?></p></div>
-
-                    <div>CANTIDAD :<p> <?=$con1["CANTIDAD"]?></p></div>
+                            <tbody>
+                                <tr class="todo">
+                                    <td class="tab_rep"> <?=$con1["NOM_TIP_INGRESO"]?></td>
+                                    <td class="tab_rep"> <?=$con1["NOM_MATERIAL_TEXTIL"]?></td>
+                                    <td class="tab_rep"> <?=$con1["CANTIDAD"]?></td>
+                                    <td class="tab_rep"> <?=$con1["NOM_BODEGA"]?></td>
+                                    <td class="tab_rep"> <?=$cant_mat?></td>
+                                </tr>
+                            </tbody>
                     <?php
                         }
                     ?>
-
-                    <div>BODEGA :<p style="text-transform: uppercase;"> <?=$dato1["NOM_BODEGA"]?></p></div>
-
-                    <div>CANTIDAD TOTAL :<p> <?=$cant_maq?></p></div>
-                </div>  
+                    </table> 
+                </div>
+                 
                 <div class="contentGeneralBtns">
                     <div>
                         <form action="" method="post" id="" >
