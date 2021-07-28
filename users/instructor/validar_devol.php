@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $canti = intval($can);
     echo($can);
     print_r($envia);
-    $sql_total = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_BODEGA = 2 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+    $sql_total = "SELECT CANTIDAD_TOTAL FROM detalle_accion WHERE ID_BODEGA = 2 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
     $secuencia = mysqli_query($connection, $sql_total);
     $dato_total = mysqli_fetch_array($secuencia);
     $cantidad_total = $dato_total["CANTIDAD_TOTAL"];
