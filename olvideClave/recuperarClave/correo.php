@@ -26,7 +26,7 @@ if( $email !== "" ){
     
     if($dato){
         /* echo "funciono"; */
-        echo $_SESSION['CLAVE'];
+        /* echo $_SESSION['CLAVE']; */
 
         $mail = new PHPMailer(true);
         $mail->SMTPOptions = array(
@@ -94,16 +94,11 @@ if( $email !== "" ){
         2. Hay que revisar la información de seguridad. <br>
         3. Contactate con el administrador <br>
         Gracias,
-        
+
           <hr>
+        
           <div><label><b>CLAVE:</b></label><label>'.$_SESSION['CLAVE'].'</label><br></div><br><br>
-         
-           
-          
         </main>
-         
-        
-        
         </body>
         </html>';
     
@@ -118,11 +113,9 @@ if( $email !== "" ){
     }else{
         echo '<script>alert ("EL CORREO NO EXISTE");</script>';
         echo '<script>window.location="../../index-login/login.php"</script>';
-        
     }
 
 
-    
 }else{
     echo '<script>alert("LLENA LOS CAMPOS COMPLETAMENTE")</script>'; 
     echo '<script>window.location="../recuperarClave.html"</script>';

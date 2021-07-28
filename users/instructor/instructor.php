@@ -74,8 +74,10 @@ $hora_de = date("H:i:s");
         </div>
          <!------------------- devoluciones y prestamos pendientes---------------------- -->
         <div class="tres">
+
             <img id="tres" class="cuatro" src="../../images/devolucion_pe.jpeg" alt="">
             <img id="cuatro" class="cinco" src="../../images/prestamo_pe.jpeg" alt="">
+
         </div>
     </div>
 </div>
@@ -92,10 +94,10 @@ $hora_de = date("H:i:s");
                     <b>RESPONSABLE : <!-- nombre de la persona logeada --></b> <p><?=$_SESSION['NOMBRE'] ?></p>
                     <input type="hidden" name="responsable" id="responsable" value="<?=$_SESSION['DOCUMENTO'] ?>">
                 </div>      
-                <div>
+                <div class="unoo">
                     <p>FECHA:</p><p id="fecha" name="fecha"><?= $fecha; ?></p>
                 </div>
-                <div>
+                <div class="hours">
                     <p>HORA:</p><p id="hora" name="hora"><?= $hora; ?></p>
                 </div>
 
@@ -366,12 +368,13 @@ $hora_de = date("H:i:s");
     </div>
 </div>
 <!------------- ventana de prestamo pendiente de material------------------ -->
-<div class="ventana_tres" id="ventana_tres">
+<!-- <div class="ventana_tres" id="ventana_tres">
     <div class="contentPrestamosPendientes" id="contentPrestamosPendientes">
-        <h1>Aqui van los prestamos pendientes</h1>
+        <h1>h</h1>
         <div class="cerrar3" id="cerrar3">
             <a href=""><i class="fas fa-times-circle"></i></a>
         </div>
+
 
     </div>
       
@@ -438,6 +441,7 @@ $hora_de = date("H:i:s");
             }
             ?>
             </table>           
+
     </div>
       
 </div>

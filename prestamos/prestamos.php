@@ -67,9 +67,9 @@ if ($usario == "" || $usario == null) {
                             <table>
                                 <thead>
                                 <tr>
-                                    <th>MATERIAL</th>
-                                    <th>CANTIDAD</th>
-                                    <th>C_TOTAL</th>
+                                    <th>MATERIAL    .</th>
+                                    <th>CANTIDAD   .</th>
+                                    <th>C_TOTAL .</th>
                                 </tr>
                                 </thead>
                                 <tbody>

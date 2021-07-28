@@ -39,7 +39,6 @@ session_start();
                     <div class="contentLogo">
                         <img class="iamgenCos" src="../images/LOGO_EM.png" alt="">
                     </div>
-                   
                 </div>
                     
                 <form method="POST" id="formularioenviar" autocomplete="off">
@@ -48,7 +47,7 @@ session_start();
                         <input type="number" name="docuaprendiz" id="usuario" placeholder="DOCUMENTO" maxlength="12"  style="text-transform:uppercase">
                     
                         <input type="password" name="claveaprendiz" id="password" placeholder="Ingrese Clave" maxlength="20"  style="text-transform:uppercase">
-                        <select class="seleccionTipo" id="tipodocu" name="tipodocu">
+                        <select class="seleccionTipo" id="tipodocu" name="tipoUSU">
                             <option value="0">SELECCIONE SU CARGO</option>
                             <?php
                             foreach ($query_re as $tipo) : ?>
@@ -60,7 +59,6 @@ session_start();
                             endforeach;
                             ?>
                         </select><br> 
-                    
                         <button class="btnEnviar" id="crear">INGRESAR</button> <br>
                         <div class="hreff">
                             
