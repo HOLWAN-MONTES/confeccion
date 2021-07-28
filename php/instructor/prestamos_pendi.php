@@ -63,7 +63,7 @@ if ($usario == "" || $usario == null) {
                             </thead>
                             <tbody>
                                 <?php
-                                $sql = "SELECT * FROM detalle_accion INNER JOIN accion_realizada on detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA INNER JOIN insumo ON detalle_accion.ID_INSUMO=insumo.ID_INSUMO INNER JOIN material_textil ON detalle_accion.ID_MATERIAL_TEXTIL=material_textil.ID_MATERIAL_TEXTIL WHERE detalle_accion.ID_ACCION_REALIZADA=$id_Dev AND material_textil.ID_MATERIAL_TEXTIL != 7 AND insumo.ID_INSUMO != 7";
+                                $sql = "SELECT * FROM detalle_accion INNER JOIN accion_realizada on detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA INNER JOIN insumo ON detalle_accion.ID_INSUMO=insumo.ID_INSUMO INNER JOIN material_textil ON detalle_accion.ID_MATERIAL_TEXTIL=material_textil.ID_MATERIAL_TEXTIL WHERE detalle_accion.ID_ACCION_REALIZADA=$id_Dev";
                                 $consultaN = mysqli_query($connection,$sql);
                                 foreach ($consultaN as $datoapre){
                                 ?> <tr>
@@ -71,7 +71,7 @@ if ($usario == "" || $usario == null) {
                                         <td><?=$datoapre["CANTIDAD"]?></td>
                                         <td><?=$datoapre["NOM_MATERIAL_TEXTIL"]?></td>
                                         <td><?=$datoapre["CANTIDAD"]?></td>
-                                        <!-- <td><?=$datoapre["CANTIDAD_TOTAL"]?></td> -->
+                                        
                                     </tr>
                                         
                                 <?php

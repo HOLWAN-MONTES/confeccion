@@ -46,7 +46,7 @@ const btncrearMaquinaria = document.getElementById('crearMaquinaria');
 /* CREAR EMPRESA Y TODO LO DE EMPRESA */
 const btncrearempresa = document.getElementById('btncrearempresa');
 const contencrearEmpresa = document.getElementById('contencrearEmpresa');
-const formcrearEmpresa = document.getElementById('formcrearEmpresa')
+/* var formcrearEmpresa = document.getElementById('formcrearEmpresa') */
 
 btncrearempresa.addEventListener('click',function(){
     contentCrearUsuario.style.display = "none"
@@ -57,7 +57,7 @@ btncrearempresa.addEventListener('click',function(){
     contentIngresoDeInsumos.style.display = "none"
     contentcrearficha.style.display = "none"
     contencrearEmpresa.style.display = "block"
-    formcrearEmpresa.reset();
+   /*  formcrearEmpresa.reset(); */
 })
 
 /* crear ficha */

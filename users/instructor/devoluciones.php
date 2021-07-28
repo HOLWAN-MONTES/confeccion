@@ -83,9 +83,9 @@ $hora_de = date("H:i:s");
                    <td style="text-transform: uppercase;"><?php echo $mostrar1['NOM_INSUMO']; ?></td>
                    <td id="canti" style="text-transform: uppercase;"><?php echo $mostrar1['CANTIDAD']; ?></td>
                    <td>
-                        <form action="validar_devol.php" id="form_dev" method ="POST">
-                            <input type="number"  id ="cantidad_devolver" name = "cantidad_devolver">
-                            <input type="submit" name="enivar_devol" value="DEVOLVER">
+                        <form id="form_dev" method ="POST">
+                            <input type="number"  id ="cantidad_dev" name = "cantidad_devolver">
+                            <input type="submit" class="envio_dev" name="enivar_devol" value="DEVOLVER">
                         </form>
                     </td>
                    <td>
