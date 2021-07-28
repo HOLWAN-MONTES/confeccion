@@ -18,6 +18,7 @@ if ($usario == "" || $usario == null) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/reportes/reportes_gen.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>REPORTES</title>
 </head>
 <body>
@@ -33,10 +34,10 @@ if ($usario == "" || $usario == null) {
                     <button id="" >GENERAL</button>
                 </form>
 
-                <form action="" id="form_repo_maq" method="post">
-                    <input type="date" class="fecha_ini">
-                    <input type="date" class="fecha_fin">
-                    <input type="submit" name="">
+                <form id="form_repo_mat" method="post">
+                    <input type="date" id="fecha_ini_mat" class="fecha_ini_mat">
+                    <input type="date" id="fecha_fin_mat" class="fecha_fin_mat">
+                    <input type="submit" id="buscar" value="Buscar" name="buscar">      
                 </form>
             </div>
             <div class="iconouserr">
@@ -144,5 +145,5 @@ if ($usario == "" || $usario == null) {
       </div>
     </main>
 </body>
-<script src="../js/reportes/reportes_maquinaria.js"></script>
+<script src="../js/reportes/reportes_mat_tex.js"></script>
 </html>

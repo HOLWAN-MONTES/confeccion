@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     
     $consulta = "SELECT DISTINCT detalle_ingreso.ID_INGRE_MATERIAL FROM detalle_ingreso 
                     INNER JOIN ingreso_material ON detalle_ingreso.ID_INGRE_MATERIAL = ingreso_material.ID_INGRE_MATERIAL 
-                    WHERE detalle_ingreso.ID_TIP_INGRESO = 3 AND FECHA BETWEEN '$fec_ini' AND '$fec_fin'";
+                    WHERE FECHA BETWEEN '$fec_ini' AND '$fec_fin'";
 
     $consulta_repo_maq = mysqli_query($connection,$consulta);
     // $db = mysqli_fetch_array($consulta_repo_maq);
@@ -20,18 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                     INNER JOIN maquinaria ON detalle_ingreso.SERIAL_MAQUINARIA = MAQUINARIA.SERIAL_MAQUINARIA 
                     INNER JOIN usuario ON ingreso_material.DOCUMENTO = usuario.DOCUMENTO INNER JOIN empresa 
                     ON ingreso_material.NIT_DOC = empresa.NIT_DOC INNER JOIN bodega 
-                    ON detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA WHERE detalle_ingreso.ID_TIP_INGRESO = 3 
-                    AND FECHA BETWEEN '$fec_ini' AND '$fec_fin' AND detalle_ingreso.ID_INGRE_MATERIAL = '$data3'";
+                    ON detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA 
+                    WHERE FECHA BETWEEN '$fec_ini' AND '$fec_fin' AND detalle_ingreso.ID_INGRE_MATERIAL = '$data3' LIMIT 1";
 
             $consul3 = mysqli_query($connection, $cons3);
             $dato3 = mysqli_fetch_array($consul3);
-            // print_r($dato3);
-
-            $cons = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_TIP_INGRESO = 3
-                    ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
-            $consul = mysqli_query($connection, $cons);
-            $dato = mysqli_fetch_array($consul);
-            $cant_maq = $dato["CANTIDAD_TOTAL"];
             
             echo (' 
             <div class="contentdocumentosotras" id="contentdocumentosotras">
@@ -59,28 +52,65 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             ');
             
             
-                $consultica3 = "SELECT maquinaria.NOM_MAQUINARIA, tipo_ingreso.NOM_TIP_INGRESO, CANTIDAD,
-                bodega.NOM_BODEGA FROM maquinaria, detalle_ingreso, tipo_ingreso, bodega
-                WHERE detalle_ingreso.SERIAL_MAQUINARIA = maquinaria.SERIAL_MAQUINARIA AND 
-                detalle_ingreso.ID_TIP_INGRESO = tipo_ingreso.ID_TIP_INGRESO AND 
-                detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA AND detalle_ingreso.ID_TIP_INGRESO = 3
+                $consultica3 = "SELECT maquinaria.NOM_MAQUINARIA, insumo.NOM_INSUMO, material_textil.NOM_MATERIAL_TEXTIL, 
+                CANTIDAD, tipo_ingreso.NOM_TIP_INGRESO, bodega.NOM_BODEGA 
+                FROM maquinaria, detalle_ingreso, insumo, material_textil, tipo_ingreso, bodega 
+                WHERE maquinaria.SERIAL_MAQUINARIA = detalle_ingreso.SERIAL_MAQUINARIA 
+                AND insumo.ID_INSUMO = detalle_ingreso.ID_INSUMO AND material_textil.ID_MATERIAL_TEXTIL = detalle_ingreso.ID_MATERIAL_TEXTIL 
+                AND detalle_ingreso.ID_TIP_INGRESO = tipo_ingreso.ID_TIP_INGRESO AND detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA
                 AND detalle_ingreso.ID_INGRE_MATERIAL = '$data3'";
                 $consu_can3 = mysqli_query($connection, $consultica3);
 
                 foreach($consu_can3 as $con3){
-                    
+                    if($con3['NOM_TIP_INGRESO'] == 'Material Textil'){
+                        $cons = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_TIP_INGRESO = 1 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+                        $consul = mysqli_query($connection, $cons);
+                        $dato = mysqli_fetch_array($consul);
+                        $cant_maq = $dato["CANTIDAD_TOTAL"];
             
             echo ('<tbody>
                     <tr class="todo">
                         <td class="tab_rep">'.$con3["NOM_TIP_INGRESO"].'</td>
-                        <td class="tab_rep">'.$con3["NOM_MAQUINARIA"].'</td>
+                        <td class="tab_rep">'.$con3["NOM_MATERIAL_TEXTIL"].'</td>
                         <td class="tab_rep">'.$con3["CANTIDAD"].'</td>
                         <td class="tab_rep">'.$con3["NOM_BODEGA"].'</td>
                         <td class="tab_rep">'.$cant_maq.'</td>
                     </tr>
                 </tbody>');
-
-            }
+                    }
+                    else if($con3['NOM_TIP_INGRESO'] == 'Insumos'){
+                        $cons2 = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_TIP_INGRESO = 2 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+                        $consul2 = mysqli_query($connection, $cons2);
+                        $dato2 = mysqli_fetch_array($consul2);
+                        $cant_maq2 = $dato2["CANTIDAD_TOTAL"];
+            
+                    echo ('<tbody>
+                    <tr class="todo">
+                        <td class="tab_rep">'.$con3["NOM_TIP_INGRESO"].'</td>
+                        <td class="tab_rep">'.$con3["NOM_INSUMO"].'</td>
+                        <td class="tab_rep">'.$con3["CANTIDAD"].'</td>
+                        <td class="tab_rep">'.$con3["NOM_BODEGA"].'</td>
+                        <td class="tab_rep">'.$cant_maq2.'</td>
+                    </tr>
+                </tbody>');
+                    }
+                    else if($con3['NOM_TIP_INGRESO'] == 'Maquinaria'){
+                        $cons3 = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_TIP_INGRESO = 3 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
+                        $consul3 = mysqli_query($connection, $cons3);
+                        $dato3 = mysqli_fetch_array($consul3);
+                        $cant_maq3 = $dato3["CANTIDAD_TOTAL"];
+                        
+                    echo ('<tbody>
+                                <tr class="todo">
+                                    <td class="tab_rep">'.$con3["NOM_TIP_INGRESO"].'</td>
+                                    <td class="tab_rep">'.$con3["NOM_INSUMO"].'</td>
+                                    <td class="tab_rep">'.$con3["CANTIDAD"].'</td>
+                                    <td class="tab_rep">'.$con3["NOM_BODEGA"].'</td>
+                                    <td class="tab_rep">'.$cant_maq3.'</td>
+                                </tr>
+                            </tbody>');
+                    }
+                }
         echo('
                 </table>
             </div>    
@@ -98,21 +128,3 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         
 }
 }
-
-// if($dato3){
-            //     $res = array(
-            //         'err' => false, 
-            //         'status' => http_response_code(200),
-            //         'statusText' => 'Usted hizo la consulta bien',
-            //         'data' => $rep_maq
-            //     ); 
-            // }
-            // else{
-            //     $res = array(
-            //         'err' => true, 
-            //         'status' => http_response_code(200),
-            //         'statusText' => 'Usted no hizo la consulta bien',
-            //         'data' => []
-            //     ); 
-            // }
-            // echo json_encode($res);
