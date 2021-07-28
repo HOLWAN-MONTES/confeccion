@@ -35,9 +35,9 @@ if ($usario == "" || $usario == null) {
                     <button id="">GENERAL</button>
                 </form>
 
-                <form  id="form_repo_maq" method="post">
-                    <input type="date" id="fecha_ini" class="fecha_ini" required>
-                    <input type="date" id="fecha_fin" class="fecha_fin" required>
+                <form  id="form_repo_gen" method="post">
+                    <input type="date" id="fecha_ini_gen" class="fecha_ini" required>
+                    <input type="date" id="fecha_fin_gen" class="fecha_fin" required>
                     <input type="submit" id="buscar" value="Buscar" name="buscar">
                 </form>
             </div>
@@ -181,7 +181,7 @@ if ($usario == "" || $usario == null) {
                 <div class="contentGeneralBtns">
                     <div>
                         <form action="" method="post" id="" >
-                            <button id="ver_mas" class="ver_mas" data-id="<?php echo $rep_maq["ID_INGRE_MATERIAL"]?>">IMPRIMIR REPORTES</button>
+                            <button id="ver_mas_gen" class="ver_mas_gen" data-id="<?php echo $rep_maq["ID_INGRE_MATERIAL"]?>">IMPRIMIR REPORTES</button>
                         </form>
                     </div>
                     
@@ -198,5 +198,5 @@ if ($usario == "" || $usario == null) {
       </div>
     </main>
 </body>
-<script src="../js/reportes/reportes_maquinaria.js"></script>
+<script src="../js/reportes/reportes_generales.js"></script>
 </html>

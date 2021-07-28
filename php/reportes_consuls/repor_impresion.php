@@ -1,13 +1,6 @@
 <?php 
 require '../conections/conexion.php';
 $imprime = $_GET['id'];
-// print_r($imprime);
-// $consulta = "SELECT DISTINCT detalle_ingreso.ID_INGRE_MATERIAL FROM detalle_ingreso 
-//                         WHERE detalle_ingreso.ID_TIP_INGRESO = 3";
-
-//         $consulta_repo_maq = mysqli_query($connection,$consulta);
-//         $datos = mysqli_fetch_array($consulta_repo_maq);
-//         $data3 = $datos['ID_INGRE_MATERIAL'];
         $cons3 = "SELECT * FROM detalle_ingreso INNER JOIN ingreso_material 
                 ON detalle_ingreso.ID_INGRE_MATERIAL = ingreso_material.ID_INGRE_MATERIAL 
                 INNER JOIN tipo_ingreso ON detalle_ingreso.ID_TIP_INGRESO = tipo_ingreso.ID_TIP_INGRESO
@@ -24,7 +17,6 @@ $imprime = $_GET['id'];
                 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
         $consul = mysqli_query($connection, $cons);
         $dato = mysqli_fetch_array($consul);
-        $cant_maq = $dato["CANTIDAD_TOTAL"];
             
                
         $consultica3 = "SELECT maquinaria.NOM_MAQUINARIA, tipo_ingreso.NOM_TIP_INGRESO, CANTIDAD,

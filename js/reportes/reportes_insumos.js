@@ -1,12 +1,12 @@
-$('#form_repo_maq').submit(function (e) {
+$('#form_repo_insu').submit(function (e) {
     e.preventDefault();
-    const fec_ini = document.getElementById("fecha_ini").value;
-    const fec_fin = document.getElementById("fecha_fin").value;
+    const fec_ini = document.getElementById("fecha_ini_insu").value;
+    const fec_fin = document.getElementById("fecha_fin_insu").value;
     var form = $(this);
     var url = form.attr('action');
     $.ajax({
         type:"GET",
-        url:`../php/reportes_consuls/repor_fechas.php?fec_ini=${fec_ini}&fec_fin=${fec_fin}`,
+        url:`../php/reportes_consuls/repor_fechas_insu.php?fec_ini=${fec_ini}&fec_fin=${fec_fin}`,
         data: form.serialize(),
         success: function(data){
             // console.log(data);
@@ -19,7 +19,7 @@ $('#form_repo_maq').submit(function (e) {
 
 function imprimir(id){
     const div = document.createElement('div');
-    fetch(`../php/reportes_consuls/repor_impresion.php?id=${id}`, {
+    fetch(`../php/reportes_consuls/repor_impresion_insu.php?id=${id}`, {
         method:"GET",
 
     })
@@ -28,15 +28,15 @@ function imprimir(id){
         console.log(data);
         div.innerHTML = `
         <div class="documentosotras" id="documentosotras">
-        <div>NUM. RECIBO :<p id="ingre_mat"> ${data.dato3[1]}</p></div>
+        <div>NUM. RECIBO :<p id="ingre_mat"> ${data.dato2[1]}</p></div>
                         
-        <div>NOMBRE RESPONSABLE:<p> ${data.dato3[25]}</p></div>
+        <div>NOMBRE RESPONSABLE:<p> ${data.dato2[25]}</p></div>
         
-        <div>PROVEEDOR :<p style="text-transform: uppercase;"> ${data.dato3.NOM_EMPLEADO} </p></div>
+        <div>PROVEEDOR :<p style="text-transform: uppercase;"> ${data.dato2.NOM_EMPLEADO} </p></div>
         
-        <div>FECHA :<p>${data.dato3[12]}</p></div>
+        <div>FECHA :<p>${data.dato2[12]}</p></div>
         
-        <div>HORA :<p> ${data.dato3[13]}</p></div>
+        <div>HORA :<p> ${data.dato2[13]}</p></div>
 
         <table>
             <thead>
@@ -50,10 +50,10 @@ function imprimir(id){
             </thead>
             <tbody>
                 <tr class="todo">
-                    <td class="tab_rep"> ${data.consu3[3]}</td>
-                    <td class="tab_rep"> ${data.consu3[0]}</td>
-                    <td class="tab_rep"> ${data.consu3[2]}</td>
-                    <td class="tab_rep"> ${data.consu3[1]}</td>
+                    <td class="tab_rep"> ${data.consu2[3]}</td>
+                    <td class="tab_rep"> ${data.consu2[0]}</td>
+                    <td class="tab_rep"> ${data.consu2[2]}</td>
+                    <td class="tab_rep"> ${data.consu2[1]}</td>
                     <td class="tab_rep"> ${data.dato[0]}</td>
                 </tr>
             </tbody>
@@ -85,5 +85,3 @@ document.addEventListener('click',(e) => {
         imprimir(impresion);
     }
 })
-
-// action="../php/reportes_consuls/repor_fechas.php
