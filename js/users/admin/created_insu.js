@@ -53,7 +53,7 @@ enviarInsu.addEventListener("click", (e) => {
         else{
             Swal.fire({
                 title: 'Advertencia!',
-                text: 'Llena los campos correctamente.',
+                text: 'Por favor rellena el formulario correctamente o verifica que no hallan datos vacios.',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
                 
@@ -66,7 +66,7 @@ const ingre_insumo = document.getElementById("CrearInsumoForm")
 const inputs_insu = document.querySelectorAll("#CrearInsumoForm input")
 
 const expresiones_insu = {
-    nombre_insu: /^[a-zA-Z0-9\s]{4,16}$/, // Letras y espacios, pueden llevar acentos.
+    nombre_insu: /^[a-zA-Z\s]{4,16}$/, // Letras y espacios, pueden llevar acentos.
     metraje: /^\d{2,5}$/ // 2 a 5 numeros.  
 }
 

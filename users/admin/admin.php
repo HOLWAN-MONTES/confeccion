@@ -817,7 +817,7 @@ $hora = date("H:i:s");
                                 <select class="input5" name="marca_insumo"  required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
-                                        $tipo = "SELECT * FROM marca";
+                                        $tipo = "SELECT * FROM marca WHERE ID_TIP_MARCA = 2";
                                         $inser = mysqli_query($connection,$tipo);
                                         while($tip = mysqli_fetch_array($inser)){
                                     ?>
@@ -992,7 +992,7 @@ $hora = date("H:i:s");
                                 <select class="input5" name="estado_maqui" id="estado_maqui"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM estado";
+                                    $tipo = "SELECT * FROM estado WHERE ID_ESTADO = 5 OR ID_ESTADO = 6 OR ID_ESTADO = 7";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
@@ -1011,7 +1011,7 @@ $hora = date("H:i:s");
                             <select class="input5" name="marca_maqui"  required>
                                 <option >SELECCIONAR</option>
                                 <?php
-                                    $tipo = "SELECT * FROM marca";
+                                    $tipo = "SELECT * FROM marca WHERE ID_TIP_MARCA = 3";
                                     $inser = mysqli_query($connection,$tipo);
                                     while($tip = mysqli_fetch_array($inser)){
                                 ?>
