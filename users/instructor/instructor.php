@@ -379,7 +379,7 @@ $hora_de = date("H:i:s");
     </div>
       
 </div>
-<!------------- ventana de devolucion pendiente  de material------------------ -->
+<------------- ventana de devolucion pendiente  de material------------------ -->
 <div class="ventana_cuatro" id="ventana_cuatro">
     <div class="contentDevolucionesPendientes" id="contentDevolucionesPendientes">
         <h1>HISTORIAL</h1>

@@ -789,7 +789,7 @@ $hora = date("H:i:s");
                         <div class="primeralinea5">
                             <div>
                                 <label for="">TIPO DE INSUMO</label>    
-                                <select class="input5" name="tip_insumo" required style="text-transform:uppercase">
+                                <select class="input5" name="tip_insumo" id="tip_insumo" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
                                         $tipo = "SELECT * FROM tipo_insumo";
@@ -816,7 +816,7 @@ $hora = date("H:i:s");
                         <div class="segundalinea5">
                             <div>
                                 <label for="">MARCA DEL INSUMO</label>    
-                                <select class="input5" name="marca_insumo"  required style="text-transform:uppercase">
+                                <select class="input5" name="marca_insumo" id="marca_insumo" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
                                         $tipo = "SELECT * FROM marca WHERE ID_TIP_MARCA = 2";
@@ -834,7 +834,7 @@ $hora = date("H:i:s");
                             </div>
                             <div>
                                 <label for="">COLOR DEL INSUMO</label>    
-                                <select class="input5" name="color_insumo"  required style="text-transform:uppercase">
+                                <select class="input5" name="color_insumo" id="color_insumo" required style="text-transform:uppercase">
                                     <option >SELECCIONAR</option>
                                     <?php
                                         $tipo = "SELECT * FROM color";
@@ -1111,10 +1111,10 @@ $hora = date("H:i:s");
             <div>
                 
                 <h1>CREAR MARCA</h1>
-                <form class="contentform"  action="#" method="POST">
+                <form class="contentform" id="regMarcaInsu"  method="POST" autocomplete="off">
                     
-                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
-                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                    <div><input class="inptnombre" type="text" placeholder="NOMBRE" name="in_marcaInsu" id="in_marcaInsu" required ></div>
+                    <div><input class="btn_peque_form" type="button" id="enviar_marcaInsu" value="CREAR"></div>
                 </form>
             </div>
         </div>
