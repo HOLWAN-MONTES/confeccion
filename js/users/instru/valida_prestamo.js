@@ -229,6 +229,8 @@ function guardarMateriales(e){
             method:"POST",
             data: "json="+json,
             success: function(a){
+                console.log(datosPre);
+                console.log()
                 console.log(a);
                 // const envios = JSON.parse(a);
                 // console.log(envios);
