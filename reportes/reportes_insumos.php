@@ -17,7 +17,7 @@ if ($usario == "" || $usario == null) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/inventarios/insumos.css">
+    <link rel="stylesheet" href="../css/reportes/reportes_gen.css">
     <title>REPORTES</title>
 </head>
 <body>
@@ -75,7 +75,7 @@ if ($usario == "" || $usario == null) {
                         ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
                 $consul = mysqli_query($connection, $cons);
                 $dato = mysqli_fetch_array($consul);
-                $cant_maq = $dato["CANTIDAD_TOTAL"]; 
+                $cant_insu = $dato["CANTIDAD_TOTAL"]; 
         ?>
             <div class="contentdocumentosotras" id="contentdocumentosotras">
             
@@ -90,28 +90,40 @@ if ($usario == "" || $usario == null) {
                     
                     <div>HORA :<p> <?=$dato2["HORA"]?></p></div>
 
-                    <div>TIPO DE INGRESO :<p style="text-transform: uppercase;"> <?=$dato2["NOM_TIP_INGRESO"]?></p></div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td class="tab_rep">TIPO DE INGRESO</td>
+                                <td class="tab_rep">NOMBRE DE INSUMO</td>
+                                <td class="tab_rep">CANTIDAD</td>
+                                <td class="tab_rep">BODEGA</td>
+                                <td class="tab_rep">CANTIDAD TOTAL</td>
+                            </tr>
+                        </thead>
                     <?php
-                        $consultica2 = "SELECT insumo.NOM_INSUMO, CANTIDAD FROM insumo, detalle_ingreso
-                        WHERE detalle_ingreso.ID_INSUMO = insumo.ID_INSUMO AND 
-                        detalle_ingreso.ID_INGRE_MATERIAL = '$data2'";
+                        $consultica2 = "SELECT insumo.NOM_INSUMO, tipo_ingreso.NOM_TIP_INGRESO, CANTIDAD,
+                                        bodega.NOM_BODEGA FROM insumo, detalle_ingreso, tipo_ingreso, bodega
+                                        WHERE detalle_ingreso.ID_INSUMO = insumo.ID_INSUMO 
+                                        AND detalle_ingreso.ID_TIP_INGRESO = tipo_ingreso.ID_TIP_INGRESO AND 
+                                        detalle_ingreso.ID_BODEGA = bodega.ID_BODEGA 
+                                        AND detalle_ingreso.ID_TIP_INGRESO = 2 AND detalle_ingreso.ID_INGRE_MATERIAL = '$data2'";
                         $consu_can2 = mysqli_query($connection, $consultica2);
 
                         foreach($consu_can2 as $con2){
-                            // print_r($con);
-                        
                     ?>
-
-                    <div>NOMBRE DE INSUMO :<p style="text-transform: uppercase;"> <?=$con2["NOM_INSUMO"]?></p></div>
-
-                    <div>CANTIDAD :<p> <?=$con2["CANTIDAD"]?></p></div>
+                            <tbody>
+                                <tr class="todo">
+                                    <td class="tab_rep"> <?=$con2["NOM_TIP_INGRESO"]?></td>
+                                    <td class="tab_rep"> <?=$con2["NOM_INSUMO"]?></td>
+                                    <td class="tab_rep"> <?=$con2["CANTIDAD"]?></td>
+                                    <td class="tab_rep"> <?=$con2["NOM_BODEGA"]?></td>
+                                    <td class="tab_rep"> <?=$cant_insu?></td>
+                                </tr>
+                            </tbody>
                     <?php
                         }
                     ?>
-
-                    <div>BODEGA :<p style="text-transform: uppercase;"> <?=$dato2["NOM_BODEGA"]?></p></div>
-
-                    <div>CANTIDAD TOTAL :<p> <?=$cant_maq?></p></div>
+                    </table>
                 </div>  
                 <div class="contentGeneralBtns">
                     <div>
