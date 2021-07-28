@@ -551,21 +551,111 @@ $hora = date("H:i:s");
             </div>
         </div>
 
+        <!-- ----------------------------CREAR FICHA------------------ -->
+            <div class="contentcrearficha" id="contentcrearficha">
+                <div class="contenFormFicha">
+                    <div class="tituloficha">
+                        <b>CREAR FICHA</b>
+                    </div>
+                    <div>
+                
+                <form autocomplete="off"  id="formcrearficha"  class="formularioCrearficha" method="POST" >
+                    <!-- action="../../php/admin/crearEmpresa.php" -->
+                    <div class="primeraLineaempresa">
+                            <div >
+                                <label for="">NUMERO DE FICHA</label><!-- minlength="5" -->
+                                <input  type="" name="" id="">
+                            </div>
+                            <div >
+                                <label for="">FORMACION</label>
+                                <select class="inp_cate" name="categorias" id="categoria" style="text-transform: uppercase;" required>
+                                        <option>SELECCIONAR</option>
+                                        <?php
+                                        $tipo2 = "SELECT * FROM tipo_ingreso";
+                                        $inser2 = mysqli_query($connection ,$tipo2);
+                                        while($tip2 = mysqli_fetch_array($inser2)){
+                                        ?>
+                                        <option name="tip_material" id="op_mat" value="<?php echo $tip2[0]; ?>">
+                                            <?php echo $tip2[1]; ?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                    <p><a href="">crear formacion </a></p>
+                            </div>
+                           
+                            <div>
+                                <label for="">JORNADA</label>    
+                                <select class="inp_cate" name="categorias" id="categoria" style="text-transform: uppercase;" required>
+                                        <option>SELECCIONAR</option>
+                                        <?php
+                                        $tipo2 = "SELECT * FROM tipo_ingreso";
+                                        $inser2 = mysqli_query($connection ,$tipo2);
+                                        while($tip2 = mysqli_fetch_array($inser2)){
+                                        ?>
+                                        <option name="tip_material" id="op_mat" value="<?php echo $tip2[0]; ?>">
+                                            <?php echo $tip2[1]; ?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                            </div>
+                    </div>
+
+                    <div class="segundalineaempresa"> 
+                       
+                        <div>
+                            <label for="">INSTRUCTOR</label>    
+                            <select class="inp_cate" name="categorias" id="categoria" style="text-transform: uppercase;" required>
+                                        <option>SELECCIONAR</option>
+                                        <?php
+                                        $tipo2 = "SELECT * FROM tipo_ingreso";
+                                        $inser2 = mysqli_query($connection ,$tipo2);
+                                        while($tip2 = mysqli_fetch_array($inser2)){
+                                        ?>
+                                        <option name="tip_material" id="op_mat" value="<?php echo $tip2[0]; ?>">
+                                            <?php echo $tip2[1]; ?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                        </div>
+                        
+                    </div>
+
+                    <div class="terceralineaempresa">
+                        <input type="button" id="btnEnviarempre" value="CREAR"  name="">
+                        <!-- <input type="submit" value="CREAR"> -->
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+                </div>
+            </div>
+
+
         <!-- -----------------------------------------INVENTARIOS---------------- -->
     <!-- inventario de maquinaria -->
-    <div class="contenedorinventariomaquinariageneral">
-            
-            </div>
+        <div class="contenedorinventariomaquinariageneral">
         
-            <!-- inventario de material textil -->
-            <div class="contenedorinventariomaterialtextgeneral">
-        
-            </div>
-        
-            <!-- inventario de insumos -->
-            <div class="contenedorinventarioinsumos">
-        
-            </div>
+        </div>
+    
+        <!-- inventario de material textil -->
+        <div class="contenedorinventariomaterialtextgeneral">
+    
+        </div>
+    
+        <!-- inventario de insumos -->
+        <div class="contenedorinventarioinsumos">
+    
+        </div>
 
     </main>
 
@@ -1108,7 +1198,6 @@ $hora = date("H:i:s");
     </div>
 
     
-
     <!-- caja delado izquierdo de los menus --------------------------->
     <div class="lateral">
 
@@ -1123,6 +1212,7 @@ $hora = date("H:i:s");
                     <ul>
                         <li id="registroUsu" class="uno registroUsuarios"><a >REGISTRO DE USUARIOS</a></li>
                         <li id="btncrearempresa" class="uno crearempresa"><a >REGISTRO DE EMPRESA</a></li>
+                        <li id="btncrearficha" class="uno crearempresa"><a >CREAR FICHA</a></li>
                         <li id="editarUsu" class="uno edita"><a >EDITAR USUARIOS</a></li>
                         <li id="eliminarUsu" class="uno eliminar"><a >ELIMINAR USUARIOS</a></li>
                         <li id="UsuariosRegistrados" class="uno usersRegis"><a >USUARIOS REGISTRADOS</a></li>

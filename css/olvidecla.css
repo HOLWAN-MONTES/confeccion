@@ -22,13 +22,14 @@
     width: 90%;
     height: 100vh;
     margin: 0 auto;
-    background: linear-gradient(860deg,#ff5f02,rgb(37, 206, 22));
+    background: linear-gradient(30deg,rgb(24, 130, 118),rgba(24, 130, 118, 0.575));
 }
 
 .contenedorFormulario{
-    background: linear-gradient(100deg, #da5000, #da500063);
+    background: linear-gradient(20deg, rgba(24, 130, 118, 0.699), rgb(24, 130, 118));
     width: 60%;
     margin: 0 auto;
+    border: 1px solid black;
     padding: 20px;
     margin-top: 30px;
     text-align: center;
