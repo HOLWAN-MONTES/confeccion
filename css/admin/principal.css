@@ -743,6 +743,44 @@ li{
     margin: 5px;
 }
 
+
+/*-------------------------------------------- CREAR FICHA ------------------------------*/
+.contentcrearficha{
+    display: none;
+    text-align: center;
+    width: 80%;
+    height: auto;
+    border-radius: 10PX;
+    margin: 0 auto;
+    margin-top: 3%;
+    padding: 5px;
+}
+
+.contenFormFicha{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 1%;
+    background-color: #188276;/* #da5000; */
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.tituloficha{
+    margin-bottom: 20px;
+    text-align:center;
+    font-size: 30px;
+    color: black; 
+}
+
+.formularioCrearficha {
+    border: 1px solid rgba(189, 16, 16, 0.301) ;
+    background-color: #c0c0c0;
+    padding: 10px;
+    border-radius: 10px;
+    display: grid;
+    width: 100%;
+}
+
 /* ----------------------------------INGRESO DE MATERIAL TEXTIL-------------------------- */
 
 .contentIngresoDeInsumos{
