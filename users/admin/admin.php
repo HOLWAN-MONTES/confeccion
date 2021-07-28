@@ -514,8 +514,8 @@ $hora = date("H:i:s");
                         <!-- action="../../php/admin/crearEmpresa.php" -->
                         <div class="primeraLineaempresa">
                                 <div >
-                                    <label for="">NIT - DOCUMENTO</label>
-                                    <input  type="number" name="nit" id="" minlength="5" >
+                                    <label for="">NIT - DOCUMENTO</label><!-- minlength="5" -->
+                                    <input  type="number" name="nit" id="">
                                 </div>
                                 <div >
                                     <label for="">Nombre de la empresa</label>
@@ -528,7 +528,7 @@ $hora = date("H:i:s");
                                 </div>
                         </div>
 
-                        <div class="segundalineaempresa">
+                        <div class="segundalineaempresa"> 
                            
                             <div>
                                 <label for="">TELEFONO</label>    

@@ -15,7 +15,7 @@ if($nit !=="" && $nombreEMpresa !=="" && $razonSocial !=="" && $telefonoEmpre !=
 if(filter_var($correoEmpre,FILTER_VALIDATE_EMAIL)){
     
     
-    $sql ="INSERT INTO `empresa` (`NIT_DOC`, `NOM_EMPRESA`, `ID_TIP_USU`, `RAZON_SOCIAL`, `TELEFONO`, `COR_EMPR`) VALUES ('$nit', '$nombreEMpresa', '$tipousu', '$razonSocial', '$telefonoEmpre', '$correoEmpre')";
+    $sql ="INSERT INTO `empresa` (`NIT_DOC`, `NOM_EMPLEADO`, `ID_TIP_USU`, `NOM_EMPRESA`, `TELEFONO`, `COR_EMPR`) VALUES ('$nit', '$nombreEMpresa', '$tipousu', '$razonSocial', '$telefonoEmpre', '$correoEmpre')";
 
     $verificar_correo = mysqli_query($connection, "SELECT * FROM empresa WHERE COR_EMPR='$correoEmpre'");
 
