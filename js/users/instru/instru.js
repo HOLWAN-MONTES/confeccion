@@ -14,9 +14,9 @@ const btn_ventana_tres = document.getElementById('tres');
 const btn_cerrar3 = document.getElementById('cerrar3')
 
 //variables donde aparecen las devoluciones pendientes
-const contenedor_cuatro = document.getElementById('ventana_cuatro');
-const btn_ventana_cuatro = document.getElementById('cuatro');
-const btn_cerrar4 = document.getElementById('cerrar4')
+// const contenedor_cuatro = document.getElementById('ventana_cuatro');
+// const btn_ventana_cuatro = document.getElementById('cuatro');
+// const btn_cerrar4 = document.getElementById('cerrar4')
 
 // Ventana modal 1 y formulario de peticion de prestamos
 btn_ventana_one.addEventListener('click', function(){
@@ -69,27 +69,27 @@ btn_cerrar2.addEventListener('click', function(e){
 })
 
 //Ventana modal 3, donde aparecen los pestamos pendientes
-btn_ventana_tres.addEventListener("click",function(){
-    contenedor_tres.style.display="block";
-})
+// btn_ventana_tres.addEventListener("click",function(){
+//     contenedor_tres.style.display="block";
+// })
 
-//cerrar ventana
-btn_cerrar3.addEventListener('click', function(e){
-    e.preventDefault();
+// //cerrar ventana
+// btn_cerrar3.addEventListener('click', function(e){
+//     e.preventDefault();
 
-    contenedor_tres.style.display="none";
-})
+//     contenedor_tres.style.display="none";
+// })
 
 //Ventana modal 4, donde van las devoluciones pendientes
-btn_ventana_cuatro.addEventListener("click",function(){
-    contenedor_cuatro.style.display="block";  
-})
+// btn_ventana_cuatro.addEventListener("click",function(){
+//     contenedor_cuatro.style.display="block";  
+// })
 
-btn_cerrar4.addEventListener('click', function(e){
-    e.preventDefault();
+// btn_cerrar4.addEventListener('click', function(e){
+//     e.preventDefault();
 
-    contenedor_cuatro.style.display="none";
-})
+//     contenedor_cuatro.style.display="none";
+// })
 
 
 
