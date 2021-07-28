@@ -564,20 +564,20 @@ $hora = date("H:i:s");
                     <div class="primeraLineaempresa">
                             <div >
                                 <label for="">NUMERO DE FICHA</label><!-- minlength="5" -->
-                                <input  type="" name="" id="">
+                                <input  type="number" name="numFicha" id="InpNumFicha">
                             </div>
 
                             <div>
                                 <label for="">FORMACION</label>
-                                <select class="crearficha" name="categorias" id="categoria" style="text-transform: uppercase;" required>
+                                <select class="crearficha" name="" id="" style="text-transform: uppercase;" required>
                                         <option>SELECCIONAR</option>
                                         <?php
-                                        $tipo2 = "SELECT * FROM tipo_ingreso";
-                                        $inser2 = mysqli_query($connection ,$tipo2);
-                                        while($tip2 = mysqli_fetch_array($inser2)){
+                                        $tipform = "SELECT * FROM formacion";
+                                        $insertf = mysqli_query($connection ,$tipform);
+                                        while($valoreFo = mysqli_fetch_array($insertf)){
                                         ?>
-                                        <option name="tip_material" id="" value="<?php echo $tip2[0]; ?>">
-                                            <?php echo $tip2[1]; ?>
+                                        <option name="formacionF" id="" value="<?php echo $valoreFo[0]; ?>">
+                                            <?php echo $valoreFo[1]; ?>
                                         </option>
                                         <?php
                                         }
@@ -592,12 +592,12 @@ $hora = date("H:i:s");
                                 <select class="crearficha" name="categorias" id="categoria" style="text-transform: uppercase;" required>
                                         <option>SELECCIONAR</option>
                                         <?php
-                                        $tipo2 = "SELECT * FROM tipo_ingreso";
-                                        $inser2 = mysqli_query($connection ,$tipo2);
-                                        while($tip2 = mysqli_fetch_array($inser2)){
+                                        $jornadac = "SELECT * FROM jornada";
+                                        $insertjor = mysqli_query($connection ,$jornadac);
+                                        while($jorn = mysqli_fetch_array($insertjor)){
                                         ?>
-                                        <option name="tip_material" id="op_mat" value="<?php echo $tip2[0]; ?>">
-                                            <?php echo $tip2[1]; ?>
+                                        <option name="jornadaF" id="op_mat" value="<?php echo $jorn[0]; ?>">
+                                            <?php echo $jorn[1]; ?>
                                         </option>
                                         <?php
                                         }
@@ -613,12 +613,12 @@ $hora = date("H:i:s");
                             <select class="crearficha" name="categorias" id="categoria" style="text-transform: uppercase;" required>
                                         <option>SELECCIONAR</option>
                                         <?php
-                                        $tipo2 = "SELECT * FROM tipo_ingreso";
-                                        $inser2 = mysqli_query($connection ,$tipo2);
-                                        while($tip2 = mysqli_fetch_array($inser2)){
+                                        $consultipus = "SELECT * FROM usuario where ID_TIP_USU = 2;";
+                                        $insertipus = mysqli_query($connection ,$consultipus);
+                                        while($tipusuf = mysqli_fetch_array($insertipus)){
                                         ?>
-                                        <option name="tip_material" id="op_mat" value="<?php echo $tip2[0]; ?>">
-                                            <?php echo $tip2[1]; ?>
+                                        <option name="tip_material" id="op_mat" value="<?php echo $tipusuf[0]; ?>">
+                                            <?php echo $tipusuf[1]; ?>
                                         </option>
                                         <?php
                                         }
