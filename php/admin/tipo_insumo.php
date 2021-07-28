@@ -6,13 +6,13 @@ $tip_insumo = $_POST['inpu_tip_ins'];
 // var_dump($tip_insumo);
 
 if($tip_insumo !== ""){  
-    $verificar_tipoMaqui = mysqli_query($connection, "SELECT * FROM tipo_insumo WHERE NOM_TIP_INSUMO = '$tip_insumo'");
+    $verificar_tipoMaqui = mysqli_query($connection, "SELECT * FROM tipo_insumo WHERE NOM_TIP_INSUMO = (UPPER('$tip_insumo'))");
     if(mysqli_num_rows($verificar_tipoMaqui) == 1){
         echo 1;
         exit();
     }
     else if($verificar_tipoMaqui){
-        $sql = "INSERT INTO tipo_insumo (NOM_TIP_INSUMO) values('$tip_insumo')";
+        $sql = "INSERT INTO tipo_insumo (NOM_TIP_INSUMO) values (UPPER('$tip_insumo'))";
         $consul = mysqli_query($connection,$sql);
         if($consul){
             echo 2;
