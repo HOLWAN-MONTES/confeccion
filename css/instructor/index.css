@@ -180,7 +180,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .formu_presta{
     margin-top: 1%;
-    background-color: #23ad9dc5;
+    background-color: #ff8000;
     padding: 5%;
 }
 .cerrar1 a i{
@@ -293,7 +293,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: bold;
 }
 .tab_ml, .agregado{
-    border: 1px solid #23ad9dc5;
+    border: 1px solid #ff8000;
 } */ 
 
 /*------------------ ventana devoluciones----------------------------- */
@@ -331,7 +331,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .formulario_devol{
     margin-top: 1%;
-    background-color: #23ad9dc5;
+    background-color: #ff8000;
     padding: 5%; 
 }
 .cerrar2 a i{
@@ -421,7 +421,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .formu_dev{
     margin-top: 1%;
-    background-color: #23ad9dc5;
+    background-color: #ff8000;
     padding: 5%;
 }
 
@@ -464,7 +464,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: bold;
 }
 .tab_ml, .agregado{
-    border: 1px solid #23ad9dc5;
+    border: 1px solid #ff8000;
 } */ 
 
 /*------------------ ventana prestamos pendientes----------------------------- */
@@ -525,7 +525,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .pendi{
     margin-top: 1%;
-    background-color: #23ad9dc5;
+    background-color: #ff8000;
     padding: 5%;
 }
 .tabla_pend{
