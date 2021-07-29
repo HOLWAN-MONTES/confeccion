@@ -510,7 +510,7 @@ $hora = date("H:i:s");
                 </div>
                 <div>
                 
-                    <form autocomplete="off"  id="formcrearEmpresa"  class="formularioCrearempresa" method="POST" >
+                    <form autocomplete="off"  id="formEmpresa"  class="formularioCrearempresa" method="POST" >
                         <!-- action="../../php/admin/crearEmpresa.php" -->
                         <div class="primeraLineaempresa">
                                 <div >
@@ -773,8 +773,13 @@ $hora = date("H:i:s");
             }
             ?> 
         </div>
-            
+
+       
     </div>
+    <div id="conte_empresa" class="contenido_empresa">
+            <input type="hidden" name="" value="">
+     </div>
+                
 
     <!-- ------------------------------------------------------------------------------------ -->
 
