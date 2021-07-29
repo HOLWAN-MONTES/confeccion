@@ -4,6 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $envia = $_GET['id'];
     $can = $_GET['cant'];
     $num_fac = $_GET['num'];
+    $envir_devol = $_GET['envir_devol'];
     print_r($num_fac);
     $canti = intval($can);
     // echo($can);
@@ -16,8 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if($secuencia){
         $total = $canti - intval($envia);
         $cons = "UPDATE detalle_accion SET CANTIDAD_TOTAL = CANTIDAD_TOTAL + '$envia', CANTIDAD = '$total' 
-                WHERE ID_ACCION_REALIZADA = '$num_fac'";
+                WHERE ID_DETA_ACCION = '$num_fac'";
         $sec = mysqli_query($connection, $cons);
+        
         
     }
 }
