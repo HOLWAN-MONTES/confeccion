@@ -10,6 +10,7 @@ const celu = document.getElementById('tele-edi');
 const correo = document.getElementById('cor-edi');
 const docmen = document.getElementById('docume-edi');
 var foto = document.getElementById('imagen_edi');
+const boton = document.getElementById("reg_edi")
 
 // FUNCION DE ACTUALIZAR 
 
@@ -94,7 +95,7 @@ document.addEventListener('keypress', (e)=>{
     
 })
 
-document.addEventListener('submit', (e)=>{
+boton.addEventListener('submit', (e)=>{
         e.preventDefault();
         const option = new FormData(formu)
         Swal.fire({

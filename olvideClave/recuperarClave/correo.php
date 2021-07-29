@@ -84,6 +84,7 @@ if( $email !== "" ){
         Información de seguridad recordada: <br> <br>
         
         <hr>
+
         </div>
         <b>USUARIO :</b> <br>
         '.$email.' <br> 
@@ -103,7 +104,7 @@ if( $email !== "" ){
         </html>';
     
         $mail->send();
-        echo '<script>alert ("Tu mensaje se envio con exito");</script>';
+        echo '<script>alert ("Tu mensaje se envio con exito, Revisa el correo ");</script>';
         echo '<script>window.location="../../index-login/login.php"</script>'; 
     
     } catch (Exception $e) {
@@ -111,10 +112,10 @@ if( $email !== "" ){
     }
         
     }else{
+        
         echo '<script>alert ("EL CORREO NO EXISTE");</script>';
         echo '<script>window.location="../../index-login/login.php"</script>';
     }
-
 
 }else{
     echo '<script>alert("LLENA LOS CAMPOS COMPLETAMENTE")</script>'; 
