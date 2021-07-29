@@ -1,20 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
+
 <?php
     require_once("../php/conections/conexion.php");
     session_start();
 
         $id = $_POST['id_deta'];
-        echo ($id);
 
         $actualizar="UPDATE accion_realizada SET ID_ESTADO =3 WHERE ID_ACCION_REALIZADA=$id";
         $consultaRR = mysqli_query($connection,$actualizar);
 
         if($consultaRR){
-            echo  "<script>alert('devolucion aceptada')</script>";
-            echo '<script> window.location="devoluciones.php" </script>';
+            echo  "<script> 
+            Cambiar();
+            function Cambiar(){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'DEVOLUCION ACEPTADA',
+                    html:`
+                        <p class='parrafoPass'>Se ha registrado correctamente la devolución aceptada.</p><br>
+                        <a href='devoluciones.php'><button>Volver</button></a>
+                        `,
+                    showConfirmButton: false,
+                })
+            }
+            </script>";
         }else{
-        
-            echo  "<script>alert('algo salio mal con tu devolucion')</script>";
-            echo '<script> window.location="devoluciones.php" </script>';
+        echo  "<script> 
+            Cambiar();
+            function Cambiar(){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ERROR',
+                    html:`
+                        <p class='parrafoPass'>Lo sentimos, no fue posible realizar esta acción.</p><br>
+                        <a href='devoluciones.php'><button>Volver</button></a>
+                        `,
+                    showConfirmButton: false,
+                })
+            }
+            </script>";
             
         }
 

@@ -1,19 +1,12 @@
-const aceptar= document.getElementById("aceptar")
-const acep= document.getElementById("acep")
-
-aceptar.addEventListener('click', (e)=>{
-    e.preventDefault(); 
-    console.log(acep) ;
-    const docuBase = acep.value 
-      let xhr = new XMLHttpRequest();
-      xhr.open("get","aceptar.php?documento=" + docuBase,true)
-      xhr.onreadystatechange = function () {
-          if(xhr.readyState == 4 && xhr.status == 200){
-              console.log("correcto")
-          }else{
-              console.log("fallaste")
-          }
-      }
-      xhr.send()
-  })
-
+serial.addEventListener("keyup", (e) => {
+    
+    const dato = new FormData(buscador_serial)
+    console.log("si entra")
+    fetch("../php/inventario/maquinaria/buscador.php",{
+        method:"POST",
+        body:dato
+    }).then(res => res.text()).then(info => {
+        console.log(info)
+        contenedor_principal.innerHTML = `${info}`
+    })
+})
