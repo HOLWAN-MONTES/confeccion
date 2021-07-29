@@ -175,6 +175,13 @@ a{
     /* clip-path: inset(0 10% 0 0); */
 }
 
+.logo_institu{
+
+    width: 100%;
+    height: 40vh;
+    margin-top: 45px;
+}
+
 .img_logo{
     height: 100px;
     box-sizing: content-box;
@@ -187,8 +194,11 @@ a{
 /* logo del sena abajo */
 
 .logo_inst{
+    height: 26.4vh;
+  
     width: 100%;
 }
+
 /* -----------------------cajas de los divs de los menus---------- */
 
 .caja1{
@@ -206,7 +216,7 @@ a{
 } */
 
 .caja3{
-    height: 33.4vh;
+    height: 26.4vh;
     background-color: #d3caca;
     margin-bottom: 0;
 }
@@ -237,6 +247,9 @@ li{
     border-radius: 20px;
     background-color: rgb(124, 214, 204);
 }
+.reportes{
+    color: black;
+}
 .reportes > ul{
     display:none ;
     margin-left: 15.8%;
@@ -248,7 +261,9 @@ li{
     padding: 10px 20px 10px 20px;
     border-radius: 20px;
 }
-
+.uno{
+    color: black;
+}
 .reportes:hover > ul{
     display:block ;
     z-index:33;

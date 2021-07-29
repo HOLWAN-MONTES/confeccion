@@ -150,4 +150,5 @@ if ($usario == "" || $usario == null) {
     </main>
 </body>
 <script src="../js/reportes/reportes_maquinaria.js"></script>
+<script src="./../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </html>
