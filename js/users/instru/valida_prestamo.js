@@ -1,7 +1,7 @@
 var input=  document.getElementById('cantid_pres');
 input.addEventListener('input',function(){
   if (this.value.length > 3) 
-     this.value = this.value.slice(0,5); 
+     this.value = this.value.slice(0,3); 
 })
 // registro de peticion de materiales a prestar 
 $(document).ready(function(){ //se asigna una funcion 
