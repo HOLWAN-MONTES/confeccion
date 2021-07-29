@@ -1,27 +1,24 @@
 <?php 
 require_once ('../../php/conections/conexion.php');
-if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    $envia = $_GET['id'];
-    $can = $_GET['cant'];
-    $num_fac = $_GET['num'];
-    $envir_devol = $_GET['envir_devol'];
-    print_r($num_fac);
-    $canti = intval($can);
-    // echo($can);
-    // print_r($envia);
-    $sql_total = "SELECT CANTIDAD_TOTAL FROM detalle_ingreso WHERE ID_BODEGA = 2 ORDER BY CANTIDAD_TOTAL DESC LIMIT 1";
-    $secuencia = mysqli_query($connection, $sql_total);
-    $dato_total = mysqli_fetch_array($secuencia);
-    $cantidad_total = $dato_total["CANTIDAD_TOTAL"];
+$_POST= json_decode(file_get_contents("php://input"),true);
 
-    if($secuencia){
-        $total = $canti - intval($envia);
-        $cons = "UPDATE detalle_accion SET CANTIDAD_TOTAL = CANTIDAD_TOTAL + '$envia', CANTIDAD = '$total' 
-                WHERE ID_DETA_ACCION = '$num_fac'";
-        $sec = mysqli_query($connection, $cons);
+$id = $_POST["id"];
+$cantidad = $_POST["cantidad"];
+$observacion = $_POST["observacion"];
+
+
+
+    $total = $canti - intval($cantidad);
+    $cons = "UPDATE detalle_accion SET CANTIDAD_TOTAL = CANTIDAD_TOTAL + $cantidad , CANTIDAD = cantidad - $cantidad WHERE ID_DETA_ACCION = '$id'";
+    $sec = mysqli_query($connection, $cons);
+    
+    if ($sec) {
         
-        
+       echo 1;
+    }else {
+        echo 2;
     }
-}
+    
+
 
 ?>
