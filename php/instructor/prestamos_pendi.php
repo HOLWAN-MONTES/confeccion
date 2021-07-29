@@ -32,61 +32,89 @@ if ($usario == "" || $usario == null) {
        
     </header>
     <main>
-        <div class="contenedorPendientes">
-            <?php
-            $consulta = "SELECT * FROM accion_realizada INNER JOIN usuario ON accion_realizada.DOCU_INSTRUCTOR=usuario.DOCUMENTO INNER JOIN detalle_accion ON detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA WHERE detalle_accion.ID_ACCION=2 AND DOCU_INSTRUCTOR = '$usario'";
-            $consulta_inve = mysqli_query($connection,$consulta);
-                    
 
-            foreach ($consulta_inve as $pendiente){
-            $id_Dev=$pendiente["ID_ACCION_REALIZADA"]
-                    
+        <div class="contenedorPendientes">
+            <?php 
+            $consul = "SELECT DISTINCT detalle_accion.ID_ACCION_REALIZADA FROM detalle_accion";
+            $comprobar = mysqli_query($connection, $consul);
+                foreach($comprobar as $prueba){
+                    $dato1 = $prueba['ID_ACCION_REALIZADA'];
+                    $nueva = "SELECT * FROM detalle_accion INNER JOIN accion_realizada
+                    ON detalle_accion.ID_ACCION_REALIZADA = accion_realizada.ID_ACCION_REALIZADA
+                    INNER JOIN estado on accion_realizada.ID_ESTADO=estado.ID_ESTADO
+                    INNER JOIN usuario ON accion_realizada.DOCU_INSTRUCTOR=usuario.DOCUMENTO  
+                    INNER JOIN material_textil ON detalle_accion.ID_MATERIAL_TEXTIL=material_textil.ID_MATERIAL_TEXTIL 
+                    INNER JOIN insumo ON detalle_accion.ID_INSUMO=insumo.ID_INSUMO 
+                    WHERE detalle_accion.ID_ACCION=2 AND DOCU_INSTRUCTOR = '$usario' AND accion_realizada.ID_ESTADO = 8 
+                    AND detalle_accion.ID_ACCION_REALIZADA = '$dato1' LIMIT 1";
+                
+                    $nuv = mysqli_query($connection,$nueva);
+                    foreach ($nuv as $dat2){
+                        
             ?>
             <div class="conteMostrar">
 
                 <div class="documentos">
-                    <div>N° FACTURA : <p> <?=$pendiente["ID_ACCION_REALIZADA"]?> </p></div>
-                    <div>DOCUMENTO INSTRUCTOR : <p> <?=$pendiente["DOCUMENTO"]?> </p></div>
-                    <div>FECHA : <p> <?=$pendiente["FECHA"]?> </p></div>
-                    <div>HORA : <p> <?=$pendiente["HORA"]?> </p></div>
-                    <div>DETALLE PRESTAMO : <p> </p></div>
-                    
+                    <div>N° FACTURA : <p><?=$dat2["ID_ACCION_REALIZADA"]?></p></div>
+                    <div>DOCUMENTO : <p><?=$dat2["DOCUMENTO"]?></p></div>
+                    <div>FECHA :<p><?=$dat2["FECHA"]?></p></div>
+                    <div>HORA : <p><?=$dat2["HORA"]?></p></div>
+                    <div class="vent"><b> DETALLE PRESTAMO</b> </div>
+
                     <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>INSUMO</th>
-                                    <th>CANTIDAD</th>
-                                    <th>MATERIAL</th>
-                                    <th>CANTIDAD</th>
+                        <table class="tabla">
+                            <thead class="tab">
+                                <tr class="tab-ml">
+                                    <th class="tab_ml">MATERIALES</th>
+                                    <th class="tab_ml">CANTIDAD</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="pendie">
                                 <?php
-                                $sql = "SELECT * FROM detalle_accion INNER JOIN accion_realizada on detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA INNER JOIN insumo ON detalle_accion.ID_INSUMO=insumo.ID_INSUMO INNER JOIN material_textil ON detalle_accion.ID_MATERIAL_TEXTIL=material_textil.ID_MATERIAL_TEXTIL WHERE detalle_accion.ID_ACCION_REALIZADA=$id_Dev";
-                                $consultaN = mysqli_query($connection,$sql);
+                                    $sql = "SELECT * FROM detalle_accion 
+                                    INNER JOIN accion_realizada on detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA 
+                                    INNER JOIN material_textil ON detalle_accion.ID_MATERIAL_TEXTIL=material_textil.ID_MATERIAL_TEXTIL 
+                                    WHERE detalle_accion.ID_ACCION_REALIZADA='$dato1' AND detalle_accion.ID_MATERIAL_TEXTIL != 7 ";
+                                    $consultaN = mysqli_query($connection,$sql);
                                 foreach ($consultaN as $datoapre){
                                 ?> <tr>
-                                        <td><?=$datoapre["NOM_INSUMO"]?></td>
-                                        <td><?=$datoapre["CANTIDAD"]?></td>
                                         <td><?=$datoapre["NOM_MATERIAL_TEXTIL"]?></td>
-                                        <td><?=$datoapre["CANTIDAD"]?></td>
-                                        
+                                        <td><?=$datoapre["CANTIDAD"]?></td>  
                                     </tr>
-                                        
+                                            
                                 <?php
                                 }
                                 ?>
+                                <?php
+                                    $sql = "SELECT * FROM detalle_accion 
+                                    INNER JOIN accion_realizada on detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA 
+                                    INNER JOIN insumo ON detalle_accion.ID_INSUMO=insumo.ID_INSUMO 
+                                    WHERE detalle_accion.ID_ACCION_REALIZADA='$dato1' AND detalle_accion.ID_INSUMO != 7 ";
+                                    $consultaN = mysqli_query($connection,$sql);
+                                    foreach ($consultaN as $datoapre){
+                                    ?> <tr>
+                                            <td><?=$datoapre["NOM_INSUMO"]?></td>
+                                            <td><?=$datoapre["CANTIDAD"]?></td>   
+                                        </tr>
+                                            
+                                    <?php
+                                    }
+                                    ?>
 
                             </tbody>
+
                         </table>
                     </div>
+
                 </div>
-               
+            
             </div>
+
             <?php
+                }
+
             }
-            ?> 
+            ?>
 
         </div>
             
