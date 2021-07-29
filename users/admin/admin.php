@@ -536,15 +536,15 @@ $hora = date("H:i:s");
                                 </div>
                         </div>
 
+                        
                         <div class="segundalineaempresa"> 
-                           
                             <div>
                                 <label for="">Telefono Celular</label>    
                                 <input  type="number" name="telefonoEmpre" id="telefonoempre">
                             </div>
                             <div>
                                 <label for="">Correo electronico</label>    
-                                <input   name="correoEmpre" id="correoempre">
+                                <input type="email"  name="correoEmpre" id="correoempre">
                             </div>
                         </div>
 

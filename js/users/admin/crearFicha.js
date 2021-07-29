@@ -50,7 +50,7 @@ btnEnviarficha.addEventListener("click", (e) => {
         }else if(info == 5){
             Swal.fire({
                 title: 'Advertencia!',
-                text: 'VERIFICA QUE NO HAYA NADA CREADO',
+                text: 'llena los campos correctamente',
                 icon: 'warning',
                 confirmButtonText: 'Continuar'
             })

@@ -761,7 +761,7 @@ li{
 
 /*-------------------------------------------- CREAR FICHA ------------------------------*/
 .contentcrearficha{
-    display: block;
+    display: none;
     text-align: center;
     width: 80%;
     height: auto;
