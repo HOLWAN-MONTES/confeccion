@@ -13,6 +13,10 @@ const contenedor_tres = document.getElementById('ventana_cuatro');
 const btn_ventana_tres = document.getElementById('tres');
 const btn_cerrar3 = document.getElementById('cerrar4')
 
+//Variable para el editar instructor
+const ventana_mod_edi = document.getElementById('containerEditarInfo'); 
+const btn_mod_edi = document.getElementById('btn_edi');
+const btn_cerrar_edi = document.getElementById('edi_cerrar'); 
 //variables donde aparecen las devoluciones pendientes
 // const contenedor_cuatro = document.getElementById('ventana_cuatro');
 // const btn_ventana_cuatro = document.getElementById('cuatro');
@@ -34,6 +38,7 @@ btn_cerrar.addEventListener('click', function(e){
     document.getElementById('agregado').innerHTML = '';
 
     contenedor_one.style.display = 'none';
+    
     // vaciar la tabla con su contenido
     // var tablaPrestamo = document.getElementById('tablaInfo');
     // var fila_tabla = tablaPrestamo.getElementsByTagName('tr');
@@ -80,6 +85,7 @@ btn_cerrar3.addEventListener('click', function(e){
     contenedor_tres.style.display="none";
 })
 
+
 //Ventana modal 4, donde van las devoluciones pendientes
 // btn_ventana_cuatro.addEventListener("click",function(){
 //     contenedor_cuatro.style.display="block";  
@@ -91,7 +97,14 @@ btn_cerrar3.addEventListener('click', function(e){
 //     contenedor_cuatro.style.display="none";
 // })
 
-
+btn_mod_edi.addEventListener('click', (e)=>{
+    e.preventDefault();
+    ventana_mod_edi.style.display = "block";
+})
+btn_cerrar_edi.addEventListener('click', (e)=>{
+    e.preventDefault();
+    ventana_mod_edi.style.display = "none";
+})
 
 
 //Boton para poder agregar el listado del prestamo
