@@ -52,7 +52,7 @@ a{
     width: 33%;
     padding: 10px;
     border-radius: 20px;
-    border: 1px solid rgb(0, 0, 0);   
+    border: 1px solid #ff6712;   
     display: grid;
     margin: 10px 10px 10px  10px;
 }
@@ -62,7 +62,7 @@ a{
 }
 .documentos div{
     justify-content: center;
-    border: 1px solid rgb(43, 255, 0);
+    border: 1px solid #ff6712;
     margin: 10px;
     padding: 5px;
     margin-left: 10%;
@@ -70,5 +70,18 @@ a{
     word-wrap: break-word;
 }
 .documentos p{
-    color: #ff6819;
+    color: #000;
+}
+.tabla{
+    margin-top: 4%;
+    width: 100%;
+    font-weight: bold; 
+    overflow-y: scroll; 
+}
+.tab_ml, tr, td, .pendie{
+    border: 1.2px solid #ff6712;
+    padding: 1%; 
+}
+.vent{
+    text-align: center;
 }
