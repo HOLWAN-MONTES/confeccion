@@ -508,6 +508,7 @@ $hora = date("H:i:s");
         </div>
 
 
+
          <!--------------------------- CREAR EMPRESA ----------------------- -->
         <div class="crearEmpresa"id="contencrearEmpresa" >
             <div class="contetFoempresa" >
@@ -536,7 +537,7 @@ $hora = date("H:i:s");
                                 </div>
                         </div>
 
-                        
+
                         <div class="segundalineaempresa"> 
                             <div>
                                 <label for="">Telefono Celular</label>    
@@ -591,7 +592,7 @@ $hora = date("H:i:s");
                                         }
                                         ?>
                                     </select>
-                                    <p class="btnpequenito" >CREAR FORMACION</p>
+                                    <p class="btnpequenito" id="crearFOrmacion" >CREAR FORMACION</p>
                             </div>
 
 
@@ -612,7 +613,7 @@ $hora = date("H:i:s");
                                         ?>
                                 </select>
                                
-                                <p class="btnpequenito">CREAR JORNADA</p>
+                                <p class="btnpequenito" id="crearjornada">CREAR JORNADA</p>
                             </div>
                     </div>
 
@@ -687,6 +688,42 @@ $hora = date("H:i:s");
                 <form   action="#" method="POST">
                     
                     <div><input class="inptnombre" type="text" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+        
+    
+    </div>
+
+    <div class="containerCrearUsuario" id="containeRJORNADA">
+        <div class="containerFormularioUsuario">
+            
+                <i class="fas fa-times" id="btn_esconder_jornada"></i>
+        
+            <div >
+                
+                <h1>CREAR JORNADA</h1>
+                <form   action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" id="inputcrearjornada" placeholder="NOMBRE" required ></div>
+                    <div><input class="btn_peque_form" type="button" value="CREAR"></div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+    <div class="containerCrearUsuario" id="containercrearFicha">
+        <div class="containerFormularioUsuario">
+            
+                <i class="fas fa-times" id="btn_esconder_formacion"></i>
+        
+            <div >
+                
+                <h1>CREAR FORMACION</h1>
+                <form   action="#" method="POST">
+                    
+                    <div><input class="inptnombre" type="text" id="inputcrearForma" placeholder="NOMBRE" required ></div>
                     <div><input class="btn_peque_form" type="button" value="CREAR"></div>
                 </form>
             </div>
