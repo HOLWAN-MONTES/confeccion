@@ -35,8 +35,8 @@ if ($usario == "" || $usario == null) {
                 </form>
 
                 <form id="form_repo_mat" method="post">
-                    <input type="date" id="fecha_ini_mat" class="fecha_ini_mat">
-                    <input type="date" id="fecha_fin_mat" class="fecha_fin_mat">
+                    <input type="date" id="fecha_ini_mat" class="fecha_ini_mat" required>
+                    <input type="date" id="fecha_fin_mat" class="fecha_fin_mat" required>
                     <input type="submit" id="buscar" value="Buscar" name="buscar">      
                 </form>
             </div>
@@ -146,4 +146,5 @@ if ($usario == "" || $usario == null) {
     </main>
 </body>
 <script src="../js/reportes/reportes_mat_tex.js"></script>
+<script src="./../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </html>
