@@ -429,7 +429,7 @@ $hora_de = date("H:i:s");
                    <td style="text-transform: uppercase;"><?php echo $mostrar1['ID_ESTADO']; ?></td>
                    <td>
                     
-                   <a class="traer_fact" href="devoluciones.php" id="traer_fact" data-id="<?php echo $numFactura; ?>">DEVOLVER</a>
+                   <a class="traer_fact" href="devoluciones.php?trayendo_fact=<?php echo $numFactura ?>" id="traer_fact" data-id="<?php echo $numFactura; ?>">DEVOLVER</a>
                    </td>
                    <!-- <td><input type="number" class="cant_devol" name="cant_devol" id="cant_devol" placeholder="CANTIDAD" required></td>
                    <td><input type="text" id="obser_devol" name="obser_devol"></td>

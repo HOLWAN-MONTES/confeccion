@@ -66,7 +66,7 @@ $hora_de = date("H:i:s");
             ?>
             <thead>
                 <tr>
-                    <td>ID FACTURA PRESTAMO</td>
+                    <td>ID IDENTIFICADOR</td>
                     <td>INSUMO PRESTADO</td>
                     <td>CANTIDAD DE INSUMOS PRESTADOS</td>
                     <td>CANTIDAD A DEVOLVER</td>
@@ -80,7 +80,7 @@ $hora_de = date("H:i:s");
             ?>
             <tbody id="conten_devol">
                 <tr>
-                   <td id="num_fac" style="text-transform: uppercase;"><?php echo $numFactura; ?></td>
+                   <td id="num_fac" style="text-transform: uppercase;"><?php echo $mostrar1['ID_DETA_ACCION']; ?></td>
                    <td style="text-transform: uppercase;"><?php echo $mostrar1['NOM_INSUMO']; ?></td>
                    <td id="canti" style="text-transform: uppercase;"><?php echo $mostrar1['CANTIDAD']; ?></td>
                    <form id="form_dev" method ="POST">
@@ -91,7 +91,7 @@ $hora_de = date("H:i:s");
                         <input type="text" id="obser_devol" name="obser_devol">
                    </td>
                    <td>
-                        <input type="submit" class="envio_dev" id="enviar_devol1" name="enivar_devol" value="DEVOLVER">
+                        <input class="notocar envio_dev" type="submit" id="enviar_devol1" name="enivar_devol" value="DEVOLVER">
                    </td>
                    </form>
                    <!-- <td><input type="number" class="cant_devol" name="cant_devol" id="cant_devol" placeholder="CANTIDAD" required></td>
