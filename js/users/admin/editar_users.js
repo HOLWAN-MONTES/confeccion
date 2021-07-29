@@ -5,7 +5,7 @@ const apel = document.getElementById('apel-edi');
 const sel_use = document.getElementById('tip_usu_edi');
 const sel_docu = document.getElementById('tip_docu_edi');
 const edad = document.getElementById('edad-edi');
-const contra = document.getElementById('contra-edi');
+const contra = document.getElementById('contra_edi');
 const celu = document.getElementById('tele-edi');
 const correo = document.getElementById('cor-edi');
 const docmen = document.getElementById('docume-edi');
@@ -57,9 +57,9 @@ document.addEventListener('keypress', (e)=>{
                     // console.log(datos);
                     const {err, status, statusText, data} = datos;
                     if(data.lenght !== 0 && err != true){
-                        const {DOCUMENTO, ID_TIP_DOCU, ID_TIP_USU, NOMBRE, APELLIDO, PASSWORD, FECHA_NACIMIENTO, CELULAR, CORREO, FOTO} = data;
+                        const {DOCUMENTO, ID_TIP_DOCU, ID_TIP_USU, NOMBRE, APELLIDO, FECHA_NACIMIENTO, CELULAR, CORREO, FOTO, CLAVE} = data;
                         docmen.value = DOCUMENTO;
-                        documento.disabled = false;
+                        documento.disabled = true;
                         nomb.value = NOMBRE;
                         nomb.disabled = true;
                         apel.value = APELLIDO;
@@ -73,10 +73,8 @@ document.addEventListener('keypress', (e)=>{
                         celu.value = CELULAR;
                         correo.value = CORREO;
                         correo.disabled = true;
-                        
-                        // contra.value = PASSWORD;
-                       
-                        // console.log(foto.value);
+                        contra.value = CLAVE;
+                        // foto.value = FOTO;
                     }
                     else{
                         Swal.fire({
@@ -95,7 +93,7 @@ document.addEventListener('keypress', (e)=>{
     
 })
 
-boton.addEventListener('submit', (e)=>{
+boton.addEventListener('click', (e)=>{
         e.preventDefault();
         const option = new FormData(formu)
         Swal.fire({
