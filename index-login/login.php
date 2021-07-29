@@ -30,7 +30,7 @@ session_start();
     <div class="aaaaaaaaaaa">
         <div class="infor">
          <div class="tet">
-            <h1 >S.I PARA LA ENTRADA, SALIDA Y ALMACENAMIENTO DE MATERIAL TEXTIL</h1>
+            <h1 >S.I. DE INVENTARIO DE MATERIAL TEXTIL</h1>
          </div>
            
             <div class="content">
