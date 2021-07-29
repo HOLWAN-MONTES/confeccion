@@ -1,6 +1,6 @@
 var input=  document.getElementById('cantid_pres');
 input.addEventListener('input',function(){
-  if (this.value.length > 5) 
+  if (this.value.length > 3) 
      this.value = this.value.slice(0,5); 
 })
 // registro de peticion de materiales a prestar 
@@ -222,14 +222,18 @@ function editContenido(opciones){
 function guardarMateriales(e){
     e.preventDefault();
 
-    var jsonn = JSON.stringify(datosPre); //convierte el array en una cadena de caracteres
+    var json = JSON.stringify(datosPre); //convierte el array en una cadena de caracteres
     if(datosPre != ""){
         $.ajax({
             url:'../../php/instructor/registro_prestamo.php',
             method:"POST",
-            data: "arreglo="+jsonn,
+            data: "json="+json,
             success: function(a){
+                console.log(datosPre);
+                console.log()
+                console.log(a);
                 // const envios = JSON.parse(a);
+                // console.log(envios);
                 // if(envios.status === 200){
                     datosPre = [];
                     Swal.fire({
