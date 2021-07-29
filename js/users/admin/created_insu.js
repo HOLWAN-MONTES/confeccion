@@ -348,7 +348,17 @@ conte_user.addEventListener("click", (e) => {
                 conte_empresa.style.display="block"
                 conte_empresa.innerHTML = `${info}`
             }else {
-                conte_user.innerHTML = `${info}`
+
+                if(info != 2){
+                    conte_user.innerHTML = `${info}`
+                }else {
+                    conte_empresa.style.display="block"
+                    conte_empresa.innerHTML = `<h2>No se puede eliminar este esta empresa</h2>`
+                    setTimeout(() => {
+                        conte_empresa.style.display="none"
+                    }, 2000);
+                }
+                
             }
             
         }) 
@@ -376,6 +386,7 @@ conte_empresa.addEventListener("click", (e) => {
             method:"POST",
             body:dato_form
         }).then(res => res.text()).then(info => {
+            conte_empresa.style.display="none"
             console.log(info)
         })
     }

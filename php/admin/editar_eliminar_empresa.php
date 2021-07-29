@@ -35,35 +35,42 @@ if ($accion == "editar") {
 
     $sql = "DELETE from empresa where NIT_DOC = $id";
     $consulta = mysqli_query($connection,$sql);
+ 
+    if($consulta){
 
-    $sql_empresa = "SELECT * from  empresa";
-    $consulta_empresa = mysqli_query($connection,$sql_empresa);
+        $sql_empresa = "SELECT * from  empresa";
+        $consulta_empresa = mysqli_query($connection,$sql_empresa);
 
-    if ($consulta_empresa){
-        
-    
-        foreach($consulta_empresa as $empresa){
-            echo ('
-            <div class="contenedorFichaEmpre">
-                
-                <div class="documentosotrasEMPRE" >
-                    <div>NIT de la empresa :<p>'.$empresa["NIT_DOC"].'</p></div>
-                                        
-                    <div>EMPLEADO :<p>'.$empresa["NOM_EMPLEADO"].'</p></div>
-                    
-                    <div>NOMBRE DE LA EMPRESA :<p>'.$empresa["NOM_EMPRESA"].'</p></div>
-                    
-                    <div>TELEFONO :<p>'.$empresa["TELEFONO"].'</p></div>
-                    
-                    <div>CORREO :<p> '.$empresa["COR_EMPR"].' </p></div>
-                    <button class="editar">Editar</button>
-                    <button class="eliminar">Eliminar</button>
-                </div>  
-            </div>
-            ');
+        if ($consulta_empresa){
             
-        };
+        
+            foreach($consulta_empresa as $empresa){
+                echo ('
+                <div class="contenedorFichaEmpre">
+                    
+                    <div class="documentosotrasEMPRE" >
+                        <div>NIT de la empresa :<p>'.$empresa["NIT_DOC"].'</p></div>
+                                            
+                        <div>EMPLEADO :<p>'.$empresa["NOM_EMPLEADO"].'</p></div>
+                        
+                        <div>NOMBRE DE LA EMPRESA :<p>'.$empresa["NOM_EMPRESA"].'</p></div>
+                        
+                        <div>TELEFONO :<p>'.$empresa["TELEFONO"].'</p></div>
+                        
+                        <div>CORREO :<p> '.$empresa["COR_EMPR"].' </p></div>
+                        <button class="editar">Editar</button>
+                        <button class="eliminar">Eliminar</button>
+                    </div>  
+                </div>
+                ');
+                
+            };
+        }
+    }else {
+        echo 2;
     }
+
+    
 }
 
 ?>
