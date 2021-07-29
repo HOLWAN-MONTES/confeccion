@@ -61,7 +61,7 @@ $hora_de = date("H:i:s");
                 $consul="SELECT * FROM detalle_accion INNER JOIN accion_realizada on detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA 
                 INNER JOIN insumo ON detalle_accion.ID_INSUMO=insumo.ID_INSUMO
                 INNER JOIN estado ON accion_realizada.ID_ESTADO=estado.ID_ESTADO
-                WHERE detalle_accion.ID_ACCION_REALIZADA = '$numFactura'";
+                WHERE detalle_accion.ID_ACCION_REALIZADA = '$numFactura' and detalle_accion.CANTIDAD not in (0)";
                 $resultado=mysqli_query($connection,$consul);
             ?>
             <thead>
@@ -75,15 +75,16 @@ $hora_de = date("H:i:s");
                     
                 </tr>
             </thead>
-            <?php
-                while($mostrar1=mysqli_fetch_assoc($resultado)){
-            ?>
             <tbody id="conten_devol">
+            <?php
+                foreach($resultado as $mostrar1){
+            ?>
+            
                 <tr>
                    <td id="num_fac" style="text-transform: uppercase;"><?php echo $mostrar1['ID_DETA_ACCION']; ?></td>
                    <td style="text-transform: uppercase;"><?php echo $mostrar1['NOM_INSUMO']; ?></td>
                    <td id="canti" style="text-transform: uppercase;"><?php echo $mostrar1['CANTIDAD']; ?></td>
-                   <form id="form_dev" method ="POST">
+                   
                    <td>
                         <input type="number"  id ="cantidad_dev" name = "cantidad_devolver">
                     </td>
@@ -93,16 +94,14 @@ $hora_de = date("H:i:s");
                    <td>
                         <input class="notocar envio_dev" type="submit" id="enviar_devol1" name="enivar_devol" value="DEVOLVER">
                    </td>
-                   </form>
-                   <!-- <td><input type="number" class="cant_devol" name="cant_devol" id="cant_devol" placeholder="CANTIDAD" required></td>
-                   <td><input type="text" id="obser_devol" name="obser_devol"></td>
-                   <td><input type="button" name="devolver_insu" id="devolver_insu" value="ENVIAR"></td>
-                   <td><input type="button" id="cancelar_insumo" value="CANCELAR"></td> -->
+                   
+                   
                 </tr>
-            </tbody>
+            
             <?php
             }
             ?>
+            </tbody>
             </table>
         </form>             
     </div>
