@@ -70,6 +70,7 @@ $hora_de = date("H:i:s");
                     <td>INSUMO PRESTADO</td>
                     <td>CANTIDAD DE INSUMOS PRESTADOS</td>
                     <td>CANTIDAD A DEVOLVER</td>
+                    <td>OBSERVACIONES</td>
                     <td>DEVOLVER</td>
                     
                 </tr>
@@ -77,19 +78,22 @@ $hora_de = date("H:i:s");
             <?php
                 while($mostrar1=mysqli_fetch_assoc($resultado)){
             ?>
-            <tbody>
+            <tbody id="conten_devol">
                 <tr>
                    <td id="num_fac" style="text-transform: uppercase;"><?php echo $numFactura; ?></td>
                    <td style="text-transform: uppercase;"><?php echo $mostrar1['NOM_INSUMO']; ?></td>
                    <td id="canti" style="text-transform: uppercase;"><?php echo $mostrar1['CANTIDAD']; ?></td>
+                   <form id="form_dev" method ="POST">
                    <td>
-                        <form id="form_dev" method ="POST">
-                            <input type="number"  id ="cantidad_dev" name = "cantidad_devolver">
-                            <input type="submit" class="envio_dev" name="enivar_devol" value="DEVOLVER">
-                        </form>
+                        <input type="number"  id ="cantidad_dev" name = "cantidad_devolver">
                     </td>
                    <td>
+                        <input type="text" id="obser_devol" name="obser_devol">
                    </td>
+                   <td>
+                        <input type="submit" class="envio_dev" id="enviar_devol1" name="enivar_devol" value="DEVOLVER">
+                   </td>
+                   </form>
                    <!-- <td><input type="number" class="cant_devol" name="cant_devol" id="cant_devol" placeholder="CANTIDAD" required></td>
                    <td><input type="text" id="obser_devol" name="obser_devol"></td>
                    <td><input type="button" name="devolver_insu" id="devolver_insu" value="ENVIAR"></td>

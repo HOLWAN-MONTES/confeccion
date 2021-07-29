@@ -9,8 +9,12 @@ document.addEventListener('click',(e) => {
 })
 
 document.addEventListener('click', (e) =>{
+    
     if(e.target.matches('.envio_dev')){
         e.preventDefault()
+        console.log(e)
+        const dato = e.path
+        console.log(dato)
         const id = document.getElementById('cantidad_dev').value;
         console.log (id);
         var json = document.getElementById('num_fac').innerText;
@@ -31,3 +35,19 @@ document.addEventListener('click', (e) =>{
         })
     }
 })
+// IDENTIFICANDO //
+/* conte_user.addEventListener("click", (e) => {
+    e.preventDefault()
+    console.log(e)
+    const dato = e.path
+    console.log(dato)
+ */
+    /* fetch("xxxx",{
+        method:"POST",
+        body:JSON.stringify({
+            "documento":dato
+        })
+    }).then(res => res.text()).then(info => {
+        // codigo a realizar 
+    }) */
+/* }) */
