@@ -20,6 +20,7 @@ if ($consulta){
                 <div>TELEFONO :<p>'.$empresa["TELEFONO"].'</p></div>
                 
                 <div>CORREO :<p> '.$empresa["COR_EMPR"].'</p></div>
+                
             </div>  
         </div>
         ');

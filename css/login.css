@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+input:invalid { border-color: red; } input,
+
+input:valid { border-color: #ccc; }
 
 .log{
     display: block;
