@@ -69,7 +69,48 @@ btnEnviarficha.addEventListener("click", (e) => {
     })
 })
 
+const containercrearFicha = document.getElementById('containercrearFicha');
+const crearjornada = document.getElementById('crearjornada');
 
+const btn_esconder_jornada = document.getElementById('btn_esconder_jornada');
+
+btn_esconder_jornada.addEventListener('click',function(){
+    containercrearFicha.style.display = "none";
+})
+
+crearjornada.addEventListener('click',function(){
+    containercrearFicha.style.display = "block";
+})
+
+
+
+
+const containeRJORNADA = document.getElementById('containeRJORNADA');
+const crearFOrmacion = document.getElementById('crearFOrmacion');
+
+const btn_esconder_formacion = document.getElementById('btn_esconder_formacion');
+
+btn_esconder_formacion.addEventListener('click',function(){
+    containeRJORNADA.style.display = "none"
+})
+
+crearFOrmacion.addEventListener('click',function(){
+    containeRJORNADA.style.display = "block"
+})
+
+
+
+var inputcrearForma=  document.getElementById('inputcrearForma');
+inputcrearForma.addEventListener('input',function(){
+  if (this.value.length > 30) 
+     this.value = this.value.slice(0,30); 
+})
+
+var inputcrearjornada=  document.getElementById('inputcrearjornada');
+inputcrearjornada.addEventListener('input',function(){
+  if (this.value.length > 11) 
+     this.value = this.value.slice(0,11); 
+})
 
 
 var InpNumFicha=  document.getElementById('InpNumFicha');
