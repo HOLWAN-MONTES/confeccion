@@ -49,7 +49,7 @@ if ($usario == "" || $usario == null) {
                 
 
                 <form action="" method="POST" id="buscador_serial" class="buscarmaquinaria">
-                    <input type="number" name="serialb" id="serial" placeholder="Buscar serial">
+                    <input type="number" name="serialb" id="serial" placeholder="Buscar Nombre Instructor">
                 </form>
 
             </div>
@@ -69,7 +69,7 @@ if ($usario == "" || $usario == null) {
                 <?php
 
 
-                $consulta = "SELECT * FROM accion_realizada INNER JOIN estado on accion_realizada.ID_ESTADO=estado.ID_ESTADO INNER JOIN usuario ON accion_realizada.DOCU_INSTRUCTOR=usuario.DOCUMENTO INNER JOIN detalle_accion ON detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA INNER JOIN ficha ON ficha.DOCUMENTO=accion_realizada.DOCU_INSTRUCTOR INNER JOIN formacion ON ficha.ID_FORMACION=formacion.ID_FORMACION INNER JOIN jornada ON ficha.ID_JORNADA=jornada.ID_JORNADA WHERE detalle_accion.ID_ACCION=1  LIMIT 1  ";
+                $consulta = "SELECT * FROM accion_realizada INNER JOIN estado on accion_realizada.ID_ESTADO=estado.ID_ESTADO INNER JOIN usuario ON accion_realizada.DOCU_INSTRUCTOR=usuario.DOCUMENTO INNER JOIN detalle_accion ON detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA INNER JOIN ficha ON ficha.DOCUMENTO=accion_realizada.DOCU_INSTRUCTOR INNER JOIN formacion ON ficha.ID_FORMACION=formacion.ID_FORMACION INNER JOIN jornada ON ficha.ID_JORNADA=jornada.ID_JORNADA WHERE detalle_accion.ID_ACCION=1   ";
 
                 $consulta_inve = mysqli_query($connection,$consulta);
                 
@@ -128,9 +128,18 @@ if ($usario == "" || $usario == null) {
                        
                     </div>  
 
-                    <div class="contentGeneralBtns">
+                <div class="contentGeneralBtns">
+                    <?php
+                    $consull = "SELECT * FROM accion_realizada WHERE ID_ACCION_REALIZADA=$id_Dev ";
+                    $consulta_boto = mysqli_query($connection,$consull);
+                    $dato_SQLL = mysqli_fetch_assoc($consulta_boto);
 
+                    if($dato_SQLL){
+                        $_SESSION['ID_ESTADO'] = $dato_SQLL['ID_ESTADO'];
 
+                        if($_SESSION['ID_ESTADO'] == 8){
+
+                        ?>
                         <div>
                             <form action="aceptar.php" method="POST" id="aceptar" >
                                 <input type="hidden" name="id_deta" value="<?=$maquinaria["ID_ACCION_REALIZADA"]?>">
@@ -144,6 +153,41 @@ if ($usario == "" || $usario == null) {
                                 <button id="" >DENEGAR</button>
                             </form>
                         </div>
+                        <?php
+
+                        }
+                        elseif ($_SESSION['ID_ESTADO'] == 3) {
+
+                            ?>
+                            <form action="" method="post" id="" >
+                                <button id="" >DEVOLUCION ACEPTADA</button>
+                            </form>
+                            <?php  
+                        }
+                        elseif($_SESSION['ID_ESTADO'] == 4){
+
+                            ?>
+                            <form action="" method="post" id="" >
+                                <button id="" >DEVOLUCION DENEGADA</button>
+                            </form>
+                            <?php  
+                        }
+                        elseif($_SESSION['ID_ESTADO'] == 9){
+
+                            ?>
+                            <form action="" method="post" id="" >
+                                <button id="" >DEVOLUCION FINALIZADA</button>
+                            </form>
+                            <?php  
+                        }
+                        
+                        ?>
+                       
+                       <?php
+                    }
+                    ?>
+
+                        
                     </div>
                 </div>
                 <?php
@@ -153,12 +197,7 @@ if ($usario == "" || $usario == null) {
       </div>
 
     </main>
-    <div class="fondo">
-        <div  class="ventana_maquinaria">
-            <h2>Maquinarias</h2>
-            <div id="contenido"></div>
-        </div>
-    </div>
+  
 
 
     

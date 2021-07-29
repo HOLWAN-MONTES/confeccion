@@ -49,7 +49,7 @@ if ($usario == "" || $usario == null) {
                 
 
                 <form action="" method="POST" id="buscador_serial" class="buscarmaquinaria">
-                    <input type="number" name="serialb" id="serial" placeholder="Buscar serial">
+                    <input type="number" name="serialb" id="serial" placeholder="Buscar Nombre Instructor">
                 </form>
 
             </div>
@@ -120,12 +120,22 @@ if ($usario == "" || $usario == null) {
 
                     </div>  
 
-                    <div class="contentGeneralBtns">
+                <div class="contentGeneralBtns">
+                    <?php
+                    $consull = "SELECT * FROM accion_realizada WHERE ID_ACCION_REALIZADA=$id_Dev ";
+                    $consulta_boto = mysqli_query($connection,$consull);
+                    $dato_SQLL = mysqli_fetch_assoc($consulta_boto);
 
+                    if($dato_SQLL){
+                        $_SESSION['ID_ESTADO'] = $dato_SQLL['ID_ESTADO'];
 
+                        if($_SESSION['ID_ESTADO'] == 8){
+
+                        ?>
                         <div>
                             <form action="aceptar.php" method="POST" id="aceptar" >
                                 <input type="hidden" name="id_deta" value="<?=$maquinaria["ID_ACCION_REALIZADA"]?>">
+                                
                                 <button id="" >ACEPTAR</button>
                             </form>
                         </div>
@@ -135,8 +145,36 @@ if ($usario == "" || $usario == null) {
                                 <button id="" >DENEGAR</button>
                             </form>
                         </div>
+                        <?php
+
+                        }
+                        elseif ($_SESSION['ID_ESTADO'] == 3) {
+
+                            ?>
+                            <form action="" method="post" id="" >
+                                <button id="" >PRESTAMO ACEPTADO</button>
+                            </form>
+                            <?php  
+                        }
+                        elseif($_SESSION['ID_ESTADO'] == 4){
+
+                            ?>
+                            <form action="" method="post" id="" >
+                                <button id="" >PRESTAMO DENEGADO</button>
+                            </form>
+                            <?php  
+                        }
+                        
+                        ?>
+                       
+                       <?php
+                    }
+                    ?>
+
+                        
                     </div>
                 </div>
+                
                 <?php
                 }
                 ?> 
