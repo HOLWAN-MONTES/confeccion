@@ -507,6 +507,7 @@ $hora = date("H:i:s");
         
         </div>
 
+
          <!--------------------------- CREAR EMPRESA ----------------------- -->
         <div class="crearEmpresa"id="contencrearEmpresa" >
             <div class="contetFoempresa" >
@@ -520,17 +521,17 @@ $hora = date("H:i:s");
                         <!-- action="../../php/admin/crearEmpresa.php" -->
                         <div class="primeraLineaempresa">
                                 <div >
-                                    <label for="">NIT - DOCUMENTO</label><!-- minlength="5" -->
+                                    <label for="">NIT - Documento</label><!-- minlength="5" -->
                                     <input  type="number" name="nit" id="nitDocumentE">
                                 </div>
 
                                 <div >
-                                    <label for="">Nombre de la empresa</label>
+                                    <label for="">Nombre de empresa</label>
                                     <input  type="text" name="nomEmpresa" id="nombreEmpresa">
                                 </div>
                                 
                                 <div>
-                                    <label for="">Nombre  de empleado</label>    
+                                    <label for="">Nombre de empleado</label>    
                                     <input  type="text" name="nombreemple" onkeypress="return soloLetras(event)" id="nomEmpleEmple">
                                 </div>
                         </div>
@@ -538,11 +539,11 @@ $hora = date("H:i:s");
                         <div class="segundalineaempresa"> 
                            
                             <div>
-                                <label for="">TELEFONO</label>    
+                                <label for="">Telefono Celular</label>    
                                 <input  type="number" name="telefonoEmpre" id="telefonoempre">
                             </div>
                             <div>
-                                <label for="">CORREO EMPRESA</label>    
+                                <label for="">Correo electronico</label>    
                                 <input   name="correoEmpre" id="correoempre">
                             </div>
                         </div>
@@ -566,8 +567,8 @@ $hora = date("H:i:s");
                     </div>
                     <div>
                 
-                <form autocomplete="off"  id="formcrearficha"  class="formularioCrearficha" method="POST" >
-                    <!-- action="../../php/admin/crearEmpresa.php" -->
+                <form autocomplete="off" id="formcrearficha"   class="formularioCrearficha" method="POST" >
+                    <!--  action="../../php/admin/crearFicha.php"  -->
                     <div class="primeraLineaempresa">
                             <div >
                                 <label for="">NUMERO DE FICHA</label><!-- minlength="5" -->
@@ -576,7 +577,7 @@ $hora = date("H:i:s");
 
                             <div>
                                 <label for="">FORMACION</label>
-                                <select class="crearficha" name="" id="" style="text-transform: uppercase;" required>
+                                <select class="crearficha" name="formacionFi" id="" style="text-transform: uppercase;" required>
                                         <option>SELECCIONAR</option>
                                         <?php
                                         $tipform = "SELECT * FROM formacion";
@@ -590,13 +591,13 @@ $hora = date("H:i:s");
                                         }
                                         ?>
                                     </select>
-                                    <p><a href="">crear formacion </a></p>
+                                    <p class="btnpequenito" >CREAR FORMACION</p>
                             </div>
 
 
                             <div>
                                 <label for="">JORNADA</label>    
-                                <select class="crearficha" name="categorias" id="categoria" style="text-transform: uppercase;" required>
+                                <select class="crearficha" name="jornadaFi" id="categoria" style="text-transform: uppercase;" required>
                                         <option>SELECCIONAR</option>
                                         <?php
                                         $jornadac = "SELECT * FROM jornada";
@@ -609,7 +610,9 @@ $hora = date("H:i:s");
                                         <?php
                                         }
                                         ?>
-                                    </select>
+                                </select>
+                               
+                                <p class="btnpequenito">CREAR JORNADA</p>
                             </div>
                     </div>
 
@@ -617,7 +620,7 @@ $hora = date("H:i:s");
                        
                         <div>
                             <label for="">INSTRUCTOR</label>    
-                            <select class="crearficha" name="categorias" id="categoria" style="text-transform: uppercase;" required>
+                            <select class="crearficha" name="instructorFi" id="categoria" style="text-transform: uppercase;" required>
                                         <option>SELECCIONAR</option>
                                         <?php
                                         $consultipus = "SELECT * FROM usuario where ID_TIP_USU = 2;";
@@ -625,7 +628,7 @@ $hora = date("H:i:s");
                                         while($tipusuf = mysqli_fetch_array($insertipus)){
                                         ?>
                                         <option name="tip_material" id="op_mat" value="<?php echo $tipusuf[0]; ?>">
-                                            <?php echo $tipusuf[1]; ?>
+                                            <?php echo $tipusuf[0];echo "  " .$tipusuf[1]; echo "  " .$tipusuf[2];?>
                                         </option>
                                         <?php
                                         }
@@ -636,7 +639,7 @@ $hora = date("H:i:s");
                     </div>
 
                     <div class="terceralineaempresa">
-                        <input type="button" id="btnEnviarempre" value="CREAR"  name="">
+                        <input type="button" id="btnEnviarficha" value="CREAR"  >
                         <!-- <input type="submit" value="CREAR"> -->
                     </div>
 
@@ -1273,6 +1276,7 @@ $hora = date("H:i:s");
     <script src="../../js/users/admin/created_insu.js"></script>
     <script src="../../js/users/admin/created_maquinaria.js"></script>
     <script src="../../js/users/admin/crearEmpresa.js"></script>
+    <script src="../../js/users/admin/crearFicha.js"></script>
     <script src="./../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 

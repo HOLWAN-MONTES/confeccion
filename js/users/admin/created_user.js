@@ -49,3 +49,12 @@ inputs_edi.forEach((input) => {
     input.addEventListener('keyup', FormularioEditar);
     input.addEventListener('blur', FormularioEditar);
 });
+
+
+
+/* correo empresa */
+var correoempre = document.getElementById('correoempre');
+correoempre.addEventListener('input',function(){
+    if (this.value.length > 20) 
+       this.value = this.value.slice(0,20); 
+})
