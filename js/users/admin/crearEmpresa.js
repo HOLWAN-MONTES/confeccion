@@ -1,5 +1,4 @@
-// VARIABLES PARA EL FORMULARIO DE CREAR MAQUINARIA
-const formcrearEmpresa = document.getElementById("formcrearEmpresa")
+const formcrearEmpresa = document.getElementById("formEmpresa")
 const btnEnviarempre = document.getElementById("btnEnviarempre")
 
 //  CONEXION AL ARCHIVO PHP PARA EL formcrearEmpresa DE CREAR INSUMOS 

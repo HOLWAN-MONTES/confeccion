@@ -6,6 +6,7 @@ $consulta = mysqli_query($connection,$sql);
 
 if ($consulta){
     
+   
     foreach($consulta as $empresa){
         echo ('
         <div class="contenedorFichaEmpre">
@@ -19,11 +20,13 @@ if ($consulta){
                 
                 <div>TELEFONO :<p>'.$empresa["TELEFONO"].'</p></div>
                 
-                <div>CORREO :<p> '.$empresa["COR_EMPR"].'</p></div>
-                
+                <div>CORREO :<p> '.$empresa["COR_EMPR"].' </p></div>
+                <button class="editar">Editar</button>
+                <button class="eliminar">Eliminar</button>
             </div>  
         </div>
         ');
+        
     };
 }
 ?>
