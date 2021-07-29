@@ -58,7 +58,7 @@ $hora_de = date("H:i:s");
         </div>
          <!-------------------opciones del instructor---------------------- -->
         <div class="acciones">
-            <button class="editar"><a>EDITAR PERFIL</a></button>
+            <button class="editar" id="btn_edi"><a>EDITAR PERFIL</a></button>
             <button class="Cerrar"><a href="../../php/exit/salir.php">CERRAR SESIÓN</a></button>
         </div>
     </div>
@@ -80,6 +80,41 @@ $hora_de = date("H:i:s");
 
         </div>
     </div>
+</div>
+<div class="containerEditarInfo" id="containerEditarInfo">
+        <div class="content_general_form">
+            <i id="edi_cerrar" class="insumo_cerrar fas fa-times"></i>
+                <h1>EDITAR USUARIO</h1>
+            <form class="content_formulario_crearInsumo" action="../../php/instructor/editar_ins.php" method="POST" id="editar">
+                <div class="primeralinea5">
+                    <div>
+                        <label for="">CELULAR </label>
+                        <input type="number" class="input5" name="celularEdi" id="celular" placeholder="CELULAR" style="text-transform:uppercase">
+                    </div>
+                    <div>
+                        <label for="">CORREO</label>
+                        <input class="input5" type="email" name="correoEdi" id="correo" placeholder="CORREO" style="text-transform:uppercase">
+                        <!-- <i class="formulario__validacion-estado_insu fas fa-times-circle"></i> -->
+                        <!-- <p class="formulario__input-error_insu">El nombre del insumo tiene entre 4 a 16 dígitos, no puede tener numeros ni caracteres especiales.</p> -->
+                    </div>
+                </div>
+
+                <div class="segundalinea5">
+                    <div>
+                        <label for="">CLAVE</label>
+                        <input type="password" class="input5"  name="claveEdi" id="clave" placeholder="CLAVE" style="text-transform:uppercase">
+                    </div>
+                </div>
+
+                <div class="terceralinea5">
+                    <div>
+                        <input type="submit" name="btn_edi" id="btn_edi" value="EDITAR" >
+                        <input type="hidden" name="documentoEdi" value="<?=$_SESSION['DOCUMENTO']; ?>">
+                    </div>
+                </div>
+                
+            </form>
+        </div>
 </div>
 <!------------- ventana de prestamo de material------------------ -->
 <div class="ventana_one" id="ventana_one">
@@ -443,8 +478,9 @@ $hora_de = date("H:i:s");
             </table>           
 
     </div>
-      
+    
 </div>
+
     <script src="traer_fact.js"></script>        
     <script src="../../js/users/instru/instru.js"></script>
     <script src="../../js/users/instru/validar_devol.js"></script>
