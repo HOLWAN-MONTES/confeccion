@@ -773,8 +773,13 @@ $hora = date("H:i:s");
             }
             ?> 
         </div>
-            
+
+       
     </div>
+    <div id="conte_empresa" class="contenido_empresa">
+            <input type="hidden" name="" value="">
+     </div>
+                
 
     <!-- ------------------------------------------------------------------------------------ -->
 

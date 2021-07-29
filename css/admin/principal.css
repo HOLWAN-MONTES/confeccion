@@ -1568,6 +1568,32 @@ li{
     
 }
 
+.contenido_empresa {
+    position: absolute;
+    z-index: 3;
+    top: 150px;
+    padding: 20px;
+    background-color: hsla(20, 100%, 60%, 1);
+    border-radius: 10px;
+    left: 450px;
+    
+}
+
+.contenido_empresa form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contenido_empresa label {
+    font-size: 20px;
+    
+}
+
+.contenido_empresa input {
+    margin-bottom: 10px;
+}
+
 
 
 /* @media only screen and (max-width: 600px) {

@@ -1,5 +1,5 @@
 
-// VARIABLES PARA EL FORMULARIO DE CREAR INSUMOS
+//^ VARIABLES PARA EL FORMULARIO DE CREAR INSUMOS
 const formInsu = document.getElementById("CrearInsumoForm")
 const enviarInsu = document.getElementById("BtnCrearInsumo")
 
@@ -15,9 +15,12 @@ const formusuario = document.getElementById("for_Usuario")
 const instructor = document.getElementById("bt_instru")
 const forminstructor = document.getElementById("form_instructor")
 const todos = document.getElementById("todo")
-const btn_empresa = document.getElementById("btn_empresa")
+
+//^ ********************** EMPRESA VARIABLES *********************
 const form_empresa = document.getElementById("form_empresa")
 const empresa = document.getElementById("form_empresa")
+const conte_empresa = document.getElementById("conte_empresa")
+
 
 
 
@@ -168,22 +171,12 @@ instructor.addEventListener("click", (e) => {
         method:"POST",
         body:dato
     }).then(res => res.text()).then(info => {
+        console.log(info)
         conte_user.innerHTML=`${info}`
     })
 })
 
-btn_empresa.addEventListener("click", (e) => {
-    e.preventDefault()
 
-    const dato = new FormData(form_empresa)
-
-    fetch("../../php/admin/tipoUsuario.php", {
-        method:"POST",
-        body:dato
-    }).then(res => res.text()).then(info => {
-        conte_user.innerHTML=`${info}`
-    })
-})
 
 //^ buscardor de la empresa de usuarios registrado
 
@@ -191,6 +184,7 @@ empresa.addEventListener("click", (e) => {
     e.preventDefault()
 
     fetch("../../php/admin/empresa.php",{method:"GET"}).then(res => res.text()).then(info => {
+        
         conte_user.innerHTML = `${info}`
     })
 })
@@ -330,4 +324,59 @@ regisMarca_insu.addEventListener('click', (e) => {
 
 })
 
+//^ ******************** EDITAR Y ELIMINAR EMPRESA DE USUSARIOS REGISTRADOS ******************
 
+conte_empresa.style.display="none"
+
+conte_user.addEventListener("click", (e) => {
+    e.preventDefault()
+    
+    const dato = e.path[1].children[0].firstElementChild.innerText
+    const accion = e.target.classList[0]
+    
+    if (accion == "editar" || accion == "eliminar") {
+
+        fetch("../../php/admin/editar_eliminar_empresa.php",{
+            method:"POST",
+            body:JSON.stringify({
+                "documento":dato,
+                "accion":accion
+            })
+        }).then(res => res.text()).then(info => {
+            
+            if(accion == "editar"){
+                conte_empresa.style.display="block"
+                conte_empresa.innerHTML = `${info}`
+            }else {
+                conte_user.innerHTML = `${info}`
+            }
+            
+        }) 
+    }
+    
+
+    
+})
+
+//^ formulario de editar empresa en usuarios registrados
+
+conte_empresa.addEventListener("click", (e) => {
+    e.preventDefault()
+    const boton = e.target.id
+    console.log(boton)
+
+    if( boton == "btn_cerrar_empresa"){
+        conte_empresa.style.display="none"
+    }else if (boton == "btn_actualizar_empresa"){
+        const form_edi = e.path[1]
+
+        const dato_form = new FormData(form_edi)
+
+        fetch("../../php/admin/actualizar_empresa.php",{
+            method:"POST",
+            body:dato_form
+        }).then(res => res.text()).then(info => {
+            console.log(info)
+        })
+    }
+})
