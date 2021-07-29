@@ -63,6 +63,14 @@ btnEnviarempre.addEventListener("click", (e) => {
                 confirmButtonText: 'Continuar'
             })
 
+        }else if(info == 7){
+            Swal.fire({
+                title: 'Advertencia!',
+                text: 'El campo NIT-DOCUMENTO debe ser mayor a 8 digitos y menor a 10',
+                icon: 'warning',
+                confirmButtonText: 'Continuar'
+            })
+
         }else{
             Swal.fire({
                 title: 'Ups algo salio mal!',
@@ -76,3 +84,61 @@ btnEnviarempre.addEventListener("click", (e) => {
         
     })
 })
+
+
+
+
+
+/* nit documento */
+var nitDocument=  document.getElementById('nitDocumentE');
+nitDocument.addEventListener('input',function(){
+  if (this.value.length > 11) 
+     this.value = this.value.slice(0,11); 
+})
+/* nombre empresa */
+var nombreEmpresa = document.getElementById('nombreEmpresa');
+nombreEmpresa.addEventListener('input',function(){
+    if (this.value.length > 15) 
+       this.value = this.value.slice(0,15); 
+})
+/* nombre empleado */
+var nomEmpleEmple = document.getElementById('nomEmpleEmple');
+nomEmpleEmple.addEventListener('input',function(){
+    if (this.value.length > 15) 
+       this.value = this.value.slice(0,15); 
+})
+
+/* telefono empresa */
+var telefonoempre = document.getElementById('telefonoempre');
+telefonoempre.addEventListener('input',function(){
+    if (this.value.length > 10) 
+       this.value = this.value.slice(0,10); 
+})
+
+
+/* correo empresa */
+var correoempre = document.getElementById('correoempre');
+correoempre.addEventListener('input',function(){
+    if (this.value.length > 20) 
+       this.value = this.value.slice(0,20); 
+})
+
+
+function soloLetras(e) {
+var key = e.keyCode || e.which,
+    tecla = String.fromCharCode(key).toLowerCase(),
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+    especiales = [8, 37, 39, 46],
+    tecla_especial = false;
+
+for (var i in especiales) {
+    if (key == especiales[i]) {
+    tecla_especial = true;
+    break;
+    }
+}
+
+if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+    return false;
+}
+}
