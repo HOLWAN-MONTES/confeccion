@@ -93,43 +93,6 @@ $hora = date("H:i:s");
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             <p class="formulario__input-error">El documento solo puede contener numeros, entre 8 a 10 dígitos.</p>
                         </div>
-                        
-                        <div id="grupo__nombres">
-                            <label for="">NOMBRES</label>    
-                            <input class="input1" type="text" name="nombres" id="nombres" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
-                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            <p class="formulario__input-error">El nombre tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
-                        </div>
-                        
-                        <div id="grupo__apellidos">
-                            <label for="">APELLIDOS</label>    
-                            <input class="input1" type="text" name="apellidos" id="apellidos" placeholder="APELLIDOS" required style="text-transform:uppercase">
-                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            <p class="formulario__input-error">El apellido tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
-                        </div>
-                    </div>
-
-
-                    <!-- caja de tipoDeUsuario-tipoDeDocumento-EDAD -->
-                    <div class="segundalinea">
-                        <div>
-                            <label for="">TIPO DE USUARIO</label>    
-                            <select class="input1" name="tip_us_crea" id="tip_us_crea" required style="text-transform:uppercase">
-                                <option value="">SELECCIONAR</option>
-                                <?php
-                                    $tipo = "SELECT  * FROM tipo_usuario  WHERE ID_TIP_USU <= 2";
-                                    $inser = mysqli_query($connection,$tipo);
-                                    while($tip = mysqli_fetch_array($inser)){
-                                ?>
-                                <option value="<?php echo $tip[0]; ?>" style="text-transform:uppercase">
-                                    <?php echo $tip[1]; ?>
-                                </option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                           <!--  <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6> -->
-                        </div>
                         <div>
                             <label for="">TIPO DE DOCUMENTO</label>    
                             <select class="input1" name="tip_docu" id="tip_docu" required>
@@ -148,6 +111,45 @@ $hora = date("H:i:s");
                             </select>
                             <h6 class="agregaradi" id="btn_tipo_documento">CREAR TIPO DE DOCUMENTO</h6>
                         </div>
+                       
+                        
+                       
+                        <div>
+                            <label for="">TIPO DE USUARIO</label>    
+                            <select class="input1" name="tip_us_crea" id="tip_us_crea" required style="text-transform:uppercase">
+                                <option value="">SELECCIONAR</option>
+                                <?php
+                                    $tipo = "SELECT  * FROM tipo_usuario  WHERE ID_TIP_USU <= 2";
+                                    $inser = mysqli_query($connection,$tipo);
+                                    while($tip = mysqli_fetch_array($inser)){
+                                ?>
+                                <option value="<?php echo $tip[0]; ?>" style="text-transform:uppercase">
+                                    <?php echo $tip[1]; ?>
+                                </option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                           <!--  <h6 class="agregaradi" id="btn_tipo_usuario">CREAR TIPO DE USUARIO</h6> -->
+                        </div>
+                    </div>
+
+
+                    <!-- caja de tipoDeUsuario-tipoDeDocumento-EDAD -->
+                    <div class="segundalinea">
+                        <div id="grupo__nombres">
+                            <label for="">NOMBRES</label>    
+                            <input class="input1" type="text" name="nombres" id="nombres" placeholder="NOMBRES" required style="text-transform:uppercase"><!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            <p class="formulario__input-error">El nombre tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
+                        </div>
+                        <div id="grupo__apellidos">
+                            <label for="">APELLIDOS</label>    
+                            <input class="input1" type="text" name="apellidos" id="apellidos" placeholder="APELLIDOS" required style="text-transform:uppercase">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            <p class="formulario__input-error">El apellido tiene que ser de 3 a 16 dígitos y no puede contener numeros ni caracteres especiales.</p>
+                        </div>
+                       
                         <div  id="grupo__nacimiento">
                             <label for="">FECHA NACIMIENTO</label>    
                             <input class="input1" type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="EDAD"  required>
@@ -191,6 +193,10 @@ $hora = date("H:i:s");
         </div>
 
      
+
+
+
+
 
         <!-- ---------------SEGUNDO FORMULARIO ==== contenido de editar usuario---------------------------------------- -->
         <div class="contentEditarUsuario" id="contentEditarUsuario">
@@ -515,16 +521,17 @@ $hora = date("H:i:s");
                         <div class="primeraLineaempresa">
                                 <div >
                                     <label for="">NIT - DOCUMENTO</label><!-- minlength="5" -->
-                                    <input  type="number" name="nit" id="">
+                                    <input  type="number" name="nit" id="nitDocumentE">
                                 </div>
+
                                 <div >
                                     <label for="">Nombre de la empresa</label>
-                                    <input  type="text" name="nomEmpresa" id="">
+                                    <input  type="text" name="nomEmpresa" id="nombreEmpresa">
                                 </div>
-                               
+                                
                                 <div>
                                     <label for="">Nombre  de empleado</label>    
-                                    <input  type="text" name="razonSocial">
+                                    <input  type="text" name="nombreemple" onkeypress="return soloLetras(event)" id="nomEmpleEmple">
                                 </div>
                         </div>
 
@@ -532,11 +539,11 @@ $hora = date("H:i:s");
                            
                             <div>
                                 <label for="">TELEFONO</label>    
-                                <input  type="number" name="telefonoEmpre">
+                                <input  type="number" name="telefonoEmpre" id="telefonoempre">
                             </div>
                             <div>
                                 <label for="">CORREO EMPRESA</label>    
-                                <input   name="correoEmpre" id="">
+                                <input   name="correoEmpre" id="correoempre">
                             </div>
                         </div>
 
