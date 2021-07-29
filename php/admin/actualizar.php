@@ -3,7 +3,7 @@ require_once("../conections/conexion.php");
 
 
 
-$sql = "SELECT DOCUMENTO,NOMBRE,APELLIDO,tipo_usuario.NOM_TIP_USU as cargo, FECHA_NACIMIENTO,CORREO,tipo_documento.NOM_TIP_DOCU as tipo_docu,FOTO from usuario, tipo_usuario,tipo_documento where usuario.ID_TIP_USU=tipo_usuario.ID_TIP_USU and usuario.ID_TIP_DOCU=tipo_documento.ID_TIP_DOCU ";
+$sql = "SELECT DOCUMENTO,NOMBRE,APELLIDO,tipo_usuario.NOM_TIP_USU as cargo, FECHA_NACIMIENTO,CORREO,tipo_documento.NOM_TIP_DOCU as tipo_docu,FOTO from usuario, tipo_usuario,tipo_documento where usuario.ID_TIP_USU=tipo_usuario.ID_TIP_USU and usuario.ID_TIP_DOCU=tipo_documento.ID_TIP_DOCU and usuario.DOCUMENTO != 0";
 $consulta = mysqli_query($connection,$sql);
 
 if ($consulta){

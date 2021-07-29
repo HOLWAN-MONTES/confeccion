@@ -61,44 +61,47 @@ $hora_de = date("H:i:s");
                 $consul="SELECT * FROM detalle_accion INNER JOIN accion_realizada on detalle_accion.ID_ACCION_REALIZADA=accion_realizada.ID_ACCION_REALIZADA 
                 INNER JOIN insumo ON detalle_accion.ID_INSUMO=insumo.ID_INSUMO
                 INNER JOIN estado ON accion_realizada.ID_ESTADO=estado.ID_ESTADO
-                WHERE detalle_accion.ID_ACCION_REALIZADA = '$numFactura'";
+                WHERE detalle_accion.ID_ACCION_REALIZADA = '$numFactura' and detalle_accion.CANTIDAD not in (0)";
                 $resultado=mysqli_query($connection,$consul);
             ?>
             <thead>
                 <tr>
-                    <td>ID FACTURA PRESTAMO</td>
+                    <td>ID IDENTIFICADOR</td>
                     <td>INSUMO PRESTADO</td>
                     <td>CANTIDAD DE INSUMOS PRESTADOS</td>
                     <td>CANTIDAD A DEVOLVER</td>
+                    <td>OBSERVACIONES</td>
                     <td>DEVOLVER</td>
                     
                 </tr>
             </thead>
+            <tbody id="conten_devol">
             <?php
-                while($mostrar1=mysqli_fetch_assoc($resultado)){
+                foreach($resultado as $mostrar1){
             ?>
-            <tbody>
+            
                 <tr>
-                   <td id="num_fac" style="text-transform: uppercase;"><?php echo $numFactura; ?></td>
+                   <td id="num_fac" style="text-transform: uppercase;"><?php echo $mostrar1['ID_DETA_ACCION']; ?></td>
                    <td style="text-transform: uppercase;"><?php echo $mostrar1['NOM_INSUMO']; ?></td>
                    <td id="canti" style="text-transform: uppercase;"><?php echo $mostrar1['CANTIDAD']; ?></td>
+                   
                    <td>
-                        <form id="form_dev" method ="POST">
-                            <input type="number"  id ="cantidad_dev" name = "cantidad_devolver">
-                            <input type="submit" class="envio_dev" name="enivar_devol" value="DEVOLVER">
-                        </form>
+                        <input type="number"  id ="cantidad_dev" name = "cantidad_devolver">
                     </td>
                    <td>
+                        <input type="text" id="obser_devol" name="obser_devol">
                    </td>
-                   <!-- <td><input type="number" class="cant_devol" name="cant_devol" id="cant_devol" placeholder="CANTIDAD" required></td>
-                   <td><input type="text" id="obser_devol" name="obser_devol"></td>
-                   <td><input type="button" name="devolver_insu" id="devolver_insu" value="ENVIAR"></td>
-                   <td><input type="button" id="cancelar_insumo" value="CANCELAR"></td> -->
+                   <td>
+                        <input class="notocar envio_dev" type="submit" id="enviar_devol1" name="enivar_devol" value="DEVOLVER">
+                   </td>
+                   
+                   
                 </tr>
-            </tbody>
+            
             <?php
             }
             ?>
+            </tbody>
             </table>
         </form>             
     </div>
