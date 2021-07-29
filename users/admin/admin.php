@@ -523,14 +523,15 @@ $hora = date("H:i:s");
                                     <label for="">NIT - DOCUMENTO</label><!-- minlength="5" -->
                                     <input  type="number" name="nit" id="nitDocumentE">
                                 </div>
+
                                 <div >
                                     <label for="">Nombre de la empresa</label>
                                     <input  type="text" name="nomEmpresa" id="nombreEmpresa">
                                 </div>
-                               
+                                
                                 <div>
                                     <label for="">Nombre  de empleado</label>    
-                                    <input  type="text" name="nombreemple" id="nomEmpleEmple">
+                                    <input  type="text" name="nombreemple" onkeypress="return soloLetras(event)" id="nomEmpleEmple">
                                 </div>
                         </div>
 
