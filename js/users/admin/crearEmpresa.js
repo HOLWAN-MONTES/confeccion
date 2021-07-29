@@ -95,12 +95,14 @@ nitDocument.addEventListener('input',function(){
   if (this.value.length > 11) 
      this.value = this.value.slice(0,11); 
 })
+
 /* nombre empresa */
 var nombreEmpresa = document.getElementById('nombreEmpresa');
 nombreEmpresa.addEventListener('input',function(){
     if (this.value.length > 15) 
        this.value = this.value.slice(0,15); 
 })
+
 /* nombre empleado */
 var nomEmpleEmple = document.getElementById('nomEmpleEmple');
 nomEmpleEmple.addEventListener('input',function(){
@@ -119,9 +121,12 @@ telefonoempre.addEventListener('input',function(){
 /* correo empresa */
 var correoempre = document.getElementById('correoempre');
 correoempre.addEventListener('input',function(){
-    if (this.value.length > 20) 
-       this.value = this.value.slice(0,20); 
+    if (this.value.length > 60) 
+       this.value = this.value.slice(0,60); 
 })
+
+
+
 
 
 function soloLetras(e) {

@@ -761,7 +761,7 @@ li{
 
 /*-------------------------------------------- CREAR FICHA ------------------------------*/
 .contentcrearficha{
-    display: block;
+    display: none;
     text-align: center;
     width: 80%;
     height: auto;
@@ -778,6 +778,18 @@ li{
     background-color: #188276;/* #da5000; */
     padding: 20px;
     border-radius: 15px;
+}
+
+.btnpequenito{
+   cursor: pointer;
+    font-size: 14px;
+    background-color: #c0c0c0;
+}
+
+.btnpequenito:hover{
+    border-bottom: 1px solid red;
+    font-size: 14px;
+    background-color: #c0c0c0;
 }
 
 .tituloficha{
