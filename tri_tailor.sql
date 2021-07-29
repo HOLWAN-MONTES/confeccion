@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-07-2021 a las 12:40:47
+-- Tiempo de generación: 29-07-2021 a las 13:26:31
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.8
 
@@ -49,7 +49,7 @@ INSERT INTO `accion` (`ID_ACCION`, `NOM_ACCION`) VALUES
 --
 
 CREATE TABLE `accion_realizada` (
-  `ID_ACCION_REALIZADA` int(11) NOT NULL,
+  `ID_ACCION_REALIZADA` int(11) UNSIGNED NOT NULL,
   `DOCU_ADMI` int(20) UNSIGNED NOT NULL,
   `DOCU_INSTRUCTOR` int(20) UNSIGNED NOT NULL,
   `FECHA` date NOT NULL,
@@ -62,7 +62,8 @@ CREATE TABLE `accion_realizada` (
 --
 
 INSERT INTO `accion_realizada` (`ID_ACCION_REALIZADA`, `DOCU_ADMI`, `DOCU_INSTRUCTOR`, `FECHA`, `HORA`, `ID_ESTADO`) VALUES
-(0, 1005, 1000123123, '2021-07-28', '02:43:55', 3);
+(8, 1, 1000123123, '2021-07-28', '11:55:40', 8),
+(9, 1, 1000123123, '2021-07-28', '14:00:50', 8);
 
 -- --------------------------------------------------------
 
@@ -103,8 +104,11 @@ CREATE TABLE `color` (
 --
 
 INSERT INTO `color` (`ID_COLOR`, `NOM_COLOR`) VALUES
-(1, 'Negro'),
-(2, 'color');
+(1, 'VERDE'),
+(2, 'BLANCO'),
+(3, 'AZUL'),
+(4, 'ROJO'),
+(5, 'Blanco');
 
 -- --------------------------------------------------------
 
@@ -114,21 +118,24 @@ INSERT INTO `color` (`ID_COLOR`, `NOM_COLOR`) VALUES
 
 CREATE TABLE `detalle_accion` (
   `ID_DETA_ACCION` int(11) NOT NULL,
-  `ID_ACCION_REALIZADA` int(11) NOT NULL,
+  `ID_ACCION_REALIZADA` int(11) UNSIGNED NOT NULL,
   `ID_ACCION` int(2) NOT NULL,
   `ID_INSUMO` int(11) NOT NULL,
   `ID_MATERIAL_TEXTIL` int(11) NOT NULL,
   `CANTIDAD` int(11) NOT NULL,
   `ID_BODEGA` int(11) NOT NULL,
-  `CANTIDAD_TOTAL` int(11) NOT NULL
+  `CANTIDAD_TOTAL` int(11) NOT NULL,
+  `OBSERVACIONES` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `detalle_accion`
 --
 
-INSERT INTO `detalle_accion` (`ID_DETA_ACCION`, `ID_ACCION_REALIZADA`, `ID_ACCION`, `ID_INSUMO`, `ID_MATERIAL_TEXTIL`, `CANTIDAD`, `ID_BODEGA`, `CANTIDAD_TOTAL`) VALUES
-(2, 0, 2, 2, 7, 12, 1, 108);
+INSERT INTO `detalle_accion` (`ID_DETA_ACCION`, `ID_ACCION_REALIZADA`, `ID_ACCION`, `ID_INSUMO`, `ID_MATERIAL_TEXTIL`, `CANTIDAD`, `ID_BODEGA`, `CANTIDAD_TOTAL`, `OBSERVACIONES`) VALUES
+(10, 8, 2, 7, 1, 10, 1, 97, NULL),
+(11, 9, 2, 7, 5, 12, 1, 97, NULL),
+(12, 9, 2, 2, 7, 10, 2, 134, NULL);
 
 -- --------------------------------------------------------
 
@@ -153,19 +160,11 @@ CREATE TABLE `detalle_ingreso` (
 --
 
 INSERT INTO `detalle_ingreso` (`ID_DETA_INGRESO`, `ID_INGRE_MATERIAL`, `ID_TIP_INGRESO`, `ID_INSUMO`, `ID_MATERIAL_TEXTIL`, `SERIAL_MAQUINARIA`, `CANTIDAD`, `ID_BODEGA`, `CANTIDAD_TOTAL`) VALUES
-(26, 50, 2, 2, 7, 0, 23, 1, 0),
-(27, 51, 2, 2, 7, 0, 23, 2, 46),
-(28, 52, 2, 2, 7, 0, 23, 2, 69),
-(29, 53, 3, 7, 7, 1233, 32, 3, 32),
-(30, 54, 1, 7, 6, 0, 32, 1, 32),
-(31, 54, 1, 7, 2, 0, 33, 1, 65),
-(32, 54, 1, 7, 3, 0, 32, 1, 97),
-(33, 55, 2, 2, 7, 0, 32, 2, 101),
-(34, 55, 2, 5, 7, 0, 33, 2, 134),
-(35, 56, 3, 7, 7, 334, 32, 3, 64),
-(36, 56, 3, 7, 7, 1212233, 33, 3, 97),
-(37, 57, 3, 7, 7, 334, 323, 3, 420),
-(38, 57, 3, 7, 7, 1212233, 33, 3, 453);
+(1, 1, 1, 7, 1, 0, 11, 1, 11),
+(2, 2, 1, 7, 1, 0, 11, 1, 22),
+(3, 2, 2, 2, 7, 0, 23, 2, 23),
+(4, 3, 2, 2, 7, 0, 31, 2, 54),
+(5, 3, 3, 7, 7, 334, 21, 3, 21);
 
 -- --------------------------------------------------------
 
@@ -174,7 +173,7 @@ INSERT INTO `detalle_ingreso` (`ID_DETA_INGRESO`, `ID_INGRE_MATERIAL`, `ID_TIP_I
 --
 
 CREATE TABLE `empresa` (
-  `NIT_DOC` int(11) NOT NULL,
+  `NIT_DOC` int(18) UNSIGNED NOT NULL,
   `NOM_EMPLEADO` varchar(60) NOT NULL,
   `ID_TIP_USU` int(2) NOT NULL,
   `NOM_EMPRESA` varchar(60) NOT NULL,
@@ -187,8 +186,8 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`NIT_DOC`, `NOM_EMPLEADO`, `ID_TIP_USU`, `NOM_EMPRESA`, `TELEFONO`, `COR_EMPR`) VALUES
-(1000213, 'Ecomoda', 3, 'Persona Juridica', 2709890, 'ecomoda@mis.co'),
-(1002931, 'Monsters Inc', 3, 'Persona Juridica', 2786563, 'monstersinc@misa.co');
+(10076231, 'Rappi Junior', 3, 'Juan david', 3141231233, 'rappijun@gmail.com'),
+(100092313, 'Guanajuato', 3, 'Holman Herrera', 2789123123, 'guanajuato32@gmail.c');
 
 -- --------------------------------------------------------
 
@@ -249,7 +248,7 @@ CREATE TABLE `formacion` (
 CREATE TABLE `ingreso_material` (
   `ID_INGRE_MATERIAL` int(11) UNSIGNED NOT NULL,
   `DOCUMENTO` int(20) UNSIGNED NOT NULL,
-  `NIT_DOC` int(11) NOT NULL,
+  `NIT_DOC` int(11) UNSIGNED NOT NULL,
   `FECHA` date NOT NULL,
   `HORA` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -259,14 +258,9 @@ CREATE TABLE `ingreso_material` (
 --
 
 INSERT INTO `ingreso_material` (`ID_INGRE_MATERIAL`, `DOCUMENTO`, `NIT_DOC`, `FECHA`, `HORA`) VALUES
-(50, 1005, 1000213, '2021-07-23', '14:41:12'),
-(51, 1005, 1000213, '2021-07-23', '14:42:16'),
-(52, 1005, 1000213, '2021-07-24', '08:10:45'),
-(53, 1005, 1002931, '2021-07-24', '08:10:57'),
-(54, 1005, 1000213, '2021-07-25', '13:41:59'),
-(55, 1005, 1002931, '2021-07-25', '13:42:49'),
-(56, 1005, 1000213, '2021-07-25', '14:03:18'),
-(57, 1005, 1002931, '2021-07-25', '18:20:16');
+(1, 1005, 100092313, '2021-07-28', '23:32:24'),
+(2, 1005, 100092313, '2021-07-28', '23:32:24'),
+(3, 1005, 100092313, '2021-07-28', '23:33:46');
 
 -- --------------------------------------------------------
 
@@ -289,7 +283,8 @@ CREATE TABLE `insumo` (
 INSERT INTO `insumo` (`ID_INSUMO`, `NOM_INSUMO`, `ID_TIP_INSUMO`, `ID_MARCA`, `ID_COLOR`) VALUES
 (2, 'Hilo', 1, 2, 1),
 (5, '1212123', 1, 3, 1),
-(7, 'No existe', 2, 1, 3);
+(7, 'No existe', 2, 1, 3),
+(8, 'TIJERAS PUNTA REDONDA', 2, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -324,11 +319,11 @@ CREATE TABLE `maquinaria` (
 --
 
 INSERT INTO `maquinaria` (`SERIAL_MAQUINARIA`, `PLACA_SENA`, `NOM_MAQUINARIA`, `ID_TIP_MAQUINARIA`, `ID_MARCA`, `ID_COLOR`, `ID_ESTADO`, `OBSERVACIONES`) VALUES
-(0, '0', 'No existe', 2, 1, 3, 2, NULL),
+(0, '0', '', 2, 1, 3, 2, NULL),
 (334, '123213', 'ESTRONG', 1, 1, 1, 5, ''),
 (1233, '123213', 'ESTROGNFER', 1, 1, 1, 5, ''),
 (312213, '213123', 'ESTROGNFER', 1, 1, 1, 6, 'ADADASDADADADADADADAD'),
-(1212233, '123213', 'ESTROGNFER', 1, 1, 1, 6, NULL);
+(1212233, '123213', 'ESTROGNFER', 1, 1, 1, 7, '');
 
 -- --------------------------------------------------------
 
@@ -350,7 +345,8 @@ INSERT INTO `marca` (`ID_MARCA`, `NOM_MARCA`, `ID_TIP_MARCA`) VALUES
 (1, 'Lafayet', 1),
 (2, 'Singer', 3),
 (3, 'Hilos', 2),
-(4, 'AAAAAAA', 1);
+(4, 'AAAAAAA', 1),
+(5, 'Shinobis', 2);
 
 -- --------------------------------------------------------
 
@@ -375,7 +371,6 @@ INSERT INTO `material_textil` (`ID_MATERIAL_TEXTIL`, `NOM_MATERIAL_TEXTIL`, `ID_
 (1, 'werwrew', 1, 1, 1, 1),
 (2, 'werwrew', 1, 1, 1, 222),
 (3, '1111', 2, 1, 2, 111),
-(4, '333332', 5, 4, 1, 0),
 (5, '11111', 3, 4, 1, 1111),
 (6, 'KolorPlex200x400', 1, 1, 1, 200),
 (7, 'No existe', 2, 1, 3, 23);
@@ -458,18 +453,7 @@ INSERT INTO `tipo_insumo` (`ID_TIP_INSUMO`, `NOM_TIP_INSUMO`) VALUES
 (1, 'Metal'),
 (2, 'tijeras'),
 (3, 'hilos'),
-(4, 'HILOS'),
-(5, 'HILOS'),
-(6, 'HILOS'),
-(7, 'AAA'),
-(8, 'ooo'),
-(9, 'oooooo'),
-(10, 'Holman lo mama'),
-(11, ''),
-(12, '23'),
-(13, 'Love'),
-(14, 'pico'),
-(15, 'DEDE');
+(16, 'AGUJAS');
 
 -- --------------------------------------------------------
 
@@ -539,7 +523,6 @@ INSERT INTO `tipo_material_textil` (`ID_TIP_MATE_TEXTIL`, `NOM_TIP_MATE_TEXTIL`)
 (2, 'AAA'),
 (3, 'aaa'),
 (4, 'OHKJK'),
-(5, 'POPO'),
 (6, 'HILOS');
 
 -- --------------------------------------------------------
@@ -586,11 +569,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`DOCUMENTO`, `NOMBRE`, `APELLIDO`, `FECHA_NACIMIENTO`, `ID_TIP_DOCU`, `ID_TIP_USU`, `CELULAR`, `CORREO`, `FOTO`, `CLAVE`) VALUES
-(0, '', '', '0000-00-00', 1, 1, 0, '', NULL, ''),
+(0, '', '', '0000-00-00', 1, 1, 0, 'sadasd', NULL, ''),
 (1005, 'HOLWAN DAVID', 'MONTES GUTIERREZ', '2002-02-21', 1, 1, 3120989123, 'holman@misa.co', 0x7069746f6e2e6a7067, '123'),
-(100129312, 'ADADA', 'ASDADS', '2000-06-28', 1, 1, 3112312323, 'adada@mias.ed', 0x70616e74616c6c612070632e6a7067, '221efined'),
 (1000023231, 'Kike', 'Tronco', '2000-10-24', 1, 2, 312312345, 'hdmontes59@misena.edu.co', 0x70657272696c2e6a7067, '12defined'),
-(1000123123, 'Oscar', 'Llanos', '1999-06-15', 1, 2, 3123123923, 'oscar@mis.co', 0x61646d696e6973312e706e67, '123');
+(1000123123, 'Oscar', 'Llanos', '1999-06-15', 1, 2, 3224567890, 'oscarllanos1408@gmail.com', 0x61646d696e6973312e706e67, '1234'),
+(1005753852, 'Ever', 'Moreno', '2000-10-24', 1, 1, 3123123231, 'ever123@misena.edu.co', 0x70616e74616c6c612070632e6a7067, 'Everandres45$'),
+(1233123412, 'Andres Mauricio', 'Castrillon Castañeda ', '2021-07-14', 1, 1, 3123122312, 'andres@misena.edu.co', 0x677569646f2e706e67, 'Andre45412$');
 
 --
 -- Índices para tablas volcadas
@@ -607,8 +591,8 @@ ALTER TABLE `accion`
 --
 ALTER TABLE `accion_realizada`
   ADD PRIMARY KEY (`ID_ACCION_REALIZADA`),
-  ADD KEY `DOCU_ADMI` (`DOCU_ADMI`),
   ADD KEY `DOCU_INSTRUCTOR` (`DOCU_INSTRUCTOR`),
+  ADD KEY `DOCU_ADMI` (`DOCU_ADMI`),
   ADD KEY `ID_ESTADO` (`ID_ESTADO`);
 
 --
@@ -616,7 +600,8 @@ ALTER TABLE `accion_realizada`
 --
 ALTER TABLE `bodega`
   ADD PRIMARY KEY (`ID_BODEGA`),
-  ADD KEY `ID_TIP_BODEGA` (`ID_TIP_BODEGA`);
+  ADD KEY `ID_TIP_BODEGA` (`ID_TIP_BODEGA`),
+  ADD KEY `ID_ESTADO` (`ID_ESTADO`);
 
 --
 -- Indices de la tabla `color`
@@ -630,22 +615,22 @@ ALTER TABLE `color`
 ALTER TABLE `detalle_accion`
   ADD PRIMARY KEY (`ID_DETA_ACCION`),
   ADD KEY `ID_ACCION` (`ID_ACCION`),
-  ADD KEY `ID_ACCION_REALIZADA` (`ID_ACCION_REALIZADA`),
   ADD KEY `ID_INSUMO` (`ID_INSUMO`),
   ADD KEY `ID_MATERIAL_TEXTIL` (`ID_MATERIAL_TEXTIL`),
-  ADD KEY `ID_BODEGA` (`ID_BODEGA`);
+  ADD KEY `ID_BODEGA` (`ID_BODEGA`),
+  ADD KEY `ID_ACCION_REALIZADA` (`ID_ACCION_REALIZADA`);
 
 --
 -- Indices de la tabla `detalle_ingreso`
 --
 ALTER TABLE `detalle_ingreso`
   ADD PRIMARY KEY (`ID_DETA_INGRESO`),
-  ADD KEY `ID_TIP_INGRESO` (`ID_TIP_INGRESO`),
-  ADD KEY `ID_INGRE_MATERIAL` (`ID_INGRE_MATERIAL`),
   ADD KEY `ID_INSUMO` (`ID_INSUMO`),
   ADD KEY `ID_MATERIAL_TEXTIL` (`ID_MATERIAL_TEXTIL`),
   ADD KEY `SERIAL_MAQUINARIA` (`SERIAL_MAQUINARIA`),
-  ADD KEY `ID_BODEGA` (`ID_BODEGA`);
+  ADD KEY `ID_BODEGA` (`ID_BODEGA`),
+  ADD KEY `ID_TIP_INGRESO` (`ID_TIP_INGRESO`),
+  ADD KEY `ID_INGRE_MATERIAL` (`ID_INGRE_MATERIAL`);
 
 --
 -- Indices de la tabla `empresa`
@@ -666,7 +651,8 @@ ALTER TABLE `estado`
 ALTER TABLE `ficha`
   ADD PRIMARY KEY (`NUM_FICHA`),
   ADD KEY `ID_FORMACION` (`ID_FORMACION`,`ID_JORNADA`),
-  ADD KEY `DOCUMENTO` (`DOCUMENTO`);
+  ADD KEY `DOCUMENTO` (`DOCUMENTO`),
+  ADD KEY `ID_JORNADA` (`ID_JORNADA`);
 
 --
 -- Indices de la tabla `formacion`
@@ -687,7 +673,9 @@ ALTER TABLE `ingreso_material`
 --
 ALTER TABLE `insumo`
   ADD PRIMARY KEY (`ID_INSUMO`),
-  ADD KEY `ID_TIP_INSUMO` (`ID_TIP_INSUMO`,`ID_MARCA`,`ID_COLOR`);
+  ADD KEY `ID_TIP_INSUMO` (`ID_TIP_INSUMO`),
+  ADD KEY `ID_COLOR` (`ID_COLOR`),
+  ADD KEY `ID_MARCA` (`ID_MARCA`);
 
 --
 -- Indices de la tabla `jornada`
@@ -700,7 +688,9 @@ ALTER TABLE `jornada`
 --
 ALTER TABLE `maquinaria`
   ADD PRIMARY KEY (`SERIAL_MAQUINARIA`),
-  ADD KEY `ID_TIP_MAQUINARIA` (`ID_TIP_MAQUINARIA`,`ID_MARCA`,`ID_COLOR`),
+  ADD KEY `ID_TIP_MAQUINARIA` (`ID_TIP_MAQUINARIA`),
+  ADD KEY `ID_MARCA` (`ID_MARCA`),
+  ADD KEY `ID_COLOR` (`ID_COLOR`),
   ADD KEY `ID_ESTADO` (`ID_ESTADO`);
 
 --
@@ -715,7 +705,9 @@ ALTER TABLE `marca`
 --
 ALTER TABLE `material_textil`
   ADD PRIMARY KEY (`ID_MATERIAL_TEXTIL`),
-  ADD KEY `ID_TIP_MATE_TEXTIL` (`ID_TIP_MATE_TEXTIL`,`ID_MARCA`,`ID_COLOR`);
+  ADD KEY `ID_COLOR` (`ID_COLOR`),
+  ADD KEY `ID_TIP_MATE_TEXTIL` (`ID_TIP_MATE_TEXTIL`),
+  ADD KEY `ID_MARCA` (`ID_MARCA`);
 
 --
 -- Indices de la tabla `tipo_bodega`
@@ -770,7 +762,7 @@ ALTER TABLE `tipo_usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`DOCUMENTO`),
-  ADD KEY `ID_TIP_DOCU` (`ID_TIP_DOCU`,`ID_TIP_USU`),
+  ADD KEY `ID_TIP_DOCU` (`ID_TIP_DOCU`),
   ADD KEY `ID_TIP_USU` (`ID_TIP_USU`);
 
 --
@@ -778,28 +770,28 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de la tabla `accion`
+-- AUTO_INCREMENT de la tabla `accion_realizada`
 --
-ALTER TABLE `accion`
-  MODIFY `ID_ACCION` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `accion_realizada`
+  MODIFY `ID_ACCION_REALIZADA` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `color`
 --
 ALTER TABLE `color`
-  MODIFY `ID_COLOR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_COLOR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_accion`
 --
 ALTER TABLE `detalle_accion`
-  MODIFY `ID_DETA_ACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_DETA_ACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_ingreso`
 --
 ALTER TABLE `detalle_ingreso`
-  MODIFY `ID_DETA_INGRESO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ID_DETA_INGRESO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -817,13 +809,13 @@ ALTER TABLE `formacion`
 -- AUTO_INCREMENT de la tabla `ingreso_material`
 --
 ALTER TABLE `ingreso_material`
-  MODIFY `ID_INGRE_MATERIAL` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `ID_INGRE_MATERIAL` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `insumo`
 --
 ALTER TABLE `insumo`
-  MODIFY `ID_INSUMO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_INSUMO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `jornada`
@@ -835,7 +827,7 @@ ALTER TABLE `jornada`
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `ID_MARCA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_MARCA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `material_textil`
@@ -865,7 +857,7 @@ ALTER TABLE `tipo_ingreso`
 -- AUTO_INCREMENT de la tabla `tipo_insumo`
 --
 ALTER TABLE `tipo_insumo`
-  MODIFY `ID_TIP_INSUMO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_TIP_INSUMO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_maquina`
@@ -899,36 +891,49 @@ ALTER TABLE `tipo_usuario`
 -- Filtros para la tabla `accion_realizada`
 --
 ALTER TABLE `accion_realizada`
-  ADD CONSTRAINT `accion_realizada_ibfk_1` FOREIGN KEY (`DOCU_ADMI`) REFERENCES `usuario` (`DOCUMENTO`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `accion_realizada_ibfk_2` FOREIGN KEY (`DOCU_INSTRUCTOR`) REFERENCES `usuario` (`DOCUMENTO`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `accion_realizada_ibfk_3` FOREIGN KEY (`ID_ESTADO`) REFERENCES `estado` (`ID_ESTADO`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `accion_realizada_ibfk_2` FOREIGN KEY (`DOCU_INSTRUCTOR`) REFERENCES `usuario` (`DOCUMENTO`),
+  ADD CONSTRAINT `accion_realizada_ibfk_3` FOREIGN KEY (`ID_ESTADO`) REFERENCES `estado` (`ID_ESTADO`);
+
+--
+-- Filtros para la tabla `bodega`
+--
+ALTER TABLE `bodega`
+  ADD CONSTRAINT `bodega_ibfk_1` FOREIGN KEY (`ID_TIP_BODEGA`) REFERENCES `tipo_bodega` (`ID_TIP_BODEGA`),
+  ADD CONSTRAINT `bodega_ibfk_2` FOREIGN KEY (`ID_ESTADO`) REFERENCES `estado` (`ID_ESTADO`);
 
 --
 -- Filtros para la tabla `detalle_accion`
 --
 ALTER TABLE `detalle_accion`
-  ADD CONSTRAINT `detalle_accion_ibfk_1` FOREIGN KEY (`ID_ACCION`) REFERENCES `accion` (`ID_ACCION`),
-  ADD CONSTRAINT `detalle_accion_ibfk_2` FOREIGN KEY (`ID_ACCION_REALIZADA`) REFERENCES `accion_realizada` (`ID_ACCION_REALIZADA`),
-  ADD CONSTRAINT `detalle_accion_ibfk_3` FOREIGN KEY (`ID_INSUMO`) REFERENCES `insumo` (`ID_INSUMO`),
-  ADD CONSTRAINT `detalle_accion_ibfk_4` FOREIGN KEY (`ID_MATERIAL_TEXTIL`) REFERENCES `material_textil` (`ID_MATERIAL_TEXTIL`),
-  ADD CONSTRAINT `detalle_accion_ibfk_6` FOREIGN KEY (`ID_BODEGA`) REFERENCES `bodega` (`ID_BODEGA`);
+  ADD CONSTRAINT `detalle_accion_ibfk_2` FOREIGN KEY (`ID_ACCION`) REFERENCES `accion` (`ID_ACCION`),
+  ADD CONSTRAINT `detalle_accion_ibfk_5` FOREIGN KEY (`ID_BODEGA`) REFERENCES `bodega` (`ID_BODEGA`),
+  ADD CONSTRAINT `detalle_accion_ibfk_6` FOREIGN KEY (`ID_ACCION_REALIZADA`) REFERENCES `accion_realizada` (`ID_ACCION_REALIZADA`),
+  ADD CONSTRAINT `detalle_accion_ibfk_7` FOREIGN KEY (`ID_INSUMO`) REFERENCES `insumo` (`ID_INSUMO`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `detalle_accion_ibfk_8` FOREIGN KEY (`ID_MATERIAL_TEXTIL`) REFERENCES `material_textil` (`ID_MATERIAL_TEXTIL`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `detalle_ingreso`
 --
 ALTER TABLE `detalle_ingreso`
-  ADD CONSTRAINT `detalle_ingreso_ibfk_1` FOREIGN KEY (`ID_TIP_INGRESO`) REFERENCES `tipo_ingreso` (`ID_TIP_INGRESO`),
-  ADD CONSTRAINT `detalle_ingreso_ibfk_5` FOREIGN KEY (`ID_INGRE_MATERIAL`) REFERENCES `ingreso_material` (`ID_INGRE_MATERIAL`),
-  ADD CONSTRAINT `detalle_ingreso_ibfk_6` FOREIGN KEY (`ID_INSUMO`) REFERENCES `insumo` (`ID_INSUMO`),
-  ADD CONSTRAINT `detalle_ingreso_ibfk_7` FOREIGN KEY (`ID_MATERIAL_TEXTIL`) REFERENCES `material_textil` (`ID_MATERIAL_TEXTIL`),
-  ADD CONSTRAINT `detalle_ingreso_ibfk_8` FOREIGN KEY (`SERIAL_MAQUINARIA`) REFERENCES `maquinaria` (`SERIAL_MAQUINARIA`),
-  ADD CONSTRAINT `detalle_ingreso_ibfk_9` FOREIGN KEY (`ID_BODEGA`) REFERENCES `bodega` (`ID_BODEGA`);
+  ADD CONSTRAINT `detalle_ingreso_ibfk_4` FOREIGN KEY (`ID_BODEGA`) REFERENCES `bodega` (`ID_BODEGA`),
+  ADD CONSTRAINT `detalle_ingreso_ibfk_5` FOREIGN KEY (`SERIAL_MAQUINARIA`) REFERENCES `maquinaria` (`SERIAL_MAQUINARIA`),
+  ADD CONSTRAINT `detalle_ingreso_ibfk_6` FOREIGN KEY (`ID_TIP_INGRESO`) REFERENCES `tipo_ingreso` (`ID_TIP_INGRESO`),
+  ADD CONSTRAINT `detalle_ingreso_ibfk_7` FOREIGN KEY (`ID_INGRE_MATERIAL`) REFERENCES `ingreso_material` (`ID_INGRE_MATERIAL`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `detalle_ingreso_ibfk_8` FOREIGN KEY (`ID_INSUMO`) REFERENCES `insumo` (`ID_INSUMO`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `detalle_ingreso_ibfk_9` FOREIGN KEY (`ID_MATERIAL_TEXTIL`) REFERENCES `material_textil` (`ID_MATERIAL_TEXTIL`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  ADD CONSTRAINT `empresa_ibfk_1` FOREIGN KEY (`ID_TIP_USU`) REFERENCES `tipo_usuario` (`ID_TIP_USU`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `empresa_ibfk_1` FOREIGN KEY (`ID_TIP_USU`) REFERENCES `tipo_usuario` (`ID_TIP_USU`);
+
+--
+-- Filtros para la tabla `ficha`
+--
+ALTER TABLE `ficha`
+  ADD CONSTRAINT `ficha_ibfk_1` FOREIGN KEY (`ID_FORMACION`) REFERENCES `formacion` (`ID_FORMACION`),
+  ADD CONSTRAINT `ficha_ibfk_2` FOREIGN KEY (`ID_JORNADA`) REFERENCES `jornada` (`ID_JORNADA`);
 
 --
 -- Filtros para la tabla `ingreso_material`
@@ -938,17 +943,42 @@ ALTER TABLE `ingreso_material`
   ADD CONSTRAINT `ingreso_material_ibfk_2` FOREIGN KEY (`NIT_DOC`) REFERENCES `empresa` (`NIT_DOC`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `insumo`
+--
+ALTER TABLE `insumo`
+  ADD CONSTRAINT `insumo_ibfk_1` FOREIGN KEY (`ID_TIP_INSUMO`) REFERENCES `tipo_insumo` (`ID_TIP_INSUMO`),
+  ADD CONSTRAINT `insumo_ibfk_2` FOREIGN KEY (`ID_COLOR`) REFERENCES `color` (`ID_COLOR`),
+  ADD CONSTRAINT `insumo_ibfk_3` FOREIGN KEY (`ID_MARCA`) REFERENCES `marca` (`ID_MARCA`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `maquinaria`
 --
 ALTER TABLE `maquinaria`
-  ADD CONSTRAINT `maquinaria_ibfk_1` FOREIGN KEY (`ID_ESTADO`) REFERENCES `estado` (`ID_ESTADO`);
+  ADD CONSTRAINT `maquinaria_ibfk_1` FOREIGN KEY (`ID_TIP_MAQUINARIA`) REFERENCES `tipo_maquina` (`ID_TIP_MAQUINARIA`),
+  ADD CONSTRAINT `maquinaria_ibfk_3` FOREIGN KEY (`ID_COLOR`) REFERENCES `color` (`ID_COLOR`),
+  ADD CONSTRAINT `maquinaria_ibfk_4` FOREIGN KEY (`ID_ESTADO`) REFERENCES `estado` (`ID_ESTADO`),
+  ADD CONSTRAINT `maquinaria_ibfk_5` FOREIGN KEY (`ID_MARCA`) REFERENCES `marca` (`ID_MARCA`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `marca`
+--
+ALTER TABLE `marca`
+  ADD CONSTRAINT `marca_ibfk_1` FOREIGN KEY (`ID_TIP_MARCA`) REFERENCES `tipo_marca` (`ID_TIP_MARCA`);
+
+--
+-- Filtros para la tabla `material_textil`
+--
+ALTER TABLE `material_textil`
+  ADD CONSTRAINT `material_textil_ibfk_1` FOREIGN KEY (`ID_COLOR`) REFERENCES `color` (`ID_COLOR`),
+  ADD CONSTRAINT `material_textil_ibfk_2` FOREIGN KEY (`ID_TIP_MATE_TEXTIL`) REFERENCES `tipo_material_textil` (`ID_TIP_MATE_TEXTIL`),
+  ADD CONSTRAINT `material_textil_ibfk_3` FOREIGN KEY (`ID_MARCA`) REFERENCES `marca` (`ID_MARCA`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`ID_TIP_USU`) REFERENCES `tipo_usuario` (`ID_TIP_USU`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`ID_TIP_DOCU`) REFERENCES `tipo_documento` (`ID_TIP_DOCU`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`ID_TIP_DOCU`) REFERENCES `tipo_documento` (`ID_TIP_DOCU`),
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`ID_TIP_USU`) REFERENCES `tipo_usuario` (`ID_TIP_USU`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
