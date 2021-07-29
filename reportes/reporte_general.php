@@ -98,7 +98,6 @@ if ($usario == "" || $usario == null) {
                                 <td class="tab_rep">CANTIDAD TOTAL</td>
                             </tr>
                         </thead>
-                    <!-- </table> -->
                     <?php
                         $consultica3 = "SELECT maquinaria.NOM_MAQUINARIA, insumo.NOM_INSUMO, material_textil.NOM_MATERIAL_TEXTIL, 
                         CANTIDAD, tipo_ingreso.NOM_TIP_INGRESO, bodega.NOM_BODEGA 
@@ -118,20 +117,16 @@ if ($usario == "" || $usario == null) {
 
                                       
                     ?>
-                    <!-- <table class="tablas"> -->
                         <tbody>
                             <tr class="todo">
                                 <td class="tab_rep"> <?=$con3["NOM_TIP_INGRESO"]?></td>
                                 <td class="tab_rep"> <?=$con3["NOM_MATERIAL_TEXTIL"]?></td>
                                 <td class="tab_rep"> <?=$con3["CANTIDAD"]?></td>
                                 <td class="tab_rep"> <?=$con3["NOM_BODEGA"]?></td>
-                                <td class="tab_rep"> <?=$cant_maq2?></td>
+                                <td class="tab_rep"> <?=$cant_maq?></td>
                             </tr>
                         </tbody>
-                    <!-- </table> -->
                     
-
-                    <!-- <div></div> -->
                     <?php
                             }
                             else if($con3['NOM_TIP_INGRESO'] == 'Insumos'){
@@ -141,7 +136,6 @@ if ($usario == "" || $usario == null) {
                                 $cant_maq2 = $dato2["CANTIDAD_TOTAL"];
                                 
                     ?>
-                    <!-- <table class="tablas"> -->
                         <tbody>
                             <tr class="todo">
                                 <td class="tab_rep"> <?=$con3["NOM_TIP_INGRESO"]?></td>
@@ -151,7 +145,6 @@ if ($usario == "" || $usario == null) {
                                 <td class="tab_rep"> <?=$cant_maq2?></td>
                             </tr>
                         </tbody>
-                    <!-- </table> -->
                     <?php
                             }
                             else if($con3['NOM_TIP_INGRESO'] == 'Maquinaria'){
@@ -160,7 +153,6 @@ if ($usario == "" || $usario == null) {
                                 $dato3 = mysqli_fetch_array($consul3);
                                 $cant_maq3 = $dato3["CANTIDAD_TOTAL"];
                     ?>
-                    <!-- <table class="tablas"> -->
                         <tbody>
                             <tr>
                                 <td class="tab_rep"> <?=$con3["NOM_TIP_INGRESO"]?></td>
@@ -170,7 +162,6 @@ if ($usario == "" || $usario == null) {
                                 <td class="tab_rep"> <?=$cant_maq3?></td>
                             </tr>
                         </tbody>
-                    <!-- </table> -->
                     <?php
                             }
                         }
@@ -181,7 +172,7 @@ if ($usario == "" || $usario == null) {
                 <div class="contentGeneralBtns">
                     <div>
                         <form action="" method="post" id="" >
-                            <button id="ver_mas_gen" class="ver_mas_gen" data-id="<?php echo $rep_maq["ID_INGRE_MATERIAL"]?>">IMPRIMIR REPORTES</button>
+                            <button id="ver_mas" class="ver_mas" data-id="<?php echo $rep_maq["ID_INGRE_MATERIAL"]?>">IMPRIMIR REPORTES</button>
                         </form>
                     </div>
                     
@@ -199,4 +190,5 @@ if ($usario == "" || $usario == null) {
     </main>
 </body>
 <script src="../js/reportes/reportes_generales.js"></script>
+<script src="./../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </html>

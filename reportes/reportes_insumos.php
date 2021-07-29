@@ -35,8 +35,8 @@ if ($usario == "" || $usario == null) {
                 </form>
 
                 <form id="form_repo_insu" method="post">
-                    <input type="date" id="fecha_ini_insu" class="fecha_ini_insu">
-                    <input type="date" id="fecha_fin_insu" class="fecha_fin_insu">
+                    <input type="date" id="fecha_ini_insu" class="fecha_ini_insu" required>
+                    <input type="date" id="fecha_fin_insu" class="fecha_fin_insu" required>
                     <input type="submit" id="buscar" value="Buscar" name="buscar">
                 </form>
             </div>
@@ -145,4 +145,5 @@ if ($usario == "" || $usario == null) {
     </main>
 </body>
 <script src="../js/reportes/reportes_insumos.js"></script>
+<script src="./../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </html>
